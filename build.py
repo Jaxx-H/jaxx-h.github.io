@@ -336,6 +336,12 @@ def main():
     # belt-and-braces: never let Pages run Jekyll
     (DIST / ".nojekyll").write_text("")
 
+    # IndexNow key file (hosted at /<key>.txt) so we can push instant index pings
+    # to Bing / Yandex / DuckDuckGo with no account and no secret.
+    inkey = (cfg.get("indexnow_key") or "").strip()
+    if inkey:
+        (DIST / f"{inkey}.txt").write_text(inkey + "\n")
+
     # static assets
     if STATIC_DIR.exists():
         shutil.copytree(STATIC_DIR, DIST / "static")

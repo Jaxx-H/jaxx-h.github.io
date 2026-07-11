@@ -1,8 +1,9 @@
 {
   "site_url": "https://jaxx-h.github.io",
   "site_name": "SignalCrate",
-  "tagline": "Fresh, verifiable datasets from live web sources — updated automatically",
+  "tagline": "Fresh, verifiable datasets from live web sources \u2014 updated automatically",
   "cname": "",
   "analytics_snippet": "",
-  "actor_base": "https://apify.com/chilly_damask/"
+  "actor_base": "https://apify.com/chilly_damask/",
+  "indexnow_key": "e798d02b9fc30f3f23be798b28f9892f"
 }
