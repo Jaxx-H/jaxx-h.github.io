@@ -1,0 +1,134 @@
+{
+  "slug": "top-homesteading-youtube-channels",
+  "title": "Top Homesteading YouTube Channels by Subscriber Count (2026 data)",
+  "description": "Live-scraped ranking of the biggest homesteading YouTube channels — subscribers, video counts, total views, and average views per video.",
+  "answer_first": "As of a July 2026 scrape, the largest homesteading YouTube channel is An American Homestead with 294,000 subscribers. Across the 11 established homesteading channels in this dataset (each above 25,000 subscribers), the combined audience is 1,193,800 subscribers, and 10 of the 11 are based in the United States. The full ranking below shows subscribers, total videos, lifetime views, and average views per video for each channel.",
+  "data_source": {
+    "actor": "youtube-creator-email-lead-scraper",
+    "run_id": "anKxNtzln5QM8exEY",
+    "fetched_at": "2026-07-11"
+  },
+  "columns": [
+    "Channel",
+    "Subscribers",
+    "Videos",
+    "Total views",
+    "Avg views/video",
+    "Country"
+  ],
+  "rows": [
+    [
+      "An American Homestead",
+      "294,000",
+      "1,371",
+      "34,713,988",
+      "25,320",
+      "United States"
+    ],
+    [
+      "Simeon & Alex - formerly Swedish Homestead",
+      "206,000",
+      "651",
+      "56,207,457",
+      "86,340",
+      "United States"
+    ],
+    [
+      "Farmers Wife Homestead",
+      "125,000",
+      "340",
+      "6,353,643",
+      "18,687",
+      "New Zealand"
+    ],
+    [
+      "Ali's Organic Garden & Homestead",
+      "121,000",
+      "406",
+      "8,268,451",
+      "20,366",
+      "United States"
+    ],
+    [
+      "Robinson Homestead",
+      "115,000",
+      "1,547",
+      "38,863,653",
+      "25,122",
+      "United States"
+    ],
+    [
+      "The Grass-fed Homestead",
+      "84,000",
+      "653",
+      "11,074,396",
+      "16,959",
+      "United States"
+    ],
+    [
+      "Acres of Clay Homestead",
+      "74,400",
+      "719",
+      "30,517,612",
+      "42,445",
+      "United States"
+    ],
+    [
+      "Haphazard Homestead",
+      "56,400",
+      "114",
+      "3,729,531",
+      "32,715",
+      "United States"
+    ],
+    [
+      "Kummer Homestead",
+      "53,700",
+      "406",
+      "10,695,157",
+      "26,343",
+      "United States"
+    ],
+    [
+      "May's Homestead Chronicles",
+      "33,900",
+      "364",
+      "3,219,157",
+      "8,844",
+      "United States"
+    ],
+    [
+      "Essential Mountain Homesteading",
+      "30,400",
+      "361",
+      "7,408,405",
+      "20,522",
+      "United States"
+    ]
+  ],
+  "facts": [
+    "The top channel, An American Homestead, has 294,000 subscribers — more than the bottom 5 channels in this list combined.",
+    "Robinson Homestead is the most prolific, publishing 1,547 videos.",
+    "Simeon & Alex - formerly Swedish Homestead has the highest engagement density at roughly 86,340 views per video.",
+    "10 of the 11 ranked channels are in the United States; the rest span other countries, showing homesteading is a globally distributed niche."
+  ],
+  "faq": [
+    {
+      "q": "How was this homesteading channel ranking built?",
+      "a": "It is a live scrape of YouTube channel statistics for channels discovered under the 'homesteading' keyword with at least 25,000 subscribers, ranked by subscriber count. Each figure is a public YouTube statistic captured on the fetch date shown below."
+    },
+    {
+      "q": "How often is this data updated?",
+      "a": "Subscriber and view counts change daily. This page reflects the run date shown in the provenance line; re-running the source actor returns current figures for any keyword or channel list you choose."
+    },
+    {
+      "q": "Can I get contact or email data for these creators?",
+      "a": "This page publishes only aggregate public statistics. The source actor can additionally surface publicly listed business contact details per channel when you run it yourself."
+    }
+  ],
+  "related_product": {
+    "name": "YouTube Creator Email & Lead Scraper",
+    "url": "https://apify.com/chilly_damask/youtube-creator-email-lead-scraper"
+  },
+  "citations": []
+}

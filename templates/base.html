@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>$title</title>
+<meta name="description" content="$description">
+<link rel="canonical" href="$canonical">
+<meta property="og:title" content="$title">
+<meta property="og:description" content="$description">
+<meta property="og:type" content="website">
+<link rel="alternate" type="application/rss+xml" title="$site_name" href="$site_url/feed.xml">
+<link rel="stylesheet" href="/static/style.css">
+$jsonld
+$analytics
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/">$site_name</a>
+  <span class="tag">$tagline</span>
+</header>
+<main>
+$content
+</main>
+<footer class="site">
+  <p>&copy; $year $site_name. Data is scraped from public sources and provided as-is, no warranty. <a href="/feed.xml">RSS</a></p>
+</footer>
+</body>
+</html>

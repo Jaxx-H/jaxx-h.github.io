@@ -1,0 +1,49 @@
+:root {
+  --bg: #ffffff;
+  --fg: #1a1a1a;
+  --muted: #5c6670;
+  --line: #e3e6ea;
+  --accent: #0b6b53;
+  --accent-fg: #ffffff;
+  --card: #f7f9fa;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e8eaed; --muted: #9aa4ad; --line: #2a2f35;
+    --accent: #2ea27f; --accent-fg: #0b0e10; --card: #1b1f23;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--fg);
+  background: var(--bg);
+}
+main { max-width: 46rem; margin: 0 auto; padding: 1.5rem 1.1rem 3rem; }
+header.site, footer.site { max-width: 46rem; margin: 0 auto; padding: 1rem 1.1rem; }
+header.site { display: flex; flex-wrap: wrap; align-items: baseline; gap: .6rem; border-bottom: 1px solid var(--line); }
+.brand { font-weight: 700; text-decoration: none; color: var(--fg); font-size: 1.15rem; }
+.tag { color: var(--muted); font-size: .85rem; }
+footer.site { border-top: 1px solid var(--line); color: var(--muted); font-size: .82rem; margin-top: 2rem; }
+a { color: var(--accent); }
+h1 { font-size: 1.7rem; line-height: 1.25; margin: .3rem 0 1rem; }
+h2 { font-size: 1.25rem; margin: 2rem 0 .6rem; }
+.answer { font-size: 1.12rem; }
+ul.facts { padding-left: 1.1rem; }
+ul.facts li { margin: .3rem 0; }
+table { border-collapse: collapse; width: 100%; font-size: .92rem; margin: 1rem 0; }
+th, td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { background: var(--card); font-weight: 600; }
+tbody tr:hover { background: var(--card); }
+details { border: 1px solid var(--line); border-radius: 8px; padding: .6rem .8rem; margin: .5rem 0; }
+summary { cursor: pointer; font-weight: 600; }
+.cta { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1.1rem; margin: 1.6rem 0; }
+.btn { display: inline-block; background: var(--accent); color: var(--accent-fg); padding: .6rem 1rem; border-radius: 8px; text-decoration: none; font-weight: 600; }
+.provenance { color: var(--muted); font-size: .82rem; margin-top: 2rem; border-top: 1px solid var(--line); padding-top: .8rem; }
+.hero h1 { font-size: 2rem; }
+.hero p { color: var(--muted); font-size: 1.1rem; }
+.card { border-bottom: 1px solid var(--line); padding: 1rem 0; }
+.card h2 { margin: 0 0 .3rem; font-size: 1.15rem; }
+.card .meta { color: var(--muted); font-size: .8rem; margin: .2rem 0 0; }
