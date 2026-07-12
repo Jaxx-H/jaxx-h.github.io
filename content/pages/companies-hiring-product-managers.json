@@ -1,0 +1,960 @@
+{
+  "slug": "companies-hiring-product-managers",
+  "title": "Which Companies Are Hiring Product Managers Right Now? (Live ATS Data)",
+  "description": "Live ATS data, 2026-07-12: 129 companies hiring product managers openings at 14 companies, 46% remote, ranked and dated.",
+  "answer_first": "A July 12, 2026 pull from public ATS careers boards finds 129 live companies hiring product managers openings spread over 14 employers. The single biggest hirer is stripe at 26 roles, while 46% of the full list is remote-friendly. This page begins its history on 2026-07-12: the baseline capture holds 129 open roles. Every opening is listed below with company, title, location, remote flag, and the date it was posted.",
+  "data_source": {
+    "actor": "company-careers-job-scraper",
+    "run_id": "a3Syae5L61ckiMCoX",
+    "fetched_at": "2026-07-12T18:10:12Z"
+  },
+  "columns": [
+    "Company",
+    "Title",
+    "Location",
+    "Remote",
+    "Posted"
+  ],
+  "rows": [
+    [
+      "openai",
+      "Hardware Product Manager, Consumer Commerce",
+      "San Francisco",
+      "Yes",
+      "2026-07-10"
+    ],
+    [
+      "stripe",
+      "Staff Product Manager, Issuing",
+      "London",
+      "No",
+      "2026-07-10"
+    ],
+    [
+      "pinterest",
+      "Staff Product Manager, Advertiser Experience",
+      "San Francisco, CA, US; Seattle, WA, US; Remote, CA, US",
+      "Yes",
+      "2026-07-08"
+    ],
+    [
+      "airbnb",
+      "Product Manager, Incubations",
+      "San Francisco, CA, New York, NY",
+      "No",
+      "2026-07-08"
+    ],
+    [
+      "gitlab",
+      "Staff Product Manager,  RevOps & Finance Systems",
+      "Remote, US",
+      "Yes",
+      "2026-07-08"
+    ],
+    [
+      "openai",
+      "Product Manager, Core Models",
+      "San Francisco",
+      "Yes",
+      "2026-07-07"
+    ],
+    [
+      "anthropic",
+      "Product Manager, Safeguards (Child Safety)",
+      "San Francisco, CA",
+      "No",
+      "2026-07-07"
+    ],
+    [
+      "gitlab",
+      "Senior Product Manager, Plan to Code",
+      "Remote, Canada; Remote, US",
+      "Yes",
+      "2026-07-07"
+    ],
+    [
+      "coinbase",
+      "Senior Product Manager, Help Center (CX Automation)",
+      "Remote - India",
+      "Yes",
+      "2026-07-06"
+    ],
+    [
+      "gitlab",
+      "Senior Manager, Product Management: Agentic Software Delivery",
+      "Remote, Canada; Remote, US",
+      "Yes",
+      "2026-07-02"
+    ],
+    [
+      "gitlab",
+      "Principal Product Manager, Engineering Intelligence & Insights",
+      "Remote, Canada; Remote, US",
+      "Yes",
+      "2026-07-02"
+    ],
+    [
+      "instacart",
+      "Senior Product Manager, Growth Marketing Platform",
+      "Canada - Remote (ON, AB, BC, or NS Only)",
+      "Yes",
+      "2026-07-02"
+    ],
+    [
+      "instacart",
+      "Senior Product Manager, Growth Marketing Platform",
+      "United States - Remote",
+      "Yes",
+      "2026-07-02"
+    ],
+    [
+      "stripe",
+      "Staff Product Manager, Risk Product Experience",
+      "Seattle, New-York, San Francisco, Atlanta",
+      "No",
+      "2026-07-02"
+    ],
+    [
+      "openai",
+      "Product Manager, ChatGPT Sites",
+      "San Francisco",
+      "Yes",
+      "2026-06-28"
+    ],
+    [
+      "anthropic",
+      "Web Product Manager",
+      "San Francisco, CA | New York City, NY",
+      "No",
+      "2026-06-25"
+    ],
+    [
+      "stripe",
+      "Product Manager, EMEA Local Payment Methods",
+      "London",
+      "No",
+      "2026-06-24"
+    ],
+    [
+      "instacart",
+      "Senior Product Manager, AI",
+      "Canada - Remote (ON, AB, BC, or NS Only)",
+      "Yes",
+      "2026-06-24"
+    ],
+    [
+      "instacart",
+      "Senior Product Manager, AI",
+      "United States - Remote",
+      "Yes",
+      "2026-06-24"
+    ],
+    [
+      "databricks",
+      "Staff Product Manager, Agentic AI Applications",
+      "Mountain View, California; San Francisco, California",
+      "No",
+      "2026-06-23"
+    ],
+    [
+      "anthropic",
+      "Research Product Manager, Model Behaviors",
+      "San Francisco, CA | New York City, NY",
+      "No",
+      "2026-06-22"
+    ],
+    [
+      "coinbase",
+      "Group Product Manager, Developer Infrastructure",
+      "Remote - USA",
+      "Yes",
+      "2026-06-19"
+    ],
+    [
+      "stripe",
+      "Product Manager, Global Marketplaces",
+      "London",
+      "No",
+      "2026-06-19"
+    ],
+    [
+      "instacart",
+      "Senior Product Manager, Retailer Platform",
+      "Canada - Remote (ON, AB, BC, or NS Only)",
+      "Yes",
+      "2026-06-17"
+    ],
+    [
+      "instacart",
+      "Senior Product Manager, Retailer Platform",
+      "United States - Remote",
+      "Yes",
+      "2026-06-17"
+    ],
+    [
+      "ramp",
+      "Product Manager | Vendor Intelligence & Marketplace",
+      "New York, NY (HQ); San Francisco, CA",
+      "Yes",
+      "2026-06-16"
+    ],
+    [
+      "coinbase",
+      "Senior Product Manager, CX & AI Tooling",
+      "Charlotte, NC",
+      "No",
+      "2026-06-15"
+    ],
+    [
+      "reddit",
+      "Staff Product Manager, Growth",
+      "Remote - United States",
+      "Yes",
+      "2026-06-15"
+    ],
+    [
+      "stripe",
+      "Product Manager, Global Payouts – Cross-Border & Enterprise Capabilities",
+      "New York, NY",
+      "No",
+      "2026-06-15"
+    ],
+    [
+      "coinbase",
+      "Group Product Manager, Compliance Automation",
+      "Remote - USA",
+      "Yes",
+      "2026-06-12"
+    ],
+    [
+      "stripe",
+      "Product Manager, Link - Local Payment Methods",
+      "USA",
+      "No",
+      "2026-06-11"
+    ],
+    [
+      "coinbase",
+      "Staff Product Manager, CX Automation",
+      "Remote - USA",
+      "Yes",
+      "2026-06-11"
+    ],
+    [
+      "anthropic",
+      "Product Manager, GTM Experiences",
+      "San Francisco, CA | New York City, NY",
+      "No",
+      "2026-06-11"
+    ],
+    [
+      "anthropic",
+      "Product Manager, Safeguards Rare Harms",
+      "San Francisco, CA",
+      "No",
+      "2026-06-11"
+    ],
+    [
+      "stripe",
+      "Product Manager, Ecosystem Risk",
+      "New-York, Atlanta, Remote, Toronto",
+      "Yes",
+      "2026-06-11"
+    ],
+    [
+      "robinhood",
+      "Senior Product Manager, Government Products",
+      "New York, NY",
+      "No",
+      "2026-06-10"
+    ],
+    [
+      "coinbase",
+      "Group Product Manager, Core Infrastructure & Reliability",
+      "Remote - USA",
+      "Yes",
+      "2026-06-10"
+    ],
+    [
+      "coinbase",
+      "Group Product Manager, Payments Core",
+      "Remote - USA",
+      "Yes",
+      "2026-06-10"
+    ],
+    [
+      "stripe",
+      "Product Manager - Compliance, Bridge",
+      "New York, San Francisco or Remote",
+      "Yes",
+      "2026-06-09"
+    ],
+    [
+      "pinterest",
+      "Staff Product Manager, Billing",
+      "San Francisco, CA, US; Remote, CA, US",
+      "Yes",
+      "2026-06-04"
+    ],
+    [
+      "anthropic",
+      "Product Manager, Claude Code Model Performance",
+      "San Francisco, CA | Seattle, WA",
+      "No",
+      "2026-06-04"
+    ],
+    [
+      "dropbox",
+      "Staff Product Manager",
+      "Remote - Canada: Select locations",
+      "Yes",
+      "2026-06-04"
+    ],
+    [
+      "dropbox",
+      "Staff Product Manager",
+      "Remote - US: Select locations",
+      "Yes",
+      "2026-06-04"
+    ],
+    [
+      "stripe",
+      "Staff Product Manager, Cards Monetization",
+      "Seattle, San Francisco, New York, US - Remote",
+      "Yes",
+      "2026-06-03"
+    ],
+    [
+      "gitlab",
+      "Senior Product Manager, AI Platform Management",
+      "Remote, Ireland; Remote, Israel; Remote, United Kingdom",
+      "Yes",
+      "2026-06-02"
+    ],
+    [
+      "instacart",
+      "Senior Product Manager, In-Store Tasks",
+      "Canada - Remote (ON, AB, BC, or NS Only)",
+      "Yes",
+      "2026-05-28"
+    ],
+    [
+      "instacart",
+      "Senior Product Manager, In-Store Tasks",
+      "United States - Remote",
+      "Yes",
+      "2026-05-28"
+    ],
+    [
+      "gitlab",
+      "Principal Product Manager, AI Custom Models",
+      "Remote, Canada; Remote, US",
+      "Yes",
+      "2026-05-27"
+    ],
+    [
+      "stripe",
+      "Product Manager, Terminal Device Expansion",
+      "San Francisco",
+      "No",
+      "2026-05-26"
+    ],
+    [
+      "pinterest",
+      "Staff Product Manager, Model Lifecycle & Management",
+      "San Francisco, CA, US; Remote, US",
+      "Yes",
+      "2026-05-22"
+    ],
+    [
+      "pinterest",
+      "Product Manager II, Trust & Safety Tools",
+      "San Francisco, CA, US; Remote, US",
+      "Yes",
+      "2026-05-22"
+    ],
+    [
+      "reddit",
+      "Staff Technical Product Manager, Ads ML Platform",
+      "Remote - United States",
+      "Yes",
+      "2026-05-22"
+    ],
+    [
+      "stripe",
+      "Product Manager, Ecosystem Risk",
+      "London",
+      "No",
+      "2026-05-20"
+    ],
+    [
+      "stripe",
+      "Product Manager, Ecosystem Risk",
+      "Dublin",
+      "No",
+      "2026-05-20"
+    ],
+    [
+      "stripe",
+      "Staff Product Manager, Support Experience",
+      "San Francisco, California, United States",
+      "No",
+      "2026-05-20"
+    ],
+    [
+      "stripe",
+      "Product Manager, Growth AI Outreach Motion",
+      "Toronto, Remote- Canada",
+      "Yes",
+      "2026-05-19"
+    ],
+    [
+      "anthropic",
+      "Product Manager, Developer Productivity",
+      "San Francisco, CA | New York City, NY",
+      "No",
+      "2026-05-19"
+    ],
+    [
+      "pinterest",
+      "Group Product Manager II, Creative Tech - tvScientific",
+      "San Francisco, CA, US; Remote, US",
+      "Yes",
+      "2026-05-14"
+    ],
+    [
+      "openai",
+      "GTM Growth Product Manager, Agentic Systems",
+      "San Francisco",
+      "Yes",
+      "2026-05-14"
+    ],
+    [
+      "ramp",
+      "Product Manager | Agentic CX",
+      "New York, NY (HQ); San Francisco, CA",
+      "Yes",
+      "2026-05-13"
+    ],
+    [
+      "stripe",
+      "Product Manager, Sail Core",
+      "Toronto",
+      "No",
+      "2026-05-11"
+    ],
+    [
+      "stripe",
+      "Staff Product Manager, Dashboard",
+      "San Francisco, Seattle, NYC, Chicago, Atlanta, US Remote",
+      "Yes",
+      "2026-05-11"
+    ],
+    [
+      "openai",
+      "Product Manager, Cyber Safety",
+      "San Francisco",
+      "No",
+      "2026-05-08"
+    ],
+    [
+      "airbnb",
+      "Product Manager, Relevance and Personalization",
+      "San Francisco, United States",
+      "No",
+      "2026-05-07"
+    ],
+    [
+      "stripe",
+      "Product Manager, Startup Products",
+      "NYC, Chicago, Seattle, San Francisco",
+      "No",
+      "2026-05-07"
+    ],
+    [
+      "openai",
+      "Product Manager, Sensitive Deployments",
+      "San Francisco",
+      "Yes",
+      "2026-05-07"
+    ],
+    [
+      "reddit",
+      "Senior Group Product Manager, Advertiser Optimization (Ads Marketplace)",
+      "Remote - United States",
+      "Yes",
+      "2026-05-07"
+    ],
+    [
+      "instacart",
+      "Senior Product Manager, Shopping Experience",
+      "United States - Remote",
+      "Yes",
+      "2026-05-07"
+    ],
+    [
+      "openai",
+      "Product Manager, Families",
+      "San Francisco",
+      "Yes",
+      "2026-05-04"
+    ],
+    [
+      "openai",
+      "Product Manager, Financial Engineering",
+      "San Francisco",
+      "Yes",
+      "2026-05-04"
+    ],
+    [
+      "openai",
+      "Deployed Product Manager, Codex",
+      "San Francisco",
+      "Yes",
+      "2026-04-30"
+    ],
+    [
+      "anthropic",
+      "Product Management, Human Data Platform",
+      "San Francisco, CA | New York City, NY",
+      "No",
+      "2026-04-29"
+    ],
+    [
+      "duolingo",
+      "Senior Product Manager, DET",
+      "Pittsburgh, PA",
+      "No",
+      "2026-04-29"
+    ],
+    [
+      "stripe",
+      "Staff Product Manager, Enterprise",
+      "San Francisco, Seattle, New York, Chicago, Atlanta, Remote",
+      "Yes",
+      "2026-04-21"
+    ],
+    [
+      "openai",
+      "Product Manager, API Infrastructure",
+      "San Francisco",
+      "Yes",
+      "2026-04-17"
+    ],
+    [
+      "robinhood",
+      "Staff Product Manager, Cortex",
+      "Menlo Park, CA; New York, NY",
+      "No",
+      "2026-04-16"
+    ],
+    [
+      "openai",
+      "Product Manager, Safety Measurement",
+      "San Francisco",
+      "No",
+      "2026-04-15"
+    ],
+    [
+      "stripe",
+      "Staff Product Manager, Payments",
+      "SF, SEA, NYC, Remote",
+      "Yes",
+      "2026-04-15"
+    ],
+    [
+      "robinhood",
+      "Staff Product Manager, International Growth & Expansion",
+      "London, UK",
+      "No",
+      "2026-04-13"
+    ],
+    [
+      "reddit",
+      "Staff Product Manager, Finance Applications",
+      "Remote - United States",
+      "Yes",
+      "2026-04-09"
+    ],
+    [
+      "coinbase",
+      "Group Product Manager, Financial Engineering",
+      "Remote - USA",
+      "Yes",
+      "2026-04-08"
+    ],
+    [
+      "airbnb",
+      "Product Manager, EMEA",
+      "London, United Kingdom",
+      "No",
+      "2026-04-07"
+    ],
+    [
+      "instacart",
+      "Senior Product Manager, Risk Platform",
+      "Canada - Remote (ON, AB, BC, or NS Only)",
+      "Yes",
+      "2026-03-31"
+    ],
+    [
+      "instacart",
+      "Senior Product Manager, Risk Platform",
+      "United States - Remote",
+      "Yes",
+      "2026-03-31"
+    ],
+    [
+      "pinterest",
+      "Staff Product Manager, AI Safety",
+      "San Francisco, CA, US; Remote, US",
+      "Yes",
+      "2026-03-31"
+    ],
+    [
+      "robinhood",
+      "Senior Product Manager, Money Movement",
+      "Menlo Park, CA",
+      "No",
+      "2026-03-31"
+    ],
+    [
+      "anthropic",
+      "Product Manager, Multi-Cloud Growth - Google",
+      "San Francisco, CA",
+      "No",
+      "2026-03-27"
+    ],
+    [
+      "pinterest",
+      "Sr. Product Manager, Ads Formats",
+      "San Francisco, CA, US; Remote, US",
+      "Yes",
+      "2026-03-25"
+    ],
+    [
+      "stripe",
+      "Product Manager, Capital",
+      "London",
+      "No",
+      "2026-03-24"
+    ],
+    [
+      "duolingo",
+      "Senior Product Manager, Monetization",
+      "New York, NY",
+      "No",
+      "2026-03-23"
+    ],
+    [
+      "openai",
+      "Product Manager, Bio Safety",
+      "San Francisco",
+      "No",
+      "2026-03-17"
+    ],
+    [
+      "openai",
+      "Product Manager, API Agents",
+      "San Francisco",
+      "No",
+      "2026-02-25"
+    ],
+    [
+      "stripe",
+      "Staff Product Manager, Global Expansion",
+      "Bengaluru",
+      "No",
+      "2026-02-20"
+    ],
+    [
+      "anthropic",
+      "Product Manager, Compute Platform",
+      "San Francisco, CA | New York City, NY | Seattle, WA",
+      "No",
+      "2026-02-19"
+    ],
+    [
+      "stripe",
+      "Product Manager, Risk & Compliance",
+      "Bengaluru",
+      "No",
+      "2026-02-19"
+    ],
+    [
+      "databricks",
+      "Staff Product Manager, Serverless Workspaces",
+      "Seattle, Washington",
+      "No",
+      "2026-02-18"
+    ],
+    [
+      "databricks",
+      "Staff Product Manager, Serverless Workspaces",
+      "San Francisco, California",
+      "No",
+      "2026-02-18"
+    ],
+    [
+      "databricks",
+      "Staff Product Manager, AI Platform",
+      "Seattle, Washington",
+      "No",
+      "2026-02-18"
+    ],
+    [
+      "databricks",
+      "Staff Product Manager, AI Platform",
+      "San Francisco, California",
+      "No",
+      "2026-02-18"
+    ],
+    [
+      "anthropic",
+      "Product Management, Research",
+      "San Francisco, CA | New York City, NY",
+      "No",
+      "2026-02-17"
+    ],
+    [
+      "robinhood",
+      "Staff Product Manager, Banking",
+      "Bellevue, WA; Chicago, IL; Denver, CO; Menlo Park, CA; New York, NY; Washington, DC; Westlake, TX",
+      "No",
+      "2026-02-12"
+    ],
+    [
+      "duolingo",
+      "Senior Product Manager, In-App Purchases",
+      "New York, NY",
+      "No",
+      "2026-02-02"
+    ],
+    [
+      "stripe",
+      "Product Manager, Link - Consumer",
+      "SF, SEA, NY, Remote-US",
+      "Yes",
+      "2026-01-30"
+    ],
+    [
+      "databricks",
+      "Staff Product Manager - Technical",
+      "Amsterdam, Netherlands",
+      "No",
+      "2026-01-29"
+    ],
+    [
+      "stripe",
+      "Product Manager, Treasury for Platforms",
+      "NYC, SF, SEA",
+      "No",
+      "2026-01-28"
+    ],
+    [
+      "anthropic",
+      "Research Product Manager, Labs",
+      "San Francisco, CA | New York City, NY",
+      "No",
+      "2026-01-26"
+    ],
+    [
+      "databricks",
+      "Sr. Product Manager - Technical",
+      "New York City, New York",
+      "No",
+      "2026-01-23"
+    ],
+    [
+      "stripe",
+      "Staff Product Manager, ML Foundations and GenAI",
+      "Seattle, San Francisco, New York, US - Remote",
+      "Yes",
+      "2026-01-21"
+    ],
+    [
+      "duolingo",
+      "Senior Product Manager, Learning",
+      "New York, NY",
+      "No",
+      "2026-01-15"
+    ],
+    [
+      "databricks",
+      "Sr. Product Manager, Databricks Repos",
+      "Seattle, Washington",
+      "No",
+      "2025-12-05"
+    ],
+    [
+      "databricks",
+      "Sr. Product Manager, Databricks Repos",
+      "San Francisco, California",
+      "No",
+      "2025-12-05"
+    ],
+    [
+      "databricks",
+      "Sr Product Manager, Employee Experience",
+      "Mountain View, California; San Francisco, California",
+      "No",
+      "2025-11-14"
+    ],
+    [
+      "pinterest",
+      "Staff Product Manager, AI/ML Personalization",
+      "San Francisco, CA, US; Remote, US",
+      "Yes",
+      "2025-11-13"
+    ],
+    [
+      "databricks",
+      "Sr. Product Manager, Databricks Free Edition",
+      "Seattle, Washington",
+      "No",
+      "2025-10-31"
+    ],
+    [
+      "databricks",
+      "Sr. Product Manager, Compute Platform",
+      "San Francisco, California",
+      "No",
+      "2025-10-06"
+    ],
+    [
+      "databricks",
+      "Sr. Product Manager, Compute Platform",
+      "Seattle, Washington",
+      "No",
+      "2025-10-06"
+    ],
+    [
+      "databricks",
+      "Sr. Product Manager, Lakeflow",
+      "Amsterdam, Netherlands",
+      "No",
+      "2025-09-29"
+    ],
+    [
+      "databricks",
+      "Sr. Product Manager, Databricks AI",
+      "Seattle, Washington",
+      "No",
+      "2025-08-25"
+    ],
+    [
+      "databricks",
+      "Sr. Product Manager, Databricks AI",
+      "San Francisco, California",
+      "No",
+      "2025-08-25"
+    ],
+    [
+      "stripe",
+      "Product Manager, Payments",
+      "SF, NY, SEA, Remote-US",
+      "Yes",
+      "2025-08-25"
+    ],
+    [
+      "databricks",
+      "Sr. Product Manager, Data Governance",
+      "San Francisco, California",
+      "No",
+      "2025-02-13"
+    ],
+    [
+      "databricks",
+      "Sr. Product Manager, Data Governance",
+      "Seattle, Washington",
+      "No",
+      "2025-02-13"
+    ],
+    [
+      "duolingo",
+      "Senior Product Manager, Learning",
+      "Pittsburgh, PA",
+      "No",
+      "2025-01-27"
+    ],
+    [
+      "databricks",
+      "Sr. Product Manager, Databricks Free Edition",
+      "San Francisco, California",
+      "No",
+      "2024-10-11"
+    ],
+    [
+      "databricks",
+      "Staff Product Manager",
+      "Berlin, Germany",
+      "No",
+      "2024-09-20"
+    ],
+    [
+      "databricks",
+      "Staff Product Manager",
+      "Amsterdam, Netherlands",
+      "No",
+      "2024-09-20"
+    ],
+    [
+      "databricks",
+      "Staff Product Manager, Security",
+      "Seattle, Washington",
+      "No",
+      "2024-02-06"
+    ],
+    [
+      "databricks",
+      "Staff Product Manager, Security",
+      "San Francisco, California",
+      "No",
+      "2024-02-06"
+    ],
+    [
+      "databricks",
+      "Sr. Product Manager, Data Engineering",
+      "San Francisco, California",
+      "No",
+      "2022-08-11"
+    ]
+  ],
+  "facts": [
+    "129 open companies hiring product managers roles were live across 14 employers on 2026-07-12.",
+    "The most active employer is stripe at 26 openings, ahead of databricks on 24.",
+    "Remote work is offered on 59 of the 129 openings - a 46% remote share.",
+    "San Francisco appears most often among listed locations, on 14 postings.",
+    "Postings are fresh: 9 roles went up in the 7 days leading to the capture.",
+    "Baseline established 2026-07-12 with 129 roles; deltas start at the next refresh."
+  ],
+  "faq": [
+    {
+      "q": "Where does this hiring data come from?",
+      "a": "From the public careers APIs that companies expose through their ATS (Greenhouse, Lever, Ashby). A single automated run on 2026-07-12 matched 'companies hiring product managers' and returned 129 live roles at 14 employers; nothing is manually entered."
+    },
+    {
+      "q": "Who is hiring the most companies hiring product managers roles right now?",
+      "a": "In this snapshot it is stripe, posting 26 of the 129 live roles; databricks is next with 24. Each refresh recounts the boards, so rankings move."
+    },
+    {
+      "q": "What share of the openings allow remote work?",
+      "a": "46% - that is 59 of 129 roles carrying an explicit remote flag on the source board. Per-role remote status is in the table."
+    },
+    {
+      "q": "When was this hiring data last updated?",
+      "a": "The capture date is 2026-07-12, shown in the provenance line, and 9 roles were less than a week old at that moment. Refreshes rewrite this same page with the newest board state."
+    }
+  ],
+  "related_product": {
+    "name": "Company Careers Job Scraper (Greenhouse, Lever, Ashby)",
+    "url": "https://apify.com/chilly_damask/company-careers-job-scraper"
+  },
+  "citations": [],
+  "factory": {
+    "slice_id": "jobs-product-manager",
+    "vertical": "jobs",
+    "min_rows": 10,
+    "items_hash": "a7f9cc307acf3931d1165965fcb5c1119d2dd0f981922cd8d10d1f8980f54048"
+  }
+}

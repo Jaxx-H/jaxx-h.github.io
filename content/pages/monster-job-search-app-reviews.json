@@ -1,0 +1,117 @@
+{
+  "slug": "monster-job-search-app-reviews",
+  "title": "Monster Job Search App Reviews: User Rating Breakdown",
+  "description": "Live review breakdown for Monster Job Search: 240 reviews, 1.59 of 5 mean, 9% 5-star, captured 2026-07-12.",
+  "answer_first": "In this July 12, 2026 capture of 240 reviews, Monster Job Search scores 1.59 of 5 overall (App Store 1.56, Google Play 1.73). Five-star reviews number 21 (9%), against 177 one-star (74%). Snapshot 1 (2026-07-12) logs 240 reviews; future refreshes will report the rating trend. The full star-distribution table for each store is below.",
+  "data_source": {
+    "actor": "app-store-google-play-review-scraper",
+    "run_id": "tGSIu5lJdAenHl1l4",
+    "fetched_at": "2026-07-12T18:11:55Z"
+  },
+  "columns": [
+    "Store",
+    "Stars",
+    "Reviews",
+    "Share %"
+  ],
+  "rows": [
+    [
+      "App Store",
+      "5★",
+      "17",
+      "8%"
+    ],
+    [
+      "App Store",
+      "4★",
+      "2",
+      "1%"
+    ],
+    [
+      "App Store",
+      "3★",
+      "8",
+      "4%"
+    ],
+    [
+      "App Store",
+      "2★",
+      "22",
+      "11%"
+    ],
+    [
+      "App Store",
+      "1★",
+      "151",
+      "76%"
+    ],
+    [
+      "Google Play",
+      "5★",
+      "4",
+      "10%"
+    ],
+    [
+      "Google Play",
+      "4★",
+      "1",
+      "2%"
+    ],
+    [
+      "Google Play",
+      "3★",
+      "1",
+      "2%"
+    ],
+    [
+      "Google Play",
+      "2★",
+      "8",
+      "20%"
+    ],
+    [
+      "Google Play",
+      "1★",
+      "26",
+      "65%"
+    ]
+  ],
+  "facts": [
+    "1.59 of 5 is the combined average over 240 reviews as of 2026-07-12 (App Store 1.56, Google Play 1.73).",
+    "21 reviews (9% of 240) award the full 5 stars.",
+    "177 reviewers (74% of 240) gave the minimum 1 star.",
+    "By country, US leads with 240 of the reviews across 1 feed(s).",
+    "Of 207 1-2 star reviews, 13 reference updates - the largest complaint bucket by keyword count.",
+    "Dataset baseline: 240 reviews at first capture on 2026-07-12."
+  ],
+  "faq": [
+    {
+      "q": "Is this the app's all-time rating?",
+      "a": "No. The 1.59 of 5 shown here averages just the 240 reviews in the 2026-07-12 capture window. All-time store ratings pool every review ever left and change far more slowly."
+    },
+    {
+      "q": "How is this data gathered?",
+      "a": "By scraping the stores' public review endpoints for Monster Job Search on 2026-07-12 - no logins, no private data. The 240 collected reviews across 2 feed(s) are aggregated into the star counts shown."
+    },
+    {
+      "q": "Is there a rating gap between stores?",
+      "a": "The current window reads App Store 1.56, Google Play 1.73, computed from 240 reviews captured 2026-07-12. Per-store sample sizes are in the table, star by star."
+    },
+    {
+      "q": "Can this be reproduced for a competitor's app?",
+      "a": "Yes. The scraper is app-agnostic: give it any store ID and it captures the same fields that fed this 240-review breakdown, with country and date filters available."
+    }
+  ],
+  "related_product": {
+    "name": "App Store & Google Play Review Scraper",
+    "url": "https://apify.com/chilly_damask/app-store-google-play-review-scraper"
+  },
+  "citations": [],
+  "factory": {
+    "slice_id": "reviews-monster",
+    "vertical": "reviews",
+    "min_rows": 20,
+    "item_count": 240,
+    "items_hash": "754aed7992abc9af8a5833eab70056e433860ddf2d4207aa49c41765ac699143"
+  }
+}

@@ -1,0 +1,302 @@
+{
+  "slug": "companies-hiring-site-reliability-engineers",
+  "title": "Which Companies Are Hiring Site Reliability Engineers Right Now? (Live ATS Data)",
+  "description": "Tracker of 35 companies hiring site reliability engineers openings across 12 employers, 54% remote, captured 2026-07-12.",
+  "answer_first": "35 companies hiring site reliability engineers roles were open across 12 company job boards when this dataset was captured on July 12, 2026. reddit accounts for the most of them, 8, and 54% of the roles listed are remote. Snapshot number 1 for this query landed 2026-07-12 with 35 roles; week-over-week changes start with the next refresh. The full breakdown, with company, title, location, remote status, and posted date for each role, follows below.",
+  "data_source": {
+    "actor": "company-careers-job-scraper",
+    "run_id": "K4AHdveerhCSz2k7f",
+    "fetched_at": "2026-07-12T18:10:28Z"
+  },
+  "columns": [
+    "Company",
+    "Title",
+    "Location",
+    "Remote",
+    "Posted"
+  ],
+  "rows": [
+    [
+      "gitlab",
+      "Site Reliability Engineer, Intermediate to Senior Staff — Infrastructure Platforms",
+      "Remote",
+      "Yes",
+      "2026-07-10"
+    ],
+    [
+      "stripe",
+      "Financial Connections TechOps Integration Reliability Engineer",
+      "N/A",
+      "No",
+      "2026-07-08"
+    ],
+    [
+      "airbnb",
+      "Senior Software Engineer, Reliability Engineering Team",
+      "Brazil",
+      "No",
+      "2026-06-25"
+    ],
+    [
+      "airbnb",
+      "Software Engineer, Reliability Engineering Team",
+      "Brazil",
+      "No",
+      "2026-06-24"
+    ],
+    [
+      "openai",
+      "Staff Security Reliability Engineer",
+      "San Francisco",
+      "Yes",
+      "2026-06-23"
+    ],
+    [
+      "reddit",
+      "Staff SRE, Ads",
+      "Remote - The Netherlands",
+      "Yes",
+      "2026-06-19"
+    ],
+    [
+      "reddit",
+      "Staff SRE, Ads",
+      "Remote - Ireland",
+      "Yes",
+      "2026-06-19"
+    ],
+    [
+      "reddit",
+      "Staff SRE, Ads",
+      "Remote - United Kingdom",
+      "Yes",
+      "2026-06-19"
+    ],
+    [
+      "reddit",
+      "Senior SRE, Ads",
+      "Remote - The Netherlands",
+      "Yes",
+      "2026-06-19"
+    ],
+    [
+      "reddit",
+      "Senior SRE, Ads",
+      "Remote - Ireland",
+      "Yes",
+      "2026-06-19"
+    ],
+    [
+      "reddit",
+      "Senior SRE, Ads",
+      "Remote - United Kingdom",
+      "Yes",
+      "2026-06-19"
+    ],
+    [
+      "pinterest",
+      "Site Reliability Engineer II, tvScientific",
+      "San Francisco, CA, US; Remote, US",
+      "Yes",
+      "2026-06-18"
+    ],
+    [
+      "openai",
+      "Advanced Packaging Reliability Engineer",
+      "San Francisco",
+      "Yes",
+      "2026-06-16"
+    ],
+    [
+      "pinterest",
+      "Sr. Production Engineer, Solutions Engineering",
+      "Chicago, IL, US; Remote, CA, US",
+      "Yes",
+      "2026-06-12"
+    ],
+    [
+      "stripe",
+      "Integration Reliability Engineer, Technical Operations",
+      "Singapore",
+      "No",
+      "2026-06-09"
+    ],
+    [
+      "coinbase",
+      "Senior Site Reliability Engineer, Core AI Infrastructure",
+      "Remote - USA",
+      "Yes",
+      "2026-06-08"
+    ],
+    [
+      "coinbase",
+      "Staff Site Reliability Engineer, Core AI Infrastructure",
+      "Remote - USA",
+      "Yes",
+      "2026-06-08"
+    ],
+    [
+      "dropbox",
+      "Staff Site Reliability Engineer, Production Engineering",
+      "Remote - US: Select locations",
+      "Yes",
+      "2026-06-02"
+    ],
+    [
+      "dropbox",
+      "Staff Site Reliability Engineer, Production Engineering",
+      "Remote - Canada: Select locations",
+      "Yes",
+      "2026-06-02"
+    ],
+    [
+      "robinhood",
+      "Senior Network Reliability Engineer",
+      "Bellevue, WA",
+      "No",
+      "2026-06-02"
+    ],
+    [
+      "reddit",
+      "Staff Site Reliability Engineer - Site Experience",
+      "Remote - United Kingdom",
+      "Yes",
+      "2026-05-25"
+    ],
+    [
+      "databricks",
+      "Sr. IT Site Reliability Software Engineer",
+      "Costa Rica",
+      "No",
+      "2026-05-18"
+    ],
+    [
+      "reddit",
+      "Staff Site Reliability Engineer - Site Experience",
+      "Dublin, Ireland",
+      "No",
+      "2026-05-08"
+    ],
+    [
+      "ramp",
+      "Software Engineer, Production Engineering",
+      "New York, NY (HQ); Remote (Canada); San Francisco, CA; Remote (US)",
+      "Yes",
+      "2026-04-27"
+    ],
+    [
+      "gitlab",
+      "Site Reliability Engineer, Cloud Cost Utilization",
+      "Remote, US",
+      "Yes",
+      "2026-04-24"
+    ],
+    [
+      "pinterest",
+      "Sr. Production Engineer",
+      "Toronto, ON, Canada",
+      "No",
+      "2026-04-24"
+    ],
+    [
+      "databricks",
+      "Sr Staff Production Engineer- Public Sector",
+      "Virginia",
+      "No",
+      "2026-04-22"
+    ],
+    [
+      "databricks",
+      "Staff Production Engineer- Public Sector",
+      "Virginia",
+      "No",
+      "2026-04-22"
+    ],
+    [
+      "databricks",
+      "Sr Production Engineer- Public Sector",
+      "Virginia",
+      "No",
+      "2026-04-21"
+    ],
+    [
+      "databricks",
+      "Sr. Manager - Production Engineering",
+      "McLean, Virginia",
+      "No",
+      "2026-02-23"
+    ],
+    [
+      "anthropic",
+      "Staff Software Engineer, AI Reliability Engineering",
+      "Dublin, IE",
+      "No",
+      "2026-02-05"
+    ],
+    [
+      "anthropic",
+      "Staff Software Engineer, AI Reliability Engineering",
+      "London, UK",
+      "No",
+      "2026-02-03"
+    ],
+    [
+      "coinbase",
+      "Senior Site Reliability Engineer, Workforce Identity",
+      "Remote - USA",
+      "Yes",
+      "2026-01-06"
+    ],
+    [
+      "openai",
+      "Site Reliability Engineer, Frontier Systems Infrastructure",
+      "San Francisco",
+      "No",
+      "2025-11-03"
+    ],
+    [
+      "databricks",
+      "Sr. Staff Production Engineer - Data Platform",
+      "Mountain View, California; San Francisco, California",
+      "No",
+      "2025-10-09"
+    ]
+  ],
+  "facts": [
+    "Across all boards checked on 2026-07-12, 35 companies hiring site reliability engineers roles were open at 12 companies.",
+    "Top of the hiring table: reddit (8 roles), then databricks (6).",
+    "54% of the list (19 of 35 roles) carries a remote flag.",
+    "More roles list Remote - USA than any other location: 3.",
+    "2 listings are less than 7 days old as of the fetch date.",
+    "Dataset baseline: 35 roles at first capture on 2026-07-12."
+  ],
+  "faq": [
+    {
+      "q": "How is this openings table built?",
+      "a": "A scraper walks public ATS careers endpoints (Greenhouse, Lever, Ashby) and keeps roles matching 'companies hiring site reliability engineers'. The 2026-07-12 run produced the 35 rows shown here from 12 companies, unedited apart from column formatting."
+    },
+    {
+      "q": "What company currently posts the most of these roles?",
+      "a": "reddit does, with 8 openings; databricks follows at 6. Together the boards held 35 matching roles when fetched."
+    },
+    {
+      "q": "Is remote work common in this sample?",
+      "a": "It covers 54% of the sample: 19 of the 35 captured roles are listed as remote. The rest name a specific location, shown per row."
+    },
+    {
+      "q": "Is this page kept up to date?",
+      "a": "Yes - it is regenerated from a new board scrape on a schedule, always at this URL. The current table is from 2026-07-12, with 2 roles posted in the final 7 days before capture."
+    }
+  ],
+  "related_product": {
+    "name": "Company Careers Job Scraper (Greenhouse, Lever, Ashby)",
+    "url": "https://apify.com/chilly_damask/company-careers-job-scraper"
+  },
+  "citations": [],
+  "factory": {
+    "slice_id": "jobs-site-reliability-engineer",
+    "vertical": "jobs",
+    "min_rows": 10,
+    "items_hash": "f81e032400315f900a6e522b2a37fe20c3da24f9138084f224914106d72329f1"
+  }
+}

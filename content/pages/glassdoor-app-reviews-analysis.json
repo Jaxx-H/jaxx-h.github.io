@@ -1,0 +1,117 @@
+{
+  "slug": "glassdoor-app-reviews-analysis",
+  "title": "Glassdoor App Reviews: What Job Seekers Rate It on iOS & Android",
+  "description": "Star-by-star review data for Glassdoor | Jobs & Careers, fetched 2026-07-12: 3.39 of 5 across 240 reviews, 50% 5-star.",
+  "answer_first": "A July 12, 2026 scrape of 240 Glassdoor | Jobs & Careers reviews puts the combined average at 3.39 of 5 - App Store 3.27, Google Play 4.03. The split runs from 121 five-star reviews (50%) down to 69 one-star (29%). Baseline capture 2026-07-12: 240 reviews recorded; rating trends begin with the next refresh. Below, every star level is tallied per store with counts and shares.",
+  "data_source": {
+    "actor": "app-store-google-play-review-scraper",
+    "run_id": "rGZ4Ixk3LeKcnVQyO",
+    "fetched_at": "2026-07-12T18:11:45Z"
+  },
+  "columns": [
+    "Store",
+    "Stars",
+    "Reviews",
+    "Share %"
+  ],
+  "rows": [
+    [
+      "App Store",
+      "5★",
+      "96",
+      "48%"
+    ],
+    [
+      "App Store",
+      "4★",
+      "8",
+      "4%"
+    ],
+    [
+      "App Store",
+      "3★",
+      "13",
+      "6%"
+    ],
+    [
+      "App Store",
+      "2★",
+      "19",
+      "10%"
+    ],
+    [
+      "App Store",
+      "1★",
+      "64",
+      "32%"
+    ],
+    [
+      "Google Play",
+      "5★",
+      "25",
+      "62%"
+    ],
+    [
+      "Google Play",
+      "4★",
+      "2",
+      "5%"
+    ],
+    [
+      "Google Play",
+      "3★",
+      "7",
+      "18%"
+    ],
+    [
+      "Google Play",
+      "2★",
+      "1",
+      "2%"
+    ],
+    [
+      "Google Play",
+      "1★",
+      "5",
+      "12%"
+    ]
+  ],
+  "facts": [
+    "The 2026-07-12 window of 240 reviews averages 3.39 of 5 - App Store 3.27, Google Play 4.03.",
+    "Five-star reviews make up 50% of the window (121 of 240).",
+    "1-star reviews account for 29% of the window - 69 of 240.",
+    "US contributes the most reviews (240) of the 1 country feed(s) sampled.",
+    "Keyword counting across the 89 negative (1-2 star) reviews flags updates as the top complaint, appearing in 17 of them.",
+    "Baseline established 2026-07-12 with 240 reviews; trend facts start at the next refresh."
+  ],
+  "faq": [
+    {
+      "q": "Does this match the rating shown in the app stores?",
+      "a": "Not necessarily. This window covers 240 recent reviews from 2026-07-12, while store-front ratings average the app's whole history. Treat the 3.39 of 5 here as a current-sentiment reading, not a lifetime score."
+    },
+    {
+      "q": "Where do these reviews come from?",
+      "a": "Directly from the public review feeds of the app stores, collected in one automated run on 2026-07-12. The window holds 240 reviews for Glassdoor | Jobs & Careers across 2 store feed(s), tallied without edits."
+    },
+    {
+      "q": "Do App Store and Google Play users score it differently?",
+      "a": "This capture shows App Store 3.27, Google Play 4.03 across 240 total reviews from 2026-07-12. Small per-store gaps are common in recent-review windows and can flip between refreshes."
+    },
+    {
+      "q": "Does this work for other apps too?",
+      "a": "It does: point the source actor at any package name or App Store ID and it returns the identical structure - ratings, dates, text, helpful votes - that produced these 240 rows."
+    }
+  ],
+  "related_product": {
+    "name": "App Store & Google Play Review Scraper",
+    "url": "https://apify.com/chilly_damask/app-store-google-play-review-scraper"
+  },
+  "citations": [],
+  "factory": {
+    "slice_id": "reviews-glassdoor",
+    "vertical": "reviews",
+    "min_rows": 50,
+    "item_count": 240,
+    "items_hash": "935f85de4f0ae265b90b3843dd05787bafc2bff8e694fd982a7c5687707c6659"
+  }
+}

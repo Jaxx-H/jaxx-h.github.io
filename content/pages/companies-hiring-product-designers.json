@@ -1,0 +1,358 @@
+{
+  "slug": "companies-hiring-product-designers",
+  "title": "Which Companies Are Hiring Product Designers Right Now? (Live ATS Data)",
+  "description": "11 companies, 43 live companies hiring product designers roles (fetched 2026-07-12) - biggest hirers, 47% remote share, full table.",
+  "answer_first": "Live careers-board data fetched July 12, 2026 shows 11 companies currently advertising 43 companies hiring product designers positions. stripe tops the table with 10 open roles, and 20 of 43 listings (47%) allow remote work. First capture: 2026-07-12. The initial baseline records 43 live openings to compare future refreshes against. Scroll down for the full role-by-role table: company, title, location, remote status, and posting date.",
+  "data_source": {
+    "actor": "company-careers-job-scraper",
+    "run_id": "P4TWhyEdntVwkTjNx",
+    "fetched_at": "2026-07-12T18:10:35Z"
+  },
+  "columns": [
+    "Company",
+    "Title",
+    "Location",
+    "Remote",
+    "Posted"
+  ],
+  "rows": [
+    [
+      "pinterest",
+      "Sr. Product Designer, Agency Lead",
+      "San Francisco, CA, US; Remote, US",
+      "Yes",
+      "2026-07-10"
+    ],
+    [
+      "stripe",
+      "Senior Staff Product Designer, Risk",
+      "US Remote",
+      "Yes",
+      "2026-07-08"
+    ],
+    [
+      "duolingo",
+      "Senior Product Designer",
+      "New York, NY",
+      "No",
+      "2026-07-02"
+    ],
+    [
+      "pinterest",
+      "Principal Product Designer, AI Native, Core",
+      "San Francisco, CA, US; Remote, US",
+      "Yes",
+      "2026-07-02"
+    ],
+    [
+      "stripe",
+      "Staff Product Designer, Risk",
+      "Ireland / United Kingdom",
+      "No",
+      "2026-06-30"
+    ],
+    [
+      "dropbox",
+      "Director, Product Design",
+      "Remote - Canada: Select locations",
+      "Yes",
+      "2026-06-29"
+    ],
+    [
+      "dropbox",
+      "Director, Product Design",
+      "Remote - US: Select locations",
+      "Yes",
+      "2026-06-29"
+    ],
+    [
+      "coinbase",
+      "Staff Product Designer (Experience & Engagement)",
+      "Remote - USA",
+      "Yes",
+      "2026-06-26"
+    ],
+    [
+      "instacart",
+      "Sr. Product Designer II - Design Systems",
+      "Canada - Remote (ON, AB, BC, or NS Only)",
+      "Yes",
+      "2026-06-24"
+    ],
+    [
+      "instacart",
+      "Sr. Product Designer II - Design Systems",
+      "United States - Remote",
+      "Yes",
+      "2026-06-24"
+    ],
+    [
+      "dropbox",
+      "Principal Product Designer",
+      "Remote - Canada: Select locations",
+      "Yes",
+      "2026-06-22"
+    ],
+    [
+      "dropbox",
+      "Principal Product Designer",
+      "Remote - US: Select locations",
+      "Yes",
+      "2026-06-22"
+    ],
+    [
+      "pinterest",
+      "Sr. Product Designer, Advertiser Experience",
+      "San Francisco, CA, US; Remote, US",
+      "Yes",
+      "2026-06-18"
+    ],
+    [
+      "databricks",
+      "Staff Product Designer, AI Products",
+      "New York City, New York",
+      "No",
+      "2026-06-11"
+    ],
+    [
+      "pinterest",
+      "Staff Product Designer, Design Innovation",
+      "San Francisco, CA, US; Remote, US",
+      "Yes",
+      "2026-06-10"
+    ],
+    [
+      "ramp",
+      "Director, Product Design",
+      "New York, NY (HQ)",
+      "Yes",
+      "2026-06-08"
+    ],
+    [
+      "coinbase",
+      "Staff Product Designer - Advanced Trade",
+      "Remote - USA",
+      "Yes",
+      "2026-06-08"
+    ],
+    [
+      "pinterest",
+      "Product Designer II, Pinner Actionability",
+      "San Francisco, CA, US; Remote, US",
+      "Yes",
+      "2026-06-05"
+    ],
+    [
+      "stripe",
+      "Product Designer - Dashboard",
+      "US / Canada",
+      "No",
+      "2026-06-04"
+    ],
+    [
+      "robinhood",
+      "Senior Product Designer",
+      "Menlo Park, CA",
+      "No",
+      "2026-06-02"
+    ],
+    [
+      "instacart",
+      "Staff Product Designer - Shopping Experiences",
+      "Canada - Remote (ON, AB, BC, or NS Only)",
+      "Yes",
+      "2026-06-02"
+    ],
+    [
+      "instacart",
+      "Staff Product Designer - Shopping Experiences",
+      "United States - Remote",
+      "Yes",
+      "2026-06-02"
+    ],
+    [
+      "robinhood",
+      "Senior Product Designer",
+      "Menlo Park, CA; New York, NY",
+      "No",
+      "2026-05-29"
+    ],
+    [
+      "stripe",
+      "Product Designer, Internal Tools",
+      "US / Canada",
+      "No",
+      "2026-05-29"
+    ],
+    [
+      "stripe",
+      "Product Designer, Risk",
+      "Ireland / United Kingdom",
+      "No",
+      "2026-05-28"
+    ],
+    [
+      "stripe",
+      "Product Designer, Terminal",
+      "Toronto",
+      "No",
+      "2026-05-18"
+    ],
+    [
+      "robinhood",
+      "Staff Product Designer, Brokerage",
+      "Menlo Park, CA; New York, NY",
+      "No",
+      "2026-05-06"
+    ],
+    [
+      "stripe",
+      "Product Designer, Global",
+      "Ireland",
+      "No",
+      "2026-04-29"
+    ],
+    [
+      "stripe",
+      "Product Designer, Global",
+      "Singapore",
+      "No",
+      "2026-04-17"
+    ],
+    [
+      "robinhood",
+      "Staff Product Designer, Prediction Markets",
+      "Menlo Park, CA; New York, NY",
+      "No",
+      "2026-04-06"
+    ],
+    [
+      "duolingo",
+      "Senior Product Designer",
+      "Pittsburgh, PA",
+      "No",
+      "2026-04-01"
+    ],
+    [
+      "openai",
+      "Product Designer, People Innovation Labs",
+      "San Francisco",
+      "No",
+      "2026-03-26"
+    ],
+    [
+      "gitlab",
+      "Staff Product Designer, Knowledge Graph",
+      "Remote, Canada; Remote, France; Remote, Germany; Remote, Ireland; Remote, Netherlands; Remote, United Kingdom; Remote, US",
+      "Yes",
+      "2026-03-25"
+    ],
+    [
+      "gitlab",
+      "Senior Product Designer, AI",
+      "Remote, Canada; Remote, US",
+      "Yes",
+      "2026-03-19"
+    ],
+    [
+      "stripe",
+      "Product Designer, Stablecoin",
+      "Canada",
+      "No",
+      "2026-02-27"
+    ],
+    [
+      "databricks",
+      "Sr. Product Designer, AI/BI",
+      "Mountain View, California; San Francisco, California; Seattle, Washington",
+      "No",
+      "2026-02-19"
+    ],
+    [
+      "ramp",
+      "Product Designer",
+      "New York, NY (HQ)",
+      "Yes",
+      "2026-02-09"
+    ],
+    [
+      "stripe",
+      "Product Designer, Connect Risk",
+      "US / Canada",
+      "No",
+      "2026-01-28"
+    ],
+    [
+      "robinhood",
+      "Senior Product Designer, Banking",
+      "Menlo Park, CA; New York, NY",
+      "No",
+      "2026-01-06"
+    ],
+    [
+      "duolingo",
+      "Staff Product Designer",
+      "New York, NY",
+      "No",
+      "2025-10-06"
+    ],
+    [
+      "duolingo",
+      "Staff Product Designer",
+      "Pittsburgh, PA",
+      "No",
+      "2025-10-06"
+    ],
+    [
+      "openai",
+      "Product Designer, ChatGPT",
+      "San Francisco",
+      "No",
+      "2025-02-26"
+    ],
+    [
+      "robinhood",
+      "Product Designer, Redesign",
+      "Menlo Park, CA; New York, NY",
+      "No",
+      "2025-02-03"
+    ]
+  ],
+  "facts": [
+    "The 2026-07-12 scrape counted 43 current companies hiring product designers openings spanning 11 distinct companies.",
+    "stripe posts 10 of the roles, the most of any company, with robinhood next at 6.",
+    "The remote share sits at 47%: 20 of 43 listings allow remote.",
+    "By location, Menlo Park, CA; New York, NY leads with 5 roles.",
+    "In the final 7 days before this fetch, 2 of the listed roles were posted.",
+    "Initial capture (2026-07-12) logs 43 openings as the comparison baseline."
+  ],
+  "faq": [
+    {
+      "q": "What is the source of these job listings?",
+      "a": "Each listing was read directly from a company's own public careers board via its ATS API on 2026-07-12. The query 'companies hiring product designers' matched 43 open roles across 11 companies, and posting dates are the employers' own."
+    },
+    {
+      "q": "Which employer tops this hiring table?",
+      "a": "stripe, with 10 open companies hiring product designers roles out of 43 total - ahead of robinhood at 6. The lead is recomputed from board data at every refresh."
+    },
+    {
+      "q": "Can these jobs be done remotely?",
+      "a": "Some can: 20 of 43 listings (47%) are marked remote by the employer. Check the Remote column for each specific role."
+    },
+    {
+      "q": "How fresh are these listings?",
+      "a": "All rows come from a 2026-07-12 scrape; 2 of them were posted within the preceding 7 days. Because boards change daily, treat the table as a dated snapshot that this URL keeps refreshing."
+    }
+  ],
+  "related_product": {
+    "name": "Company Careers Job Scraper (Greenhouse, Lever, Ashby)",
+    "url": "https://apify.com/chilly_damask/company-careers-job-scraper"
+  },
+  "citations": [],
+  "factory": {
+    "slice_id": "jobs-product-designer",
+    "vertical": "jobs",
+    "min_rows": 10,
+    "items_hash": "74a6e465ad7f89fbc1afd37120f9ab515afc011336a3ec3a0d507731f7ea20c5"
+  }
+}

@@ -1,0 +1,456 @@
+{
+  "slug": "companies-hiring-security-engineers",
+  "title": "Which Companies Are Hiring Security Engineers Right Now? (Live ATS Data)",
+  "description": "57 open companies hiring security engineers roles across 11 companies, live-scraped 2026-07-12: top employers, 60% remote share, posting dates.",
+  "answer_first": "As of a July 12, 2026 scrape of live company job boards, there are 57 open companies hiring security engineers roles across 11 companies. openai leads the field with 14 openings, and 60% of all listed roles are marked remote. This is the first snapshot of this dataset, captured 2026-07-12, with 57 roles in the opening baseline. The table below lists every role with company, title, location, remote status, and posting date.",
+  "data_source": {
+    "actor": "company-careers-job-scraper",
+    "run_id": "FUghdVaLd0aIAKrBH",
+    "fetched_at": "2026-07-12T18:10:22Z"
+  },
+  "columns": [
+    "Company",
+    "Title",
+    "Location",
+    "Remote",
+    "Posted"
+  ],
+  "rows": [
+    [
+      "anthropic",
+      "Platform Security Engineering, Auditor",
+      "San Francisco, CA | New York City, NY | Seattle, WA",
+      "No",
+      "2026-07-10"
+    ],
+    [
+      "gitlab",
+      "Senior Security Engineer, Security Incident Response Team (SIRT) - EMEA",
+      "Remote, EMEA",
+      "Yes",
+      "2026-07-10"
+    ],
+    [
+      "anthropic",
+      "Staff+ Application Security Engineer  - M&A",
+      "Remote-Friendly (Travel-Required) | San Francisco, CA | Seattle, WA | New York City, NY",
+      "Yes",
+      "2026-07-10"
+    ],
+    [
+      "ramp",
+      "Senior Security Engineer, Endpoint",
+      "New York, NY (HQ)",
+      "Yes",
+      "2026-07-08"
+    ],
+    [
+      "anthropic",
+      "Platform Security Engineering, Operating Systems",
+      "San Francisco, CA | New York City, NY | Seattle, WA",
+      "No",
+      "2026-07-07"
+    ],
+    [
+      "databricks",
+      "Sr Security Engineer, Incident Response",
+      "Belgium; Finland; Remote - Denmark; Remote - France; Remote - Germany; Remote - Netherlands; Remote - Spain; Remote - Sweden; Remote - United Kingdom; Switzerland",
+      "Yes",
+      "2026-07-03"
+    ],
+    [
+      "pinterest",
+      "Security Software Engineer II, Detection and Response",
+      "San Francisco, CA, US; Remote, US",
+      "Yes",
+      "2026-07-02"
+    ],
+    [
+      "reddit",
+      "Senior Security Engineer, AI Security",
+      "Remote - United States",
+      "Yes",
+      "2026-06-30"
+    ],
+    [
+      "anthropic",
+      "Platform Security Engineer, OpenBMC",
+      "San Francisco, CA | New York City, NY | Seattle, WA",
+      "No",
+      "2026-06-18"
+    ],
+    [
+      "instacart",
+      "Senior Product Security Engineer II",
+      "Canada - Remote (ON, AB, BC, or NS Only)",
+      "Yes",
+      "2026-06-18"
+    ],
+    [
+      "instacart",
+      "Senior Product Security Engineer II",
+      "United States - Remote",
+      "Yes",
+      "2026-06-18"
+    ],
+    [
+      "dropbox",
+      "Senior Infrastructure Security Engineer",
+      "Remote - Canada: Select locations",
+      "Yes",
+      "2026-06-11"
+    ],
+    [
+      "dropbox",
+      "Senior Infrastructure Security Engineer",
+      "Remote - US: Select locations",
+      "Yes",
+      "2026-06-11"
+    ],
+    [
+      "anthropic",
+      "Senior/Staff Security Engineer, Threat Intelligence",
+      "Zürich, CH",
+      "No",
+      "2026-06-11"
+    ],
+    [
+      "anthropic",
+      "Staff+ Security Engineer, Risk Engineering",
+      "San Francisco, CA | New York City, NY | Seattle, WA",
+      "No",
+      "2026-06-08"
+    ],
+    [
+      "stripe",
+      "Client Platform Security Engineer",
+      "New York, New York",
+      "No",
+      "2026-06-05"
+    ],
+    [
+      "stripe",
+      "Security Analyst, Bug Bounty",
+      "Remote, North America",
+      "Yes",
+      "2026-06-05"
+    ],
+    [
+      "stripe",
+      "Security Engineer",
+      "South San Francisco, CA and US-Remote",
+      "Yes",
+      "2026-06-02"
+    ],
+    [
+      "stripe",
+      "Security Engineer",
+      "Seattle, WA",
+      "No",
+      "2026-06-02"
+    ],
+    [
+      "robinhood",
+      "Security Engineer, AI Vulnerability Management",
+      "Menlo Park, CA",
+      "No",
+      "2026-05-22"
+    ],
+    [
+      "robinhood",
+      "Senior Security Engineer, Application Security",
+      "Bellevue, WA; Menlo Park, CA",
+      "No",
+      "2026-05-21"
+    ],
+    [
+      "openai",
+      "Forward Deployed Security Engineer",
+      "Washington, DC",
+      "Yes",
+      "2026-05-21"
+    ],
+    [
+      "stripe",
+      "Cloud Security Engineer",
+      "Seattle",
+      "No",
+      "2026-05-04"
+    ],
+    [
+      "instacart",
+      "Senior Security Engineer, Infrastructure",
+      "United States - Remote",
+      "Yes",
+      "2026-04-30"
+    ],
+    [
+      "reddit",
+      "Staff Product Security Engineer",
+      "Remote - United States",
+      "Yes",
+      "2026-04-29"
+    ],
+    [
+      "gitlab",
+      "Staff Infrastructure Security Engineer (APAC, EMEA, or US)",
+      "Remote, APAC; Remote, EMEA; Remote, US",
+      "Yes",
+      "2026-04-27"
+    ],
+    [
+      "stripe",
+      "Security Engineer - Offensive Security",
+      "Ireland",
+      "No",
+      "2026-04-17"
+    ],
+    [
+      "stripe",
+      "Security Engineer - Threat Detection",
+      "Ireland",
+      "No",
+      "2026-04-17"
+    ],
+    [
+      "ramp",
+      "Security Engineer, Cloud",
+      "New York, NY (HQ); Remote (Canada); Remote (US); Miami, FL",
+      "Yes",
+      "2026-04-07"
+    ],
+    [
+      "stripe",
+      "Security Engineer, Bridge",
+      "SF, New York, Seattle, Dublin",
+      "No",
+      "2026-04-02"
+    ],
+    [
+      "openai",
+      "Security Engineer, Host Assurance",
+      "San Francisco; Seattle",
+      "Yes",
+      "2026-04-01"
+    ],
+    [
+      "databricks",
+      "Staff Enterprise Security Engineer",
+      "Remote - California",
+      "Yes",
+      "2026-03-31"
+    ],
+    [
+      "robinhood",
+      "Staff Security Engineer, Application Security",
+      "Bellevue, WA; Menlo Park, CA",
+      "No",
+      "2026-03-30"
+    ],
+    [
+      "openai",
+      "Principal Security Engineer, Infrastructure Security",
+      "Remote - US; New York City; Seattle; San Francisco",
+      "Yes",
+      "2026-03-25"
+    ],
+    [
+      "pinterest",
+      "Sr. Security Software Engineer, Application Security",
+      "Chicago, IL, US; Remote, US",
+      "Yes",
+      "2026-02-26"
+    ],
+    [
+      "openai",
+      "Global Detection and Response Lead",
+      "San Francisco; New York City; Seattle",
+      "Yes",
+      "2026-02-18"
+    ],
+    [
+      "anthropic",
+      "Staff+ Software Security Engineer",
+      "San Francisco, CA | New York City, NY | Seattle, WA",
+      "No",
+      "2026-02-13"
+    ],
+    [
+      "robinhood",
+      "Staff Offensive Security Engineer",
+      "Toronto, Canada",
+      "No",
+      "2026-02-10"
+    ],
+    [
+      "openai",
+      "Security Engineer, Detection and Response",
+      "San Francisco; New York City; Seattle; Remote - US",
+      "Yes",
+      "2026-01-28"
+    ],
+    [
+      "ramp",
+      "Security Engineer, Privacy",
+      "New York, NY (HQ); San Francisco, CA; Remote (US)",
+      "Yes",
+      "2026-01-20"
+    ],
+    [
+      "ramp",
+      "Security Engineer, Product",
+      "New York, NY (HQ)",
+      "Yes",
+      "2026-01-20"
+    ],
+    [
+      "robinhood",
+      "Staff Offensive Security Engineer",
+      "Bellevue, WA; Menlo Park, CA; New York, NY",
+      "No",
+      "2026-01-12"
+    ],
+    [
+      "openai",
+      "Security Engineer, Insider Threat Detection & Response",
+      "San Francisco; New York City; Seattle; Remote - US",
+      "Yes",
+      "2025-11-19"
+    ],
+    [
+      "anthropic",
+      "Security Engineer, Detection & Response",
+      "San Francisco, CA | New York City, NY | Seattle, WA; Washington, DC",
+      "No",
+      "2025-11-10"
+    ],
+    [
+      "openai",
+      "Offensive Security Engineer, Agent Products",
+      "Remote - US; New York City; Seattle; Washington, DC; San Francisco",
+      "Yes",
+      "2025-10-28"
+    ],
+    [
+      "openai",
+      "Security Engineer, Infrastructure Security",
+      "Remote - US; New York City; Seattle; San Francisco",
+      "Yes",
+      "2025-10-06"
+    ],
+    [
+      "openai",
+      "Security Engineer, Detection and Response",
+      "Sydney, Australia; Tokyo, Japan; Singapore",
+      "Yes",
+      "2025-09-15"
+    ],
+    [
+      "robinhood",
+      "Senior Cloud Security Engineer",
+      "Bellevue, WA",
+      "No",
+      "2025-08-29"
+    ],
+    [
+      "anthropic",
+      "Senior Software Security Engineer",
+      "San Francisco, CA | New York City, NY | Seattle, WA",
+      "No",
+      "2025-08-19"
+    ],
+    [
+      "openai",
+      "Security Engineer, Agent Security",
+      "San Francisco; Remote - US",
+      "Yes",
+      "2025-07-15"
+    ],
+    [
+      "databricks",
+      "Sr. Staff Product Security Engineer",
+      "United States",
+      "No",
+      "2025-06-06"
+    ],
+    [
+      "databricks",
+      "Staff Security Software Engineer, AI Security Engineering",
+      "Remote - California",
+      "Yes",
+      "2025-06-06"
+    ],
+    [
+      "openai",
+      "Security Engineer, Detection and Response - EMEA",
+      "London, UK; Zurich, Switzerland; Dublin, Ireland",
+      "No",
+      "2025-05-08"
+    ],
+    [
+      "openai",
+      "Security Engineer, Application Security",
+      "New York City",
+      "Yes",
+      "2025-02-27"
+    ],
+    [
+      "openai",
+      "Security Engineer, Application Security",
+      "Seattle",
+      "No",
+      "2025-02-27"
+    ],
+    [
+      "anthropic",
+      "Staff+ Application Security Engineer",
+      "Remote-Friendly (Travel-Required) | San Francisco, CA | Seattle, WA | New York City, NY",
+      "Yes",
+      "2025-01-22"
+    ],
+    [
+      "openai",
+      "Security Engineer, Application Security",
+      "San Francisco; Remote - US",
+      "Yes",
+      "2024-10-02"
+    ]
+  ],
+  "facts": [
+    "Total live openings in this capture: 57 companies hiring security engineers roles from 11 companies (fetched 2026-07-12).",
+    "openai is the largest hirer with 14 open roles; anthropic follows with 10.",
+    "34 of 57 roles (60%) are listed as remote-eligible.",
+    "The most common location is San Francisco, CA | New York City, NY | Seattle, WA, attached to 6 of the openings.",
+    "5 of the roles were posted within the 7 days before the fetch date.",
+    "First snapshot recorded 2026-07-12: a baseline of 57 open roles."
+  ],
+  "faq": [
+    {
+      "q": "How was this job data collected?",
+      "a": "It comes from one automated scrape of public company careers boards (Greenhouse, Lever, and Ashby style ATS pages) on 2026-07-12, matching roles for the query 'companies hiring security engineers'. The run returned 57 open roles across 11 companies, and every row keeps the posting date shown by the employer."
+    },
+    {
+      "q": "Which company has the most open companies hiring security engineers roles?",
+      "a": "openai leads with 14 of the 57 openings in this capture, followed by anthropic with 10. Hiring volume shifts week to week, so the leader can change between refreshes."
+    },
+    {
+      "q": "How many of these roles are remote?",
+      "a": "34 of the 57 roles (60%) are flagged remote by the employer's own listing. The Remote column in the table shows the flag for every individual role."
+    },
+    {
+      "q": "How current is this data?",
+      "a": "It reflects a 2026-07-12 capture of live boards; 5 of the roles were posted in the 7 days before the fetch. The page refreshes on the same URL and reports what opened and closed since the prior snapshot."
+    }
+  ],
+  "related_product": {
+    "name": "Company Careers Job Scraper (Greenhouse, Lever, Ashby)",
+    "url": "https://apify.com/chilly_damask/company-careers-job-scraper"
+  },
+  "citations": [],
+  "factory": {
+    "slice_id": "jobs-security-engineer",
+    "vertical": "jobs",
+    "min_rows": 10,
+    "items_hash": "7d2a4c49fdb4d28259e09459e4d898a8151f7f97793909883a3e02a6e578b813"
+  }
+}

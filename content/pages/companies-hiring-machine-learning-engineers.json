@@ -1,0 +1,715 @@
+{
+  "slug": "companies-hiring-machine-learning-engineers",
+  "title": "Which Companies Are Hiring Machine Learning Engineers Right Now? (Live ATS Data)",
+  "description": "10 companies, 94 live companies hiring machine learning engineers roles (fetched 2026-07-12) - biggest hirers, 62% remote share, full table.",
+  "answer_first": "Live careers-board data fetched July 12, 2026 shows 10 companies currently advertising 94 companies hiring machine learning engineers positions. reddit tops the table with 27 open roles, and 58 of 94 listings (62%) allow remote work. First capture: 2026-07-12. The initial baseline records 94 live openings to compare future refreshes against. Scroll down for the full role-by-role table: company, title, location, remote status, and posting date.",
+  "data_source": {
+    "actor": "company-careers-job-scraper",
+    "run_id": "WBASi4NuMVmVlHep5",
+    "fetched_at": "2026-07-12T18:09:36Z"
+  },
+  "columns": [
+    "Company",
+    "Title",
+    "Location",
+    "Remote",
+    "Posted"
+  ],
+  "rows": [
+    [
+      "stripe",
+      "Machine Learning Engineer",
+      "Toronto",
+      "No",
+      "2026-07-10"
+    ],
+    [
+      "pinterest",
+      "Staff Machine Learning Engineer, Ads Conversion Core Modeling",
+      "San Francisco, CA, US; Palo Alto, CA, US; Seattle, WA, US",
+      "No",
+      "2026-07-08"
+    ],
+    [
+      "pinterest",
+      "Staff Machine Learning Engineer, Merchants",
+      "Toronto, ON, CA, Remote, Canada",
+      "Yes",
+      "2026-07-07"
+    ],
+    [
+      "stripe",
+      "ML Engineer Manager, AI Conversation Platform",
+      "Toronto, Canada",
+      "No",
+      "2026-07-07"
+    ],
+    [
+      "coinbase",
+      "Machine Learning Engineer, CX Intelligence",
+      "Remote - Brazil",
+      "Yes",
+      "2026-07-07"
+    ],
+    [
+      "pinterest",
+      "Manager II, Machine Learning – Conversion Visibility",
+      "Seattle, WA, US; Remote, US",
+      "Yes",
+      "2026-07-01"
+    ],
+    [
+      "databricks",
+      "Staff Machine Learning Engineer, CustomerLake (ML/LLM)",
+      "New York City, New York",
+      "No",
+      "2026-06-30"
+    ],
+    [
+      "pinterest",
+      "Sr. Staff Machine Learning Engineer, Monetization Engineering",
+      "San Francisco, CA, US; Palo Alto, CA, US; Seattle, WA, US",
+      "No",
+      "2026-06-30"
+    ],
+    [
+      "reddit",
+      "Machine Learning Engineer, Ads Optimization",
+      "Remote - United States",
+      "Yes",
+      "2026-06-26"
+    ],
+    [
+      "pinterest",
+      "Sr. Software Engineer, Machine Learning, tvScientific",
+      "San Francisco, CA, US; Remote, US",
+      "Yes",
+      "2026-06-26"
+    ],
+    [
+      "airbnb",
+      "Staff Machine Learning Engineer, Community Support Engineering",
+      "San Francisco, CA",
+      "No",
+      "2026-06-23"
+    ],
+    [
+      "pinterest",
+      "Staff Software Engineer, Trends Machine Learning Infrastructure",
+      "San Francisco, CA, US; Remote, US",
+      "Yes",
+      "2026-06-23"
+    ],
+    [
+      "airbnb",
+      "Machine Learning Engineer, Community Support Engineering",
+      "San Francisco, CA",
+      "No",
+      "2026-06-23"
+    ],
+    [
+      "stripe",
+      "Machine Learning Engineer, Payment Intelligence",
+      "Seattle",
+      "No",
+      "2026-06-23"
+    ],
+    [
+      "reddit",
+      "Machine Learning Systems Engineer, Ads ML Platform",
+      "Remote - The Netherlands",
+      "Yes",
+      "2026-06-23"
+    ],
+    [
+      "reddit",
+      "Machine Learning Systems Engineer, Ads ML Platform",
+      "Remote - United Kingdom",
+      "Yes",
+      "2026-06-23"
+    ],
+    [
+      "reddit",
+      "Senior Machine Learning Systems Engineer, Ads ML Experience Platform",
+      "Remote - United States",
+      "Yes",
+      "2026-06-22"
+    ],
+    [
+      "reddit",
+      "Staff Machine Learning Engineer, ML Efficiency",
+      "Remote - The Netherlands",
+      "Yes",
+      "2026-06-19"
+    ],
+    [
+      "reddit",
+      "Staff Machine Learning Engineer, ML Efficiency",
+      "Remote - United Kingdom",
+      "Yes",
+      "2026-06-19"
+    ],
+    [
+      "reddit",
+      "Senior Machine Learning Engineer, Ads Foundational Representations",
+      "Remote - The Netherlands",
+      "Yes",
+      "2026-06-19"
+    ],
+    [
+      "reddit",
+      "Senior Machine Learning Engineer, Ads Foundational Representations",
+      "Remote - United Kingdom",
+      "Yes",
+      "2026-06-19"
+    ],
+    [
+      "airbnb",
+      "Senior Machine Learning Engineer, Customer Support Engineering",
+      "Remote-USA",
+      "Yes",
+      "2026-06-18"
+    ],
+    [
+      "reddit",
+      "Staff Machine Learning Engineer, Notifications Relevance",
+      "Remote - United States",
+      "Yes",
+      "2026-06-17"
+    ],
+    [
+      "reddit",
+      "Senior Machine Learning Systems Engineer, Ranking Platform",
+      "Remote - United States",
+      "Yes",
+      "2026-06-15"
+    ],
+    [
+      "coinbase",
+      "Senior Machine Learning Engineer, CX Intelligence",
+      "Remote - Brazil",
+      "Yes",
+      "2026-06-15"
+    ],
+    [
+      "reddit",
+      "Machine Learning Engineering Manager - Ads Engagement Modeling",
+      "Remote - United States",
+      "Yes",
+      "2026-06-14"
+    ],
+    [
+      "reddit",
+      "Staff Machine Learning Systems Engineer, Embeddings Platform",
+      "Remote - United States",
+      "Yes",
+      "2026-06-11"
+    ],
+    [
+      "coinbase",
+      "Staff Machine Learning Engineer(Platform - Identity)",
+      "Remote - USA",
+      "Yes",
+      "2026-06-10"
+    ],
+    [
+      "coinbase",
+      "Senior Machine Learning Engineer",
+      "Remote - India",
+      "Yes",
+      "2026-06-10"
+    ],
+    [
+      "instacart",
+      "Senior Machine Learning Engineer, Search & Recommendations",
+      "Canada - Remote (ON, AB, BC, or NS Only)",
+      "Yes",
+      "2026-06-10"
+    ],
+    [
+      "reddit",
+      "Senior Staff Machine Learning Engineer, Notifications",
+      "Remote - United States",
+      "Yes",
+      "2026-06-03"
+    ],
+    [
+      "stripe",
+      "Staff Software Engineer, Machine Learning Platform",
+      "San Francisco, Seattle",
+      "No",
+      "2026-06-02"
+    ],
+    [
+      "airbnb",
+      "Senior Machine Learning Engineer, Customer Support Engineering",
+      "China",
+      "No",
+      "2026-06-02"
+    ],
+    [
+      "robinhood",
+      "Machine Learning Engineer",
+      "Bellevue, WA",
+      "No",
+      "2026-06-01"
+    ],
+    [
+      "pinterest",
+      "Staff Machine Learning Engineer",
+      "San Francisco, CA, US; Remote, US",
+      "Yes",
+      "2026-06-01"
+    ],
+    [
+      "instacart",
+      "Senior Machine Learning Engineer II, Ads Response Prediction",
+      "United States - Remote",
+      "Yes",
+      "2026-05-28"
+    ],
+    [
+      "stripe",
+      "Machine Learning Engineer, Capital Underwriting",
+      "US",
+      "No",
+      "2026-05-27"
+    ],
+    [
+      "pinterest",
+      "Director, Machine Learning Engineering – Content & User Understanding",
+      "San Francisco, CA, US; Remote, US",
+      "Yes",
+      "2026-05-26"
+    ],
+    [
+      "airbnb",
+      "Principal Machine Learning Engineer- LLM Fine-tuning and Optimization",
+      "United States",
+      "No",
+      "2026-05-24"
+    ],
+    [
+      "pinterest",
+      "Sr. Staff Machine Learning Engineer, Content Ecosystem",
+      "San Francisco, CA, US; Remote, US",
+      "Yes",
+      "2026-05-22"
+    ],
+    [
+      "pinterest",
+      "Staff Machine Learning Engineer, Ads Advanced Conversion Modeling",
+      "San Francisco, CA, US; Palo Alto, CA, US; Seattle, WA, US",
+      "No",
+      "2026-05-22"
+    ],
+    [
+      "pinterest",
+      "Staff Machine Learning Engineer, Programmatic Ads",
+      "San Francisco, CA, US; Palo Alto, CA, US; Seattle, WA, US",
+      "No",
+      "2026-05-19"
+    ],
+    [
+      "airbnb",
+      "Senior Staff Machine Learning Engineer, Post Training",
+      "Remote - USA",
+      "Yes",
+      "2026-05-05"
+    ],
+    [
+      "reddit",
+      "Senior Machine Learning Engineer, GenAI Security",
+      "Remote - United States",
+      "Yes",
+      "2026-05-04"
+    ],
+    [
+      "reddit",
+      "Staff Machine Learning Engineer, Ads Measurement Modeling",
+      "Remote - United States",
+      "Yes",
+      "2026-05-04"
+    ],
+    [
+      "pinterest",
+      "Sr. Staff Machine Learning Engineer, Content Quality",
+      "San Francisco, CA, US",
+      "No",
+      "2026-04-27"
+    ],
+    [
+      "reddit",
+      "Staff Machine Learning Engineer, Ads Content Understanding",
+      "Remote - United States",
+      "Yes",
+      "2026-04-24"
+    ],
+    [
+      "reddit",
+      "Senior Staff Machine Learning Engineer, ML Understanding",
+      "Remote - United States",
+      "Yes",
+      "2026-04-23"
+    ],
+    [
+      "reddit",
+      "Machine Learning Manager, Notifications Relevance",
+      "Remote - United States",
+      "Yes",
+      "2026-04-23"
+    ],
+    [
+      "anthropic",
+      "Research Engineer, Machine Learning (RL Velocity)",
+      "London, UK",
+      "No",
+      "2026-04-23"
+    ],
+    [
+      "anthropic",
+      "Research Engineer, Machine Learning (RL Velocity)",
+      "Remote-Friendly (Travel-Required) | San Francisco, CA | New York City, NY",
+      "Yes",
+      "2026-04-23"
+    ],
+    [
+      "reddit",
+      "Senior Staff Machine Learning Systems Engineer, Indexing & Retrieval Search",
+      "Remote - United States",
+      "Yes",
+      "2026-04-22"
+    ],
+    [
+      "reddit",
+      "Senior Staff ML Engineer, Search & Recommendation",
+      "Remote - United States",
+      "Yes",
+      "2026-04-20"
+    ],
+    [
+      "pinterest",
+      "PhD Fall Machine Learning Intern (ATG — Visual, Multimodal, and Recommender Systems)",
+      "San Francisco, CA, US; Palo Alto, CA, US; Seattle, WA, US; New York, NY, US",
+      "No",
+      "2026-04-20"
+    ],
+    [
+      "databricks",
+      "Senior Specialist Solutions Architect - AI & ML Engineer",
+      "Finland; Remote - Denmark; Stockholm, Sweden",
+      "Yes",
+      "2026-04-15"
+    ],
+    [
+      "airbnb",
+      "Senior Staff Machine Learning Engineer, Growth Platform Engineering",
+      "Remote - USA",
+      "Yes",
+      "2026-04-14"
+    ],
+    [
+      "reddit",
+      "Ads Conversion Modeling, Machine Learning Engineering Manager",
+      "Remote - United States",
+      "Yes",
+      "2026-04-14"
+    ],
+    [
+      "pinterest",
+      "Sr. Machine Learning Engineer, Responsible AI– Applied Research Science",
+      "San Francisco, CA, US; Remote, CA, US",
+      "Yes",
+      "2026-04-13"
+    ],
+    [
+      "instacart",
+      "Senior Machine Learning Engineer, Operations Research",
+      "United States - Remote",
+      "Yes",
+      "2026-04-09"
+    ],
+    [
+      "reddit",
+      "Senior Staff Machine Learning Engineer, GenAI Platform",
+      "Remote - United States",
+      "Yes",
+      "2026-04-01"
+    ],
+    [
+      "reddit",
+      "Staff Machine Learning Engineer, Consumer",
+      "Remote - United States",
+      "Yes",
+      "2026-03-24"
+    ],
+    [
+      "airbnb",
+      "Machine Learning Engineer, Customer Support Engineering",
+      "China",
+      "No",
+      "2026-03-22"
+    ],
+    [
+      "reddit",
+      "Staff Machine Learning Systems Engineer",
+      "Remote - United States",
+      "Yes",
+      "2026-03-18"
+    ],
+    [
+      "reddit",
+      "Senior Machine Learning Systems Engineer",
+      "Remote - United States",
+      "Yes",
+      "2026-03-18"
+    ],
+    [
+      "openai",
+      "Machine Learning Engineer, Integrity",
+      "San Francisco",
+      "No",
+      "2026-03-17"
+    ],
+    [
+      "stripe",
+      "Staff Software Engineer, Machine Learning Platform",
+      "Toronto",
+      "No",
+      "2026-03-12"
+    ],
+    [
+      "pinterest",
+      "Machine Learning Engineer II, Computer Vision Applied Science",
+      "San Francisco, CA, US; Remote, US",
+      "Yes",
+      "2026-03-10"
+    ],
+    [
+      "airbnb",
+      "Staff Machine Learning Engineer, Customer Support Engineering",
+      "China",
+      "No",
+      "2026-03-09"
+    ],
+    [
+      "airbnb",
+      "Senior/ Manager, Machine Learning, Customer Support Engineering",
+      "China",
+      "No",
+      "2026-03-03"
+    ],
+    [
+      "anthropic",
+      "Research Engineer, Machine Learning (Reinforcement Learning)",
+      "London, UK",
+      "No",
+      "2026-02-11"
+    ],
+    [
+      "openai",
+      "Machine Learning Engineer, Distributed Data Systems - Robotics",
+      "San Francisco",
+      "Yes",
+      "2026-02-06"
+    ],
+    [
+      "airbnb",
+      "Senior Staff Machine Learning Engineer, Trust",
+      "Remote - USA",
+      "Yes",
+      "2026-02-05"
+    ],
+    [
+      "databricks",
+      "Staff Machine Learning Engineer",
+      "San Francisco, California",
+      "No",
+      "2026-02-02"
+    ],
+    [
+      "instacart",
+      "Senior Machine Learning Engineer II, Search & Recommendations Ranking",
+      "US - Remote",
+      "Yes",
+      "2026-01-26"
+    ],
+    [
+      "instacart",
+      "Machine Learning PhD Intern, Economics (Fall)",
+      "United States - Remote",
+      "Yes",
+      "2026-01-13"
+    ],
+    [
+      "pinterest",
+      "Machine Learning Engineer II, Core Engineering",
+      "Toronto, ON, CA",
+      "No",
+      "2025-12-22"
+    ],
+    [
+      "airbnb",
+      "Staff Machine Learning Engineer, Listings and Host Tools Data and AI",
+      "Remote-USA",
+      "Yes",
+      "2025-12-10"
+    ],
+    [
+      "airbnb",
+      "Senior Machine Learning Engineer, Relevance and Personalization",
+      "United States",
+      "No",
+      "2025-10-01"
+    ],
+    [
+      "pinterest",
+      "Principal Machine Learning Engineer, Ads Delivery",
+      "San Francisco, CA, US; Palo Alto, CA, US; Seattle, WA, US",
+      "No",
+      "2025-09-23"
+    ],
+    [
+      "reddit",
+      "Senior Machine Learning Engineer",
+      "Remote - United States",
+      "Yes",
+      "2025-08-14"
+    ],
+    [
+      "reddit",
+      "Senior Machine Learning Engineer",
+      "Remote - Ontario, Canada",
+      "Yes",
+      "2025-08-14"
+    ],
+    [
+      "pinterest",
+      "Manager II, Machine Learning Engineering, Core Engineering",
+      "San Francisco, CA, US;  Remote, US",
+      "Yes",
+      "2025-07-16"
+    ],
+    [
+      "airbnb",
+      "Senior Staff Machine Learning Engineer, Guest & Host",
+      "Remote - USA",
+      "Yes",
+      "2025-06-23"
+    ],
+    [
+      "pinterest",
+      "Sr. Machine Learning Engineer, Applied Science",
+      "San Francisco, CA, US; Remote, US",
+      "Yes",
+      "2025-05-19"
+    ],
+    [
+      "databricks",
+      "Staff Software Engineer - Machine Learning (Search)",
+      "Bengaluru, India",
+      "No",
+      "2025-04-15"
+    ],
+    [
+      "anthropic",
+      "Research Engineer, Machine Learning (Reinforcement Learning)",
+      "San Francisco, CA | New York City, NY",
+      "No",
+      "2025-04-01"
+    ],
+    [
+      "airbnb",
+      "Senior Staff Machine Learning Engineer, Data & Eval",
+      "United States",
+      "No",
+      "2025-03-30"
+    ],
+    [
+      "pinterest",
+      "Sr. Machine Learning Engineer, Core Engineering",
+      "San Francisco, CA, US; Palo Alto, CA, US; Seattle, WA, US",
+      "No",
+      "2024-07-24"
+    ],
+    [
+      "pinterest",
+      "Machine Learning Engineer, Core Engineering",
+      "San Francisco, CA, US; Palo Alto, CA, US; Seattle, WA, US; Remote, US",
+      "Yes",
+      "2024-07-24"
+    ],
+    [
+      "pinterest",
+      "Machine Learning Engineer, Monetization Engineering",
+      "San Francisco, CA, US; Palo Alto, CA, US; Seattle, WA, US",
+      "No",
+      "2024-07-23"
+    ],
+    [
+      "pinterest",
+      "Sr. Machine Learning Engineer, Monetization Engineering",
+      "San Francisco, CA, US; Palo Alto, CA, US; Seattle, WA, US",
+      "No",
+      "2024-07-23"
+    ],
+    [
+      "instacart",
+      "Machine Learning Engineer, PhD Intern (Fall)",
+      "United States - Remote",
+      "Yes",
+      "2024-04-18"
+    ],
+    [
+      "pinterest",
+      "Sr. Machine Learning Engineer, Content Shopping",
+      "Toronto, ON, CA",
+      "No",
+      "2024-02-09"
+    ],
+    [
+      "databricks",
+      "Senior Machine Learning Engineer - GenAI Platform",
+      "San Francisco, California",
+      "No",
+      "2023-09-29"
+    ]
+  ],
+  "facts": [
+    "The 2026-07-12 scrape counted 94 current companies hiring machine learning engineers openings spanning 10 distinct companies.",
+    "reddit posts 27 of the roles, the most of any company, with pinterest next at 24.",
+    "The remote share sits at 62%: 58 of 94 listings allow remote.",
+    "By location, Remote - United States leads with 20 roles.",
+    "In the final 7 days before this fetch, 5 of the listed roles were posted.",
+    "Initial capture (2026-07-12) logs 94 openings as the comparison baseline."
+  ],
+  "faq": [
+    {
+      "q": "What is the source of these job listings?",
+      "a": "Each listing was read directly from a company's own public careers board via its ATS API on 2026-07-12. The query 'companies hiring machine learning engineers' matched 94 open roles across 10 companies, and posting dates are the employers' own."
+    },
+    {
+      "q": "Which employer tops this hiring table?",
+      "a": "reddit, with 27 open companies hiring machine learning engineers roles out of 94 total - ahead of pinterest at 24. The lead is recomputed from board data at every refresh."
+    },
+    {
+      "q": "Can these jobs be done remotely?",
+      "a": "Some can: 58 of 94 listings (62%) are marked remote by the employer. Check the Remote column for each specific role."
+    },
+    {
+      "q": "How fresh are these listings?",
+      "a": "All rows come from a 2026-07-12 scrape; 5 of them were posted within the preceding 7 days. Because boards change daily, treat the table as a dated snapshot that this URL keeps refreshing."
+    }
+  ],
+  "related_product": {
+    "name": "Company Careers Job Scraper (Greenhouse, Lever, Ashby)",
+    "url": "https://apify.com/chilly_damask/company-careers-job-scraper"
+  },
+  "citations": [],
+  "factory": {
+    "slice_id": "jobs-machine-learning-engineer",
+    "vertical": "jobs",
+    "min_rows": 10,
+    "items_hash": "22dea3f4f2289f686cdba533b4341f76b3a85e578fa8b3e7c2262a6f6b4e1cd4"
+  }
+}

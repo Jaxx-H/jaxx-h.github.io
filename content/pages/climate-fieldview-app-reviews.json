@@ -1,0 +1,117 @@
+{
+  "slug": "climate-fieldview-app-reviews",
+  "title": "Climate FieldView App Reviews: What Farmers Say on iOS & Android",
+  "description": "Climate FieldView™ review snapshot 2026-07-12 - 74 reviews, average 2.20 of 5, 58% 1-star, tallied per store.",
+  "answer_first": "Climate FieldView™ averages 2.20 of 5 across the 74 reviews in this July 12, 2026 window (App Store 2.44, Google Play 2.00); 19% are 5-star and 58% are 1-star. The first capture for this dataset was 2026-07-12 and holds 74 reviews as the comparison baseline. See the per-store, per-star breakdown in the table that follows.",
+  "data_source": {
+    "actor": "app-store-google-play-review-scraper",
+    "run_id": "5fNqNWYHg19gFVeD6",
+    "fetched_at": "2026-07-12T18:12:10Z"
+  },
+  "columns": [
+    "Store",
+    "Stars",
+    "Reviews",
+    "Share %"
+  ],
+  "rows": [
+    [
+      "App Store",
+      "5★",
+      "7",
+      "21%"
+    ],
+    [
+      "App Store",
+      "4★",
+      "4",
+      "12%"
+    ],
+    [
+      "App Store",
+      "3★",
+      "3",
+      "9%"
+    ],
+    [
+      "App Store",
+      "2★",
+      "3",
+      "9%"
+    ],
+    [
+      "App Store",
+      "1★",
+      "17",
+      "50%"
+    ],
+    [
+      "Google Play",
+      "5★",
+      "7",
+      "18%"
+    ],
+    [
+      "Google Play",
+      "4★",
+      "1",
+      "2%"
+    ],
+    [
+      "Google Play",
+      "3★",
+      "3",
+      "8%"
+    ],
+    [
+      "Google Play",
+      "2★",
+      "3",
+      "8%"
+    ],
+    [
+      "Google Play",
+      "1★",
+      "26",
+      "65%"
+    ]
+  ],
+  "facts": [
+    "Across 74 reviews fetched 2026-07-12, the mean score is 2.20 of 5 (App Store 2.44, Google Play 2.00).",
+    "The 5-star share stands at 19% - 14 reviews of 74.",
+    "The 1-star share is 58%: 43 reviews out of 74.",
+    "The window draws on 1 country feed(s), led by US at 74 reviews.",
+    "updates is the leading complaint bucket: 5 of 49 low-rating reviews mention it.",
+    "Initial capture (2026-07-12) logs 74 reviews as the comparison baseline."
+  ],
+  "faq": [
+    {
+      "q": "Why is this average different from the store listing?",
+      "a": "Because it is computed only from the 74 most recent reviews captured 2026-07-12. Recent-window averages like this 2.20 of 5 move faster than lifetime store ratings and highlight what users say right now."
+    },
+    {
+      "q": "What is the source of this rating breakdown?",
+      "a": "A single 2026-07-12 scrape of public store review feeds for Climate FieldView™: 74 reviews across 2 feed(s), each carrying its own star rating and date. The table simply counts them per star and store."
+    },
+    {
+      "q": "How do the two stores compare?",
+      "a": "For the 2026-07-12 window: App Store 2.44, Google Play 2.00. Both figures come from the same 74-review capture, so they are directly comparable snapshots of current sentiment."
+    },
+    {
+      "q": "How would I build this table for a different app?",
+      "a": "Run the source actor with your app's store identifiers; it emits the same normalized review records used here (74 in this window), ready to tally per star and store."
+    }
+  ],
+  "related_product": {
+    "name": "App Store & Google Play Review Scraper",
+    "url": "https://apify.com/chilly_damask/app-store-google-play-review-scraper"
+  },
+  "citations": [],
+  "factory": {
+    "slice_id": "reviews-climate-fieldview",
+    "vertical": "reviews",
+    "min_rows": 15,
+    "item_count": 74,
+    "items_hash": "053c465b256adf9938988097f549f689392a01b0e146027ee0733a4364c7c4ed"
+  }
+}

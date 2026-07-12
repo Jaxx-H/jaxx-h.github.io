@@ -1,0 +1,897 @@
+{
+  "slug": "companies-hiring-engineering-managers",
+  "title": "Which Companies Are Hiring Engineering Managers Right Now? (Live ATS Data)",
+  "description": "Live ATS data, 2026-07-12: 120 companies hiring engineering managers openings at 12 companies, 33% remote, ranked and dated.",
+  "answer_first": "A July 12, 2026 pull from public ATS careers boards finds 120 live companies hiring engineering managers openings spread over 12 employers. The single biggest hirer is databricks at 25 roles, while 33% of the full list is remote-friendly. This page begins its history on 2026-07-12: the baseline capture holds 120 open roles. Every opening is listed below with company, title, location, remote flag, and the date it was posted.",
+  "data_source": {
+    "actor": "company-careers-job-scraper",
+    "run_id": "R4ZfZzJMTm6Ek5PeP",
+    "fetched_at": "2026-07-12T18:10:52Z"
+  },
+  "columns": [
+    "Company",
+    "Title",
+    "Location",
+    "Remote",
+    "Posted"
+  ],
+  "rows": [
+    [
+      "openai",
+      "Engineering Manager, Core Experimentation",
+      "Seattle",
+      "Yes",
+      "2026-07-10"
+    ],
+    [
+      "instacart",
+      "Engineering Manager, Order Experience",
+      "Canada - Remote (ON, AB, BC, or NS Only)",
+      "Yes",
+      "2026-07-10"
+    ],
+    [
+      "instacart",
+      "Engineering Manager, Order Experience",
+      "United States - Remote",
+      "Yes",
+      "2026-07-10"
+    ],
+    [
+      "gitlab",
+      "Engineering Manager, Tenant Scale:Git",
+      "Remote, Americas; Remote, Canada; Remote, United Kingdom",
+      "Yes",
+      "2026-07-10"
+    ],
+    [
+      "reddit",
+      "Engineering Manager, Media Foundations and Delivery",
+      "Remote - United States",
+      "Yes",
+      "2026-07-10"
+    ],
+    [
+      "anthropic",
+      "Engineering Manager, Safeguards Interventions",
+      "San Francisco, CA",
+      "No",
+      "2026-07-10"
+    ],
+    [
+      "duolingo",
+      "Senior Engineering Manager, Language Learning",
+      "New York, NY",
+      "No",
+      "2026-07-09"
+    ],
+    [
+      "duolingo",
+      "Senior Engineering Manager, Language Learning",
+      "Pittsburgh, PA",
+      "No",
+      "2026-07-09"
+    ],
+    [
+      "anthropic",
+      "Engineering Manager, Connectivity - London",
+      "London, UK",
+      "No",
+      "2026-07-09"
+    ],
+    [
+      "anthropic",
+      "Engineering Manager, Agent Runtime Platform",
+      "San Francisco, CA | New York City, NY",
+      "No",
+      "2026-07-09"
+    ],
+    [
+      "anthropic",
+      "Engineering Manager, Continuous Deployment and Change Safety",
+      "San Francisco, CA | New York City, NY",
+      "No",
+      "2026-07-08"
+    ],
+    [
+      "airbnb",
+      "Engineering Manager, Payments",
+      "USA - Remote",
+      "Yes",
+      "2026-07-07"
+    ],
+    [
+      "stripe",
+      "Engineering Manager, Payments",
+      "Singapore",
+      "No",
+      "2026-07-07"
+    ],
+    [
+      "anthropic",
+      "Engineering Manager, Research Data Platform",
+      "San Francisco, CA | New York City, NY",
+      "No",
+      "2026-07-06"
+    ],
+    [
+      "gitlab",
+      "Engineering Manager, AI Engineering: Chat",
+      "Remote, Americas; Remote, Canada; Remote, United Kingdom",
+      "Yes",
+      "2026-07-06"
+    ],
+    [
+      "databricks",
+      "Sr. Engineering Manager, AI Runtime",
+      "Mountain View, California; San Francisco, California",
+      "No",
+      "2026-07-06"
+    ],
+    [
+      "robinhood",
+      "Engineering Manager, Prediction Markets",
+      "New York, NY",
+      "No",
+      "2026-07-06"
+    ],
+    [
+      "gitlab",
+      "Engineering Manager, Cell Infrastructure",
+      "Remote",
+      "Yes",
+      "2026-07-06"
+    ],
+    [
+      "anthropic",
+      "Engineering Manager, Agent Runtime Platform",
+      "San Francisco, CA | Seattle, WA",
+      "No",
+      "2026-07-02"
+    ],
+    [
+      "gitlab",
+      "Engineering Manager, Geo for Self-Managed Customers",
+      "Remote, United Kingdom",
+      "Yes",
+      "2026-07-02"
+    ],
+    [
+      "gitlab",
+      "Principal Product Manager, Engineering Intelligence & Insights",
+      "Remote, Canada; Remote, US",
+      "Yes",
+      "2026-07-02"
+    ],
+    [
+      "pinterest",
+      "Sr. Engineering Manager, Programmatic Ad Tech, tvScientific",
+      "San Francisco, CA, US; Remote, US",
+      "Yes",
+      "2026-06-30"
+    ],
+    [
+      "anthropic",
+      "Engineering Manager, Data Architecture",
+      "San Francisco, CA | Seattle, WA",
+      "No",
+      "2026-06-30"
+    ],
+    [
+      "airbnb",
+      "Engineering Manager, Workflow Orchestration",
+      "San Francisco, CA",
+      "No",
+      "2026-06-26"
+    ],
+    [
+      "stripe",
+      "Engineering Manager, Access Management",
+      "N/A",
+      "No",
+      "2026-06-24"
+    ],
+    [
+      "openai",
+      "Engineering Manager, MLE",
+      "San Francisco",
+      "No",
+      "2026-06-23"
+    ],
+    [
+      "openai",
+      "Engineering Manager, Identity & Access Platform",
+      "San Francisco",
+      "Yes",
+      "2026-06-22"
+    ],
+    [
+      "reddit",
+      "Engineering Manager, Ads ML Efficiency",
+      "Remote - United States",
+      "Yes",
+      "2026-06-22"
+    ],
+    [
+      "databricks",
+      "Engineering Manager, Serverless Compute Platform",
+      "Bellevue, Washington",
+      "No",
+      "2026-06-22"
+    ],
+    [
+      "gitlab",
+      "Engineering Manager, Data Foundations",
+      "Remote, US",
+      "Yes",
+      "2026-06-17"
+    ],
+    [
+      "gitlab",
+      "Engineering Manager, Growth",
+      "Remote, Canada; Remote, US",
+      "Yes",
+      "2026-06-17"
+    ],
+    [
+      "openai",
+      "Engineering Manager, Sensitive Deployments",
+      "San Francisco",
+      "Yes",
+      "2026-06-16"
+    ],
+    [
+      "gitlab",
+      "Engineering Manager, Observability, Monitoring, and Integrations (Monetization)",
+      "Remote, India",
+      "Yes",
+      "2026-06-16"
+    ],
+    [
+      "openai",
+      "Engineering Manager, Premium",
+      "San Francisco",
+      "No",
+      "2026-06-15"
+    ],
+    [
+      "reddit",
+      "Machine Learning Engineering Manager - Ads Engagement Modeling",
+      "Remote - United States",
+      "Yes",
+      "2026-06-14"
+    ],
+    [
+      "anthropic",
+      "Engineering Manager, Enterprise",
+      "San Francisco, CA | New York City, NY",
+      "No",
+      "2026-06-12"
+    ],
+    [
+      "instacart",
+      "Senior Engineering Manager, Privacy Security",
+      "Canada - Remote (ON, AB, BC, or NS Only)",
+      "Yes",
+      "2026-06-12"
+    ],
+    [
+      "stripe",
+      "Engineering Manager, HADR",
+      "Seattle",
+      "No",
+      "2026-06-11"
+    ],
+    [
+      "anthropic",
+      "Engineering Manager, Safeguards Review Tooling",
+      "San Francisco, CA",
+      "No",
+      "2026-06-10"
+    ],
+    [
+      "stripe",
+      "Engineering Manager, AI Conversation Platform",
+      "Toronto, Canada",
+      "No",
+      "2026-06-09"
+    ],
+    [
+      "duolingo",
+      "Senior AI Engineering Manager",
+      "New York, NY",
+      "No",
+      "2026-06-09"
+    ],
+    [
+      "duolingo",
+      "Senior AI Engineering Manager",
+      "Pittsburgh, PA",
+      "No",
+      "2026-06-09"
+    ],
+    [
+      "openai",
+      "AI Deployment Engineering Manager, Startups",
+      "Singapore",
+      "Yes",
+      "2026-06-05"
+    ],
+    [
+      "instacart",
+      "Senior Engineering Manager, Search",
+      "Canada - Remote (ON, AB, BC, or NS Only)",
+      "Yes",
+      "2026-06-04"
+    ],
+    [
+      "instacart",
+      "Senior Engineering Manager, Search",
+      "United States - Remote",
+      "Yes",
+      "2026-06-04"
+    ],
+    [
+      "reddit",
+      "Sr. Engineering Manager, Shopping Ads",
+      "Remote - United States",
+      "Yes",
+      "2026-06-04"
+    ],
+    [
+      "databricks",
+      "Engineering Manager - Data Visualization Platform",
+      "Bellevue, Washington",
+      "No",
+      "2026-06-03"
+    ],
+    [
+      "reddit",
+      "Engineering Manager, Advanced Signals (SWE)",
+      "Remote - United States",
+      "Yes",
+      "2026-06-01"
+    ],
+    [
+      "anthropic",
+      "Engineering Manager, Cybersecurity Products",
+      "San Francisco, CA | New York City, NY",
+      "No",
+      "2026-05-29"
+    ],
+    [
+      "databricks",
+      "Sr. Manager, Engineering  Configuration Platform Team",
+      "Bellevue, Washington",
+      "No",
+      "2026-05-28"
+    ],
+    [
+      "instacart",
+      "Engineering Manager, Service Platform",
+      "Canada - Remote (ON, AB, BC, or NS Only)",
+      "Yes",
+      "2026-05-27"
+    ],
+    [
+      "instacart",
+      "Engineering Manager, Service Platform",
+      "United States - Remote",
+      "Yes",
+      "2026-05-27"
+    ],
+    [
+      "stripe",
+      "Program Manager, Engineering - Technology GRC",
+      "Dublin",
+      "No",
+      "2026-05-25"
+    ],
+    [
+      "instacart",
+      "Senior Engineering Manager, Privacy Security",
+      "United States - Remote",
+      "Yes",
+      "2026-05-22"
+    ],
+    [
+      "anthropic",
+      "Engineering Manager, Research Productivity",
+      "San Francisco, CA | New York City, NY",
+      "No",
+      "2026-05-22"
+    ],
+    [
+      "robinhood",
+      "Senior Engineering Manager",
+      "New York, NY",
+      "No",
+      "2026-05-21"
+    ],
+    [
+      "stripe",
+      "Engineering Manager, Forward Deployed (Privy)",
+      "NYC-Privy",
+      "No",
+      "2026-05-20"
+    ],
+    [
+      "openai",
+      "Engineering Manager, Distillation & Detection Platform",
+      "San Francisco",
+      "No",
+      "2026-05-20"
+    ],
+    [
+      "openai",
+      "AI Deployment Engineering Manager, Startups",
+      "San Francisco; New York City",
+      "Yes",
+      "2026-05-19"
+    ],
+    [
+      "stripe",
+      "Engineering Manager, Terminal",
+      "Toronto, Canada",
+      "No",
+      "2026-05-15"
+    ],
+    [
+      "airbnb",
+      "Engineering Manager, Marketing Technology - Segmentation Platform & Insights Platform",
+      "United States",
+      "No",
+      "2026-05-14"
+    ],
+    [
+      "instacart",
+      "Engineering Manager, Software, Catalog Enrichment",
+      "Canada - Remote (ON, AB, BC, or NS Only)",
+      "Yes",
+      "2026-05-14"
+    ],
+    [
+      "stripe",
+      "Engineering Manager, Product (Privy)",
+      "NYC-Privy",
+      "No",
+      "2026-05-13"
+    ],
+    [
+      "databricks",
+      "Sr. Manager, Engineering",
+      "Amsterdam, Netherlands",
+      "No",
+      "2026-05-08"
+    ],
+    [
+      "duolingo",
+      "Senior Engineering Manager, Monetization",
+      "New York, NY",
+      "No",
+      "2026-05-06"
+    ],
+    [
+      "duolingo",
+      "Senior Engineering Manager, Monetization",
+      "Pittsburgh, PA",
+      "No",
+      "2026-05-06"
+    ],
+    [
+      "databricks",
+      "Sr. Manager, Engineering",
+      "Mountain View, California",
+      "No",
+      "2026-04-30"
+    ],
+    [
+      "reddit",
+      "Engineering Manager, Search Storage",
+      "Remote - United States",
+      "Yes",
+      "2026-04-27"
+    ],
+    [
+      "openai",
+      "Engineering Manager, Cooperative Systems",
+      "Seattle",
+      "Yes",
+      "2026-04-27"
+    ],
+    [
+      "stripe",
+      "Engineering Manager - Core Performance",
+      "Sydney, Australia",
+      "No",
+      "2026-04-23"
+    ],
+    [
+      "stripe",
+      "Engineering Manager, APAC & EMEA Cards",
+      "Singapore",
+      "No",
+      "2026-04-22"
+    ],
+    [
+      "robinhood",
+      "Senior Engineering Manager, AI Research and Development",
+      "Bellevue, WA; Menlo Park, CA",
+      "No",
+      "2026-04-22"
+    ],
+    [
+      "databricks",
+      "Sr. Engineering Manager - Agentic Service Platform",
+      "Mountain View, California",
+      "No",
+      "2026-04-20"
+    ],
+    [
+      "openai",
+      "Engineering Manager, Multimodal (API)",
+      "San Francisco",
+      "No",
+      "2026-04-20"
+    ],
+    [
+      "reddit",
+      "Ads Conversion Modeling, Machine Learning Engineering Manager",
+      "Remote - United States",
+      "Yes",
+      "2026-04-14"
+    ],
+    [
+      "databricks",
+      "Engineering Manager - Lakebase Storage",
+      "London, United Kingdom",
+      "No",
+      "2026-04-10"
+    ],
+    [
+      "pinterest",
+      "Engineering Manager I, Innovative Ad Formats",
+      "San Francisco, CA, US; Palo Alto, CA, US",
+      "No",
+      "2026-04-08"
+    ],
+    [
+      "databricks",
+      "Engineering Manager - Platform Reliability",
+      "London, United Kingdom",
+      "No",
+      "2026-04-08"
+    ],
+    [
+      "airbnb",
+      "Engineering Manager, UI Tooling",
+      "United States",
+      "No",
+      "2026-04-03"
+    ],
+    [
+      "stripe",
+      "Corporate Network Engineering Manager",
+      "US Remote",
+      "Yes",
+      "2026-04-03"
+    ],
+    [
+      "gitlab",
+      "Engineering Manager, Continuous Delivery",
+      "Remote, India",
+      "Yes",
+      "2026-04-01"
+    ],
+    [
+      "openai",
+      "IC Agentic Engineering Manager - Stargate",
+      "San Francisco",
+      "No",
+      "2026-03-31"
+    ],
+    [
+      "airbnb",
+      "Engineering Manager, Community Support Engineering (Routing and Data Services)",
+      "China",
+      "No",
+      "2026-03-29"
+    ],
+    [
+      "gitlab",
+      "Engineering Manager, SSCS: Supply Chain",
+      "Remote, India",
+      "Yes",
+      "2026-03-27"
+    ],
+    [
+      "stripe",
+      "Engineering Manager, Developer Productivity AI",
+      "US-Remote",
+      "Yes",
+      "2026-03-27"
+    ],
+    [
+      "anthropic",
+      "Engineering Manager, Agent Prompts & Evals",
+      "San Francisco, CA | New York City, NY",
+      "No",
+      "2026-03-25"
+    ],
+    [
+      "coinbase",
+      "Engineering Manager - Customer Experience AI",
+      "Remote - India",
+      "Yes",
+      "2026-03-22"
+    ],
+    [
+      "gitlab",
+      "Engineering Manager, Gitlab Delivery: Upgrades",
+      "Remote, India",
+      "Yes",
+      "2026-03-22"
+    ],
+    [
+      "databricks",
+      "Engineering Manager - Databricks SQL Control Plane",
+      "Mountain View, California",
+      "No",
+      "2026-03-20"
+    ],
+    [
+      "duolingo",
+      "Senior Engineering Manager, Growth",
+      "Pittsburgh, PA",
+      "No",
+      "2026-03-18"
+    ],
+    [
+      "duolingo",
+      "Senior Engineering Manager, Growth",
+      "New York, NY",
+      "No",
+      "2026-03-18"
+    ],
+    [
+      "databricks",
+      "Engineering Manager - Pipelines Engine",
+      "Mountain View, California; San Francisco, California",
+      "No",
+      "2026-03-17"
+    ],
+    [
+      "openai",
+      "Engineering Manager, Online Data Systems",
+      "San Francisco",
+      "No",
+      "2026-03-16"
+    ],
+    [
+      "robinhood",
+      "Engineering Manager, Concierge",
+      "Menlo Park, CA",
+      "No",
+      "2026-03-04"
+    ],
+    [
+      "databricks",
+      "Sr. Engineering Manager - Customer Experience Intelligence (CXI)",
+      "Mountain View, California; San Francisco, California",
+      "No",
+      "2026-02-25"
+    ],
+    [
+      "openai",
+      "Platform Engineering Manager, Forward Deployed Engineering (FDE)",
+      "San Francisco",
+      "Yes",
+      "2026-02-23"
+    ],
+    [
+      "anthropic",
+      "Data Engineering Manager, Product",
+      "San Francisco, CA | New York City, NY | Seattle, WA",
+      "No",
+      "2026-02-19"
+    ],
+    [
+      "anthropic",
+      "Engineering Manager, UI Platform",
+      "San Francisco, CA | New York City, NY | Seattle, WA",
+      "No",
+      "2026-02-12"
+    ],
+    [
+      "openai",
+      "Engineering Manager, Identity Infrastructure",
+      "San Francisco",
+      "No",
+      "2026-01-28"
+    ],
+    [
+      "airbnb",
+      "Engineering Manager, Guest & Host",
+      "London, United Kingdom",
+      "No",
+      "2026-01-23"
+    ],
+    [
+      "stripe",
+      "Engineering Manager, Sales Systems",
+      "Bengaluru",
+      "No",
+      "2026-01-14"
+    ],
+    [
+      "stripe",
+      "Engineering Manager, Operator Tooling",
+      "Bucharest",
+      "No",
+      "2026-01-12"
+    ],
+    [
+      "databricks",
+      "Engineering Manager - Streaming",
+      "Bellevue, Washington",
+      "No",
+      "2025-12-04"
+    ],
+    [
+      "anthropic",
+      "Engineering Manager, GRC Platform",
+      "San Francisco, CA | New York City, NY | Seattle, WA",
+      "No",
+      "2025-11-19"
+    ],
+    [
+      "databricks",
+      "Engineering Manager - Identity and Access Management (IAM)",
+      "Mountain View, California",
+      "No",
+      "2025-11-18"
+    ],
+    [
+      "reddit",
+      "Senior Engineering Manager, Unified Embeddings Platform",
+      "Remote - United States",
+      "Yes",
+      "2025-10-27"
+    ],
+    [
+      "databricks",
+      "Sr. Engineering Manager - Notebook Dataplane",
+      "San Francisco, California",
+      "No",
+      "2025-09-29"
+    ],
+    [
+      "databricks",
+      "Senior Engineering Manager - Trust and Safety",
+      "Mountain View, California",
+      "No",
+      "2025-09-22"
+    ],
+    [
+      "databricks",
+      "Manager, Engineering - AI/BI",
+      "Vancouver, Canada",
+      "No",
+      "2025-09-18"
+    ],
+    [
+      "robinhood",
+      "Engineering Manager, Toronto",
+      "Toronto, Canada",
+      "No",
+      "2025-07-31"
+    ],
+    [
+      "databricks",
+      "Senior Engineering Manager for Workspace Platform",
+      "San Francisco, California",
+      "No",
+      "2025-06-12"
+    ],
+    [
+      "anthropic",
+      "Engineering Manager, GPU (ML Accelerator)",
+      "San Francisco, CA | New York City, NY | Seattle, WA",
+      "No",
+      "2025-05-29"
+    ],
+    [
+      "anthropic",
+      "Engineering Manager, Inference",
+      "San Francisco, CA | New York City, NY | Seattle, WA",
+      "No",
+      "2025-05-29"
+    ],
+    [
+      "databricks",
+      "Engineering Manager - UI Platform",
+      "Seattle, Washington",
+      "No",
+      "2025-05-27"
+    ],
+    [
+      "databricks",
+      "Sr. Manager, Engineering - Search",
+      "Mountain View, California",
+      "No",
+      "2025-04-15"
+    ],
+    [
+      "databricks",
+      "Senior Engineering Manager - Backend",
+      "Bengaluru, India",
+      "No",
+      "2024-07-02"
+    ],
+    [
+      "databricks",
+      "Engineering Manager - Backend",
+      "Bengaluru, India",
+      "No",
+      "2024-05-07"
+    ],
+    [
+      "databricks",
+      "Engineering Manager - Core Experiences",
+      "Bengaluru, India",
+      "No",
+      "2023-12-16"
+    ],
+    [
+      "databricks",
+      "Engineering Manager - Compute Infra",
+      "Mountain View, California; San Francisco, California",
+      "No",
+      "2023-05-04"
+    ],
+    [
+      "databricks",
+      "Engineering Manager - Backend",
+      "Amsterdam, Netherlands",
+      "No",
+      "2021-07-12"
+    ]
+  ],
+  "facts": [
+    "120 open companies hiring engineering managers roles were live across 12 employers on 2026-07-12.",
+    "The most active employer is databricks at 25 openings, ahead of anthropic on 17.",
+    "Remote work is offered on 40 of the 120 openings - a 33% remote share.",
+    "San Francisco appears most often among listed locations, on 10 postings.",
+    "Postings are fresh: 18 roles went up in the 7 days leading to the capture.",
+    "Baseline established 2026-07-12 with 120 roles; deltas start at the next refresh."
+  ],
+  "faq": [
+    {
+      "q": "Where does this hiring data come from?",
+      "a": "From the public careers APIs that companies expose through their ATS (Greenhouse, Lever, Ashby). A single automated run on 2026-07-12 matched 'companies hiring engineering managers' and returned 120 live roles at 12 employers; nothing is manually entered."
+    },
+    {
+      "q": "Who is hiring the most companies hiring engineering managers roles right now?",
+      "a": "In this snapshot it is databricks, posting 25 of the 120 live roles; anthropic is next with 17. Each refresh recounts the boards, so rankings move."
+    },
+    {
+      "q": "What share of the openings allow remote work?",
+      "a": "33% - that is 40 of 120 roles carrying an explicit remote flag on the source board. Per-role remote status is in the table."
+    },
+    {
+      "q": "When was this hiring data last updated?",
+      "a": "The capture date is 2026-07-12, shown in the provenance line, and 18 roles were less than a week old at that moment. Refreshes rewrite this same page with the newest board state."
+    }
+  ],
+  "related_product": {
+    "name": "Company Careers Job Scraper (Greenhouse, Lever, Ashby)",
+    "url": "https://apify.com/chilly_damask/company-careers-job-scraper"
+  },
+  "citations": [],
+  "factory": {
+    "slice_id": "jobs-engineering-manager",
+    "vertical": "jobs",
+    "min_rows": 10,
+    "items_hash": "5181846a658dc9d3d8a4ed16e7c3a5950ebb5093019de44bb42ffc45fa3a860b"
+  }
+}

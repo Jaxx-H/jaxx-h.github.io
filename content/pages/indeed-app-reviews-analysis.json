@@ -1,0 +1,117 @@
+{
+  "slug": "indeed-app-reviews-analysis",
+  "title": "Indeed Job Search App Reviews: iOS & Android User Data",
+  "description": "Indeed Job Search review snapshot 2026-07-12 - 240 reviews, average 2.38 of 5, 55% 1-star, tallied per store.",
+  "answer_first": "Indeed Job Search averages 2.38 of 5 across the 240 reviews in this July 12, 2026 window (App Store 2.00, Google Play 4.25); 25% are 5-star and 55% are 1-star. The first capture for this dataset was 2026-07-12 and holds 240 reviews as the comparison baseline. See the per-store, per-star breakdown in the table that follows.",
+  "data_source": {
+    "actor": "app-store-google-play-review-scraper",
+    "run_id": "icLlJu7aO9DuQTSum",
+    "fetched_at": "2026-07-12T18:11:22Z"
+  },
+  "columns": [
+    "Store",
+    "Stars",
+    "Reviews",
+    "Share %"
+  ],
+  "rows": [
+    [
+      "App Store",
+      "5★",
+      "31",
+      "16%"
+    ],
+    [
+      "App Store",
+      "4★",
+      "11",
+      "6%"
+    ],
+    [
+      "App Store",
+      "3★",
+      "14",
+      "7%"
+    ],
+    [
+      "App Store",
+      "2★",
+      "15",
+      "8%"
+    ],
+    [
+      "App Store",
+      "1★",
+      "129",
+      "64%"
+    ],
+    [
+      "Google Play",
+      "5★",
+      "28",
+      "70%"
+    ],
+    [
+      "Google Play",
+      "4★",
+      "4",
+      "10%"
+    ],
+    [
+      "Google Play",
+      "3★",
+      "2",
+      "5%"
+    ],
+    [
+      "Google Play",
+      "2★",
+      "2",
+      "5%"
+    ],
+    [
+      "Google Play",
+      "1★",
+      "4",
+      "10%"
+    ]
+  ],
+  "facts": [
+    "Across 240 reviews fetched 2026-07-12, the mean score is 2.38 of 5 (App Store 2.00, Google Play 4.25).",
+    "The 5-star share stands at 25% - 59 reviews of 240.",
+    "The 1-star share is 55%: 133 reviews out of 240.",
+    "The window draws on 1 country feed(s), led by US at 240 reviews.",
+    "updates is the leading complaint bucket: 17 of 150 low-rating reviews mention it.",
+    "Initial capture (2026-07-12) logs 240 reviews as the comparison baseline."
+  ],
+  "faq": [
+    {
+      "q": "Why is this average different from the store listing?",
+      "a": "Because it is computed only from the 240 most recent reviews captured 2026-07-12. Recent-window averages like this 2.38 of 5 move faster than lifetime store ratings and highlight what users say right now."
+    },
+    {
+      "q": "What is the source of this rating breakdown?",
+      "a": "A single 2026-07-12 scrape of public store review feeds for Indeed Job Search: 240 reviews across 2 feed(s), each carrying its own star rating and date. The table simply counts them per star and store."
+    },
+    {
+      "q": "How do the two stores compare?",
+      "a": "For the 2026-07-12 window: App Store 2.00, Google Play 4.25. Both figures come from the same 240-review capture, so they are directly comparable snapshots of current sentiment."
+    },
+    {
+      "q": "How would I build this table for a different app?",
+      "a": "Run the source actor with your app's store identifiers; it emits the same normalized review records used here (240 in this window), ready to tally per star and store."
+    }
+  ],
+  "related_product": {
+    "name": "App Store & Google Play Review Scraper",
+    "url": "https://apify.com/chilly_damask/app-store-google-play-review-scraper"
+  },
+  "citations": [],
+  "factory": {
+    "slice_id": "reviews-indeed",
+    "vertical": "reviews",
+    "min_rows": 50,
+    "item_count": 240,
+    "items_hash": "ec1467700b27d74a82a919b43e9643cd9a324049e37f421e0c2a0ade2f36e173"
+  }
+}

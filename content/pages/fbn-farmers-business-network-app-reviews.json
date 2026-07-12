@@ -1,0 +1,115 @@
+{
+  "slug": "fbn-farmers-business-network-app-reviews",
+  "title": "FBN (Farmers Business Network) App Reviews: Rating Data From Both Stores",
+  "description": "28 recent FBN reviews scraped 2026-07-12: 2.96 of 5 average, 43% 1-star, per-store star breakdown.",
+  "answer_first": "Across 28 recent reviews of FBN captured July 12, 2026, the average rating is 2.96 out of 5 (App Store 5.00, Google Play 2.81). 11 reviews (39%) award 5 stars, while 12 (43%) give the minimum 1 star. This is the first review snapshot for this page, captured 2026-07-12, with 28 reviews in the baseline window. The table below breaks the ratings down star by star for each store.",
+  "data_source": {
+    "actor": "app-store-google-play-review-scraper",
+    "run_id": "havOF99QpZzT9s0IE",
+    "fetched_at": "2026-07-12T18:12:23Z"
+  },
+  "columns": [
+    "Store",
+    "Stars",
+    "Reviews",
+    "Share %"
+  ],
+  "rows": [
+    [
+      "App Store",
+      "5★",
+      "2",
+      "100%"
+    ],
+    [
+      "App Store",
+      "4★",
+      "0",
+      "0%"
+    ],
+    [
+      "App Store",
+      "3★",
+      "0",
+      "0%"
+    ],
+    [
+      "App Store",
+      "2★",
+      "0",
+      "0%"
+    ],
+    [
+      "App Store",
+      "1★",
+      "0",
+      "0%"
+    ],
+    [
+      "Google Play",
+      "5★",
+      "9",
+      "35%"
+    ],
+    [
+      "Google Play",
+      "4★",
+      "2",
+      "8%"
+    ],
+    [
+      "Google Play",
+      "3★",
+      "2",
+      "8%"
+    ],
+    [
+      "Google Play",
+      "2★",
+      "1",
+      "4%"
+    ],
+    [
+      "Google Play",
+      "1★",
+      "12",
+      "46%"
+    ]
+  ],
+  "facts": [
+    "Average rating: 2.96 out of 5 across 28 reviews (App Store 5.00, Google Play 2.81), captured 2026-07-12.",
+    "11 of 28 reviews (39%) are 5-star.",
+    "12 of 28 reviews (43%) are 1-star.",
+    "Reviews span 1 country feed(s); the largest share comes from US with 28 reviews.",
+    "First snapshot recorded 2026-07-12: a baseline window of 28 reviews."
+  ],
+  "faq": [
+    {
+      "q": "Is this FBN's overall store rating?",
+      "a": "No - it is a snapshot of 28 recent reviews captured 2026-07-12, which skews toward users motivated to write at that moment. Lifetime store ratings aggregate far more reviews and will differ from the 2.96 of 5 seen here."
+    },
+    {
+      "q": "How was this review data collected?",
+      "a": "An automated scraper pulled recent public reviews for FBN from 2 store feed(s) on 2026-07-12, capturing rating, date, text, and helpful votes - 28 reviews in all. Reviewer identities are not republished here."
+    },
+    {
+      "q": "Which store rates FBN higher right now?",
+      "a": "In this window: App Store 5.00, Google Play 2.81. Averages are computed only from the 28 reviews captured 2026-07-12, so treat gaps of a few hundredths as noise rather than signal."
+    },
+    {
+      "q": "Can I get the same data for another app?",
+      "a": "Yes - the source actor accepts any App Store ID or Google Play package name and returns the same normalized review feed with country, rating, and date filters. This page's window held 28 reviews."
+    }
+  ],
+  "related_product": {
+    "name": "App Store & Google Play Review Scraper",
+    "url": "https://apify.com/chilly_damask/app-store-google-play-review-scraper"
+  },
+  "citations": [],
+  "factory": {
+    "slice_id": "reviews-fbn",
+    "vertical": "reviews",
+    "min_rows": 10,
+    "items_hash": "0d2a113b7291fcc5754a26ac85dbdbf287c82a2b9e748a188b412b145476393c"
+  }
+}

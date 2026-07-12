@@ -1,0 +1,117 @@
+{
+  "slug": "john-deere-operations-center-app-reviews",
+  "title": "John Deere Operations Center Mobile: App Review Data From Both Stores",
+  "description": "Star-by-star review data for Operations Center Mobile, fetched 2026-07-12: 2.77 of 5 across 95 reviews, 27% 5-star.",
+  "answer_first": "A July 12, 2026 scrape of 95 Operations Center Mobile reviews puts the combined average at 2.77 of 5 - App Store 2.89, Google Play 2.60. The split runs from 26 five-star reviews (27%) down to 36 one-star (38%). Baseline capture 2026-07-12: 95 reviews recorded; rating trends begin with the next refresh. Below, every star level is tallied per store with counts and shares.",
+  "data_source": {
+    "actor": "app-store-google-play-review-scraper",
+    "run_id": "PPgqwabAZGArZXBl3",
+    "fetched_at": "2026-07-12T18:12:03Z"
+  },
+  "columns": [
+    "Store",
+    "Stars",
+    "Reviews",
+    "Share %"
+  ],
+  "rows": [
+    [
+      "App Store",
+      "5★",
+      "14",
+      "25%"
+    ],
+    [
+      "App Store",
+      "4★",
+      "8",
+      "15%"
+    ],
+    [
+      "App Store",
+      "3★",
+      "8",
+      "15%"
+    ],
+    [
+      "App Store",
+      "2★",
+      "8",
+      "15%"
+    ],
+    [
+      "App Store",
+      "1★",
+      "17",
+      "31%"
+    ],
+    [
+      "Google Play",
+      "5★",
+      "12",
+      "30%"
+    ],
+    [
+      "Google Play",
+      "4★",
+      "2",
+      "5%"
+    ],
+    [
+      "Google Play",
+      "3★",
+      "3",
+      "8%"
+    ],
+    [
+      "Google Play",
+      "2★",
+      "4",
+      "10%"
+    ],
+    [
+      "Google Play",
+      "1★",
+      "19",
+      "48%"
+    ]
+  ],
+  "facts": [
+    "The 2026-07-12 window of 95 reviews averages 2.77 of 5 - App Store 2.89, Google Play 2.60.",
+    "Five-star reviews make up 27% of the window (26 of 95).",
+    "1-star reviews account for 38% of the window - 36 of 95.",
+    "US contributes the most reviews (95) of the 1 country feed(s) sampled.",
+    "Keyword counting across the 48 negative (1-2 star) reviews flags crashes & bugs as the top complaint, appearing in 11 of them.",
+    "Baseline established 2026-07-12 with 95 reviews; trend facts start at the next refresh."
+  ],
+  "faq": [
+    {
+      "q": "Does this match the rating shown in the app stores?",
+      "a": "Not necessarily. This window covers 95 recent reviews from 2026-07-12, while store-front ratings average the app's whole history. Treat the 2.77 of 5 here as a current-sentiment reading, not a lifetime score."
+    },
+    {
+      "q": "Where do these reviews come from?",
+      "a": "Directly from the public review feeds of the app stores, collected in one automated run on 2026-07-12. The window holds 95 reviews for Operations Center Mobile across 2 store feed(s), tallied without edits."
+    },
+    {
+      "q": "Do App Store and Google Play users score it differently?",
+      "a": "This capture shows App Store 2.89, Google Play 2.60 across 95 total reviews from 2026-07-12. Small per-store gaps are common in recent-review windows and can flip between refreshes."
+    },
+    {
+      "q": "Does this work for other apps too?",
+      "a": "It does: point the source actor at any package name or App Store ID and it returns the identical structure - ratings, dates, text, helpful votes - that produced these 95 rows."
+    }
+  ],
+  "related_product": {
+    "name": "App Store & Google Play Review Scraper",
+    "url": "https://apify.com/chilly_damask/app-store-google-play-review-scraper"
+  },
+  "citations": [],
+  "factory": {
+    "slice_id": "reviews-john-deere-operations-center",
+    "vertical": "reviews",
+    "min_rows": 15,
+    "item_count": 95,
+    "items_hash": "43286e0876dcf97c94b84a9845a4bffafde58a8a1544f510d671f8e551b58d8e"
+  }
+}

@@ -1,0 +1,330 @@
+{
+  "slug": "companies-hiring-data-engineers",
+  "title": "Which Companies Are Hiring Data Engineers Right Now? (Live ATS Data)",
+  "description": "Live ATS data, 2026-07-12: 39 companies hiring data engineers openings at 11 companies, 46% remote, ranked and dated.",
+  "answer_first": "A July 12, 2026 pull from public ATS careers boards finds 39 live companies hiring data engineers openings spread over 11 employers. The single biggest hirer is openai at 8 roles, while 46% of the full list is remote-friendly. This page begins its history on 2026-07-12: the baseline capture holds 39 open roles. Every opening is listed below with company, title, location, remote flag, and the date it was posted.",
+  "data_source": {
+    "actor": "company-careers-job-scraper",
+    "run_id": "4KQb5FfhSOzsIedPk",
+    "fetched_at": "2026-07-12T18:09:53Z"
+  },
+  "columns": [
+    "Company",
+    "Title",
+    "Location",
+    "Remote",
+    "Posted"
+  ],
+  "rows": [
+    [
+      "anthropic",
+      "Engineering Manager, Research Data Platform",
+      "San Francisco, CA | New York City, NY",
+      "No",
+      "2026-07-06"
+    ],
+    [
+      "reddit",
+      "Staff Data Engineer, Corporate Engineering",
+      "Remote - United States",
+      "Yes",
+      "2026-07-02"
+    ],
+    [
+      "anthropic",
+      "[P] Data Engineer, Safeguards",
+      "San Francisco, CA | New York City, NY",
+      "No",
+      "2026-07-01"
+    ],
+    [
+      "stripe",
+      "Software Engineer, Product Security Data Platforms",
+      "Seattle",
+      "No",
+      "2026-06-30"
+    ],
+    [
+      "databricks",
+      "Sr. Specialist Solutions Architect - Data Engineering & Warehousing",
+      "United States",
+      "No",
+      "2026-06-26"
+    ],
+    [
+      "coinbase",
+      "Analytics Engineer, GFCO Analytics",
+      "Remote - USA",
+      "Yes",
+      "2026-06-25"
+    ],
+    [
+      "coinbase",
+      "Analytics Engineer",
+      "Remote - USA",
+      "Yes",
+      "2026-06-24"
+    ],
+    [
+      "openai",
+      "Data Engineer, Scaling Analytics",
+      "San Francisco",
+      "Yes",
+      "2026-06-17"
+    ],
+    [
+      "stripe",
+      "Staff Software Engineer, Data Engineering Solutions",
+      "Seattle",
+      "No",
+      "2026-06-17"
+    ],
+    [
+      "airbnb",
+      "Senior Staff Data Engineer - Data Stewardship",
+      "United States",
+      "No",
+      "2026-06-10"
+    ],
+    [
+      "openai",
+      "Analytics Engineer, Safety Systems",
+      "San Francisco",
+      "Yes",
+      "2026-06-05"
+    ],
+    [
+      "openai",
+      "Technical Lead Manager, Data Engineering, Trust & Safety",
+      "San Francisco",
+      "No",
+      "2026-06-04"
+    ],
+    [
+      "databricks",
+      "Specialist Solutions Architect - Data Engineering & Warehousing",
+      "United States",
+      "No",
+      "2026-06-01"
+    ],
+    [
+      "openai",
+      "IT Controls Data Engineer",
+      "San Francisco",
+      "Yes",
+      "2026-05-29"
+    ],
+    [
+      "openai",
+      "Analytics Engineer, SMB",
+      "San Francisco",
+      "No",
+      "2026-05-19"
+    ],
+    [
+      "openai",
+      "Senior Data Engineer, Core Experimentation",
+      "Seattle",
+      "Yes",
+      "2026-05-14"
+    ],
+    [
+      "openai",
+      "Data Engineer, People Innovation Labs",
+      "San Francisco",
+      "Yes",
+      "2026-05-13"
+    ],
+    [
+      "anthropic",
+      "Product Management, Human Data Platform",
+      "San Francisco, CA | New York City, NY",
+      "No",
+      "2026-04-29"
+    ],
+    [
+      "coinbase",
+      "Senior Software Engineer - Data Platform",
+      "Remote - USA",
+      "Yes",
+      "2026-04-29"
+    ],
+    [
+      "coinbase",
+      "Senior Software Engineer - Data Platform",
+      "Remote - Canada",
+      "Yes",
+      "2026-04-14"
+    ],
+    [
+      "stripe",
+      "Software Engineer, Product Security Data Platforms",
+      "Seattle",
+      "No",
+      "2026-03-31"
+    ],
+    [
+      "coinbase",
+      "Senior Analytics Engineer (Platform - Financial Analytics)",
+      "Remote - USA",
+      "Yes",
+      "2026-03-30"
+    ],
+    [
+      "dropbox",
+      "Data Engineer",
+      "Remote - Mexico",
+      "Yes",
+      "2026-03-26"
+    ],
+    [
+      "dropbox",
+      "Staff Data Engineer",
+      "Remote - Mexico",
+      "Yes",
+      "2026-03-26"
+    ],
+    [
+      "robinhood",
+      "Senior Staff Software Engineer, Data Platform",
+      "Bellevue, WA",
+      "No",
+      "2026-03-18"
+    ],
+    [
+      "instacart",
+      "Staff Software Engineer, Ads Data Platform",
+      "United States - Remote",
+      "Yes",
+      "2026-03-18"
+    ],
+    [
+      "coinbase",
+      "Senior Staff Software Engineer, Data Platform",
+      "Remote - USA",
+      "Yes",
+      "2026-03-12"
+    ],
+    [
+      "ramp",
+      "Software Engineer, Data Platform",
+      "New York, NY (HQ)",
+      "Yes",
+      "2026-03-11"
+    ],
+    [
+      "anthropic",
+      "Data Engineering Manager, Product",
+      "San Francisco, CA | New York City, NY | Seattle, WA",
+      "No",
+      "2026-02-19"
+    ],
+    [
+      "dropbox",
+      "Staff Data Engineer, Analytics Data Engineering",
+      "Remote - Canada: Select locations",
+      "Yes",
+      "2026-02-18"
+    ],
+    [
+      "dropbox",
+      "Staff Data Engineer, Analytics Data Engineering",
+      "Remote - US: Select locations",
+      "Yes",
+      "2026-02-18"
+    ],
+    [
+      "stripe",
+      "Staff Engineer, Data Engineering Solutions",
+      "Bengaluru",
+      "No",
+      "2026-01-20"
+    ],
+    [
+      "anthropic",
+      "Research Engineer, Economic Research Data Platform",
+      "San Francisco, CA",
+      "No",
+      "2026-01-16"
+    ],
+    [
+      "anthropic",
+      "Data Engineer",
+      "San Francisco, CA | New York City, NY | Seattle, WA",
+      "No",
+      "2025-10-17"
+    ],
+    [
+      "databricks",
+      "Sr. Staff Production Engineer - Data Platform",
+      "Mountain View, California; San Francisco, California",
+      "No",
+      "2025-10-09"
+    ],
+    [
+      "databricks",
+      "Staff Software Engineer (Data Platform)",
+      "Bengaluru, India",
+      "No",
+      "2024-09-23"
+    ],
+    [
+      "databricks",
+      "Staff Software Engineer - Data Platform",
+      "Bengaluru, India",
+      "No",
+      "2024-08-19"
+    ],
+    [
+      "openai",
+      "Data Engineer",
+      "San Francisco",
+      "No",
+      "2023-09-26"
+    ],
+    [
+      "databricks",
+      "Sr. Product Manager, Data Engineering",
+      "San Francisco, California",
+      "No",
+      "2022-08-11"
+    ]
+  ],
+  "facts": [
+    "39 open companies hiring data engineers roles were live across 11 employers on 2026-07-12.",
+    "The most active employer is openai at 8 openings, ahead of anthropic on 6.",
+    "Remote work is offered on 18 of the 39 openings - a 46% remote share.",
+    "San Francisco appears most often among listed locations, on 7 postings.",
+    "Postings are fresh: 1 roles went up in the 7 days leading to the capture.",
+    "Baseline established 2026-07-12 with 39 roles; deltas start at the next refresh."
+  ],
+  "faq": [
+    {
+      "q": "Where does this hiring data come from?",
+      "a": "From the public careers APIs that companies expose through their ATS (Greenhouse, Lever, Ashby). A single automated run on 2026-07-12 matched 'companies hiring data engineers' and returned 39 live roles at 11 employers; nothing is manually entered."
+    },
+    {
+      "q": "Who is hiring the most companies hiring data engineers roles right now?",
+      "a": "In this snapshot it is openai, posting 8 of the 39 live roles; anthropic is next with 6. Each refresh recounts the boards, so rankings move."
+    },
+    {
+      "q": "What share of the openings allow remote work?",
+      "a": "46% - that is 18 of 39 roles carrying an explicit remote flag on the source board. Per-role remote status is in the table."
+    },
+    {
+      "q": "When was this hiring data last updated?",
+      "a": "The capture date is 2026-07-12, shown in the provenance line, and 1 roles were less than a week old at that moment. Refreshes rewrite this same page with the newest board state."
+    }
+  ],
+  "related_product": {
+    "name": "Company Careers Job Scraper (Greenhouse, Lever, Ashby)",
+    "url": "https://apify.com/chilly_damask/company-careers-job-scraper"
+  },
+  "citations": [],
+  "factory": {
+    "slice_id": "jobs-data-engineer",
+    "vertical": "jobs",
+    "min_rows": 10,
+    "items_hash": "8b79f373f7b28160ee1e67a415c5d3bed76201e13ac036fb7af3866ff17addab"
+  }
+}

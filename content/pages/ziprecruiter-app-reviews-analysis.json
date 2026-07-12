@@ -1,0 +1,117 @@
+{
+  "slug": "ziprecruiter-app-reviews-analysis",
+  "title": "ZipRecruiter App Reviews: Is It Legit? Store Rating Data",
+  "description": "Star-by-star review data for ZipRecruiter Job Search, fetched 2026-07-12: 3.21 of 5 across 240 reviews, 48% 5-star.",
+  "answer_first": "A July 12, 2026 scrape of 240 ZipRecruiter Job Search reviews puts the combined average at 3.21 of 5 - App Store 2.92, Google Play 4.67. The split runs from 116 five-star reviews (48%) down to 88 one-star (37%). Baseline capture 2026-07-12: 240 reviews recorded; rating trends begin with the next refresh. Below, every star level is tallied per store with counts and shares.",
+  "data_source": {
+    "actor": "app-store-google-play-review-scraper",
+    "run_id": "mITf4vrKj7uApS2mI",
+    "fetched_at": "2026-07-12T18:11:34Z"
+  },
+  "columns": [
+    "Store",
+    "Stars",
+    "Reviews",
+    "Share %"
+  ],
+  "rows": [
+    [
+      "App Store",
+      "5★",
+      "82",
+      "41%"
+    ],
+    [
+      "App Store",
+      "4★",
+      "6",
+      "3%"
+    ],
+    [
+      "App Store",
+      "3★",
+      "12",
+      "6%"
+    ],
+    [
+      "App Store",
+      "2★",
+      "14",
+      "7%"
+    ],
+    [
+      "App Store",
+      "1★",
+      "86",
+      "43%"
+    ],
+    [
+      "Google Play",
+      "5★",
+      "34",
+      "85%"
+    ],
+    [
+      "Google Play",
+      "4★",
+      "3",
+      "8%"
+    ],
+    [
+      "Google Play",
+      "3★",
+      "1",
+      "2%"
+    ],
+    [
+      "Google Play",
+      "2★",
+      "0",
+      "0%"
+    ],
+    [
+      "Google Play",
+      "1★",
+      "2",
+      "5%"
+    ]
+  ],
+  "facts": [
+    "The 2026-07-12 window of 240 reviews averages 3.21 of 5 - App Store 2.92, Google Play 4.67.",
+    "Five-star reviews make up 48% of the window (116 of 240).",
+    "1-star reviews account for 37% of the window - 88 of 240.",
+    "US contributes the most reviews (240) of the 1 country feed(s) sampled.",
+    "Keyword counting across the 102 negative (1-2 star) reviews flags crashes & bugs as the top complaint, appearing in 9 of them.",
+    "Baseline established 2026-07-12 with 240 reviews; trend facts start at the next refresh."
+  ],
+  "faq": [
+    {
+      "q": "Does this match the rating shown in the app stores?",
+      "a": "Not necessarily. This window covers 240 recent reviews from 2026-07-12, while store-front ratings average the app's whole history. Treat the 3.21 of 5 here as a current-sentiment reading, not a lifetime score."
+    },
+    {
+      "q": "Where do these reviews come from?",
+      "a": "Directly from the public review feeds of the app stores, collected in one automated run on 2026-07-12. The window holds 240 reviews for ZipRecruiter Job Search across 2 store feed(s), tallied without edits."
+    },
+    {
+      "q": "Do App Store and Google Play users score it differently?",
+      "a": "This capture shows App Store 2.92, Google Play 4.67 across 240 total reviews from 2026-07-12. Small per-store gaps are common in recent-review windows and can flip between refreshes."
+    },
+    {
+      "q": "Does this work for other apps too?",
+      "a": "It does: point the source actor at any package name or App Store ID and it returns the identical structure - ratings, dates, text, helpful votes - that produced these 240 rows."
+    }
+  ],
+  "related_product": {
+    "name": "App Store & Google Play Review Scraper",
+    "url": "https://apify.com/chilly_damask/app-store-google-play-review-scraper"
+  },
+  "citations": [],
+  "factory": {
+    "slice_id": "reviews-ziprecruiter",
+    "vertical": "reviews",
+    "min_rows": 50,
+    "item_count": 240,
+    "items_hash": "7d3c578a912b0497103f9d25a42490e44e695a8f1682a25ab42f963dbd39ddf6"
+  }
+}
