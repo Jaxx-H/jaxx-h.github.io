@@ -10,14 +10,28 @@ the canonical destination every other channel (syndication, X) links back to.
 ## How it works
 
 1. Data pages live in `content/pages/*.json` (see `CONTENT-CONTRACT.md`).
-2. `build.py` (Python **stdlib only** — no pip, no Jekyll) renders them to `dist/`.
-3. `check_site.py` validates the build.
-4. `.github/workflows/build-deploy.yml` runs both on every push to `main` and deploys
-   `dist/` to GitHub Pages.
+2. `scan_content.py` — PII guard at the **commit boundary**: fails if any content JSON
+   contains an email-like string. Any rail that pushes content here must run it BEFORE
+   committing (CI also runs it first, as a second net).
+3. `build.py` (Python **stdlib only** — no pip, no Jekyll) renders them to `dist/`.
+4. `check_site.py` — the independent oracle (root of the repo, shares zero rendering
+   code with the builder): sitemap/JSON-LD/canonical/table-depth/title-uniqueness checks.
+5. `.github/workflows/build-deploy.yml`: scan → build → check → deploy → `ping_indexnow.py`
+   (auto-submits changed URLs to Bing/Yandex/DuckDuckGo; the IndexNow key is public by design).
 
 ```
-python3 build.py && python3 check_site.py   # local
+python3 scan_content.py && python3 build.py && python3 check_site.py   # local
 ```
+
+Template note: the CTA renders **before** the FAQ on data pages — intentional
+(conversion before long-tail Q&A), documented here so nobody "fixes" it either way.
+
+### PII incident runbook (if an email ever reaches public git history)
+1. Delete/clean the offending file; commit.
+2. Force-push a scrubbed history (`git filter-repo` or rebase) — this repo is small.
+3. Contact GitHub Support to purge cached views of the old commits.
+4. No secrets are involved (emails only), so nothing to rotate.
+5. Log the incident to the operator bridge.
 
 ## Layout
 

@@ -11,7 +11,7 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false # never cancel a deploy mid-flight; queued runs are fine at this scale
 
 jobs:
   build:
@@ -21,6 +21,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: PII scan (commit-boundary guard, runs before anything else)
+        run: python3 scan_content.py
       - name: Build site (stdlib only, no deps)
         run: python3 build.py
       - name: Validate build
@@ -40,3 +42,16 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  ping:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Rebuild dist (jobs do not share workspaces)
+        run: python3 build.py
+      - name: Submit URLs to IndexNow (Bing/Yandex/DDG — key is public by design)
+        run: python3 ping_indexnow.py

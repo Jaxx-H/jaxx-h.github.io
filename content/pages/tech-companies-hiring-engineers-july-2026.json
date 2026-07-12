@@ -1,0 +1,129 @@
+{
+  "slug": "tech-companies-hiring-engineers-july-2026",
+  "title": "Which Tech Companies Are Hiring Engineers Right Now? (Live Greenhouse Data, July 2026)",
+  "description": "Live scrape of 12 tech companies' Greenhouse boards, July 2026: 1,095 open engineer roles ranked by company, with remote-role counts and shares.",
+  "answer_first": "As of a July 11, 2026 scrape of 12 major tech companies' Greenhouse job boards, there are 1,095 open roles with 'engineer' in the title. Databricks leads by a wide margin with 373 open engineer roles — more than three times Stripe's 114 — followed by Anthropic (146) and Stripe (114). Remote policy splits sharply by company: GitLab (42 of 42) and Instacart (39 of 39) list every engineer role as remote, Coinbase lists 50 of 51, while Robinhood (0 of 51) and Duolingo (0 of 21) list none. The full per-company table is below.",
+  "data_source": {
+    "actor": "company-careers-job-scraper",
+    "run_id": "rcaX2eoHMDd43rTEH",
+    "fetched_at": "2026-07-11"
+  },
+  "columns": [
+    "Company",
+    "Open engineer roles",
+    "Remote roles",
+    "Remote share",
+    "Newest posting"
+  ],
+  "rows": [
+    [
+      "Databricks",
+      "373",
+      "22",
+      "6%",
+      "2026-07-11"
+    ],
+    [
+      "Anthropic",
+      "146",
+      "15",
+      "10%",
+      "2026-07-10"
+    ],
+    [
+      "Stripe",
+      "114",
+      "11",
+      "10%",
+      "2026-07-10"
+    ],
+    [
+      "Reddit",
+      "83",
+      "72",
+      "87%",
+      "2026-07-10"
+    ],
+    [
+      "Pinterest",
+      "80",
+      "44",
+      "55%",
+      "2026-07-08"
+    ],
+    [
+      "Airbnb",
+      "68",
+      "22",
+      "32%",
+      "2026-07-10"
+    ],
+    [
+      "Robinhood",
+      "51",
+      "0",
+      "0%",
+      "2026-07-10"
+    ],
+    [
+      "Coinbase",
+      "51",
+      "50",
+      "98%",
+      "2026-07-09"
+    ],
+    [
+      "GitLab",
+      "42",
+      "42",
+      "100%",
+      "2026-07-10"
+    ],
+    [
+      "Instacart",
+      "39",
+      "39",
+      "100%",
+      "2026-07-10"
+    ],
+    [
+      "Dropbox",
+      "27",
+      "26",
+      "96%",
+      "2026-07-01"
+    ],
+    [
+      "Duolingo",
+      "21",
+      "0",
+      "0%",
+      "2026-07-10"
+    ]
+  ],
+  "facts": [
+    "Total across the 12 boards: 1,095 open roles with 'engineer' in the title (scraped 2026-07-11).",
+    "Databricks alone accounts for 373 roles — 34% of the entire sample and more than 3x Stripe's 114.",
+    "343 of 1,095 roles (31%) are listed as remote; GitLab and Instacart are 100% remote for engineers, Robinhood and Duolingo 0%.",
+    "4 of the 12 companies (Databricks, Anthropic, Stripe, Reddit) hold 716 roles — 65% of all openings in the sample."
+  ],
+  "faq": [
+    {
+      "q": "Which companies are in this sample and why these 12?",
+      "a": "Stripe, Airbnb, Pinterest, Reddit, Robinhood, Coinbase, Databricks, GitLab, Duolingo, Dropbox, Instacart, and Anthropic — 12 well-known tech employers whose careers sites run on Greenhouse, so their openings are queryable the same way. It is a sample, not the whole industry."
+    },
+    {
+      "q": "How current is this hiring data?",
+      "a": "It was scraped live from each company's public Greenhouse board on July 11, 2026. Job boards change daily; re-running the source actor returns the current picture for any set of companies."
+    },
+    {
+      "q": "Does 'engineer roles' include every engineering job?",
+      "a": "It counts roles whose title contains 'engineer' — so it captures software, data, ML, and hardware engineers but misses titles like 'developer' or 'architect'. Same filter for every company, so the comparison is apples-to-apples."
+    }
+  ],
+  "related_product": {
+    "name": "Company Careers Job Scraper (Greenhouse, Lever, Ashby)",
+    "url": "https://apify.com/chilly_damask/company-careers-job-scraper"
+  },
+  "citations": []
+}

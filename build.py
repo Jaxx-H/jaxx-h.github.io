@@ -25,6 +25,8 @@ TPL_DIR = ROOT / "templates"
 STATIC_DIR = ROOT / "static"
 
 SLUG_RE = re.compile(r"^[a-z0-9-]{3,80}$")
+# reserved output paths a page slug must never collide with
+RESERVED_SLUGS = {"static", "assets", "404", "feed", "sitemap", "robots", "llms"}
 # Privacy guard: no email may ever reach a rendered page. Emails are what the
 # youtube actor SELLS; the site publishes AGGREGATES ONLY.
 EMAIL_RE = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
@@ -38,6 +40,9 @@ def die(msg):
 
 def load_config():
     cfg = json.loads((ROOT / "config.json").read_text())
+    for key in ("site_url", "site_name", "tagline", "actor_base"):
+        if not isinstance(cfg.get(key), str) or not cfg.get(key, "").strip():
+            die(f"config.json: required key {key!r} is missing or empty")
     cname = (cfg.get("cname") or "").strip()
     if cname:
         cfg["site_url"] = f"https://{cname}"
@@ -56,13 +61,14 @@ def word_count(*strings):
     return n
 
 
-def validate_page(p, path, seen_slugs, seen_titles):
+def validate_page(p, path, seen_slugs, seen_titles, seen_descs):
     def req(cond, msg):
         if not cond:
             die(f"{path.name}: {msg}")
 
     slug = p.get("slug", "")
     req(isinstance(slug, str) and SLUG_RE.match(slug), f"invalid/missing slug {slug!r} (must match {SLUG_RE.pattern})")
+    req(slug not in RESERVED_SLUGS, f"slug {slug!r} collides with a reserved output path")
     req(slug not in seen_slugs, f"duplicate slug {slug!r}")
     seen_slugs.add(slug)
 
@@ -73,6 +79,8 @@ def validate_page(p, path, seen_slugs, seen_titles):
 
     desc = p.get("description", "")
     req(isinstance(desc, str) and 0 < len(desc) <= 160, f"description must be 1..160 chars (got {len(desc)})")
+    req(desc not in seen_descs, f"duplicate description {desc!r}")
+    seen_descs.add(desc)
 
     af = p.get("answer_first", "")
     req(isinstance(af, str) and af.strip(), "missing answer_first")
@@ -188,14 +196,14 @@ def main():
     index_tpl = tpl("index.html")
 
     page_files = sorted(PAGES_DIR.glob("*.json"))
-    seen_slugs, seen_titles = set(), set()
+    seen_slugs, seen_titles, seen_descs = set(), set(), set()
     pages = []
     for pf in page_files:
         try:
             p = json.loads(pf.read_text())
         except json.JSONDecodeError as e:
             die(f"{pf.name}: invalid JSON — {e}")
-        validate_page(p, pf, seen_slugs, seen_titles)
+        validate_page(p, pf, seen_slugs, seen_titles, seen_descs)
         pages.append(p)
 
     # newest first
@@ -280,9 +288,12 @@ def main():
     privacy_scan(index_html, "index")
     (DIST / "index.html").write_text(index_html)
 
-    # sitemap.xml
+    # sitemap.xml — homepage lastmod = newest page fetch date (the homepage changes
+    # whenever inventory changes), falling back to today for an empty site
     urls = [f"{site_url}/"] + [f"{site_url}/{p['slug']}/" for p in pages]
-    lastmods = [year + "-01-01"] + [p["data_source"]["fetched_at"][:10] for p in pages]
+    home_lastmod = (max(p["data_source"]["fetched_at"][:10] for p in pages)
+                    if pages else datetime.now(timezone.utc).strftime("%Y-%m-%d"))
+    lastmods = [home_lastmod] + [p["data_source"]["fetched_at"][:10] for p in pages]
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for u, lm in zip(urls, lastmods):

@@ -1,0 +1,134 @@
+{
+  "slug": "duolingo-google-play-reviews-july-2026",
+  "title": "Duolingo Google Play Reviews — July 2026 Snapshot (Rating Breakdown)",
+  "description": "The 40 most recent US Google Play reviews of Duolingo, scraped July 2026: average 4.3★, 10% 1-star, 70% 5-star, with review excerpts.",
+  "answer_first": "Across the 40 most recent US Google Play reviews of Duolingo: Language Lessons captured on July 11, 2026, the average rating is 4.3 out of 5. The distribution skews positive — 28 of 40 reviews (70%) are 5-star — but there is a clear negative tail: 4 reviews (10%) are 1-star, with 8 reviews in between. None of the 40 recent reviews received a public developer response. The table below shows the 15 most recent reviews with date, rating, an excerpt, and helpful votes.",
+  "data_source": {
+    "actor": "app-store-google-play-review-scraper",
+    "run_id": "aNT2heqBh0DH2rXy3",
+    "fetched_at": "2026-07-11"
+  },
+  "columns": [
+    "Date",
+    "Rating",
+    "Review excerpt",
+    "Helpful votes"
+  ],
+  "rows": [
+    [
+      "2026-07-10",
+      "1★",
+      "Notorycznie przestaje słyszeć mikrofon w ćwiczeniu przetłumacz słowa. Nie ma opcji zgłoszenia t…",
+      "0"
+    ],
+    [
+      "2026-07-10",
+      "5★",
+      "very nice and excellent and perfect and successful and professional and .....",
+      "1"
+    ],
+    [
+      "2026-07-09",
+      "1★",
+      "this app scares me",
+      "1"
+    ],
+    [
+      "2026-07-09",
+      "4★",
+      "Good for basics",
+      "1"
+    ],
+    [
+      "2026-07-09",
+      "1★",
+      "So I'm being FORCED to update to a version of the app that uses your retarded new \"energy\" feat…",
+      "1"
+    ],
+    [
+      "2026-07-08",
+      "5★",
+      "very easy to learn English ... tq duo",
+      "1"
+    ],
+    [
+      "2026-07-08",
+      "5★",
+      "Best app ever!!!!",
+      "0"
+    ],
+    [
+      "2026-07-08",
+      "5★",
+      "this is awsome",
+      "1"
+    ],
+    [
+      "2026-07-08",
+      "5★",
+      "this is an awesome language learning site",
+      "1"
+    ],
+    [
+      "2026-07-08",
+      "5★",
+      "good",
+      "1"
+    ],
+    [
+      "2026-07-07",
+      "4★",
+      "I'm not really here to rate it, but this new update. All I'm seeing are new words I've never le…",
+      "2"
+    ],
+    [
+      "2026-07-07",
+      "5★",
+      "✅️",
+      "1"
+    ],
+    [
+      "2026-07-07",
+      "5★",
+      "it so help for growing",
+      "0"
+    ],
+    [
+      "2026-07-07",
+      "5★",
+      "I love this app. There is so much to learn. I have the goal of learning 3 more languages. I may…",
+      "0"
+    ],
+    [
+      "2026-07-07",
+      "4★",
+      "too many ads",
+      "1"
+    ]
+  ],
+  "facts": [
+    "Average rating across the 40 most recent US reviews: 4.33 out of 5 (scraped 2026-07-11).",
+    "Rating distribution: 28x 5-star, 6x 4-star, 1x 3-star, 1x 2-star, 4x 1-star.",
+    "0 of 40 recent reviews (0%) got a public developer response.",
+    "The most-recent-review window here is small (40 reviews) — treat it as a live snapshot, not the app's lifetime average."
+  ],
+  "faq": [
+    {
+      "q": "Is this Duolingo's overall Google Play rating?",
+      "a": "No — this is a snapshot of the 40 most recent US reviews on the fetch date, which skews toward users motivated to write right now. Lifetime store ratings aggregate millions of reviews and will differ."
+    },
+    {
+      "q": "How was this review data collected?",
+      "a": "A scraper pulled the most recent US Google Play reviews for com.duolingo on 2026-07-11, capturing rating, date, text, helpful votes, and developer responses. Reviewer names are not published here."
+    },
+    {
+      "q": "Can I get this for another app, or for the Apple App Store?",
+      "a": "Yes — the source actor takes any Google Play package name or App Store ID (or both) and returns the same structured review data, with country, rating, and date filters."
+    }
+  ],
+  "related_product": {
+    "name": "App Store & Google Play Review Scraper",
+    "url": "https://apify.com/chilly_damask/app-store-google-play-review-scraper"
+  },
+  "citations": []
+}
