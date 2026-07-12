@@ -1,0 +1,163 @@
+{
+  "slug": "top-precision-ag-youtube-channels",
+  "title": "Top Precision Ag YouTube Channels",
+  "description": "15 precision agriculture YouTube channels ranked by subscribers (2026-07-12): median 2,370, leader 17,600, contact-availability counts.",
+  "answer_first": "The largest precision agriculture channel in this July 12, 2026 snapshot is Syfero Synergetics with 17,600 subscribers. Across all 15 channels tracked, the median audience is 2,370 subscribers, and 4 of 15 list a public business contact. Since the 2026-07-12 snapshot, 8 channels are new to the ranking and the median audience moved from 2,720 to 2,370 subscribers. The full ranking below shows subscribers, video count, country, and whether each channel lists a public contact.",
+  "data_source": {
+    "actor": "youtube-creator-email-lead-scraper",
+    "run_id": "ZORgE30No2P7kVbhW",
+    "fetched_at": "2026-07-12T18:50:27Z"
+  },
+  "columns": [
+    "Channel",
+    "Subscribers",
+    "Videos",
+    "Country",
+    "Public contact?"
+  ],
+  "rows": [
+    [
+      "Syfero Synergetics",
+      "17,600",
+      "141",
+      "India",
+      "No"
+    ],
+    [
+      "Practical Farmers of Iowa",
+      "12,700",
+      "816",
+      "n/a",
+      "Yes"
+    ],
+    [
+      "Precision Grow",
+      "11,600",
+      "89",
+      "India",
+      "No"
+    ],
+    [
+      "Indian Drone Farmer",
+      "5,760",
+      "137",
+      "India",
+      "No"
+    ],
+    [
+      "Avironix Drones",
+      "5,050",
+      "189",
+      "n/a",
+      "Yes"
+    ],
+    [
+      "Incredible Agriculture",
+      "2,720",
+      "21",
+      "Jamaica",
+      "No"
+    ],
+    [
+      "Acreside",
+      "2,420",
+      "0",
+      "United States",
+      "Yes"
+    ],
+    [
+      "Dronekaaran",
+      "2,370",
+      "107",
+      "India",
+      "No"
+    ],
+    [
+      "Discover Agriculture",
+      "2,160",
+      "53",
+      "Pakistan",
+      "No"
+    ],
+    [
+      "Ag Leader Technology",
+      "2,040",
+      "104",
+      "n/a",
+      "No"
+    ],
+    [
+      "Auto Steering System",
+      "1,450",
+      "32",
+      "n/a",
+      "No"
+    ],
+    [
+      "Trimble Vantage_Ire",
+      "1,340",
+      "130",
+      "Ireland",
+      "No"
+    ],
+    [
+      "Factory Engine",
+      "1,210",
+      "37",
+      "United States",
+      "No"
+    ],
+    [
+      "FarmFly Tech",
+      "1,200",
+      "4",
+      "United States",
+      "No"
+    ],
+    [
+      "Apogee India",
+      "1,070",
+      "79",
+      "India",
+      "Yes"
+    ]
+  ],
+  "facts": [
+    "15 channels qualified for this ranking, with a combined 70,690 subscribers (fetched 2026-07-12).",
+    "The median channel has 2,370 subscribers; the leader, Syfero Synergetics, has 17,600.",
+    "4 of 15 channels list a public business contact; this page publishes only that yes/no aggregate, never an address.",
+    "Together the 15 channels have published 1,939 videos.",
+    "India is the most common base, home to 5 of the 15 channels.",
+    "Since 2026-07-12: 8 channels newly ranked; median subscribers 2,720 to 2,370."
+  ],
+  "faq": [
+    {
+      "q": "How was this channel ranking built?",
+      "a": "Channels were discovered by an automated keyword search for 'precision agriculture' and ranked by subscriber count; 15 channels qualified in the 2026-07-12 capture. All figures are public YouTube statistics from the fetch date."
+    },
+    {
+      "q": "Can I get contact details for these channels?",
+      "a": "Not from this page - it reports only the aggregate that 4 of 15 channels list a public business contact. Running the source actor yourself surfaces whatever contact route each channel makes public."
+    },
+    {
+      "q": "How big is a typical precision agriculture channel?",
+      "a": "The median in this 15-channel sample is 2,370 subscribers, far below the leader's 17,600 - audience size in the niche is heavily top-weighted."
+    },
+    {
+      "q": "How often does this ranking update?",
+      "a": "Subscriber and video counts move daily; this page reflects the 2026-07-12 run and refreshes on the same URL, re-ranking all 15 channels and noting changes against the prior snapshot."
+    }
+  ],
+  "related_product": {
+    "name": "YouTube Creator Email & Lead Scraper",
+    "url": "https://apify.com/chilly_damask/youtube-creator-email-lead-scraper"
+  },
+  "citations": [],
+  "factory": {
+    "slice_id": "creators-precision-ag",
+    "vertical": "creators",
+    "min_rows": 10,
+    "item_count": 17,
+    "items_hash": "0c789359b5cc920100b1358097113ea3df41f864ab2b6df2bbd539e7ce6bb216"
+  }
+}

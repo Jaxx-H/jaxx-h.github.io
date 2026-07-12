@@ -1,0 +1,275 @@
+{
+  "slug": "top-ranching-youtube-channels",
+  "title": "Top Ranching YouTube Channels",
+  "description": "31-channel cattle ranching leaderboard (fetched 2026-07-12): subscriber counts, video totals, public-contact stats.",
+  "answer_first": "This July 12, 2026 ranking covers 31 cattle ranching channels with a combined 4,702,370 subscribers. Life of Tom leads on 2,630,000; the median sits at 5,790, and 5 of 31 channels list a public business contact. Snapshot number 1 landed 2026-07-12 with 31 channels; week-over-week changes start with the next refresh. The channel-by-channel table - subscribers, videos, country, public contact - follows.",
+  "data_source": {
+    "actor": "youtube-creator-email-lead-scraper",
+    "run_id": "R25OYuWSpSPX6dCK7",
+    "fetched_at": "2026-07-12T19:28:34Z"
+  },
+  "columns": [
+    "Channel",
+    "Subscribers",
+    "Videos",
+    "Country",
+    "Public contact?"
+  ],
+  "rows": [
+    [
+      "Life of Tom",
+      "2,630,000",
+      "2,678",
+      "United Kingdom",
+      "No"
+    ],
+    [
+      "The Omar Gosh Vlogs",
+      "1,110,000",
+      "1,322",
+      "United States",
+      "No"
+    ],
+    [
+      "Country Girls Vlog",
+      "232,000",
+      "268",
+      "France",
+      "Yes"
+    ],
+    [
+      "Addison Ranch",
+      "168,000",
+      "387",
+      "United States",
+      "No"
+    ],
+    [
+      "Daily Farm",
+      "165,000",
+      "350",
+      "United States",
+      "No"
+    ],
+    [
+      "DayByDay Vlogs",
+      "105,000",
+      "6,000",
+      "Canada",
+      "No"
+    ],
+    [
+      "Farmlife vlogs",
+      "72,900",
+      "497",
+      "n/a",
+      "No"
+    ],
+    [
+      "Hot Mess Ranch",
+      "72,100",
+      "1,982",
+      "United States",
+      "No"
+    ],
+    [
+      "Thu's Country Life",
+      "38,300",
+      "698",
+      "United States",
+      "No"
+    ],
+    [
+      "4M Ranch",
+      "29,900",
+      "739",
+      "United States",
+      "No"
+    ],
+    [
+      "Green forest life vlog",
+      "11,900",
+      "2",
+      "United States",
+      "No"
+    ],
+    [
+      "Rancher Jon",
+      "8,630",
+      "110",
+      "n/a",
+      "No"
+    ],
+    [
+      "Cliff Honnas Regenerative Rancher & Equine Surgeon",
+      "7,610",
+      "134",
+      "United States",
+      "Yes"
+    ],
+    [
+      "CAMPER RANCH",
+      "7,530",
+      "91",
+      "United States",
+      "No"
+    ],
+    [
+      "Rod Knock Ranch",
+      "7,430",
+      "205",
+      "n/a",
+      "No"
+    ],
+    [
+      "Mirr Ranch Group",
+      "5,790",
+      "1,343",
+      "United States",
+      "No"
+    ],
+    [
+      "kàrnò pig farm vlog",
+      "3,640",
+      "403",
+      "India",
+      "No"
+    ],
+    [
+      "South Texas Cattle and Hay",
+      "3,180",
+      "206",
+      "United States",
+      "No"
+    ],
+    [
+      "Working Cows Podcast - a Regenerative Ranching Pod",
+      "2,760",
+      "842",
+      "United States",
+      "Yes"
+    ],
+    [
+      "Pitzer Ranch",
+      "2,350",
+      "605",
+      "n/a",
+      "Yes"
+    ],
+    [
+      "South Poll Grass Cattle Association",
+      "2,320",
+      "16",
+      "United States",
+      "No"
+    ],
+    [
+      "WR Ranch",
+      "2,250",
+      "132",
+      "United States",
+      "No"
+    ],
+    [
+      "Turnover Ranch",
+      "2,150",
+      "69",
+      "n/a",
+      "No"
+    ],
+    [
+      "Nasco Farm & Ranch",
+      "1,910",
+      "16",
+      "United States",
+      "No"
+    ],
+    [
+      "Counter Culture Farms",
+      "1,860",
+      "116",
+      "n/a",
+      "No"
+    ],
+    [
+      "GardinerAngusRanch",
+      "1,840",
+      "2,094",
+      "United States",
+      "No"
+    ],
+    [
+      "King Ranch",
+      "1,760",
+      "6",
+      "n/a",
+      "No"
+    ],
+    [
+      "Spurley Farms",
+      "1,110",
+      "20",
+      "n/a",
+      "No"
+    ],
+    [
+      "Adventures At Overlook Farm",
+      "1,090",
+      "838",
+      "United States",
+      "No"
+    ],
+    [
+      "Montana Ranch",
+      "1,040",
+      "1,962",
+      "n/a",
+      "Yes"
+    ],
+    [
+      "Mina Farm Vlog",
+      "1,020",
+      "35",
+      "United States",
+      "No"
+    ]
+  ],
+  "facts": [
+    "Combined audience: 4,702,370 subscribers across the 31 ranked channels (2026-07-12).",
+    "Subscribers range up to 2,630,000 (Life of Tom); the median channel counts 5,790.",
+    "5 of 31 ranked channels advertise a public business contact (aggregate only - no addresses shown).",
+    "24,166 videos have been published across all 31 ranked channels.",
+    "More channels are based in United States than anywhere else - 18 of 31.",
+    "Dataset baseline: 31 channels at first capture on 2026-07-12."
+  ],
+  "faq": [
+    {
+      "q": "How were these channels selected?",
+      "a": "By automated keyword discovery for 'cattle ranching' during the 2026-07-12 run - no manual curation. Every one of the 31 channels shown carries its public subscriber, video, and country data."
+    },
+    {
+      "q": "Why are there no email addresses in the table?",
+      "a": "By design - the table shows a yes/no public-contact flag and nothing more (5 of 31 say yes). Address-level data is left to the source actor, which only returns what creators publish."
+    },
+    {
+      "q": "How spread out are the subscriber counts?",
+      "a": "Widely: from 2,630,000 at the top down past a median of 5,790 across 31 channels. The ranking table shows the full curve."
+    },
+    {
+      "q": "Is this snapshot or live data?",
+      "a": "It is a dated snapshot from 2026-07-12 of live public counts, covering 31 channels. The page is rebuilt on a schedule, so the URL stays stable while numbers update."
+    }
+  ],
+  "related_product": {
+    "name": "YouTube Creator Email & Lead Scraper",
+    "url": "https://apify.com/chilly_damask/youtube-creator-email-lead-scraper"
+  },
+  "citations": [],
+  "factory": {
+    "slice_id": "creators-ranching",
+    "vertical": "creators",
+    "min_rows": 10,
+    "item_count": 33,
+    "items_hash": "b67c563dab175293158f84556a7cbd4212bfb35ef9f6504a00b3f2d023b4da1d"
+  }
+}

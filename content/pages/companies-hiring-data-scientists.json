@@ -1,8 +1,8 @@
 {
   "slug": "companies-hiring-data-scientists",
   "title": "Which Companies Are Hiring Data Scientists Right Now? (Live ATS Data)",
-  "description": "83 open companies hiring data scientists roles across 11 companies, live-scraped 2026-07-12: top employers, 58% remote share, posting dates.",
-  "answer_first": "As of a July 12, 2026 scrape of live company job boards, there are 83 open companies hiring data scientists roles across 11 companies. reddit leads the field with 17 openings, and 58% of all listed roles are marked remote. This is the first snapshot of this dataset, captured 2026-07-12, with 83 roles in the opening baseline. The table below lists every role with company, title, location, remote status, and posting date.",
+  "description": "83 open data scientist roles across 11 companies, live-scraped 2026-07-12: top employers, 58% remote share, posting dates.",
+  "answer_first": "As of a July 12, 2026 scrape of live company job boards, there are 83 open data scientist roles across 11 companies. Reddit leads the field with 17 openings, and 58% of all listed roles are marked remote. This is the first snapshot of this dataset, captured 2026-07-12, with 83 roles in the opening baseline. The table below lists every role with company, title, location, remote status, and posting date.",
   "data_source": {
     "actor": "company-careers-job-scraper",
     "run_id": "jnIfMz9ZInG2kP5UL",
@@ -17,581 +17,581 @@
   ],
   "rows": [
     [
-      "pinterest",
+      "Pinterest",
       "Staff Data Scientist, Finance & Business Ops",
       "San Francisco, CA, US; Remote, US",
       "Yes",
       "2026-07-10"
     ],
     [
-      "stripe",
+      "Stripe",
       "Data Scientist, Global Growth",
       "Singapore",
       "No",
       "2026-07-08"
     ],
     [
-      "pinterest",
+      "Pinterest",
       "Sr. Data Scientist, Infrastructure",
       "San Francisco, CA, US; Remote, US",
       "Yes",
       "2026-07-07"
     ],
     [
-      "stripe",
+      "Stripe",
       "Staff Data Scientist, Security",
       "n/a",
       "No",
       "2026-07-06"
     ],
     [
-      "airbnb",
+      "Airbnb",
       "Staff Data Scientist - Long Term Impact",
       "Remote - USA",
       "Yes",
       "2026-07-02"
     ],
     [
-      "pinterest",
+      "Pinterest",
       "Sr. Data Scientist, Performance Marketing",
       "San Francisco, CA, US; Remote, US",
       "Yes",
       "2026-06-26"
     ],
     [
-      "pinterest",
+      "Pinterest",
       "Staff Data Scientist, Ads Delivery",
       "Seattle, WA, US; Remote, US",
       "Yes",
       "2026-06-25"
     ],
     [
-      "pinterest",
+      "Pinterest",
       "Staff Data Scientist, Forecasting",
       "San Francisco, CA, US; Remote, US",
       "Yes",
       "2026-06-23"
     ],
     [
-      "openai",
+      "OpenAI",
       "Data Scientist, Identity",
       "San Francisco",
       "No",
       "2026-06-22"
     ],
     [
-      "stripe",
+      "Stripe",
       "Data Scientist, Payments",
       "Dublin",
       "No",
       "2026-06-19"
     ],
     [
-      "pinterest",
+      "Pinterest",
       "Sr. Data Scientist, Marketing",
       "San Francisco, CA, US; Remote, US",
       "Yes",
       "2026-06-18"
     ],
     [
-      "coinbase",
+      "Coinbase",
       "Senior Data Scientist, CX Analytics",
       "Remote - USA",
       "Yes",
       "2026-06-16"
     ],
     [
-      "openai",
+      "OpenAI",
       "Applied Data Science & Insights Leader - GTM Intelligence Solutions and Technical Success",
       "San Francisco",
       "No",
       "2026-06-11"
     ],
     [
-      "pinterest",
+      "Pinterest",
       "Staff Data Scientist, Ads Product",
       "San Francisco, CA, US; Seattle, WA, US",
       "No",
       "2026-06-10"
     ],
     [
-      "robinhood",
+      "Robinhood",
       "Staff Data Scientist,  ML (Credit Risk)",
       "Menlo Park, CA; New York, NY; Washington, DC",
       "No",
       "2026-06-10"
     ],
     [
-      "ramp",
+      "Ramp",
       "Data Scientist",
       "New York, NY (HQ); San Francisco, CA; Remote (US)",
       "Yes",
       "2026-06-03"
     ],
     [
-      "instacart",
+      "Instacart",
       "Senior Data Scientist II - Core Delivery",
       "Canada - Remote (ON, AB, BC, or NS Only)",
       "Yes",
       "2026-06-02"
     ],
     [
-      "instacart",
+      "Instacart",
       "Senior Data Scientist II - Core Delivery",
       "United States - Remote",
       "Yes",
       "2026-06-02"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Data Scientist, Safeguards",
       "New York City, NY; San Francisco, CA; Seattle, WA",
       "No",
       "2026-06-02"
     ],
     [
-      "reddit",
+      "Reddit",
       "Senior Staff Data Scientist - Consumer Relevance",
       "Remote - Ontario, Canada",
       "Yes",
       "2026-06-01"
     ],
     [
-      "reddit",
+      "Reddit",
       "Senior Staff Data Scientist - Consumer Relevance",
       "Remote - United States",
       "Yes",
       "2026-06-01"
     ],
     [
-      "reddit",
+      "Reddit",
       "Senior Staff Data Scientist - Consumer Experimentation",
       "Remote - United States",
       "Yes",
       "2026-06-01"
     ],
     [
-      "reddit",
+      "Reddit",
       "Senior Staff Data Scientist - Consumer Experimentation",
       "Remote - Ontario, Canada",
       "Yes",
       "2026-06-01"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Data Scientist, GTM",
       "New York City, NY; San Francisco, CA | New York City, NY",
       "No",
       "2026-05-31"
     ],
     [
-      "databricks",
+      "Databricks",
       "Senior Data Scientist",
       "Mountain View, California; San Francisco, California",
       "No",
       "2026-05-27"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Data Scientist, Policy",
       "New York City, NY; San Francisco, CA | New York City, NY; Washington, DC",
       "No",
       "2026-05-27"
     ],
     [
-      "instacart",
+      "Instacart",
       "Senior People Data Scientist",
       "Canada - Remote (ON, AB, BC, or NS Only)",
       "Yes",
       "2026-05-26"
     ],
     [
-      "instacart",
+      "Instacart",
       "Senior People Data Scientist",
       "United States - Remote",
       "Yes",
       "2026-05-26"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Lead Data Scientist, Platform Product",
       "New York City, NY | Seattle, WA; San Francisco, CA",
       "No",
       "2026-05-25"
     ],
     [
-      "airbnb",
+      "Airbnb",
       "Senior Data Scientist, Guest Travel Insurance (Algorithms)",
       "United States",
       "No",
       "2026-05-21"
     ],
     [
-      "pinterest",
+      "Pinterest",
       "Data Scientist II, Infrastructure",
       "San Francisco, CA, US; Remote, US",
       "Yes",
       "2026-05-18"
     ],
     [
-      "pinterest",
+      "Pinterest",
       "Data Scientist II, Experimentation",
       "San Francisco, CA, US; Remote, US",
       "Yes",
       "2026-05-18"
     ],
     [
-      "openai",
+      "OpenAI",
       "Data Scientist, Safety",
       "London, UK",
       "Yes",
       "2026-05-15"
     ],
     [
-      "openai",
+      "OpenAI",
       "Data Scientist, Safety",
       "San Francisco; New York City",
       "Yes",
       "2026-05-15"
     ],
     [
-      "reddit",
+      "Reddit",
       "Senior Data Scientist, Consumer",
       "Remote - Ontario, Canada",
       "Yes",
       "2026-05-15"
     ],
     [
-      "reddit",
+      "Reddit",
       "Senior Data Science Manager, Marketing",
       "Remote - Ontario, Canada",
       "Yes",
       "2026-05-15"
     ],
     [
-      "reddit",
+      "Reddit",
       "Staff Data Scientist, Consumer",
       "Remote - Ontario, Canada",
       "Yes",
       "2026-05-15"
     ],
     [
-      "reddit",
+      "Reddit",
       "Staff Data Scientist, Marketing",
       "Remote - Ontario, Canada",
       "Yes",
       "2026-05-15"
     ],
     [
-      "stripe",
+      "Stripe",
       "Data Science Manager, Risk",
       "Bengaluru",
       "No",
       "2026-05-14"
     ],
     [
-      "openai",
+      "OpenAI",
       "Data Scientist, Core Experimentation",
       "Seattle",
       "Yes",
       "2026-05-13"
     ],
     [
-      "pinterest",
+      "Pinterest",
       "Sr. Data Scientist, Trust and Safety",
       "San Francisco, CA, US; Remote, CA, US",
       "Yes",
       "2026-05-13"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Data Scientist, Supply",
       "San Francisco, CA | New York City, NY | Seattle, WA",
       "No",
       "2026-05-07"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Data Scientist, Developer Productivity",
       "San Francisco, CA | New York City, NY",
       "No",
       "2026-05-06"
     ],
     [
-      "reddit",
+      "Reddit",
       "Staff Data Scientist, Marketing",
       "Remote - United States",
       "Yes",
       "2026-05-05"
     ],
     [
-      "stripe",
+      "Stripe",
       "Data Science Manager, Finance and Strategy",
       "Seattle, WA OR New York, NY OR Remote North America",
       "Yes",
       "2026-04-22"
     ],
     [
-      "reddit",
+      "Reddit",
       "Senior Data Science Manager, Marketing",
       "Remote - United States",
       "Yes",
       "2026-04-22"
     ],
     [
-      "instacart",
+      "Instacart",
       "Senior Data Scientist - Shopping Experience (Search)",
       "Canada - Remote (ON, AB, BC, or NS Only)",
       "Yes",
       "2026-04-15"
     ],
     [
-      "instacart",
+      "Instacart",
       "Senior Data Scientist - Shopping Experience (Search)",
       "United States - Remote",
       "Yes",
       "2026-04-15"
     ],
     [
-      "pinterest",
+      "Pinterest",
       "Staff Technical Program Manager, Monetization Data Science",
       "San Francisco, CA, US; Remote, US",
       "Yes",
       "2026-04-14"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Data Scientist, Marketing",
       "New York City, NY | Seattle, WA; San Francisco, CA",
       "No",
       "2026-03-23"
     ],
     [
-      "airbnb",
+      "Airbnb",
       "(Contract) Senior Data Scientist, Platform Inference - MarTech DS Measurement",
       "United States",
       "No",
       "2026-03-18"
     ],
     [
-      "reddit",
+      "Reddit",
       "Staff Data Scientist, Ads",
       "Remote - United States",
       "Yes",
       "2026-03-16"
     ],
     [
-      "reddit",
+      "Reddit",
       "Staff Data Scientist, Ads",
       "Remote - Ontario, Canada",
       "Yes",
       "2026-03-16"
     ],
     [
-      "airbnb",
+      "Airbnb",
       "Staff Data Scientist, Guest & Host",
       "United States",
       "No",
       "2026-03-11"
     ],
     [
-      "databricks",
+      "Databricks",
       "Principal Data Scientist",
       "Mountain View, California; San Francisco, California",
       "No",
       "2026-03-10"
     ],
     [
-      "openai",
+      "OpenAI",
       "Data Scientist, Business",
       "San Francisco; New York City",
       "Yes",
       "2026-02-27"
     ],
     [
-      "airbnb",
+      "Airbnb",
       "Senior Data Scientist, Guest & Host",
       "Remote",
       "Yes",
       "2026-02-27"
     ],
     [
-      "openai",
+      "OpenAI",
       "Data Scientist, Preparedness",
       "San Francisco",
       "No",
       "2026-02-26"
     ],
     [
-      "pinterest",
+      "Pinterest",
       "Sr. Data Scientist, tvScientific",
       "San Francisco, CA, US; Remote, US",
       "Yes",
       "2026-02-25"
     ],
     [
-      "stripe",
+      "Stripe",
       "Staff Data Scientist, Growth",
       "N/A",
       "No",
       "2026-02-13"
     ],
     [
-      "reddit",
+      "Reddit",
       "Senior Data Scientist, Ads",
       "Remote - Ontario, Canada",
       "Yes",
       "2026-02-11"
     ],
     [
-      "openai",
+      "OpenAI",
       "Data Science Manager, Integrity",
       "San Francisco",
       "No",
       "2026-02-03"
     ],
     [
-      "ramp",
+      "Ramp",
       "Senior Data Scientist, Growth",
       "New York, NY (HQ)",
       "Yes",
       "2026-02-02"
     ],
     [
-      "reddit",
+      "Reddit",
       "Principal Data Scientist, Ads",
       "Remote - United States",
       "Yes",
       "2025-10-14"
     ],
     [
-      "reddit",
+      "Reddit",
       "Senior Data Scientist, Consumer",
       "Remote - United States",
       "Yes",
       "2025-10-01"
     ],
     [
-      "openai",
+      "OpenAI",
       "Data Scientist, Financial Engineering",
       "San Francisco",
       "No",
       "2025-09-30"
     ],
     [
-      "openai",
+      "OpenAI",
       "Data Scientist, Codex",
       "San Francisco",
       "No",
       "2025-09-30"
     ],
     [
-      "openai",
+      "OpenAI",
       "Data Scientist, Platform and B2B Products",
       "San Francisco",
       "No",
       "2025-09-30"
     ],
     [
-      "databricks",
+      "Databricks",
       "Staff Data Scientist - Trust and Safety",
       "San Francisco, California",
       "No",
       "2025-09-19"
     ],
     [
-      "airbnb",
+      "Airbnb",
       "Senior Staff Data Scientist, Guest & Host Marketplace AI",
       "Remote",
       "Yes",
       "2025-07-25"
     ],
     [
-      "openai",
+      "OpenAI",
       "Data Scientist, Infrastructure",
       "San Francisco",
       "No",
       "2025-07-22"
     ],
     [
-      "reddit",
+      "Reddit",
       "Staff Data Scientist, Consumer",
       "Remote - United States",
       "Yes",
       "2025-04-24"
     ],
     [
-      "reddit",
+      "Reddit",
       "Senior Data Scientist, Ads",
       "Remote - United States",
       "Yes",
       "2025-02-03"
     ],
     [
-      "openai",
+      "OpenAI",
       "Data Scientist, Product",
       "San Francisco; Seattle",
       "No",
       "2025-01-24"
     ],
     [
-      "databricks",
+      "Databricks",
       "Senior Manager, Infrastructure Data Science",
       "San Francisco, California",
       "No",
       "2024-11-18"
     ],
     [
-      "databricks",
+      "Databricks",
       "Senior Manager, Infrastructure Data Science",
       "Mountain View, California",
       "No",
       "2024-11-18"
     ],
     [
-      "stripe",
+      "Stripe",
       "Data Scientist",
       "Toronto",
       "No",
       "2024-04-30"
     ],
     [
-      "pinterest",
+      "Pinterest",
       "Sr. Data Scientist, Monetization",
       "San Francisco, CA, US; Seattle, WA, US",
       "No",
       "2024-02-22"
     ],
     [
-      "databricks",
+      "Databricks",
       "Staff Data Scientist - Infrastructure",
       "Mountain View, California",
       "No",
       "2023-12-19"
     ],
     [
-      "instacart",
+      "Instacart",
       "Senior Data Scientist (I & II)",
       "United States - Remote",
       "Yes",
       "2023-03-23"
     ],
     [
-      "instacart",
+      "Instacart",
       "Senior Data Scientist (I & II)",
       "Canada - Remote (ON, AB, BC, or NS Only)",
       "Yes",
       "2023-03-23"
     ],
     [
-      "pinterest",
+      "Pinterest",
       "Data Scientist",
       "San Francisco, CA, US; Remote, CA, US",
       "Yes",
       "2023-03-07"
     ],
     [
-      "databricks",
+      "Databricks",
       "Staff Data Scientist",
       "San Francisco, California",
       "No",
@@ -599,8 +599,8 @@
     ]
   ],
   "facts": [
-    "Total live openings in this capture: 83 companies hiring data scientists roles from 11 companies (fetched 2026-07-12).",
-    "reddit is the largest hirer with 17 open roles; pinterest follows with 14.",
+    "Total live openings in this capture: 83 data scientist roles from 11 companies (fetched 2026-07-12).",
+    "Reddit is the largest hirer with 17 open roles; Pinterest follows with 14.",
     "48 of 83 roles (58%) are listed as remote-eligible.",
     "The most common location is Remote - United States, attached to 9 of the openings.",
     "4 of the roles were posted within the 7 days before the fetch date.",
@@ -609,11 +609,11 @@
   "faq": [
     {
       "q": "How was this job data collected?",
-      "a": "It comes from one automated scrape of public company careers boards (Greenhouse, Lever, and Ashby style ATS pages) on 2026-07-12, matching roles for the query 'companies hiring data scientists'. The run returned 83 open roles across 11 companies, and every row keeps the posting date shown by the employer."
+      "a": "It comes from one automated scrape of public company careers boards (Greenhouse, Lever, and Ashby style ATS pages) on 2026-07-12, matching roles for the query 'data scientist'. The run returned 83 open roles across 11 companies, and every row keeps the posting date shown by the employer."
     },
     {
-      "q": "Which company has the most open companies hiring data scientists roles?",
-      "a": "reddit leads with 17 of the 83 openings in this capture, followed by pinterest with 14. Hiring volume shifts week to week, so the leader can change between refreshes."
+      "q": "Which company has the most open data scientist roles?",
+      "a": "Reddit leads with 17 of the 83 openings in this capture, followed by Pinterest with 14. Hiring volume shifts week to week, so the leader can change between refreshes."
     },
     {
       "q": "How many of these roles are remote?",
@@ -633,6 +633,7 @@
     "slice_id": "jobs-data-scientist",
     "vertical": "jobs",
     "min_rows": 10,
+    "item_count": 83,
     "items_hash": "994644e454bfef26484606e10fe3bdb415ad7ee9c65c367d690d119615b9269d"
   }
 }

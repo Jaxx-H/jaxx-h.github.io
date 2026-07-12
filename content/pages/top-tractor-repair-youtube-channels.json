@@ -1,0 +1,261 @@
+{
+  "slug": "top-tractor-repair-youtube-channels",
+  "title": "Top Tractor and Farm Machinery Repair YouTube Channels",
+  "description": "29-channel tractor repair leaderboard (fetched 2026-07-12): subscriber counts, video totals, public-contact stats.",
+  "answer_first": "This July 12, 2026 ranking covers 29 tractor repair channels with a combined 1,265,600 subscribers. Restore & Repair leads on 501,000; the median sits at 3,780, and 6 of 29 channels list a public business contact. Snapshot number 1 landed 2026-07-12 with 29 channels; week-over-week changes start with the next refresh. The channel-by-channel table - subscribers, videos, country, public contact - follows.",
+  "data_source": {
+    "actor": "youtube-creator-email-lead-scraper",
+    "run_id": "mJIdYBaPFHebFYyvH",
+    "fetched_at": "2026-07-12T19:14:53Z"
+  },
+  "columns": [
+    "Channel",
+    "Subscribers",
+    "Videos",
+    "Country",
+    "Public contact?"
+  ],
+  "rows": [
+    [
+      "Restore & Repair",
+      "501,000",
+      "110",
+      "United States",
+      "No"
+    ],
+    [
+      "Abdul Kurad",
+      "451,000",
+      "1,031",
+      "India",
+      "Yes"
+    ],
+    [
+      "Hamim mechanics",
+      "130,000",
+      "1,333",
+      "Bangladesh",
+      "Yes"
+    ],
+    [
+      "Mechanic Girl",
+      "59,900",
+      "229",
+      "United States",
+      "No"
+    ],
+    [
+      "Restorations Skills",
+      "26,700",
+      "273",
+      "United States",
+      "No"
+    ],
+    [
+      "Antique Tractor Life",
+      "14,300",
+      "532",
+      "United States",
+      "No"
+    ],
+    [
+      "Millat Tractors Limited Official",
+      "8,830",
+      "441",
+      "Pakistan",
+      "No"
+    ],
+    [
+      "Restoration USA",
+      "8,590",
+      "116",
+      "United States",
+      "No"
+    ],
+    [
+      "Restorations King VN",
+      "7,410",
+      "172",
+      "United States",
+      "No"
+    ],
+    [
+      "FARM SCRAP",
+      "6,190",
+      "216",
+      "United States",
+      "No"
+    ],
+    [
+      "John Deere Mechanic",
+      "5,950",
+      "60",
+      "India",
+      "No"
+    ],
+    [
+      "Bourbon, Beer, Tractors and Prepping!",
+      "5,640",
+      "333",
+      "United States",
+      "Yes"
+    ],
+    [
+      "QueenWrench Mechanic",
+      "4,900",
+      "65",
+      "United States",
+      "No"
+    ],
+    [
+      "Ontario Vintage Tractor +",
+      "4,230",
+      "237",
+      "Canada",
+      "No"
+    ],
+    [
+      "Sf John Deere Service",
+      "3,780",
+      "269",
+      "India",
+      "Yes"
+    ],
+    [
+      "Before Restoration",
+      "3,680",
+      "11",
+      "United States",
+      "No"
+    ],
+    [
+      "Wyatt's Tractor Sales",
+      "2,720",
+      "186",
+      "United States",
+      "No"
+    ],
+    [
+      "Bengineer Everything",
+      "2,710",
+      "52",
+      "n/a",
+      "No"
+    ],
+    [
+      "Small Farm Innovations",
+      "2,630",
+      "57",
+      "United States",
+      "Yes"
+    ],
+    [
+      "Doorstep Tractor Service",
+      "2,290",
+      "28",
+      "n/a",
+      "No"
+    ],
+    [
+      "Gravels End Farms",
+      "2,090",
+      "749",
+      "United States",
+      "Yes"
+    ],
+    [
+      "Kismat Tractor Workshop",
+      "1,800",
+      "225",
+      "India",
+      "No"
+    ],
+    [
+      "Combine repair (NANNU MARAHAR)",
+      "1,750",
+      "219",
+      "India",
+      "No"
+    ],
+    [
+      "Greasy Green Garage",
+      "1,460",
+      "73",
+      "United States",
+      "No"
+    ],
+    [
+      "Craft Gent Restoration",
+      "1,390",
+      "153",
+      "Sri Lanka",
+      "No"
+    ],
+    [
+      "Amazing Restoration",
+      "1,380",
+      "62",
+      "Pakistan",
+      "No"
+    ],
+    [
+      "James Connolly Machinery and Tractor Videos",
+      "1,190",
+      "58",
+      "United Kingdom",
+      "No"
+    ],
+    [
+      "Madina tractor Workshop topi",
+      "1,070",
+      "1,017",
+      "n/a",
+      "No"
+    ],
+    [
+      "Naaz Diesel Leb",
+      "1,020",
+      "106",
+      "n/a",
+      "No"
+    ]
+  ],
+  "facts": [
+    "Combined audience: 1,265,600 subscribers across the 29 ranked channels (2026-07-12).",
+    "Subscribers range up to 501,000 (Restore & Repair); the median channel counts 3,780.",
+    "6 of 29 ranked channels advertise a public business contact (aggregate only - no addresses shown).",
+    "8,413 videos have been published across all 29 ranked channels.",
+    "More channels are based in United States than anywhere else - 14 of 29.",
+    "Dataset baseline: 29 channels at first capture on 2026-07-12."
+  ],
+  "faq": [
+    {
+      "q": "How were these channels selected?",
+      "a": "By automated keyword discovery for 'tractor repair' during the 2026-07-12 run - no manual curation. Every one of the 29 channels shown carries its public subscriber, video, and country data."
+    },
+    {
+      "q": "Why are there no email addresses in the table?",
+      "a": "By design - the table shows a yes/no public-contact flag and nothing more (6 of 29 say yes). Address-level data is left to the source actor, which only returns what creators publish."
+    },
+    {
+      "q": "How spread out are the subscriber counts?",
+      "a": "Widely: from 501,000 at the top down past a median of 3,780 across 29 channels. The ranking table shows the full curve."
+    },
+    {
+      "q": "Is this snapshot or live data?",
+      "a": "It is a dated snapshot from 2026-07-12 of live public counts, covering 29 channels. The page is rebuilt on a schedule, so the URL stays stable while numbers update."
+    }
+  ],
+  "related_product": {
+    "name": "YouTube Creator Email & Lead Scraper",
+    "url": "https://apify.com/chilly_damask/youtube-creator-email-lead-scraper"
+  },
+  "citations": [],
+  "factory": {
+    "slice_id": "creators-tractor-repair",
+    "vertical": "creators",
+    "min_rows": 10,
+    "item_count": 30,
+    "items_hash": "b53b102eb0ccc26f21a235a7fae220c2a75d1d975cd0fa611378a9346058e045"
+  }
+}

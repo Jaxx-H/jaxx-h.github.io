@@ -1,8 +1,8 @@
 {
   "slug": "companies-hiring-frontend-engineers",
   "title": "Which Companies Are Hiring Frontend Engineers Right Now? (Live ATS Data)",
-  "description": "Tracker of 16 companies hiring frontend engineers openings across 8 employers, 50% remote, captured 2026-07-12.",
-  "answer_first": "16 companies hiring frontend engineers roles were open across 8 company job boards when this dataset was captured on July 12, 2026. airbnb accounts for the most of them, 3, and 50% of the roles listed are remote. Snapshot number 1 for this query landed 2026-07-12 with 16 roles; week-over-week changes start with the next refresh. The full breakdown, with company, title, location, remote status, and posted date for each role, follows below.",
+  "description": "Tracker of 16 frontend openings across 8 employers, 50% remote, captured 2026-07-12.",
+  "answer_first": "16 frontend roles were open across 8 company job boards when this dataset was captured on July 12, 2026. Airbnb accounts for the most of them, 3, and 50% of the roles listed are remote. Snapshot number 1 for this query landed 2026-07-12 with 16 roles; week-over-week changes start with the next refresh. The full breakdown, with company, title, location, remote status, and posted date for each role, follows below.",
   "data_source": {
     "actor": "company-careers-job-scraper",
     "run_id": "MDJ8I1NjSNF5Jm0xm",
@@ -17,112 +17,112 @@
   ],
   "rows": [
     [
-      "airbnb",
+      "Airbnb",
       "Senior Frontend Engineer, Quality Platform",
       "Brazil",
       "No",
       "2026-06-26"
     ],
     [
-      "airbnb",
+      "Airbnb",
       "Frontend Engineer, Quality Platform",
       "Brazil",
       "No",
       "2026-06-26"
     ],
     [
-      "coinbase",
+      "Coinbase",
       "Senior Software Engineer, Frontend (Consumer - Payments)",
       "Remote - USA",
       "Yes",
       "2026-06-25"
     ],
     [
-      "airbnb",
+      "Airbnb",
       "Staff Frontend Engineer, Client Data & Networking Platform",
       "Remote - USA",
       "Yes",
       "2026-05-28"
     ],
     [
-      "dropbox",
+      "Dropbox",
       "Frontend Product Software Engineer, Design Systems",
       "Remote - Mexico",
       "Yes",
       "2026-05-06"
     ],
     [
-      "stripe",
+      "Stripe",
       "Frontend Engineer, Expansion",
       "N/A",
       "No",
       "2026-05-04"
     ],
     [
-      "reddit",
+      "Reddit",
       "Senior Frontend Software Engineer, Home Experience",
       "Remote - United States",
       "Yes",
       "2026-03-25"
     ],
     [
-      "stripe",
+      "Stripe",
       "Staff Frontend Engineer, Stripe Dashboard",
       "Seattle",
       "No",
       "2026-03-24"
     ],
     [
-      "ramp",
+      "Ramp",
       "Senior Software Engineer | GTM Platform, Frontend",
       "New York, NY (HQ)",
       "Yes",
       "2026-02-26"
     ],
     [
-      "coinbase",
+      "Coinbase",
       "Staff Software Engineer, Frontend (Consumer - Advanced Trading)",
       "Remote - USA",
       "Yes",
       "2026-02-20"
     ],
     [
-      "databricks",
+      "Databricks",
       "Staff Frontend Engineer - Seattle",
       "Seattle, Washington",
       "No",
       "2026-02-03"
     ],
     [
-      "databricks",
+      "Databricks",
       "Staff Software Engineer - Frontend (NYC)",
       "New York City, New York",
       "No",
       "2026-01-21"
     ],
     [
-      "openai",
+      "OpenAI",
       "Frontend Engineer, Financial Web Platform",
       "San Francisco",
       "Yes",
       "2026-01-20"
     ],
     [
-      "stripe",
+      "Stripe",
       "Frontend Engineer, Payments & Risk",
       "N/A",
       "No",
       "2025-11-21"
     ],
     [
-      "databricks",
+      "Databricks",
       "Senior Software Frontend Engineer – Dashboards",
       "Vancouver, Canada",
       "No",
       "2025-10-28"
     ],
     [
-      "ramp",
+      "Ramp",
       "Software Engineer, Frontend",
       "New York, NY (HQ); Remote (Canada); San Francisco, CA; Remote (US); Miami, FL",
       "Yes",
@@ -130,8 +130,8 @@
     ]
   ],
   "facts": [
-    "Across all boards checked on 2026-07-12, 16 companies hiring frontend engineers roles were open at 8 companies.",
-    "Top of the hiring table: airbnb (3 roles), then databricks (3).",
+    "Across all boards checked on 2026-07-12, 16 frontend roles were open at 8 companies.",
+    "Top of the hiring table: Airbnb (3 roles), then Databricks (3).",
     "50% of the list (8 of 16 roles) carries a remote flag.",
     "More roles list Remote - USA than any other location: 3.",
     "0 listings are less than 7 days old as of the fetch date.",
@@ -140,11 +140,11 @@
   "faq": [
     {
       "q": "How is this openings table built?",
-      "a": "A scraper walks public ATS careers endpoints (Greenhouse, Lever, Ashby) and keeps roles matching 'companies hiring frontend engineers'. The 2026-07-12 run produced the 16 rows shown here from 8 companies, unedited apart from column formatting."
+      "a": "A scraper walks public ATS careers endpoints (Greenhouse, Lever, Ashby) and keeps roles matching 'frontend'. The 2026-07-12 run produced the 16 rows shown here from 8 companies, unedited apart from column formatting."
     },
     {
       "q": "What company currently posts the most of these roles?",
-      "a": "airbnb does, with 3 openings; databricks follows at 3. Together the boards held 16 matching roles when fetched."
+      "a": "Airbnb does, with 3 openings; Databricks follows at 3. Together the boards held 16 matching roles when fetched."
     },
     {
       "q": "Is remote work common in this sample?",
@@ -164,6 +164,7 @@
     "slice_id": "jobs-frontend-engineer",
     "vertical": "jobs",
     "min_rows": 10,
+    "item_count": 16,
     "items_hash": "579872f7bddd133f13f42738149ee75de50066c33c1f2c28bf72f06e2529eb77"
   }
 }

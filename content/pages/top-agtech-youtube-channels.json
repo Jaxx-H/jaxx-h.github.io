@@ -1,0 +1,149 @@
+{
+  "slug": "top-agtech-youtube-channels",
+  "title": "Top AgTech YouTube Channels",
+  "description": "Subscriber ranking for agtech: 13 channels, median 9,610 subs, leader 153,000, captured 2026-07-12.",
+  "answer_first": "New Holland Agriculture tops the agtech table with 153,000 subscribers in this July 12, 2026 capture. The 13-channel field has a median of 9,610 subscribers, and a public business contact is listed by 3 of 13. First capture: 2026-07-12. The initial baseline records 13 channels to compare future refreshes against. See the table for each channel's subscribers, video output, country, and public-contact status.",
+  "data_source": {
+    "actor": "youtube-creator-email-lead-scraper",
+    "run_id": "NoJH8OubzVELcSJbx",
+    "fetched_at": "2026-07-12T20:09:36Z"
+  },
+  "columns": [
+    "Channel",
+    "Subscribers",
+    "Videos",
+    "Country",
+    "Public contact?"
+  ],
+  "rows": [
+    [
+      "New Holland Agriculture",
+      "153,000",
+      "2,086",
+      "n/a",
+      "No"
+    ],
+    [
+      "FRUMACO AGRICULTURE TECHNOLOGY",
+      "59,500",
+      "253",
+      "Germany",
+      "Yes"
+    ],
+    [
+      "Agriculture Hub",
+      "42,800",
+      "1,360",
+      "Pakistan",
+      "Yes"
+    ],
+    [
+      "Agriculture and Technology",
+      "20,700",
+      "526",
+      "India",
+      "No"
+    ],
+    [
+      "Agriculture Tech",
+      "10,500",
+      "80",
+      "n/a",
+      "No"
+    ],
+    [
+      "GEA Farming",
+      "9,970",
+      "456",
+      "Australia",
+      "No"
+    ],
+    [
+      "Clearpath Robotics by Rockwell Automation",
+      "9,610",
+      "129",
+      "n/a",
+      "No"
+    ],
+    [
+      "Agriculture Technology",
+      "4,270",
+      "146",
+      "n/a",
+      "No"
+    ],
+    [
+      "Agriculture Tech",
+      "2,800",
+      "79",
+      "India",
+      "No"
+    ],
+    [
+      "Matrix Farm",
+      "2,210",
+      "163",
+      "United States",
+      "Yes"
+    ],
+    [
+      "Smart Farm",
+      "2,010",
+      "0",
+      "United States",
+      "No"
+    ],
+    [
+      "BioMecha Farms",
+      "1,110",
+      "192",
+      "n/a",
+      "No"
+    ],
+    [
+      "Future Smart Farm",
+      "1,100",
+      "1",
+      "United States",
+      "No"
+    ]
+  ],
+  "facts": [
+    "As of 2026-07-12, 13 channels make the cut, adding up to 319,580 subscribers.",
+    "New Holland Agriculture leads with 153,000 subscribers, while the ranking's median is 9,610.",
+    "Public-contact availability: 3 of 13 channels expose one; the address itself is never republished.",
+    "The 13 channels account for 5,471 uploaded videos combined.",
+    "By country, United States leads: 3 of the 13 channels.",
+    "Initial capture (2026-07-12) logs 13 channels as the comparison baseline."
+  ],
+  "faq": [
+    {
+      "q": "What methodology produced this list?",
+      "a": "A keyword crawl for 'agtech' on 2026-07-12, keeping each discovered channel's public statistics. The resulting 13 channels are ordered by subscribers, with videos and country alongside."
+    },
+    {
+      "q": "How do I reach the creators listed?",
+      "a": "This dataset stays aggregate-only: 3 of 13 channels list some public business contact, and that count is all this page publishes. Use the source actor to collect what channels expose publicly."
+    },
+    {
+      "q": "Are most of these channels large?",
+      "a": "No - the distribution is skewed. The median channel has 9,610 subscribers against 153,000 at the top, so most of the 13 channels are far smaller than the leader."
+    },
+    {
+      "q": "Will these numbers change?",
+      "a": "Yes, constantly - they are live public statistics captured 2026-07-12. Scheduled refreshes update the same URL and report how the 13-channel ranking moved."
+    }
+  ],
+  "related_product": {
+    "name": "YouTube Creator Email & Lead Scraper",
+    "url": "https://apify.com/chilly_damask/youtube-creator-email-lead-scraper"
+  },
+  "citations": [],
+  "factory": {
+    "slice_id": "creators-agtech",
+    "vertical": "creators",
+    "min_rows": 10,
+    "item_count": 14,
+    "items_hash": "2b24d8c994b8aec75e82c296fb3f9ecb1a758c123a586ae74f94c0e068157297"
+  }
+}

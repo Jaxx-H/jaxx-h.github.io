@@ -1,0 +1,205 @@
+{
+  "slug": "top-regenerative-agriculture-youtube-channels",
+  "title": "Top Regenerative Agriculture YouTube Channels",
+  "description": "21-channel regenerative agriculture leaderboard (fetched 2026-07-12): subscriber counts, video totals, public-contact stats.",
+  "answer_first": "This July 12, 2026 ranking covers 21 regenerative agriculture channels with a combined 278,350 subscribers. JADAM Organic Farm & Garden leads on 120,000; the median sits at 3,760, and 11 of 21 channels list a public business contact. Snapshot number 1 landed 2026-07-12 with 21 channels; week-over-week changes start with the next refresh. The channel-by-channel table - subscribers, videos, country, public contact - follows.",
+  "data_source": {
+    "actor": "youtube-creator-email-lead-scraper",
+    "run_id": "NdoxMipWdPaG0cOpy",
+    "fetched_at": "2026-07-12T19:42:37Z"
+  },
+  "columns": [
+    "Channel",
+    "Subscribers",
+    "Videos",
+    "Country",
+    "Public contact?"
+  ],
+  "rows": [
+    [
+      "JADAM Organic Farm & Garden",
+      "120,000",
+      "445",
+      "South Korea",
+      "No"
+    ],
+    [
+      "Regenerative Media",
+      "58,500",
+      "20",
+      "United Kingdom",
+      "No"
+    ],
+    [
+      "SRT - Saguna Regenerative Technique",
+      "23,600",
+      "399",
+      "India",
+      "Yes"
+    ],
+    [
+      "Regenerative Farming Greece",
+      "10,000",
+      "36",
+      "Greece",
+      "Yes"
+    ],
+    [
+      "AcresUSA, The Voice of Eco-Agriculture",
+      "9,660",
+      "295",
+      "United States",
+      "Yes"
+    ],
+    [
+      "Farming With Kels",
+      "8,680",
+      "280",
+      "United States",
+      "No"
+    ],
+    [
+      "Cliff Honnas Regenerative Rancher & Equine Surgeon",
+      "7,610",
+      "134",
+      "United States",
+      "Yes"
+    ],
+    [
+      "Air2Ground Farms",
+      "6,700",
+      "416",
+      "United States",
+      "Yes"
+    ],
+    [
+      "Farming Under Cover",
+      "5,940",
+      "383",
+      "United Kingdom",
+      "No"
+    ],
+    [
+      "Lance Klessig Regenerative Agriculture Advocate",
+      "5,480",
+      "227",
+      "United States",
+      "Yes"
+    ],
+    [
+      "USA Regenerative Agricultural Alliance, Inc.",
+      "3,760",
+      "267",
+      "United States",
+      "Yes"
+    ],
+    [
+      "SOILCRAFT",
+      "3,440",
+      "178",
+      "United States",
+      "Yes"
+    ],
+    [
+      "Soil RX Texas",
+      "2,710",
+      "73",
+      "n/a",
+      "No"
+    ],
+    [
+      "The Sukheki Farm",
+      "2,190",
+      "41",
+      "Pakistan",
+      "No"
+    ],
+    [
+      "Regenerative Fruit Growers",
+      "2,040",
+      "34",
+      "United States",
+      "No"
+    ],
+    [
+      "Regeneration Canada",
+      "1,880",
+      "120",
+      "Canada",
+      "Yes"
+    ],
+    [
+      "OSU Plant and Soil Sciences - Extension and Teaching",
+      "1,330",
+      "30",
+      "n/a",
+      "No"
+    ],
+    [
+      "Pentrefelin Dairy & Regenerative Farming",
+      "1,290",
+      "4",
+      "n/a",
+      "No"
+    ],
+    [
+      "RegenAG Nation",
+      "1,220",
+      "248",
+      "United States",
+      "Yes"
+    ],
+    [
+      "Regenerative Organic Alliance",
+      "1,190",
+      "37",
+      "United States",
+      "Yes"
+    ],
+    [
+      "Center for Regenerative Agriculture",
+      "1,130",
+      "5",
+      "n/a",
+      "No"
+    ]
+  ],
+  "facts": [
+    "Combined audience: 278,350 subscribers across the 21 ranked channels (2026-07-12).",
+    "Subscribers range up to 120,000 (JADAM Organic Farm & Garden); the median channel counts 3,760.",
+    "11 of 21 ranked channels advertise a public business contact (aggregate only - no addresses shown).",
+    "3,672 videos have been published across all 21 ranked channels.",
+    "More channels are based in United States than anywhere else - 10 of 21.",
+    "Dataset baseline: 21 channels at first capture on 2026-07-12."
+  ],
+  "faq": [
+    {
+      "q": "How were these channels selected?",
+      "a": "By automated keyword discovery for 'regenerative agriculture' during the 2026-07-12 run - no manual curation. Every one of the 21 channels shown carries its public subscriber, video, and country data."
+    },
+    {
+      "q": "Why are there no email addresses in the table?",
+      "a": "By design - the table shows a yes/no public-contact flag and nothing more (11 of 21 say yes). Address-level data is left to the source actor, which only returns what creators publish."
+    },
+    {
+      "q": "How spread out are the subscriber counts?",
+      "a": "Widely: from 120,000 at the top down past a median of 3,760 across 21 channels. The ranking table shows the full curve."
+    },
+    {
+      "q": "Is this snapshot or live data?",
+      "a": "It is a dated snapshot from 2026-07-12 of live public counts, covering 21 channels. The page is rebuilt on a schedule, so the URL stays stable while numbers update."
+    }
+  ],
+  "related_product": {
+    "name": "YouTube Creator Email & Lead Scraper",
+    "url": "https://apify.com/chilly_damask/youtube-creator-email-lead-scraper"
+  },
+  "citations": [],
+  "factory": {
+    "slice_id": "creators-regenerative-ag",
+    "vertical": "creators",
+    "min_rows": 10,
+    "item_count": 22,
+    "items_hash": "5883a9cae0bc271c4aafa648d1cbc484f372bb7b34433bf899607ef57ab1beb2"
+  }
+}

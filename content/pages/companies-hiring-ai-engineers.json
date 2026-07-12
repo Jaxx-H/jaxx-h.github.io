@@ -1,8 +1,8 @@
 {
   "slug": "companies-hiring-ai-engineers",
   "title": "Which Companies Are Hiring AI Engineers Right Now? (Live ATS Data)",
-  "description": "98 open companies hiring ai engineers roles across 12 companies, live-scraped 2026-07-12: top employers, 31% remote share, posting dates.",
-  "answer_first": "As of a July 12, 2026 scrape of live company job boards, there are 98 open companies hiring ai engineers roles across 12 companies. databricks leads the field with 33 openings, and 31% of all listed roles are marked remote. This is the first snapshot of this dataset, captured 2026-07-12, with 98 roles in the opening baseline. The table below lists every role with company, title, location, remote status, and posting date.",
+  "description": "98 open AI engineer roles across 12 companies, live-scraped 2026-07-12: top employers, 31% remote share, posting dates.",
+  "answer_first": "As of a July 12, 2026 scrape of live company job boards, there are 98 open AI engineer roles across 12 companies. Databricks leads the field with 33 openings, and 31% of all listed roles are marked remote. This is the first snapshot of this dataset, captured 2026-07-12, with 98 roles in the opening baseline. The table below lists every role with company, title, location, remote status, and posting date.",
   "data_source": {
     "actor": "company-careers-job-scraper",
     "run_id": "1mf8d8whOLj8UmclX",
@@ -17,686 +17,686 @@
   ],
   "rows": [
     [
-      "databricks",
+      "Databricks",
       "AI Engineer - FDE (Forward Deployed Engineer)",
       "Remote - United Kingdom",
       "Yes",
       "2026-07-12"
     ],
     [
-      "databricks",
+      "Databricks",
       "Senior Specialist Solutions Architect (AI/ML)",
       "London, United Kingdom",
       "No",
       "2026-07-10"
     ],
     [
-      "databricks",
+      "Databricks",
       "Applied AI Engineer, Learning Intelligence",
       "United States",
       "No",
       "2026-07-09"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Staff Software Engineer, Labs: Applied AI",
       "San Francisco, CA | New York City, NY",
       "No",
       "2026-07-08"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Strategy & Operations, Applied AI - AMER",
       "San Francisco, CA | New York City, NY",
       "No",
       "2026-07-08"
     ],
     [
-      "gitlab",
+      "GitLab",
       "Backend Engineer (Ruby), AI Engineering: Agent Observability",
       "Remote, Canada",
       "Yes",
       "2026-07-08"
     ],
     [
-      "databricks",
+      "Databricks",
       "AI Engineer - FDE (Forward Deployed Engineer)",
       "Singapore",
       "No",
       "2026-07-07"
     ],
     [
-      "openai",
+      "OpenAI",
       "Network Operations Engineer, AI Networking",
       "San Francisco",
       "No",
       "2026-07-07"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Applied AI Architect, Partnerships",
       "San Francisco, CA | New York City, NY",
       "No",
       "2026-07-07"
     ],
     [
-      "gitlab",
+      "GitLab",
       "Engineering Manager, AI Engineering: Chat",
       "Remote, Americas; Remote, Canada; Remote, United Kingdom",
       "Yes",
       "2026-07-06"
     ],
     [
-      "databricks",
+      "Databricks",
       "Pre-sales Senior Technical Solutions Engineer (AI/ML - Digital Native Business) x2",
       "London, United Kingdom",
       "No",
       "2026-07-05"
     ],
     [
-      "stripe",
+      "Stripe",
       "AI Engineer",
       "Chicago",
       "No",
       "2026-07-03"
     ],
     [
-      "databricks",
+      "Databricks",
       "Staff Data and AI Engineer, Finance",
       "Bengaluru, India",
       "No",
       "2026-07-01"
     ],
     [
-      "databricks",
+      "Databricks",
       "Senior Data and AI Engineer - Finance",
       "Bengaluru, India",
       "No",
       "2026-07-01"
     ],
     [
-      "gitlab",
+      "GitLab",
       "Senior Backend Engineer (Ruby), AI Engineering: Duo Agent Platform Tools",
       "Remote, Canada; Remote, United Kingdom",
       "Yes",
       "2026-07-01"
     ],
     [
-      "gitlab",
+      "GitLab",
       "Backend Engineer (Ruby), AI Engineering: Duo Agent Platform Tools",
       "Remote, Canada; Remote, United Kingdom",
       "Yes",
       "2026-07-01"
     ],
     [
-      "reddit",
+      "Reddit",
       "Senior Security Engineer, AI Security",
       "Remote - United States",
       "Yes",
       "2026-06-30"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Manager, Applied AI Engineering",
       "San Francisco, CA | New York City, NY",
       "No",
       "2026-06-26"
     ],
     [
-      "ramp",
+      "Ramp",
       "Applied AI Engineer, Fullstack",
       "New York, NY (HQ); San Francisco, CA",
       "Yes",
       "2026-06-24"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Manager, Applied AI Engineering,  Beneficial Deployments (Life Sciences)",
       "San Francisco, CA | New York City, NY",
       "No",
       "2026-06-24"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Applied AI Architect, Industries",
       "London, UK",
       "No",
       "2026-06-24"
     ],
     [
-      "databricks",
+      "Databricks",
       "Senior Specialist Solutions Engineer (AI/ML)",
       "London, United Kingdom",
       "No",
       "2026-06-23"
     ],
     [
-      "openai",
+      "OpenAI",
       "Recruiter, AI/ML Research EMEA",
       "London, UK",
       "Yes",
       "2026-06-18"
     ],
     [
-      "databricks",
+      "Databricks",
       "Specialist Solutions Architect - AI/ML",
       "Mumbai, India",
       "No",
       "2026-06-16"
     ],
     [
-      "databricks",
+      "Databricks",
       "Specialist Solutions Architect - AI/ML",
       "Bengaluru, India",
       "No",
       "2026-06-16"
     ],
     [
-      "pinterest",
+      "Pinterest",
       "Principal Engineer, AI Platform",
       "San Francisco, CA, US; Remote, US",
       "Yes",
       "2026-06-12"
     ],
     [
-      "databricks",
+      "Databricks",
       "Staff Software Engineer, AI Native Web Platform",
       "Mountain View, California",
       "No",
       "2026-06-11"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Applied AI Security Architect",
       "London, UK",
       "No",
       "2026-06-10"
     ],
     [
-      "duolingo",
+      "Duolingo",
       "Senior AI Engineering Manager",
       "New York, NY",
       "No",
       "2026-06-09"
     ],
     [
-      "duolingo",
+      "Duolingo",
       "Senior AI Engineering Manager",
       "Pittsburgh, PA",
       "No",
       "2026-06-09"
     ],
     [
-      "databricks",
+      "Databricks",
       "Staff Software Engineer, AI Runtime",
       "Mountain View, California; San Francisco, California",
       "No",
       "2026-06-08"
     ],
     [
-      "databricks",
+      "Databricks",
       "Senior Software Engineer, AI Runtime",
       "Mountain View, California; San Francisco, California",
       "No",
       "2026-06-08"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Applied AI Architect Lead, EMEA Commercial",
       "Dublin, IE",
       "No",
       "2026-06-05"
     ],
     [
-      "databricks",
+      "Databricks",
       "AI Engineer - FDE (Forward Deployed Engineer)",
       "Seoul, South Korea",
       "No",
       "2026-06-04"
     ],
     [
-      "databricks",
+      "Databricks",
       "Staff Software Engineer, AI Search",
       "Mountain View, California",
       "No",
       "2026-06-04"
     ],
     [
-      "databricks",
+      "Databricks",
       "Sr. AI Engineer - FDE (Forward Deployed Engineer) - U.S. Federal Sector",
       "Maryland; Virginia; Washington, D.C.",
       "No",
       "2026-06-02"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Applied AI Architect, Public Sector",
       "London, UK",
       "No",
       "2026-06-02"
     ],
     [
-      "instacart",
+      "Instacart",
       "Senior Software Engineer, AI Productivity",
       "Canada - Remote (ON, AB, BC, or NS Only)",
       "Yes",
       "2026-06-01"
     ],
     [
-      "gitlab",
+      "GitLab",
       "AI Engineer",
       "Remote, US",
       "Yes",
       "2026-05-29"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Partner Solutions Architect, Applied AI",
       "Tokyo, Japan",
       "No",
       "2026-05-26"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Manager of Applied AI Architecture, Startups",
       "San Francisco, CA",
       "No",
       "2026-05-26"
     ],
     [
-      "gitlab",
+      "GitLab",
       "Senior AI Engineer",
       "Remote, US",
       "Yes",
       "2026-05-25"
     ],
     [
-      "airbnb",
+      "Airbnb",
       "Principal AI/ML Researcher / Engineer In Reasoning, Planning, and Decision-making systems",
       "United States",
       "No",
       "2026-05-24"
     ],
     [
-      "robinhood",
+      "Robinhood",
       "Security Engineer, AI Vulnerability Management",
       "Menlo Park, CA",
       "No",
       "2026-05-22"
     ],
     [
-      "gitlab",
+      "GitLab",
       "Senior AI Engineer",
       "Remote, Bangalore",
       "Yes",
       "2026-05-22"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Applied AI Architect, Applied AI (Digital Natives Business)",
       "Munich, Germany",
       "No",
       "2026-05-21"
     ],
     [
-      "airbnb",
+      "Airbnb",
       "Principal AI/ML Researcher / Engineer In Bayesian, Large Foundational Systems, and Distributional Reinforcement Learning",
       "United States",
       "No",
       "2026-05-21"
     ],
     [
-      "airbnb",
+      "Airbnb",
       "AI Engineer, Community Support Engineering",
       "China - Remote",
       "Yes",
       "2026-05-21"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Applied AI Architect, Partnerships",
       "Paris, France",
       "No",
       "2026-05-19"
     ],
     [
-      "databricks",
+      "Databricks",
       "Specialist Solutions Architect - AI/ML",
       "United States",
       "No",
       "2026-05-18"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Manager of Applied AI Architecture, Enterprise Tech",
       "San Francisco, CA | New York City, NY",
       "No",
       "2026-05-18"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Applied AI Architect, Industries",
       "Zürich, CH",
       "No",
       "2026-05-17"
     ],
     [
-      "databricks",
+      "Databricks",
       "Senior Staff Applied AI Engineer - Context Retrieval",
       "Mountain View, California; San Francisco, California",
       "No",
       "2026-05-07"
     ],
     [
-      "reddit",
+      "Reddit",
       "Senior Machine Learning Engineer, GenAI Security",
       "Remote - United States",
       "Yes",
       "2026-05-04"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Manager of Applied AI Architecture, Enterprise Tech (Cyber)",
       "New York City, NY; San Francisco, CA | New York City, NY; Seattle, WA",
       "No",
       "2026-04-24"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Head of ANZ, Applied AI",
       "Sydney, Australia",
       "No",
       "2026-04-24"
     ],
     [
-      "stripe",
+      "Stripe",
       "Backend Engineer, AI Security",
       "New York, San Francisco, Seattle, or Remote (US/Canada)",
       "Yes",
       "2026-04-20"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Applied AI Architect, Commercial",
       "San Francisco, CA | New York City, NY",
       "No",
       "2026-04-17"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Head of Applied AI Architecture, Beneficial Deployments",
       "San Francisco, CA | New York City, NY",
       "No",
       "2026-04-17"
     ],
     [
-      "openai",
+      "OpenAI",
       "Manufacturing Test Engineer, AI Compute Infrastructure - Stargate",
       "Remote - US",
       "Yes",
       "2026-04-13"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Manager of Applied AI Architecture, Partnerships",
       "San Francisco, CA | New York City, NY | Seattle, WA",
       "No",
       "2026-04-01"
     ],
     [
-      "reddit",
+      "Reddit",
       "Senior Staff Machine Learning Engineer, GenAI Platform",
       "Remote - United States",
       "Yes",
       "2026-04-01"
     ],
     [
-      "openai",
+      "OpenAI",
       "Applied AI Engineer, Codex Core Agent",
       "San Francisco; New York City; Seattle; London, UK",
       "No",
       "2026-03-26"
     ],
     [
-      "reddit",
+      "Reddit",
       "Senior Software Engineer, GenAI Platform",
       "Remote - United States",
       "Yes",
       "2026-03-26"
     ],
     [
-      "databricks",
+      "Databricks",
       "Field Engineering, AI/ML Product Specialist",
       "Melbourne, Australia; Singapore; Sydney, Australia",
       "No",
       "2026-03-24"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Applied AI Architect, Government Technology",
       "Washington, DC",
       "No",
       "2026-03-05"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Applied AI Architect, State and Local Government",
       "Washington, DC",
       "No",
       "2026-03-05"
     ],
     [
-      "airbnb",
+      "Airbnb",
       "Senior Staff Operations Engineer, AIOps",
       "Remote - United States",
       "Yes",
       "2026-02-24"
     ],
     [
-      "openai",
+      "OpenAI",
       "Recruiter, AI/ML Research",
       "San Francisco",
       "Yes",
       "2026-02-23"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Solutions Architect, Applied AI",
       "Bangalore, India",
       "No",
       "2026-02-12"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Applied AI Technical Evangelist, Startup Ecosystem",
       "San Francisco, CA",
       "No",
       "2026-02-12"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Staff Software Engineer, AI Reliability",
       "San Francisco, CA | New York City, NY | Seattle, WA",
       "No",
       "2026-02-07"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Staff Software Engineer, AI Reliability Engineering",
       "Dublin, IE",
       "No",
       "2026-02-05"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Staff Software Engineer, AI Reliability Engineering",
       "London, UK",
       "No",
       "2026-02-03"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Applied AI Architect",
       "Tokyo, Japan",
       "No",
       "2026-01-22"
     ],
     [
-      "stripe",
+      "Stripe",
       "Staff Product Manager, ML Foundations and GenAI",
       "Seattle, San Francisco, New York, US - Remote",
       "Yes",
       "2026-01-21"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Applied AI Architect, Enterprise Tech",
       "Boston, MA; New York City, NY; San Francisco, CA | New York City, NY; Seattle, WA",
       "No",
       "2026-01-12"
     ],
     [
-      "ramp",
+      "Ramp",
       "Applied AI Engineer",
       "New York, NY (HQ); San Francisco, CA",
       "Yes",
       "2026-01-12"
     ],
     [
-      "databricks",
+      "Databricks",
       "Senior Solutions Architect (DS/ML/GenAI/LLM)",
       "London, United Kingdom",
       "No",
       "2026-01-06"
     ],
     [
-      "databricks",
+      "Databricks",
       "AI Engineer - FDE (Forward Deployed Engineer)",
       "Melbourne, Australia",
       "No",
       "2025-12-09"
     ],
     [
-      "databricks",
+      "Databricks",
       "AI Engineer - FDE (Forward Deployed Engineer)",
       "Sydney, Australia",
       "No",
       "2025-12-09"
     ],
     [
-      "databricks",
+      "Databricks",
       "Senior GenAI Research Engineer - Optimization and Kernels",
       "Mountain View, California; San Francisco, California",
       "No",
       "2025-11-18"
     ],
     [
-      "pinterest",
+      "Pinterest",
       "Staff Product Manager, AI/ML Personalization",
       "San Francisco, CA, US; Remote, US",
       "Yes",
       "2025-11-13"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Applied AI Architect, Industries",
       "Munich, Germany",
       "No",
       "2025-11-10"
     ],
     [
-      "ramp",
+      "Ramp",
       "Software Engineer, AI Forward Deployed",
       "San Francisco, CA; New York, NY (HQ)",
       "Yes",
       "2025-11-05"
     ],
     [
-      "databricks",
+      "Databricks",
       "Senior Software Engineer (Backend) - AI/ML Environments",
       "Mountain View, California",
       "No",
       "2025-10-29"
     ],
     [
-      "ramp",
+      "Ramp",
       "Software Engineer, AI DevX",
       "New York, NY (HQ); San Francisco, CA",
       "Yes",
       "2025-10-22"
     ],
     [
-      "databricks",
+      "Databricks",
       "Staff Software Engineer - GenAI Performance and Kernel",
       "San Francisco, California",
       "No",
       "2025-10-08"
     ],
     [
-      "databricks",
+      "Databricks",
       "Staff Software Engineer - GenAI inference",
       "San Francisco, California",
       "No",
       "2025-10-08"
     ],
     [
-      "databricks",
+      "Databricks",
       "Software Engineer - GenAI inference",
       "San Francisco, California",
       "No",
       "2025-10-08"
     ],
     [
-      "databricks",
+      "Databricks",
       "Staff Security Software Engineer, AI Security",
       "Remote - California",
       "Yes",
       "2025-09-09"
     ],
     [
-      "databricks",
+      "Databricks",
       "Senior Applied AI Engineer",
       "Belgrade, Serbia",
       "No",
       "2025-08-15"
     ],
     [
-      "databricks",
+      "Databricks",
       "AI Engineer - FDE (Forward Deployed Engineer)",
       "Remote - India",
       "Yes",
       "2025-07-31"
     ],
     [
-      "databricks",
+      "Databricks",
       "Staff Security Software Engineer, AI Security Engineering",
       "Remote - California",
       "Yes",
       "2025-06-06"
     ],
     [
-      "openai",
+      "OpenAI",
       "Software Engineer, AI Safety",
       "San Francisco",
       "Yes",
       "2025-03-17"
     ],
     [
-      "anthropic",
+      "Anthropic",
       "Applied AI Architect, Industries",
       "New York City, NY; San Francisco, CA | New York City, NY | Seattle, WA",
       "No",
       "2024-12-20"
     ],
     [
-      "databricks",
+      "Databricks",
       "PhD GenAI Research Scientist Intern",
       "San Francisco, California",
       "No",
       "2023-11-07"
     ],
     [
-      "databricks",
+      "Databricks",
       "Senior Machine Learning Engineer - GenAI Platform",
       "San Francisco, California",
       "No",
@@ -704,8 +704,8 @@
     ]
   ],
   "facts": [
-    "Total live openings in this capture: 98 companies hiring ai engineers roles from 12 companies (fetched 2026-07-12).",
-    "databricks is the largest hirer with 33 open roles; anthropic follows with 31.",
+    "Total live openings in this capture: 98 AI engineer roles from 12 companies (fetched 2026-07-12).",
+    "Databricks is the largest hirer with 33 open roles; Anthropic follows with 31.",
     "30 of 98 roles (31%) are listed as remote-eligible.",
     "The most common location is San Francisco, CA | New York City, NY, attached to 8 of the openings.",
     "11 of the roles were posted within the 7 days before the fetch date.",
@@ -714,11 +714,11 @@
   "faq": [
     {
       "q": "How was this job data collected?",
-      "a": "It comes from one automated scrape of public company careers boards (Greenhouse, Lever, and Ashby style ATS pages) on 2026-07-12, matching roles for the query 'companies hiring ai engineers'. The run returned 98 open roles across 12 companies, and every row keeps the posting date shown by the employer."
+      "a": "It comes from one automated scrape of public company careers boards (Greenhouse, Lever, and Ashby style ATS pages) on 2026-07-12, matching roles for the query 'AI engineer'. The run returned 98 open roles across 12 companies, and every row keeps the posting date shown by the employer."
     },
     {
-      "q": "Which company has the most open companies hiring ai engineers roles?",
-      "a": "databricks leads with 33 of the 98 openings in this capture, followed by anthropic with 31. Hiring volume shifts week to week, so the leader can change between refreshes."
+      "q": "Which company has the most open AI engineer roles?",
+      "a": "Databricks leads with 33 of the 98 openings in this capture, followed by Anthropic with 31. Hiring volume shifts week to week, so the leader can change between refreshes."
     },
     {
       "q": "How many of these roles are remote?",
@@ -738,6 +738,7 @@
     "slice_id": "jobs-ai-engineer",
     "vertical": "jobs",
     "min_rows": 10,
+    "item_count": 98,
     "items_hash": "cf29320067c4e27bc8b8469078a999175e1c77c19c69f5876990b1fa83e11017"
   }
 }
