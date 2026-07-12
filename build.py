@@ -31,6 +31,13 @@ RESERVED_SLUGS = {"static", "assets", "404", "feed", "sitemap", "robots", "llms"
 # youtube actor SELLS; the site publishes AGGREGATES ONLY.
 EMAIL_RE = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
 ISO_RE = re.compile(r"^\d{4}-\d{2}-\d{2}")
+# Stale-page policy (PLAN-04): a page whose data_source.fetched_at is more than
+# this many days before the build date (UTC) gets a robots noindex meta and is
+# excluded from sitemap.xml and feed.xml until refreshed. It still renders and
+# stays on the homepage. CEILING constant: config.json "stale_after_days" may
+# LOWER it, never raise it; a missing/invalid value fails closed to it.
+STALE_AFTER_DAYS = 45
+NOINDEX_META = '<meta name="robots" content="noindex">'
 
 
 def die(msg):
@@ -48,6 +55,26 @@ def load_config():
         cfg["site_url"] = f"https://{cname}"
     cfg["site_url"] = cfg["site_url"].rstrip("/")
     return cfg
+
+
+def stale_after_days(cfg):
+    """Effective staleness threshold in days. Fail closed: a missing or invalid
+    config value means STALE_AFTER_DAYS; a valid one is clamped to the ceiling
+    (config may lower it, never raise it)."""
+    v = cfg.get("stale_after_days")
+    if isinstance(v, bool) or not isinstance(v, int) or v < 1:
+        return STALE_AFTER_DAYS
+    return min(v, STALE_AFTER_DAYS)
+
+
+def is_stale(p, today, threshold):
+    """True when fetched_at is more than `threshold` days before `today` (the
+    build-time UTC date). An unparseable date counts as stale (fail closed)."""
+    try:
+        fetched = datetime.strptime(p["data_source"]["fetched_at"][:10], "%Y-%m-%d").date()
+    except ValueError:
+        return True
+    return (today - fetched).days > threshold
 
 
 def tpl(name):
@@ -112,7 +139,13 @@ def validate_page(p, path, seen_slugs, seen_titles, seen_descs):
     req(str(rp.get("url", "")).startswith("https://apify.com/chilly_damask/"),
         "related_product.url must start with https://apify.com/chilly_damask/")
 
-    prose = " ".join([af] + facts + [q["q"] + " " + q["a"] for q in faq])
+    analysis = p.get("analysis")
+    if analysis is not None:
+        req(isinstance(analysis, str) and analysis.strip(),
+            "analysis, when present, must be a non-empty string")
+
+    prose = " ".join([af] + facts + [q["q"] + " " + q["a"] for q in faq]
+                     + ([analysis] if analysis else []))
     req(word_count(prose) >= 120, f"page needs >=120 prose words (got {word_count(prose)})")
 
     req(isinstance(p.get("citations", []), list), "citations must be a list")
@@ -145,6 +178,11 @@ def render_faq(faq):
     for qa in faq:
         out.append(f"<details><summary>{esc(qa['q'])}</summary><p>{esc(qa['a'])}</p></details>")
     return "".join(out)
+
+
+def render_analysis(p):
+    a = p.get("analysis")
+    return f'<h2>Analysis</h2><p class="analysis">{esc(a)}</p>' if a else ""
 
 
 def render_citations(cits):
@@ -190,6 +228,8 @@ def main():
     cfg = load_config()
     site_url = cfg["site_url"]
     year = datetime.now(timezone.utc).strftime("%Y")
+    today = datetime.now(timezone.utc).date()
+    threshold = stale_after_days(cfg)
 
     base = tpl("base.html")
     datapage = tpl("datapage.html")
@@ -208,6 +248,12 @@ def main():
 
     # newest first
     pages.sort(key=lambda p: p["data_source"]["fetched_at"], reverse=True)
+
+    # stale-page policy: stale pages still render (200) and stay on the
+    # homepage, but are noindexed and dropped from sitemap.xml + feed.xml
+    for p in pages:
+        p["_stale"] = is_stale(p, today, threshold)
+    fresh = [p for p in pages if not p["_stale"]]
 
     if DIST.exists():
         shutil.rmtree(DIST)
@@ -229,6 +275,7 @@ def main():
             answer_first=esc(p["answer_first"]),
             facts=render_facts(p["facts"]),
             table=render_table(p["columns"], p["rows"]),
+            analysis=render_analysis(p),
             faq=render_faq(p["faq"]),
             cta=cta,
             provenance=prov,
@@ -238,6 +285,7 @@ def main():
             title=esc(p["title"]),
             description=esc(p["description"]),
             canonical=canonical,
+            robots=NOINDEX_META if p["_stale"] else "",
             jsonld=dataset_jsonld(p, cfg, canonical),
             analytics=cfg.get("analytics_snippet", ""),
             site_name=esc(cfg["site_name"]),
@@ -254,10 +302,11 @@ def main():
     # index
     cards = []
     for p in pages:
+        refreshing = " — data refreshing" if p["_stale"] else ""
         cards.append(
             f'<article class="card"><h2><a href="/{esc(p["slug"])}/">{esc(p["title"])}</a></h2>'
             f'<p>{esc(p["description"])}</p>'
-            f'<p class="meta">Updated {esc(p["data_source"]["fetched_at"][:10])}</p></article>'
+            f'<p class="meta">Updated {esc(p["data_source"]["fetched_at"][:10])}{refreshing}</p></article>'
         )
     if not pages:
         cards.append('<p>No datasets published yet.</p>')
@@ -277,6 +326,7 @@ def main():
         title=esc(cfg["site_name"]) + " — " + esc(cfg["tagline"]),
         description=esc(cfg["tagline"]),
         canonical=f"{site_url}/",
+        robots="",
         jsonld=f'<script type="application/ld+json">{json.dumps(itemlist)}</script>',
         analytics=cfg.get("analytics_snippet", ""),
         site_name=esc(cfg["site_name"]),
@@ -288,12 +338,13 @@ def main():
     privacy_scan(index_html, "index")
     (DIST / "index.html").write_text(index_html)
 
-    # sitemap.xml — homepage lastmod = newest page fetch date (the homepage changes
-    # whenever inventory changes), falling back to today for an empty site
-    urls = [f"{site_url}/"] + [f"{site_url}/{p['slug']}/" for p in pages]
+    # sitemap.xml — FRESH pages only (stale pages rejoin once refreshed);
+    # homepage lastmod = newest page fetch date (the homepage changes whenever
+    # inventory changes), falling back to today for an empty site
+    urls = [f"{site_url}/"] + [f"{site_url}/{p['slug']}/" for p in fresh]
     home_lastmod = (max(p["data_source"]["fetched_at"][:10] for p in pages)
                     if pages else datetime.now(timezone.utc).strftime("%Y-%m-%d"))
-    lastmods = [home_lastmod] + [p["data_source"]["fetched_at"][:10] for p in pages]
+    lastmods = [home_lastmod] + [p["data_source"]["fetched_at"][:10] for p in fresh]
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for u, lm in zip(urls, lastmods):
@@ -305,9 +356,9 @@ def main():
     (DIST / "robots.txt").write_text(
         f"User-agent: *\nAllow: /\nSitemap: {site_url}/sitemap.xml\n")
 
-    # feed.xml (RSS 2.0, 30 newest)
+    # feed.xml (RSS 2.0, 30 newest FRESH pages — stale pages rejoin once refreshed)
     items = []
-    for p in pages[:30]:
+    for p in fresh[:30]:
         items.append(
             "<item>"
             f"<title>{xml_escape(p['title'])}</title>"
@@ -337,6 +388,7 @@ def main():
         title="Not found — " + esc(cfg["site_name"]),
         description="Page not found.",
         canonical=f"{site_url}/",
+        robots="",
         jsonld="", analytics=cfg.get("analytics_snippet", ""),
         site_name=esc(cfg["site_name"]), tagline=esc(cfg["tagline"]),
         site_url=site_url, year=year,
@@ -361,7 +413,9 @@ def main():
     if (cfg.get("cname") or "").strip():
         (DIST / "CNAME").write_text(cfg["cname"].strip() + "\n")
 
-    print(f"Built {len(pages)} page(s) → {DIST}")
+    n_stale = len(pages) - len(fresh)
+    stale_note = f" ({n_stale} stale: noindexed, out of sitemap/feed)" if n_stale else ""
+    print(f"Built {len(pages)} page(s){stale_note} → {DIST}")
 
 
 if __name__ == "__main__":

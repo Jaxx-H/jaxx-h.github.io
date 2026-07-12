@@ -5,5 +5,6 @@
   "cname": "",
   "analytics_snippet": "",
   "actor_base": "https://apify.com/chilly_damask/",
-  "indexnow_key": "e798d02b9fc30f3f23be798b28f9892f"
+  "indexnow_key": "e798d02b9fc30f3f23be798b28f9892f",
+  "stale_after_days": 45
 }
