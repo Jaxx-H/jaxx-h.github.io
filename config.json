@@ -3,7 +3,7 @@
   "site_name": "SignalCrate",
   "tagline": "Fresh, verifiable datasets from live web sources \u2014 updated automatically",
   "cname": "",
-  "analytics_snippet": "",
+  "analytics_snippet": "<script data-goatcounter=\"https://jaxx.goatcounter.com/count\" async src=\"//gc.zgo.at/count.js\"></script>",
   "actor_base": "https://apify.com/chilly_damask/",
   "indexnow_key": "e798d02b9fc30f3f23be798b28f9892f",
   "stale_after_days": 45
