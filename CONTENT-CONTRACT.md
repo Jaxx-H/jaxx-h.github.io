@@ -75,3 +75,21 @@ python3 check_site.py   # validate the build (CI runs this too)
 
 GitHub Actions runs both on every push to `main` and deploys `dist/` to Pages.
 No dependencies, no build step beyond `python3`.
+
+## Simple pages (`page_type: "simple"`)
+
+A second page type for prose pages (privacy policies, product/landing pages). Added
+2026-07-13 (publish night, claude/publish-night branch). Data-page rules above are
+untouched; simple pages have their own fail-closed gates:
+
+| Field | Rule |
+|---|---|
+| `page_type` | Literally `"simple"`. |
+| `slug` / `title` / `description` | Same rules + uniqueness as data pages. |
+| `body_html` | Non-empty; ≥60 words of prose; MUST NOT contain `<script`, `<iframe`, `<object`, `<embed`, `javascript:`, or inline `on*=` handlers. GoatCounter click events use declarative `data-goatcounter-click` attributes (count.js is site-wide via `analytics_snippet`). |
+| `published` | Optional ISO-8601 date (sitemap lastmod; defaults to build date). |
+| `data_source` / `columns` / `rows` | FORBIDDEN — a simple page never masquerades as data. |
+
+Rendering: `<h1>` + body wrapped in `<article class="simple">`, WebPage JSON-LD,
+always indexable, always in sitemap.xml, never in feed.xml / index card grid /
+llms.txt. `privacy_scan` (email guard) runs on the final HTML like every page.

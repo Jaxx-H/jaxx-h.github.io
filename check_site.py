@@ -99,6 +99,24 @@ def page_fetch_date(html_str):
     return None
 
 
+def page_is_simple(html_str):
+    """True when the page declares WebPage JSON-LD and no Dataset block — the
+    marker build.py stamps on page_type: "simple" pages (policies, landing
+    pages). A page carrying BOTH types counts as a data page (fail closed)."""
+    has_webpage = False
+    for b in JSONLD_RE.findall(html_str):
+        try:
+            obj = json.loads(b)
+        except json.JSONDecodeError:
+            continue
+        if isinstance(obj, dict):
+            if obj.get("@type") == "Dataset":
+                return False
+            if obj.get("@type") == "WebPage":
+                has_webpage = True
+    return has_webpage
+
+
 def stale_findings(dist_dir, base, threshold):
     """Stale-policy oracle over a built dist/. Returns (stale_slugs, violations).
 
@@ -123,13 +141,23 @@ def stale_findings(dist_dir, base, threshold):
         if not idx.exists():
             continue  # check_local reports the missing index.html itself
         h = idx.read_text()
+        url = f"{base}/{d.name}/"
+        if page_is_simple(h):
+            # simple pages never go stale: always indexable, always in the
+            # sitemap, never in the feed
+            if NOINDEX_META in h:
+                violations.append(f"simple page {d.name} must not carry a noindex meta")
+            if url not in locs:
+                violations.append(f"simple page {d.name} missing from sitemap.xml")
+            if url in feed:
+                violations.append(f"simple page {d.name} must not be listed in feed.xml")
+            continue
         try:
             fetched = datetime.strptime(page_fetch_date(h) or "", "%Y-%m-%d").date()
         except ValueError:
             violations.append(f"page {d.name}: no parseable fetch date in Dataset "
                               f"JSON-LD — cannot grade staleness (fail closed)")
             continue
-        url = f"{base}/{d.name}/"
         if (today - fetched).days > threshold:
             stale.add(d.name)
             if NOINDEX_META not in h:
@@ -225,19 +253,26 @@ def check_local():
             except json.JSONDecodeError as e:
                 err(f"page {d.name} JSON-LD block {i + 1} does not parse: {e}")
 
-        # answer-first <p> before first <table>; >=10 tbody rows
-        shape = PageShape()
-        shape.feed(h)
-        if "answer_p" not in shape.events or "table" not in shape.events:
-            err(f"page {d.name} missing answer paragraph or data table")
-        elif shape.events.index("answer_p") > shape.events.index("table"):
-            err(f"page {d.name}: data table appears before the answer paragraph")
-        if shape.tbody_rows < 10:
-            err(f"page {d.name} table has {shape.tbody_rows} body rows, need >=10")
+        if page_is_simple(h):
+            # simple pages: prose shape only — an <h1> and at least one <p>
+            if "<h1>" not in h:
+                err(f"simple page {d.name} missing <h1>")
+            if "<p" not in h:
+                err(f"simple page {d.name} has no paragraph content")
+        else:
+            # answer-first <p> before first <table>; >=10 tbody rows
+            shape = PageShape()
+            shape.feed(h)
+            if "answer_p" not in shape.events or "table" not in shape.events:
+                err(f"page {d.name} missing answer paragraph or data table")
+            elif shape.events.index("answer_p") > shape.events.index("table"):
+                err(f"page {d.name}: data table appears before the answer paragraph")
+            if shape.tbody_rows < 10:
+                err(f"page {d.name} table has {shape.tbody_rows} body rows, need >=10")
 
-        # provenance carries a run-id-shaped token
-        if "Data from run" not in h or not RUN_ID_RE.search(h.split("Data from run", 1)[-1][:60]):
-            err(f"page {d.name} provenance line missing a run-id-shaped token")
+            # provenance carries a run-id-shaped token
+            if "Data from run" not in h or not RUN_ID_RE.search(h.split("Data from run", 1)[-1][:60]):
+                err(f"page {d.name} provenance line missing a run-id-shaped token")
 
         # title present + unique
         t = TITLE_RE.search(h)

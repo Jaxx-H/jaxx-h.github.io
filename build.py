@@ -109,6 +109,25 @@ def validate_page(p, path, seen_slugs, seen_titles, seen_descs):
     req(desc not in seen_descs, f"duplicate description {desc!r}")
     seen_descs.add(desc)
 
+    # simple pages (page_type: "simple") — prose pages (policies, product/landing
+    # pages) with their own fail-closed gates. Every datapage rule below stays
+    # fully intact for data pages; this branch adds a page type, weakens nothing.
+    if p.get("page_type") == "simple":
+        req("data_source" not in p and "columns" not in p and "rows" not in p,
+            "simple pages must not carry data-page fields (data_source/columns/rows)")
+        body = p.get("body_html", "")
+        req(isinstance(body, str) and body.strip(), "simple page needs body_html")
+        low = body.lower()
+        for bad in ("<script", "<iframe", "<object", "<embed", "javascript:"):
+            req(bad not in low, f"body_html may not contain {bad!r}")
+        req(not re.search(r"\son\w+\s*=", low), "body_html may not contain inline on* handlers")
+        req(word_count(re.sub(r"<[^>]+>", " ", body)) >= 60,
+            "simple page needs >=60 words of body prose")
+        pub = p.get("published")
+        if pub is not None:
+            req(ISO_RE.match(str(pub)), "published, when present, must be ISO-8601 (YYYY-MM-DD...)")
+        return slug
+
     af = p.get("answer_first", "")
     req(isinstance(af, str) and af.strip(), "missing answer_first")
 
@@ -246,6 +265,11 @@ def main():
         validate_page(p, pf, seen_slugs, seen_titles, seen_descs)
         pages.append(p)
 
+    # simple pages render separately: never stale, listed in the sitemap,
+    # excluded from the index card grid / feed / llms pages list (data surfaces)
+    simple_pages = [p for p in pages if p.get("page_type") == "simple"]
+    pages = [p for p in pages if p.get("page_type") != "simple"]
+
     # newest first
     pages.sort(key=lambda p: p["data_source"]["fetched_at"], reverse=True)
 
@@ -287,6 +311,33 @@ def main():
             canonical=canonical,
             robots=NOINDEX_META if p["_stale"] else "",
             jsonld=dataset_jsonld(p, cfg, canonical),
+            analytics=cfg.get("analytics_snippet", ""),
+            site_name=esc(cfg["site_name"]),
+            tagline=esc(cfg["tagline"]),
+            site_url=site_url,
+            year=year,
+            content=content,
+        )
+        privacy_scan(page_html, f"page {slug}")
+        out_dir = DIST / slug
+        out_dir.mkdir(parents=True)
+        (out_dir / "index.html").write_text(page_html)
+
+    # simple pages (page_type: "simple")
+    for p in simple_pages:
+        slug = p["slug"]
+        canonical = f"{site_url}/{slug}/"
+        webpage = {
+            "@context": "https://schema.org", "@type": "WebPage",
+            "name": p["title"], "description": p["description"], "url": canonical,
+        }
+        content = f'<article class="simple"><h1>{esc(p["title"])}</h1>\n{p["body_html"]}\n</article>'
+        page_html = base.substitute(
+            title=esc(p["title"]),
+            description=esc(p["description"]),
+            canonical=canonical,
+            robots="",
+            jsonld=f'<script type="application/ld+json">{json.dumps(webpage)}</script>',
             analytics=cfg.get("analytics_snippet", ""),
             site_name=esc(cfg["site_name"]),
             tagline=esc(cfg["tagline"]),
@@ -341,10 +392,13 @@ def main():
     # sitemap.xml — FRESH pages only (stale pages rejoin once refreshed);
     # homepage lastmod = newest page fetch date (the homepage changes whenever
     # inventory changes), falling back to today for an empty site
-    urls = [f"{site_url}/"] + [f"{site_url}/{p['slug']}/" for p in fresh]
+    today_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    urls = ([f"{site_url}/"] + [f"{site_url}/{p['slug']}/" for p in fresh]
+            + [f"{site_url}/{p['slug']}/" for p in simple_pages])
     home_lastmod = (max(p["data_source"]["fetched_at"][:10] for p in pages)
-                    if pages else datetime.now(timezone.utc).strftime("%Y-%m-%d"))
-    lastmods = [home_lastmod] + [p["data_source"]["fetched_at"][:10] for p in fresh]
+                    if pages else today_str)
+    lastmods = ([home_lastmod] + [p["data_source"]["fetched_at"][:10] for p in fresh]
+                + [str(p.get("published", today_str))[:10] for p in simple_pages])
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for u, lm in zip(urls, lastmods):
@@ -415,7 +469,8 @@ def main():
 
     n_stale = len(pages) - len(fresh)
     stale_note = f" ({n_stale} stale: noindexed, out of sitemap/feed)" if n_stale else ""
-    print(f"Built {len(pages)} page(s){stale_note} → {DIST}")
+    simple_note = f" + {len(simple_pages)} simple page(s)" if simple_pages else ""
+    print(f"Built {len(pages)} data page(s){simple_note}{stale_note} → {DIST}")
 
 
 if __name__ == "__main__":
