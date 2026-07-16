@@ -1,9 +1,11 @@
 # STATE — HQ Income Engine (machine-written bridge)
 
-_Generated 2026-07-16 02:19 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
+_Generated 2026-07-16 03:30 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
 
 ## Last 15 commits (hq-income-engine main)
 ```
+e1cd9e0 Merge pull request #37 from Jaxx-H/claude/wire-ci-push-token
+32281bd wire CI_PUSH_TOKEN: self-committing workflows push to protected main again
 b8c44fa X build-in-public: consolidate + validate 4 drafts from #23/#6 (de-collisioned, staged) (#31)
 1898ab0 strategy-chat intake: GitHub-canon state bridge + R1 distribution gate + weekly Notion digest + verified facts (#36)
 4aa7d26 dev.to: send an identifying User-Agent — default urllib UA is bot-blocked (403 Forbidden Bots) (#33)
@@ -17,8 +19,6 @@ fa1d960 MOAT/PRODUCT: first artifact — Chegg-test screen kills 2 candidate act
 fc2e670 OPERATOR-MERGE: publish night — 5 CWS packs (oracle-green) + 2 devto queue items + actor cross-links (#15)
 ce9dcfa OPERATOR-MERGE: vault-schema (raw H) — deterministic Registry generator + oracle + frozen-field law (#16)
 5516872 brain-upgrade Phase 1: vault merge gate — record the new rail (vault off iCloud -> local git)
-462fa34 loop grader: grade data/runs/** run outputs + content/site/pages-index.json (AUTO-B, operator-authorized)
-52cb633 publish: RUNBOOK.md — one linear CWS submission runbook (4 extensions, all values inline) (#21)
 ```
 
 ## Open PRs
