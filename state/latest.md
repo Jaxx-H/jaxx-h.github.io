@@ -1,9 +1,11 @@
 # STATE — HQ Income Engine (machine-written bridge)
 
-_Generated 2026-07-16 15:19 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
+_Generated 2026-07-16 19:45 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
 
 ## Last 15 commits (hq-income-engine main)
 ```
+b6d9efd Dual-Track Loop: fast headless track + gated digest/resume + adapter (DIRECTIVE)
+faca2ed index: rebuild from dbe7967 [skip ci]
 dbe7967 BELIEFS LAYER phase 1: brain/beliefs/ (14 seed beliefs, 8 forecasts, update log) + tools/beliefs.py + CHARTER/frontier Bayesian-verdict amendments (#46)
 8201373 distribute: ledger + sent receipts [skip ci]
 b06dd21 index: rebuild from cec8fd3 [skip ci]
@@ -17,13 +19,12 @@ c2d1451 WS-2: fold-in event chains — sole ledger writer, DISARMED (DIRECTIVE v
 3642534 index: rebuild from f8ebf45 [skip ci]
 f8ebf45 Merge pull request #40 from Jaxx-H/claude/r6-personal-ai-discovery
 9825d43 BET-R6 sweep 1: tracks 1/2/6/7 verbatim + knowledge base + hypotheses + wedges + decision log
-d24eed8 BET-R6: personal-AI category discovery program (operator directive 2026-07-16)
-f323d53 index: rebuild from 0ddf382 [skip ci]
 ```
 
 ## Open PRs
 ```
-#47 [claude/dual-track-loop] Dual-Track Loop: fast headless track + gated digest/resume + db adapter (DIRECTIVE)
+#49 [claude/wizardly-cray-fnjb4g] MOAT/PRODUCT: BET-ATT-001 brand-positioning brief (decision-ready A/B)
+#48 [claude/eu-2023-564-adjudication-pge5mc] Final adjudication: permanently retire EU pesticide record-keeping wedge
 #45 [claude/wizardly-cray-k6wduk] apify-listing-seo: fresh pricing-competitiveness recheck across all 3 actors
 #44 [claude/frontier-fopw6v] R&D: BET-R6 — sweep-2 tests H3/H4, demotes W1 rank-1, names a funded W2 competitor
 #4 [claude/wizardly-cray-69npyj] distribution: complete the dev.to job-scraper tutorial (devto-syndication arm)
