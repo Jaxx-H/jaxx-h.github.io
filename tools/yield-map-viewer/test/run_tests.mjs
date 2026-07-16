@@ -138,5 +138,76 @@ check("tiny dbf throws friendly error", throws(() => YMV.parseDbf(new Uint8Array
 const zipThrew = await YMV.readZipEntries(new Uint8Array(500)).then(() => false, (e) => /zip/i.test(e.message));
 check("garbage zip rejects with friendly error", zipThrew);
 
+// ---------- 11. zip robustness: nested folders, __MACOSX, multi-set, zip-in-zip ----------
+console.log("zip robustness:");
+const asDrop = (name) => [{ name, data: read(name) }];
+
+const nestedPool = await YMV.gatherFiles(asDrop("synthetic-nested.zip"));
+const nestedSets = YMV.findShapefileSets(nestedPool);
+check("nested-folder zip yields one set", nestedSets.length === 1, String(nestedSets.length));
+check("nested set path keeps folders", /^JD-Data\/North 40 demo\/Harvest-2026\//.test(nestedSets[0].path), nestedSets[0].path);
+check("nested set has dbf+prj mates", !!nestedSets[0].dbf && !!nestedSets[0].prj);
+check("nested shp parses to full point count",
+      YMV.parseShp(nestedSets[0].shp.data).counts.points === E.count);
+
+const macPool = await YMV.gatherFiles(asDrop("synthetic-macosx.zip"));
+const macSets = YMV.findShapefileSets(macPool);
+check("__MACOSX noise ignored: exactly one set", macSets.length === 1, macSets.map((s) => s.path).join(";"));
+check("the set is the real shp, not AppleDouble junk", !/__MACOSX|\._/.test(macSets[0].path), macSets[0].path);
+check("macosx-zip shp parses to full point count",
+      YMV.parseShp(macSets[0].shp.data).counts.points === E.count);
+check("junk entries flagged in inventory", YMV.inventory(macPool).some((i) => i.junk));
+check("isJunkPath catches __MACOSX, ._, .DS_Store",
+      YMV.isJunkPath("__MACOSX/._a.shp") && YMV.isJunkPath("x/.DS_Store") &&
+      YMV.isJunkPath("._loose.shp") && !YMV.isJunkPath("fields/a.shp"));
+
+const multiPool = await YMV.gatherFiles(asDrop("synthetic-multi.zip"));
+const multiSets = YMV.findShapefileSets(multiPool);
+check("multi zip finds both sets", multiSets.length === 2, String(multiSets.length));
+check("multi sets carry distinct nested paths",
+      multiSets[0].path !== multiSets[1].path && multiSets.every((s) => s.path.includes("/")));
+const multiParsed = multiSets.map((s) => YMV.parseShp(s.shp.data).counts);
+check("multi sets parse: one points layer + one polygon layer",
+      multiParsed.some((c) => c.points === E.count) && multiParsed.some((c) => c.polys === EP.count),
+      JSON.stringify(multiParsed));
+check("each multi set found its own .dbf mate", multiSets.every((s) => !!s.dbf));
+
+const zzPool = await YMV.gatherFiles(asDrop("synthetic-zip-in-zip.zip"));
+const zzSets = YMV.findShapefileSets(zzPool);
+check("zip-in-zip recursed down to the shapefile",
+      zzSets.length === 1 && YMV.parseShp(zzSets[0].shp.data).counts.points === E.count,
+      zzSets.map((s) => s.path).join(";"));
+
+// ---------- 12. non-shapefile detection (.jdl and friends) ----------
+console.log("monitor-native detection:");
+const jdlBytes = read("synthetic-fake.jdl");
+const kJdl = YMV.sniffKind("synthetic-fake.jdl", jdlBytes);
+check("jdl flagged monitor-native", kJdl.kind === "monitor", kJdl.kind);
+check("jdl label names John Deere honestly", /John Deere/.test(kJdl.label) && /no public spec/.test(kJdl.label), kJdl.label);
+check("zip sniffed by magic despite wrong name",
+      YMV.sniffKind("mystery.bin", read("synthetic-yield-points.zip")).kind === "zip");
+check("shp sniffed by magic despite wrong name",
+      YMV.sniffKind("mystery.bin", read("synthetic-yield-points.shp")).kind === "shp");
+check("dbf sniffed", YMV.sniffKind("synthetic-yield-points.dbf", read("synthetic-yield-points.dbf")).kind === "dbf");
+const jdPool = await YMV.gatherFiles(asDrop("synthetic-jd-data.zip"));
+check("JD-Data zip of jdl logs: zero shapefile sets", YMV.findShapefileSets(jdPool).length === 0);
+const jdInv = YMV.inventory(jdPool);
+check("JD-Data zip inventory spots the jdl logs", jdInv.filter((i) => i.kind === "monitor").length === 2,
+      JSON.stringify(jdInv.map((i) => i.kind)));
+check("inventory reports paths and sizes for diagnostics",
+      jdInv.every((i) => i.path.startsWith("JD-Data/") && i.bytes > 0));
+
+// ---------- 13. JD-specific yield column names ----------
+console.log("JD column names:");
+const fieldsOf = (names) => names.map((n) => ({ name: n, type: "N", length: 10, decimals: 2 }));
+const recsOf = (names) => [Object.fromEntries(names.map((n) => [n, 1.5]))];
+const det = (names) => YMV.detectYieldColumn(fieldsOf(names), recsOf(names));
+check("Yld_Vol_Dr detected", det(["Obj__Id", "Yld_Vol_Dr", "Moisture__"]) === "Yld_Vol_Dr");
+check("Yld_Mass_D (10-char truncation) detected", det(["Obj__Id", "Yld_Mass_D"]) === "Yld_Mass_D");
+check("VRYIELDVOL detected", det(["VRYIELDVOL", "VRMOISTURE"]) === "VRYIELDVOL");
+check("dry beats wet", det(["Yld_Vol_We", "Yld_Vol_Dr"]) === "Yld_Vol_Dr");
+check("wet-only export falls back to the wet column", det(["Obj__Id", "Yld_Vol_We"]) === "Yld_Vol_We");
+check("moisture never picked as yield", det(["Moisture__", "Elevation_"]) === null);
+
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exit(failed ? 1 : 0);
