@@ -1,0 +1,61 @@
+{
+ "points": {
+  "count": 600,
+  "bbox": [
+   -93.65,
+   42.0,
+   -93.64,
+   42.004
+  ],
+  "first_xy": [
+   -93.65,
+   42.0
+  ],
+  "last_xy": [
+   -93.65,
+   42.004
+  ],
+  "field_names": [
+   "DRY_YIELD",
+   "MOISTURE",
+   "ELEV",
+   "PASS_NUM",
+   "VARIETY"
+  ],
+  "record_count": 600,
+  "first_record": {
+   "DRY_YIELD": 0.0,
+   "MOISTURE": 17.43,
+   "ELEV": 284.94,
+   "PASS_NUM": 1,
+   "VARIETY": "SYN-1, demo"
+  },
+  "dry_yield_stats": {
+   "count": 600,
+   "min": 0.0,
+   "max": 253.97,
+   "mean": 187.7664,
+   "median": 190.435,
+   "stdev": 28.143287749893993
+  },
+  "dry_yield_zero_count": 6,
+  "moisture_mean": 16.497066666666665,
+  "detected_yield_col": "DRY_YIELD",
+  "detected_moisture_col": "MOISTURE"
+ },
+ "swaths": {
+  "count": 24,
+  "bbox": [
+   -93.65,
+   41.999921739130436,
+   -93.64,
+   42.00407826086956
+  ],
+  "ring_points_each": 5,
+  "first_ring_first_xy": [
+   -93.65,
+   41.999921739130436
+  ],
+  "dry_yield_mean": 173.49208333333334
+ }
+}

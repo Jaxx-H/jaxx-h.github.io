@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yield Map Viewer — free, in your browser, your file never uploads</title>
+<meta name="description" content="Free in-browser yield shapefile viewer: drop the .zip or .shp+.dbf you exported from your yield monitor and get a yield map with a real legend, stats, histogram, and CSV. Nothing uploads.">
+<link rel="canonical" href="https://jaxx-h.github.io/tools/yield-map-viewer/">
+<meta property="og:title" content="Yield Map Viewer — free, in your browser, your file never uploads">
+<meta property="og:description" content="Drop a yield shapefile, get a yield map with a real legend, summary stats, a histogram, and a CSV. 100% client-side — the file never leaves your device.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jaxx-h.github.io/tools/yield-map-viewer/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Yield Map Viewer","url":"https://jaxx-h.github.io/tools/yield-map-viewer/","description":"In-browser ESRI shapefile viewer for yield-monitor exports: yield map with legend, summary statistics, histogram, CSV export. All processing happens client-side; files are never uploaded.","applicationCategory":"Agriculture","operatingSystem":"Any (modern web browser)","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script data-goatcounter="https://jaxx.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1a1a; --muted: #5c6670; --line: #e3e6ea;
+  --accent: #0b6b53; --accent-fg: #ffffff; --card: #f7f9fa;
+  --c1: #86b6ef; --c2: #5598e7; --c3: #2a78d6; --c4: #1c5cab; --c5: #104281;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a; --fg: #e8eaed; --muted: #9aa4ad; --line: #2a2f35;
+    --accent: #2ea27f; --accent-fg: #0b0e10; --card: #1b1f23;
+    --c1: #184f95; --c2: #256abf; --c3: #3987e5; --c4: #6da7ec; --c5: #b7d3f6;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--fg); background: var(--bg); }
+main { max-width: 60rem; margin: 0 auto; padding: 1.5rem 1.1rem 3rem; }
+header.site, footer.site { max-width: 60rem; margin: 0 auto; padding: 1rem 1.1rem; }
+header.site { display: flex; flex-wrap: wrap; align-items: baseline; gap: .6rem; border-bottom: 1px solid var(--line); }
+.brand { font-weight: 700; text-decoration: none; color: var(--fg); font-size: 1.15rem; }
+.tag { color: var(--muted); font-size: .85rem; }
+footer.site { border-top: 1px solid var(--line); color: var(--muted); font-size: .82rem; margin-top: 2rem; }
+a { color: var(--accent); }
+h1 { font-size: 1.7rem; line-height: 1.25; margin: .3rem 0 .6rem; }
+h2 { font-size: 1.25rem; margin: 2rem 0 .6rem; }
+.lede { font-size: 1.12rem; }
+.privacy { background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 8px; padding: .8rem 1rem; margin: 1rem 0; }
+.privacy strong { color: var(--accent); }
+.drop { border: 2px dashed var(--line); border-radius: 12px; padding: 2.2rem 1rem; text-align: center; margin: 1.2rem 0; cursor: pointer; transition: border-color .15s, background .15s; }
+.drop.hover { border-color: var(--accent); background: var(--card); }
+.drop p { margin: .3rem 0; }
+.drop .hint { color: var(--muted); font-size: .85rem; }
+.btn { display: inline-block; background: var(--accent); color: var(--accent-fg); padding: .6rem 1rem; border-radius: 8px; text-decoration: none; font-weight: 600; border: 0; font-size: 1rem; cursor: pointer; }
+.btn.secondary { background: var(--card); color: var(--fg); border: 1px solid var(--line); }
+.demo-row { text-align: center; margin: .8rem 0 0; color: var(--muted); font-size: .85rem; }
+#status { min-height: 1.4em; margin: .8rem 0; font-size: .95rem; }
+#status.err { color: #c0392b; }
+.controls { display: flex; flex-wrap: wrap; gap: 1rem 1.6rem; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: .7rem 1rem; margin: 1rem 0; }
+.controls label { font-size: .9rem; color: var(--muted); display: flex; align-items: center; gap: .45rem; }
+.controls select { font: inherit; font-size: .92rem; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: .25rem .4rem; max-width: 14rem; }
+.viz-wrap { position: relative; }
+canvas { display: block; max-width: 100%; border: 1px solid var(--line); border-radius: 8px; }
+#mapOverlay { position: absolute; left: 0; top: 0; pointer-events: none; border: 0; }
+.tooltip { position: absolute; pointer-events: none; background: var(--bg); color: var(--fg); border: 1px solid var(--line); border-radius: 6px; padding: .35rem .55rem; font-size: .82rem; box-shadow: 0 2px 8px rgba(0,0,0,.15); display: none; z-index: 5; white-space: nowrap; }
+.tooltip .v { font-weight: 700; font-variant-numeric: tabular-nums; }
+.tooltip .k { color: var(--muted); }
+.legend { display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; margin: .6rem 0 0; font-size: .85rem; }
+.legend .item { display: flex; align-items: center; gap: .4rem; }
+.legend .sw { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
+.legend .n { color: var(--muted); font-variant-numeric: tabular-nums; }
+table.stats { border-collapse: collapse; width: 100%; max-width: 34rem; font-size: .92rem; margin: .6rem 0 1rem; }
+table.stats th, table.stats td { text-align: left; padding: .4rem .6rem; border-bottom: 1px solid var(--line); }
+table.stats td.num { text-align: right; font-variant-numeric: tabular-nums; }
+table.stats th { background: var(--card); font-weight: 600; }
+blockquote { border-left: 3px solid var(--line); margin: .8rem 0; padding: .2rem 0 .2rem 1rem; color: var(--muted); font-size: .95rem; }
+blockquote .who { display: block; font-size: .8rem; margin-top: .3rem; }
+ul.plain li { margin: .3rem 0; }
+.results { display: none; }
+.small { color: var(--muted); font-size: .85rem; }
+.fieldnote { color: var(--muted); font-size: .82rem; margin: .3rem 0 0; }
+</style>
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="/">SignalCrate</a>
+  <span class="tag">tools — run in your browser, your data stays on your device</span>
+</header>
+<main>
+<h1>Yield Map Viewer</h1>
+<p class="lede">Drop the yield shapefile you exported from John Deere Operations Center, Climate FieldView, SMS, Ag Leader, Case AFS — or the one your agronomist sent you — and see it: a colored yield map <strong>with a real legend</strong>, summary stats, a histogram, and a clean CSV. Free, no account, no trial clock.</p>
+
+<div class="privacy">
+  <p style="margin:.2rem 0"><strong>Your file never leaves this device.</strong> There is no upload here — no server receives your data. The shapefile is parsed by JavaScript running in your own browser. You can load this page, go offline, and it still works. The only network traffic is this site&rsquo;s standard visit counter (GoatCounter): a page-view ping plus one anonymous &ldquo;a file parsed OK&rdquo; counter event — neither contains anything from your file, not even its name.</p>
+</div>
+
+<div class="drop" id="drop" role="button" tabindex="0" aria-label="Choose or drop shapefile">
+  <p><strong>Drop your yield shapefile here</strong> — a .zip, or the .shp + .dbf files together</p>
+  <p class="hint">or click to choose files. Everything stays on this device.</p>
+  <input type="file" id="fileInput" multiple accept=".zip,.shp,.dbf,.prj" style="display:none">
+</div>
+<div class="demo-row">
+  <button class="btn secondary" id="demoBtn" type="button">Try it with synthetic demo data</button>
+  <span> — a computer-generated sample field, not a real farm.</span>
+</div>
+<p id="status" aria-live="polite"></p>
+
+<div class="results" id="results">
+  <div class="controls">
+    <label>Yield column
+      <select id="yieldCol"></select>
+    </label>
+    <label>Moisture column
+      <select id="moistCol"></select>
+    </label>
+    <label><input type="checkbox" id="exclZero"> Exclude zero &amp; negative values (turn rows, header off)</label>
+  </div>
+  <p class="fieldnote">Columns are auto-detected from the .dbf; pick a different one if the guess is wrong. Shapefile column names are capped at 10 characters by the format itself — that&rsquo;s why they look truncated.</p>
+
+  <h2 id="mapTitle">Yield map</h2>
+  <div class="viz-wrap" id="mapWrap">
+    <canvas id="mapCanvas"></canvas>
+    <canvas id="mapOverlay"></canvas>
+    <div class="tooltip" id="mapTip"></div>
+  </div>
+  <div class="legend" id="legend"></div>
+  <p class="small" id="mapNote"></p>
+
+  <h2>Summary stats</h2>
+  <table class="stats"><tbody id="statsBody"></tbody></table>
+  <p><button class="btn" id="csvBtn" type="button">Download CSV of all points</button></p>
+  <p class="small">The CSV holds every record&rsquo;s coordinates plus all attribute columns — open it in Excel, Sheets, R, whatever you like. Values are exactly as your monitor software exported them; this tool does not recalibrate anything.</p>
+
+  <h2 id="histTitle">Yield histogram</h2>
+  <div class="viz-wrap" id="histWrap">
+    <canvas id="histCanvas"></canvas>
+    <div class="tooltip" id="histTip"></div>
+  </div>
+</div>
+
+<h2>What this reads</h2>
+<p>ESRI shapefiles — the near-universal export format for yield-monitor data. Point layers (the usual yield export) and polygon layers (swath/boundary exports) both work. Drop a <code>.zip</code> straight from your export, or the loose <code>.shp</code> + <code>.dbf</code> (+ optional <code>.prj</code>) files. Yield and moisture columns like <code>DRY_YIELD</code>, <code>Yld_Vol_Dr</code>, <code>VRYIELDVOL</code>, <code>Moisture</code> are auto-detected, and you can override the pick.</p>
+
+<h2>What v1 does not do (honestly)</h2>
+<ul class="plain">
+  <li><strong>No monitor-native files.</strong> It can&rsquo;t read <code>.dat</code>, <code>.yld</code>, or other proprietary monitor formats — export a shapefile from your software first.</li>
+  <li><strong>No basemap.</strong> The map is drawn in your field&rsquo;s own coordinates, offline. No satellite imagery underneath.</li>
+  <li><strong>No reprojection.</strong> Projected files draw in their native units; lat/lon files use a flat-earth approximation that is fine at field scale but not for surveying.</li>
+  <li><strong>No harvested-acres number.</strong> Swath-width and distance units vary between exporters, so v1 refuses to guess. It shows the bounding-box extent instead, clearly labeled as such.</li>
+  <li><strong>No data cleaning</strong> beyond an optional exclude-zeros toggle — no calibration or flow-delay correction. Stats are computed from the values in your file, as exported.</li>
+  <li><strong>One shapefile at a time.</strong> If a zip holds several, the first is used and the rest are listed.</li>
+</ul>
+
+<h2>Why this exists</h2>
+<p>Farm-data platforms keep making it painful to simply <em>look at</em> data you generated on your own farm. From public app-store reviews of Climate FieldView (collected July 2026 in a scan of 1,448 reviews across 10 farm and job apps; quoted verbatim):</p>
+<blockquote>&ldquo;If you cancel your fieldview plus subscription. Make sure you download your data first. They won&rsquo;t give it to you without it.&rdquo;<span class="who">— 1-star App Store review, Climate FieldView</span></blockquote>
+<blockquote>&ldquo;Been using FieldView cab since 2013 and have been extremely happy with it until you guys forced your way in and rendered my yield information USELESS until I pay $750 for your service. I find no value in Climate for our operation. In the past I was given the option of rejecting a&rdquo; <span class="who">— 1-star App Store review, Climate FieldView (excerpt)</span></blockquote>
+<p>Farmers have asked for years for a free way to just view an exported yield map — see NewAgTalk&rsquo;s Precision Talk threads on <a href="https://talk.newagtalk.com/forums/thread-view.asp?tid=811791" rel="nofollow">getting data out of FieldView</a> and <a href="https://talk.newagtalk.com/forums/thread-view.asp?tid=430085" rel="nofollow">free software to view yield maps</a>. The usual answers are crippled desktop trials. This page is the answer we wanted to find: open it, drop the file, see your map. If it saves you a subscription you didn&rsquo;t want, good.</p>
+<p class="small">Found a shapefile it chokes on? That&rsquo;s a bug we want. Open an issue on <a href="https://github.com/Jaxx-H/jaxx-h.github.io/issues" rel="nofollow">the site&rsquo;s GitHub repo</a> — describe the export source; please don&rsquo;t attach data you consider private.</p>
+</main>
+<footer class="site">
+  <p>&copy; <span id="yr">2026</span> SignalCrate. This tool runs entirely in your browser; your files are never uploaded. No warranty — verify anything important against your monitor software.</p>
+</footer>
+
+<script id="ymv-core">
+/* ymv-core — pure parsing/stats functions, no DOM. Extracted verbatim by
+   test/run_tests.mjs and run against Python-generated ground truth. */
+"use strict";
+const YMV = (() => {
+
+  function u8of(x) {
+    if (x && x.buffer) return new Uint8Array(x.buffer, x.byteOffset || 0, x.byteLength);
+    return new Uint8Array(x);
+  }
+  function dvOf(x) {
+    const u = u8of(x);
+    return new DataView(u.buffer, u.byteOffset, u.byteLength);
+  }
+
+  // ---------- ZIP (stored + deflate via DecompressionStream) ----------
+  async function inflateRaw(u8) {
+    if (typeof DecompressionStream === "undefined") {
+      throw new Error("This browser can't decompress zips here — unzip the file and drop the .shp and .dbf directly.");
+    }
+    const stream = new Blob([u8]).stream().pipeThrough(new DecompressionStream("deflate-raw"));
+    return new Uint8Array(await new Response(stream).arrayBuffer());
+  }
+
+  async function readZipEntries(buf) {
+    const u8 = u8of(buf), dv = dvOf(u8);
+    const len = u8.byteLength;
+    if (len < 22) throw new Error("Not a zip file (too small).");
+    // find end-of-central-directory record
+    let eocd = -1;
+    const stop = Math.max(0, len - 22 - 65535);
+    for (let i = len - 22; i >= stop; i--) {
+      if (dv.getUint32(i, true) === 0x06054b50) { eocd = i; break; }
+    }
+    if (eocd < 0) throw new Error("Not a zip file (no end-of-central-directory found).");
+    const count = dv.getUint16(eocd + 10, true);
+    let off = dv.getUint32(eocd + 16, true);
+    const dec = new TextDecoder();
+    const entries = [];
+    for (let i = 0; i < count; i++) {
+      if (dv.getUint32(off, true) !== 0x02014b50) break;
+      const method = dv.getUint16(off + 10, true);
+      const compSize = dv.getUint32(off + 20, true);
+      const nameLen = dv.getUint16(off + 28, true);
+      const extraLen = dv.getUint16(off + 30, true);
+      const commentLen = dv.getUint16(off + 32, true);
+      const localOff = dv.getUint32(off + 42, true);
+      const name = dec.decode(u8.subarray(off + 46, off + 46 + nameLen));
+      if (compSize === 0xffffffff || localOff === 0xffffffff) {
+        throw new Error("Zip64 archives aren't supported — unzip and drop the .shp and .dbf directly.");
+      }
+      // local header gives the actual data start
+      const lnl = dv.getUint16(localOff + 26, true);
+      const lel = dv.getUint16(localOff + 28, true);
+      const dataStart = localOff + 30 + lnl + lel;
+      const raw = u8.subarray(dataStart, dataStart + compSize);
+      let data;
+      if (method === 0) data = raw;
+      else if (method === 8) data = await inflateRaw(raw);
+      else throw new Error("Unsupported zip compression method " + method + " for " + name);
+      if (!name.endsWith("/")) entries.push({ name, data });
+      off += 46 + nameLen + extraLen + commentLen;
+    }
+    if (!entries.length) throw new Error("The zip appears to be empty.");
+    return entries;
+  }
+
+  // ---------- SHP ----------
+  function parseShp(buf) {
+    const dv = dvOf(buf);
+    if (dv.byteLength < 100 || dv.getInt32(0, false) !== 9994) {
+      throw new Error("Not a shapefile: .shp header is missing its magic number.");
+    }
+    const shapeType = dv.getInt32(32, true);
+    const bbox = [dv.getFloat64(36, true), dv.getFloat64(44, true),
+                  dv.getFloat64(52, true), dv.getFloat64(60, true)];
+    const geoms = [];
+    const counts = { points: 0, polys: 0, lines: 0, nulls: 0, unsupported: 0 };
+    let off = 100;
+    while (off + 12 <= dv.byteLength) {
+      const contentLen = dv.getInt32(off + 4, false) * 2;
+      if (contentLen < 4 || off + 8 + contentLen > dv.byteLength) break;
+      const rs = off + 8;
+      const t = dv.getInt32(rs, true);
+      if (t === 1 || t === 11 || t === 21) {
+        geoms.push({ t: "pt", x: dv.getFloat64(rs + 4, true), y: dv.getFloat64(rs + 12, true) });
+        counts.points++;
+      } else if (t === 8 || t === 18 || t === 28) {
+        const n = dv.getInt32(rs + 36, true);
+        for (let i = 0; i < n; i++) {
+          geoms.push({ t: "pt", x: dv.getFloat64(rs + 40 + 16 * i, true), y: dv.getFloat64(rs + 48 + 16 * i, true) });
+        }
+        counts.points += n;
+      } else if (t === 3 || t === 5 || t === 13 || t === 15 || t === 23 || t === 25) {
+        const numParts = dv.getInt32(rs + 36, true);
+        const numPoints = dv.getInt32(rs + 40, true);
+        const partsAt = rs + 44, ptsAt = rs + 44 + 4 * numParts;
+        const parts = [];
+        for (let p = 0; p < numParts; p++) {
+          const s = dv.getInt32(partsAt + 4 * p, true);
+          const e = p + 1 < numParts ? dv.getInt32(partsAt + 4 * (p + 1), true) : numPoints;
+          const ring = [];
+          for (let i = s; i < e; i++) {
+            ring.push([dv.getFloat64(ptsAt + 16 * i, true), dv.getFloat64(ptsAt + 16 * i + 8, true)]);
+          }
+          parts.push(ring);
+        }
+        const isPoly = t === 5 || t === 15 || t === 25;
+        geoms.push({ t: isPoly ? "poly" : "line", rings: parts });
+        if (isPoly) counts.polys++; else counts.lines++;
+      } else if (t === 0) {
+        geoms.push({ t: "null" });
+        counts.nulls++;
+      } else {
+        geoms.push({ t: "null" });
+        counts.unsupported++;
+      }
+      off = rs + contentLen;
+    }
+    if (!geoms.length) throw new Error("The .shp file contains no readable shapes.");
+    return { shapeType, bbox, geoms, counts };
+  }
+
+  // ---------- DBF (dBase III) ----------
+  function parseDbf(buf) {
+    const dv = dvOf(buf), u8 = u8of(buf);
+    if (dv.byteLength < 33) throw new Error("Not a .dbf attribute file (too small).");
+    const numRecords = dv.getUint32(4, true);
+    const headerSize = dv.getUint16(8, true);
+    const recordSize = dv.getUint16(10, true);
+    let dec;
+    try { dec = new TextDecoder("windows-1252"); } catch (e) { dec = new TextDecoder(); }
+    const fields = [];
+    let pos = 32;
+    while (pos + 32 <= headerSize && u8[pos] !== 0x0d) {
+      let end = pos;
+      while (end < pos + 11 && u8[end] !== 0) end++;
+      fields.push({
+        name: dec.decode(u8.subarray(pos, end)).trim(),
+        type: String.fromCharCode(u8[pos + 11]),
+        length: u8[pos + 16],
+        decimals: u8[pos + 17],
+      });
+      pos += 32;
+    }
+    if (!fields.length) throw new Error("The .dbf file declares no columns.");
+    const records = [];
+    for (let i = 0; i < numRecords; i++) {
+      const off = headerSize + i * recordSize;
+      if (off + recordSize > dv.byteLength) break;
+      if (u8[off] === 0x2a) continue; // deleted record
+      const rec = {};
+      let fo = off + 1;
+      for (const f of fields) {
+        const raw = dec.decode(u8.subarray(fo, fo + f.length));
+        if (f.type === "N" || f.type === "F") {
+          const s = raw.trim();
+          rec[f.name] = s === "" ? null : parseFloat(s);
+        } else if (f.type === "L") {
+          rec[f.name] = "YyTt".indexOf(raw.trim()) >= 0;
+        } else {
+          rec[f.name] = raw.replace(/\s+$/, "");
+        }
+        fo += f.length;
+      }
+      records.push(rec);
+    }
+    return { fields, records, recordCount: numRecords };
+  }
+
+  // ---------- column detection ----------
+  function numericFieldNames(fields, records) {
+    const out = [];
+    for (const f of fields) {
+      if (f.type === "N" || f.type === "F") { out.push(f.name); continue; }
+      // fall back: character column whose sampled values are mostly numeric
+      let num = 0, seen = 0;
+      for (let i = 0; i < Math.min(records.length, 200); i++) {
+        const v = records[i][f.name];
+        if (v === null || v === undefined || v === "") continue;
+        seen++;
+        if (isFinite(parseFloat(v))) num++;
+      }
+      if (seen > 0 && num / seen > 0.9) out.push(f.name);
+    }
+    return out;
+  }
+
+  const YIELD_PATTERNS = [
+    /^dry_?yield/i, /^yld_?vol_?dr/i, /^yld_?mass_?dr/i, /^vryield/i,
+    /^yield/i, /yld/i, /yield/i,
+  ];
+  function detectYieldColumn(fields, records) {
+    const nums = numericFieldNames(fields, records);
+    for (const re of YIELD_PATTERNS) {
+      for (const n of nums) {
+        if (re.test(n) && !/moist|wet/i.test(n)) return n;
+      }
+    }
+    return null;
+  }
+  function detectMoistureColumn(fields, records) {
+    const nums = numericFieldNames(fields, records);
+    for (const n of nums) if (/moist/i.test(n)) return n;
+    return null;
+  }
+
+  // ---------- stats ----------
+  function computeStats(values) {
+    const v = values.filter((x) => typeof x === "number" && isFinite(x)).sort((a, b) => a - b);
+    const n = v.length;
+    if (!n) return null;
+    const mean = v.reduce((s, x) => s + x, 0) / n;
+    const median = n % 2 ? v[(n - 1) / 2] : (v[n / 2 - 1] + v[n / 2]) / 2;
+    const stdev = Math.sqrt(v.reduce((s, x) => s + (x - mean) * (x - mean), 0) / n); // population sd
+    const q = (p) => v[Math.min(n - 1, Math.max(0, Math.round(p * (n - 1))))];
+    return { count: n, min: v[0], max: v[n - 1], mean, median, stdev, p10: q(0.1), p90: q(0.9) };
+  }
+
+  function quantileBreaks(values, k) {
+    const v = values.filter((x) => typeof x === "number" && isFinite(x)).sort((a, b) => a - b);
+    if (v.length < 2) return [];
+    const breaks = [];
+    for (let i = 1; i < k; i++) {
+      const b = v[Math.min(v.length - 1, Math.floor((v.length * i) / k))];
+      if (!breaks.length || b > breaks[breaks.length - 1]) breaks.push(b);
+    }
+    return breaks;
+  }
+  function classify(v, breaks) {
+    let c = 0;
+    while (c < breaks.length && v > breaks[c]) c++;
+    return c;
+  }
+
+  // ---------- CSV ----------
+  function csvCell(v) {
+    if (v === null || v === undefined) return "";
+    const s = String(v);
+    return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+  }
+  function geomXY(g) {
+    if (g.t === "pt") return [g.x, g.y];
+    if ((g.t === "poly" || g.t === "line") && g.rings && g.rings.length) {
+      const ring = g.rings[0];
+      const m = ring.length > 1 && ring[0][0] === ring[ring.length - 1][0] &&
+                ring[0][1] === ring[ring.length - 1][1] ? ring.length - 1 : ring.length;
+      let sx = 0, sy = 0;
+      for (let i = 0; i < m; i++) { sx += ring[i][0]; sy += ring[i][1]; }
+      return [sx / m, sy / m]; // vertex centroid of first ring
+    }
+    return [null, null];
+  }
+  function buildCsv(fieldNames, records, geoms) {
+    const n = Math.min(records.length, geoms.length);
+    const lines = [["X", "Y"].concat(fieldNames).map(csvCell).join(",")];
+    for (let i = 0; i < n; i++) {
+      const [x, y] = geomXY(geoms[i]);
+      const row = [x, y];
+      for (const f of fieldNames) row.push(records[i][f]);
+      lines.push(row.map(csvCell).join(","));
+    }
+    return lines.join("\r\n") + "\r\n";
+  }
+
+  // ---------- coordinates ----------
+  function looksLikeLonLat(bbox) {
+    return Math.abs(bbox[0]) <= 180 && Math.abs(bbox[2]) <= 180 &&
+           Math.abs(bbox[1]) <= 90 && Math.abs(bbox[3]) <= 90;
+  }
+  function prjUnits(prjText, bbox) {
+    if (prjText) {
+      if (/PROJCS/i.test(prjText)) {
+        if (/UNIT\s*\[\s*"[^"]*Foot/i.test(prjText)) return "foot";
+        if (/UNIT\s*\[\s*"Meter/i.test(prjText)) return "meter";
+        return null;
+      }
+      if (/GEOGCS/i.test(prjText)) return "degree";
+    }
+    return bbox && looksLikeLonLat(bbox) ? "degree" : null;
+  }
+  function extentAcres(bbox, units) {
+    const dx = bbox[2] - bbox[0], dy = bbox[3] - bbox[1];
+    if (!(dx > 0) || !(dy > 0)) return null;
+    if (units === "degree") {
+      const midLat = ((bbox[1] + bbox[3]) / 2) * Math.PI / 180;
+      return (dx * 111320 * Math.cos(midLat)) * (dy * 110540) / 4046.8564224;
+    }
+    if (units === "meter") return (dx * dy) / 4046.8564224;
+    if (units === "foot") return (dx * dy) / 43560;
+    return null;
+  }
+
+  return { readZipEntries, inflateRaw, parseShp, parseDbf, numericFieldNames,
+           detectYieldColumn, detectMoistureColumn, computeStats, quantileBreaks,
+           classify, buildCsv, geomXY, looksLikeLonLat, prjUnits, extentAcres };
+})();
+if (typeof window !== "undefined") window.YMV = YMV;
+</script>
+
+<script>
+/* UI layer — DOM, canvas rendering, drag-drop. Depends on YMV (above). */
+"use strict";
+(() => {
+  const $ = (id) => document.getElementById(id);
+  document.getElementById("yr").textContent = String(new Date().getFullYear());
+
+  const PALETTES = {
+    /* Ordinal 5-class blue ramps + chrome, validated (monotone L, adjacent
+       dL >= 0.06, light-end >= 2:1) against these exact surfaces. */
+    light: { classes: ["#86b6ef", "#5598e7", "#2a78d6", "#1c5cab", "#104281"],
+             bar: "#2a78d6", surface: "#ffffff", grid: "#e3e6ea",
+             ink: "#1a1a1a", muted: "#5c6670", nodata: "#c9ced4" },
+    dark:  { classes: ["#184f95", "#256abf", "#3987e5", "#6da7ec", "#b7d3f6"],
+             bar: "#3987e5", surface: "#14171a", grid: "#2a2f35",
+             ink: "#e8eaed", muted: "#9aa4ad", nodata: "#3a4046" },
+  };
+  const mq = window.matchMedia("(prefers-color-scheme: dark)");
+  const pal = () => (mq.matches ? PALETTES.dark : PALETTES.light);
+
+  const state = {
+    name: null, geoms: null, records: null, fields: null, prj: null,
+    bbox: null, yieldCol: null, moistCol: null, exclZero: false,
+    proj: null, breaks: null, classCounts: null, histBins: null,
+  };
+
+  function setStatus(msg, isErr) {
+    const el = $("status");
+    el.textContent = msg;
+    el.className = isErr ? "err" : "";
+  }
+
+  // ---------- file intake ----------
+  const drop = $("drop"), fileInput = $("fileInput");
+  drop.addEventListener("click", () => fileInput.click());
+  drop.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fileInput.click(); } });
+  ["dragover", "dragenter"].forEach((t) => drop.addEventListener(t, (e) => { e.preventDefault(); drop.classList.add("hover"); }));
+  ["dragleave", "drop"].forEach((t) => drop.addEventListener(t, (e) => { e.preventDefault(); drop.classList.remove("hover"); }));
+  drop.addEventListener("drop", (e) => handleFiles(e.dataTransfer.files));
+  fileInput.addEventListener("change", () => handleFiles(fileInput.files));
+
+  $("demoBtn").addEventListener("click", async () => {
+    try {
+      setStatus("Loading synthetic demo field…");
+      const r = await fetch("fixtures/synthetic-yield-points.zip");
+      if (!r.ok) throw new Error("demo fetch failed: " + r.status);
+      const buf = await r.arrayBuffer();
+      await loadFromNamedBuffers([{ name: "synthetic-yield-points.zip", data: new Uint8Array(buf) }]);
+      setStatus("Loaded SYNTHETIC demo data (computer-generated sample field — not a real farm). " + summaryLine());
+    } catch (err) {
+      setStatus("Could not load the demo: " + err.message, true);
+    }
+  });
+
+  async function handleFiles(fileList) {
+    try {
+      const files = Array.from(fileList || []);
+      if (!files.length) return;
+      setStatus("Reading…");
+      const named = [];
+      for (const f of files) {
+        named.push({ name: f.name, data: new Uint8Array(await f.arrayBuffer()) });
+      }
+      await loadFromNamedBuffers(named);
+      setStatus("Parsed " + state.name + " — nothing was uploaded; this all happened in your browser. " + summaryLine());
+    } catch (err) {
+      setStatus(err.message || String(err), true);
+      $("results").style.display = "none";
+    }
+  }
+
+  function summaryLine() {
+    const c = state.counts;
+    const bits = [];
+    if (c.points) bits.push(c.points + " points");
+    if (c.polys) bits.push(c.polys + " polygons");
+    if (c.lines) bits.push(c.lines + " lines");
+    if (state.records) bits.push(state.records.length + " attribute records");
+    return bits.join(", ") + ".";
+  }
+
+  async function loadFromNamedBuffers(named) {
+    // unwrap zips
+    let pool = [];
+    for (const f of named) {
+      if (/\.zip$/i.test(f.name)) {
+        const entries = await YMV.readZipEntries(f.data);
+        pool = pool.concat(entries);
+      } else {
+        pool.push(f);
+      }
+    }
+    const shps = pool.filter((f) => /\.shp$/i.test(f.name));
+    if (!shps.length) {
+      throw new Error("No .shp found. Drop the exported .zip, or the .shp and .dbf files together. (A .dbf or .csv alone isn't enough — the .shp holds the geometry.)");
+    }
+    const shp = shps[0];
+    const base = shp.name.replace(/\.shp$/i, "");
+    const findMate = (ext) => pool.find((f) => f.name.toLowerCase() === (base + ext).toLowerCase());
+    const dbf = findMate(".dbf");
+    const prj = findMate(".prj");
+
+    const parsed = YMV.parseShp(shp.data);
+    let table = { fields: [], records: [] };
+    if (dbf) table = YMV.parseDbf(dbf.data);
+
+    state.name = shp.name;
+    state.geoms = parsed.geoms;
+    state.counts = parsed.counts;
+    state.bbox = parsed.bbox;
+    state.fields = table.fields;
+    state.records = table.records;
+    state.prj = prj ? new TextDecoder().decode(prj.data) : null;
+
+    const extra = shps.length > 1 ? " (also in the file, not shown: " + shps.slice(1).map((s) => s.name).join(", ") + ")" : "";
+    if (!dbf) {
+      setStatus("No .dbf attribute file found for " + shp.name + " — showing geometry only, no yield values." + extra);
+    }
+    if (state.records.length && state.geoms.length !== state.records.length) {
+      console.warn("shape count " + state.geoms.length + " != record count " + state.records.length + "; joining by index up to the shorter.");
+    }
+
+    // populate column selectors
+    const nums = YMV.numericFieldNames(state.fields, state.records);
+    state.yieldCol = YMV.detectYieldColumn(state.fields, state.records);
+    state.moistCol = YMV.detectMoistureColumn(state.fields, state.records);
+    fillSelect($("yieldCol"), nums, state.yieldCol, "— pick a column —");
+    fillSelect($("moistCol"), nums, state.moistCol, "— none —");
+
+    $("results").style.display = "block";
+    renderAll();
+    try {
+      if (window.goatcounter && window.goatcounter.count) {
+        window.goatcounter.count({ path: "tools-yield-map-viewer-parse-ok", title: "yield-map-viewer parse ok", event: true });
+      }
+    } catch (e) { /* analytics must never break the tool */ }
+  }
+
+  function fillSelect(sel, names, chosen, emptyLabel) {
+    sel.textContent = "";
+    const none = document.createElement("option");
+    none.value = "";
+    none.textContent = emptyLabel;
+    sel.appendChild(none);
+    for (const n of names) {
+      const o = document.createElement("option");
+      o.value = n;
+      o.textContent = n;
+      if (n === chosen) o.selected = true;
+      sel.appendChild(o);
+    }
+  }
+  $("yieldCol").addEventListener("change", (e) => { state.yieldCol = e.target.value || null; renderAll(); });
+  $("moistCol").addEventListener("change", (e) => { state.moistCol = e.target.value || null; renderAll(); });
+  $("exclZero").addEventListener("change", (e) => { state.exclZero = e.target.checked; renderAll(); });
+
+  // ---------- shared value pipeline ----------
+  function yieldValues() {
+    if (!state.yieldCol || !state.records.length) return [];
+    const n = Math.min(state.records.length, state.geoms.length);
+    const out = new Array(n);
+    for (let i = 0; i < n; i++) {
+      let v = state.records[i][state.yieldCol];
+      if (typeof v !== "number" || !isFinite(v)) v = null;
+      else if (state.exclZero && v <= 0) v = null;
+      out[i] = v;
+    }
+    return out;
+  }
+
+  function fmt(v, dec) {
+    if (v === null || v === undefined || !isFinite(v)) return "–";
+    return v.toLocaleString("en-US", { minimumFractionDigits: dec, maximumFractionDigits: dec });
+  }
+
+  // ---------- render everything ----------
+  function renderAll() {
+    if (!state.geoms) return;
+    const vals = yieldValues();
+    const finite = vals.filter((v) => v !== null);
+    state.breaks = YMV.quantileBreaks(finite, 5);
+    renderMap(vals);
+    renderLegend(vals);
+    renderStats(finite, vals);
+    renderHist(finite);
+    $("mapTitle").textContent = state.yieldCol ? "Yield map — colored by " + state.yieldCol : "Map (no yield column selected — geometry only)";
+    $("histTitle").textContent = state.yieldCol ? "Histogram — " + state.yieldCol : "Histogram";
+    $("histWrap").style.display = finite.length ? "" : "none";
+    $("histTitle").style.display = finite.length ? "" : "none";
+  }
+
+  // projection to canvas space
+  function project() {
+    const bbox = state.bbox;
+    const lonlat = YMV.looksLikeLonLat(bbox);
+    const kx = lonlat ? Math.cos(((bbox[1] + bbox[3]) / 2) * Math.PI / 180) : 1;
+    const w = (bbox[2] - bbox[0]) * kx || 1;
+    const h = (bbox[3] - bbox[1]) || 1;
+    return { kx, w, h, x0: bbox[0], y0: bbox[1] };
+  }
+
+  function mapGeometry(cssW) {
+    const p = project();
+    const pad = 14;
+    const maxH = 560, minH = 220;
+    let cssH = Math.round((cssW - 2 * pad) * (p.h / p.w)) + 2 * pad;
+    cssH = Math.max(minH, Math.min(maxH, cssH));
+    const scale = Math.min((cssW - 2 * pad) / p.w, (cssH - 2 * pad) / p.h);
+    const ox = (cssW - p.w * scale) / 2, oy = (cssH - p.h * scale) / 2;
+    const X = (x) => ox + ((x - p.x0) * p.kx) * scale;
+    const Y = (y) => cssH - (oy + (y - p.y0) * scale);
+    return { cssH, X, Y };
+  }
+
+  let hitPoints = []; // {px, py, idx} for hover
+  function renderMap(vals) {
+    const P = pal();
+    const wrap = $("mapWrap");
+    const canvas = $("mapCanvas"), overlay = $("mapOverlay");
+    const cssW = Math.min(wrap.clientWidth || 900, 920);
+    const g = mapGeometry(cssW);
+    const dpr = window.devicePixelRatio || 1;
+    for (const c of [canvas, overlay]) {
+      c.width = Math.round(cssW * dpr);
+      c.height = Math.round(g.cssH * dpr);
+      c.style.width = cssW + "px";
+      c.style.height = g.cssH + "px";
+    }
+    const ctx = canvas.getContext("2d");
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.fillStyle = P.surface;
+    ctx.fillRect(0, 0, cssW, g.cssH);
+
+    const n = state.geoms.length;
+    const r = n > 20000 ? 1.6 : n > 5000 ? 2.2 : n > 1500 ? 3 : 3.8;
+    hitPoints = [];
+    state.classCounts = new Array((state.breaks.length || 0) + 1).fill(0);
+    let nodata = 0;
+    for (let i = 0; i < n; i++) {
+      const gm = state.geoms[i];
+      const v = i < vals.length ? vals[i] : null;
+      let color = P.nodata;
+      if (v !== null && state.breaks.length) {
+        const c = YMV.classify(v, state.breaks);
+        state.classCounts[c]++;
+        color = P.classes[Math.min(c, P.classes.length - 1)];
+      } else if (gm.t !== "null") { nodata++; }
+      if (gm.t === "pt") {
+        const px = g.X(gm.x), py = g.Y(gm.y);
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        ctx.arc(px, py, r, 0, Math.PI * 2);
+        ctx.fill();
+        hitPoints.push({ px, py, idx: i });
+      } else if (gm.t === "poly" || gm.t === "line") {
+        ctx.beginPath();
+        for (const ring of gm.rings) {
+          for (let k = 0; k < ring.length; k++) {
+            const px = g.X(ring[k][0]), py = g.Y(ring[k][1]);
+            if (k === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+          }
+        }
+        if (gm.t === "poly") {
+          ctx.fillStyle = color;
+          ctx.fill();
+          ctx.strokeStyle = P.surface; // 2px surface gap between touching swaths
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        } else {
+          ctx.strokeStyle = color;
+          ctx.lineWidth = 2;
+          ctx.lineJoin = ctx.lineCap = "round";
+          ctx.stroke();
+        }
+        if (gm.rings.length && gm.rings[0].length) {
+          const [cx, cy] = YMV.geomXY(gm);
+          hitPoints.push({ px: g.X(cx), py: g.Y(cy), idx: i });
+        }
+      }
+    }
+    const note = [];
+    if (nodata) note.push(nodata + " shapes have no usable value in the selected column (drawn gray).");
+    if (YMV.looksLikeLonLat(state.bbox)) note.push("Drawn from lat/lon with a flat-earth approximation — fine at field scale.");
+    else note.push("Drawn in the file's own projected coordinates.");
+    $("mapNote").textContent = note.join(" ");
+  }
+
+  function renderLegend(vals) {
+    const P = pal();
+    const el = $("legend");
+    el.textContent = "";
+    if (!state.breaks || !state.breaks.length) {
+      el.textContent = state.yieldCol ? "Not enough distinct values for classes." : "Pick a yield column to color the map.";
+      return;
+    }
+    const finite = vals.filter((v) => v !== null).sort((a, b) => a - b);
+    const lo = finite[0], hi = finite[finite.length - 1];
+    const edges = [lo].concat(state.breaks, [hi]);
+    const spread = hi - lo;
+    const dec = spread < 5 ? 2 : spread < 50 ? 1 : 0;
+    for (let c = 0; c < edges.length - 1; c++) {
+      const item = document.createElement("span");
+      item.className = "item";
+      const sw = document.createElement("span");
+      sw.className = "sw";
+      sw.style.background = P.classes[Math.min(c, P.classes.length - 1)];
+      const label = document.createElement("span");
+      label.textContent = fmt(edges[c], dec) + " – " + fmt(edges[c + 1], dec);
+      const count = document.createElement("span");
+      count.className = "n";
+      count.textContent = "(" + (state.classCounts[c] || 0) + ")";
+      item.append(sw, label, count);
+      el.appendChild(item);
+    }
+    const unitNote = document.createElement("span");
+    unitNote.className = "n";
+    unitNote.textContent = "values in the file's own units (grain yield is typically bu/ac)";
+    el.appendChild(unitNote);
+  }
+
+  function renderStats(finite, vals) {
+    const body = $("statsBody");
+    body.textContent = "";
+    const add = (k, v, num) => {
+      const tr = document.createElement("tr");
+      const th = document.createElement("th"); th.textContent = k;
+      const td = document.createElement("td"); td.textContent = v;
+      if (num) td.className = "num";
+      tr.append(th, td); body.appendChild(tr);
+    };
+    add("File", state.name || "–");
+    add("Shapes / attribute records", state.geoms.length + " / " + state.records.length, true);
+    const units = YMV.prjUnits(state.prj, state.bbox);
+    const acres = YMV.extentAcres(state.bbox, units);
+    add("Bounding-box extent (not harvested acres)",
+        acres ? fmt(acres, 1) + " ac (approx.)" : "unknown — no .prj / unrecognized units", true);
+    if (state.yieldCol) {
+      const s = YMV.computeStats(finite);
+      if (s) {
+        const dec = s.max - s.min < 5 ? 2 : 1;
+        add("Valid " + state.yieldCol + " values" + (state.exclZero ? " (zeros excluded)" : ""), String(s.count), true);
+        add("Mean / median", fmt(s.mean, dec) + " / " + fmt(s.median, dec), true);
+        add("Min / max", fmt(s.min, dec) + " / " + fmt(s.max, dec), true);
+        add("Std. dev. (population)", fmt(s.stdev, dec), true);
+        add("10th / 90th percentile", fmt(s.p10, dec) + " / " + fmt(s.p90, dec), true);
+      }
+    }
+    if (state.moistCol) {
+      const mv = [];
+      const n = Math.min(state.records.length, state.geoms.length);
+      for (let i = 0; i < n; i++) {
+        const v = state.records[i][state.moistCol];
+        if (typeof v === "number" && isFinite(v)) mv.push(v);
+      }
+      const ms = YMV.computeStats(mv);
+      if (ms) add("Mean " + state.moistCol, fmt(ms.mean, 1), true);
+    }
+    add("Columns in file", state.fields.map((f) => f.name).join(", ") || "(no .dbf)");
+  }
+
+  // ---------- histogram ----------
+  function renderHist(finite) {
+    if (!finite.length) return;
+    const P = pal();
+    const wrap = $("histWrap");
+    const canvas = $("histCanvas");
+    const cssW = Math.min(wrap.clientWidth || 900, 920);
+    const cssH = 260;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.round(cssW * dpr);
+    canvas.height = Math.round(cssH * dpr);
+    canvas.style.width = cssW + "px";
+    canvas.style.height = cssH + "px";
+    const ctx = canvas.getContext("2d");
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.fillStyle = P.surface;
+    ctx.fillRect(0, 0, cssW, cssH);
+
+    const lo = Math.min(...finite), hi = Math.max(...finite);
+    const span = hi - lo || 1;
+    const nBins = Math.min(20, Math.max(8, Math.floor(cssW / 44)));
+    const counts = new Array(nBins).fill(0);
+    for (const v of finite) {
+      let b = Math.floor(((v - lo) / span) * nBins);
+      if (b >= nBins) b = nBins - 1;
+      counts[b]++;
+    }
+    const maxC = Math.max(...counts);
+    const mL = 46, mR = 8, mT = 12, mB = 28;
+    const plotW = cssW - mL - mR, plotH = cssH - mT - mB;
+
+    // hairline gridlines at clean tick values
+    const tick = niceTick(maxC);
+    ctx.strokeStyle = P.grid;
+    ctx.lineWidth = 1;
+    ctx.fillStyle = P.muted;
+    ctx.font = "11px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+    ctx.textAlign = "right";
+    ctx.textBaseline = "middle";
+    for (let t = 0; t <= maxC; t += tick) {
+      const y = mT + plotH - (t / maxC) * plotH;
+      ctx.beginPath(); ctx.moveTo(mL, y); ctx.lineTo(cssW - mR, y); ctx.stroke();
+      ctx.fillText(t.toLocaleString("en-US"), mL - 6, y);
+    }
+    // bars: <=24px thick, 2px surface gap, 4px rounded data-end, square baseline
+    const slot = plotW / nBins;
+    const barW = Math.min(24, Math.max(3, slot - 2));
+    state.histBins = [];
+    for (let b = 0; b < nBins; b++) {
+      const h = maxC ? (counts[b] / maxC) * plotH : 0;
+      const x = mL + b * slot + (slot - barW) / 2;
+      const y = mT + plotH - h;
+      drawBar(ctx, x, y, barW, h, P.bar);
+      state.histBins.push({ x, w: barW, slotX: mL + b * slot, slotW: slot,
+                            lo: lo + (span * b) / nBins, hi: lo + (span * (b + 1)) / nBins,
+                            count: counts[b] });
+    }
+    // x-axis labels: min, mid, max
+    ctx.fillStyle = P.muted;
+    ctx.textBaseline = "top";
+    const dec = span < 5 ? 2 : span < 50 ? 1 : 0;
+    ctx.textAlign = "left";
+    ctx.fillText(fmt(lo, dec), mL, mT + plotH + 8);
+    ctx.textAlign = "center";
+    ctx.fillText(fmt((lo + hi) / 2, dec), mL + plotW / 2, mT + plotH + 8);
+    ctx.textAlign = "right";
+    ctx.fillText(fmt(hi, dec), cssW - mR, mT + plotH + 8);
+    // baseline
+    ctx.strokeStyle = P.grid;
+    ctx.beginPath(); ctx.moveTo(mL, mT + plotH + .5); ctx.lineTo(cssW - mR, mT + plotH + .5); ctx.stroke();
+  }
+  function niceTick(maxC) {
+    const raw = maxC / 4 || 1;
+    const mag = Math.pow(10, Math.floor(Math.log10(raw)));
+    for (const m of [1, 2, 5, 10]) if (raw <= m * mag) return Math.max(1, m * mag);
+    return Math.max(1, 10 * mag);
+  }
+  function drawBar(ctx, x, y, w, h, color) {
+    if (h <= 0) return;
+    const rr = Math.min(4, w / 2, h); // 4px rounded data-end, square baseline
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(x, y + h);
+    ctx.lineTo(x, y + rr);
+    ctx.arcTo(x, y, x + rr, y, rr);
+    ctx.lineTo(x + w - rr, y);
+    ctx.arcTo(x + w, y, x + w, y + rr, rr);
+    ctx.lineTo(x + w, y + h);
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  // ---------- hover layers ----------
+  const mapTip = $("mapTip"), histTip = $("histTip");
+  $("mapCanvas").addEventListener("pointermove", (e) => {
+    const rect = e.target.getBoundingClientRect();
+    const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+    // nearest point within 24px — closest wins, no pinpoint aiming needed
+    let best = null, bd = 24 * 24;
+    for (const hp of hitPoints) {
+      const d = (hp.px - mx) * (hp.px - mx) + (hp.py - my) * (hp.py - my);
+      if (d < bd) { bd = d; best = hp; }
+    }
+    const overlay = $("mapOverlay");
+    const octx = overlay.getContext("2d");
+    const dpr = window.devicePixelRatio || 1;
+    octx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    octx.clearRect(0, 0, overlay.width, overlay.height);
+    if (!best) { mapTip.style.display = "none"; return; }
+    // highlight: surface ring + ink ring so it reads in both modes
+    octx.strokeStyle = pal().surface;
+    octx.lineWidth = 4;
+    octx.beginPath(); octx.arc(best.px, best.py, 7, 0, Math.PI * 2); octx.stroke();
+    octx.strokeStyle = pal().ink;
+    octx.lineWidth = 2;
+    octx.beginPath(); octx.arc(best.px, best.py, 7, 0, Math.PI * 2); octx.stroke();
+    mapTip.textContent = "";
+    const rec = state.records[best.idx];
+    const addRow = (k, v, strong) => {
+      const div = document.createElement("div");
+      const kv = document.createElement("span");
+      kv.className = strong ? "v" : "k";
+      kv.textContent = v;
+      div.append(document.createTextNode(k + " "), kv);
+      mapTip.appendChild(div);
+    };
+    if (rec && state.yieldCol && typeof rec[state.yieldCol] === "number") {
+      addRow(state.yieldCol + ":", fmt(rec[state.yieldCol], 1), true);
+    }
+    if (rec && state.moistCol && typeof rec[state.moistCol] === "number") {
+      addRow(state.moistCol + ":", fmt(rec[state.moistCol], 1), false);
+    }
+    if (!rec) addRow("record", "none", false);
+    positionTip(mapTip, $("mapWrap"), e);
+  });
+  $("mapCanvas").addEventListener("pointerleave", () => {
+    mapTip.style.display = "none";
+    const overlay = $("mapOverlay");
+    overlay.getContext("2d").clearRect(0, 0, overlay.width, overlay.height);
+  });
+
+  $("histCanvas").addEventListener("pointermove", (e) => {
+    if (!state.histBins) return;
+    const rect = e.target.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const bin = state.histBins.find((b) => mx >= b.slotX && mx < b.slotX + b.slotW);
+    if (!bin) { histTip.style.display = "none"; return; }
+    histTip.textContent = "";
+    const v = document.createElement("div");
+    const strong = document.createElement("span");
+    strong.className = "v";
+    strong.textContent = bin.count.toLocaleString("en-US") + " points";
+    v.appendChild(strong);
+    const k = document.createElement("div");
+    k.className = "k";
+    const dec = bin.hi - bin.lo < 2 ? 2 : 1;
+    k.textContent = fmt(bin.lo, dec) + " – " + fmt(bin.hi, dec);
+    histTip.append(v, k);
+    positionTip(histTip, $("histWrap"), e);
+  });
+  $("histCanvas").addEventListener("pointerleave", () => { histTip.style.display = "none"; });
+
+  function positionTip(tip, wrap, e) {
+    const wr = wrap.getBoundingClientRect();
+    tip.style.display = "block";
+    let x = e.clientX - wr.left + 14, y = e.clientY - wr.top + 14;
+    if (x + tip.offsetWidth > wr.width) x = e.clientX - wr.left - tip.offsetWidth - 10;
+    if (y + tip.offsetHeight > wr.height) y = e.clientY - wr.top - tip.offsetHeight - 10;
+    tip.style.left = x + "px";
+    tip.style.top = y + "px";
+  }
+
+  // ---------- CSV ----------
+  $("csvBtn").addEventListener("click", () => {
+    const csv = YMV.buildCsv(state.fields.map((f) => f.name), state.records, state.geoms);
+    const blob = new Blob([csv], { type: "text/csv" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = (state.name || "yield").replace(/\.shp$/i, "") + "-points.csv";
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+  });
+
+  // re-render on theme change / resize
+  mq.addEventListener("change", () => { if (state.geoms) renderAll(); });
+  let rzTimer = null;
+  window.addEventListener("resize", () => {
+    clearTimeout(rzTimer);
+    rzTimer = setTimeout(() => { if (state.geoms) renderAll(); }, 150);
+  });
+})();
+</script>
+</body>
+</html>

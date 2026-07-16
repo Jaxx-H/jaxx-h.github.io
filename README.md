@@ -41,5 +41,10 @@ Template note: the CTA renders **before** the FAQ on data pages — intentional
 - `templates/` — `base.html`, `datapage.html`, `index.html` (string.Template).
 - `static/style.css` — one small themeable stylesheet, no webfonts, no JS required.
 - `content/pages/` — the data pages (the growing inventory).
+- `tools/` — hand-authored client-side tool pages, shipped verbatim to `/tools/<slug>/`
+  (each `test/` subdir is dev-only and never deployed). Tools are single-page, fully
+  client-side (user files never upload), and deliberately outside the sitemap/nav until
+  wired in; `check_site.py` checks each for title, exact canonical, and zero external
+  resource loads beyond the site's own analytics snippet.
 
 Fed by the cloud loop in `Jaxx-H/hq-income-engine` (writes contract-shaped page JSON here).

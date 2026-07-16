@@ -26,7 +26,7 @@ STATIC_DIR = ROOT / "static"
 
 SLUG_RE = re.compile(r"^[a-z0-9-]{3,80}$")
 # reserved output paths a page slug must never collide with
-RESERVED_SLUGS = {"static", "assets", "404", "feed", "sitemap", "robots", "llms"}
+RESERVED_SLUGS = {"static", "assets", "404", "feed", "sitemap", "robots", "llms", "tools"}
 # Privacy guard: no email may ever reach a rendered page. Emails are what the
 # youtube actor SELLS; the site publishes AGGREGATES ONLY.
 EMAIL_RE = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
@@ -462,6 +462,16 @@ def main():
     # static assets
     if STATIC_DIR.exists():
         shutil.copytree(STATIC_DIR, DIST / "static")
+
+    # hand-authored client-side tool pages: tools/<slug>/index.html ships
+    # verbatim to /tools/<slug>/ (plus any runtime assets like demo fixtures).
+    # test/ subdirs are dev-only and never deployed. Tool pages are deliberately
+    # NOT in the sitemap/nav yet — soft launch; check_site.py checks them
+    # separately (title, canonical, no external resource loads).
+    tools_dir = ROOT / "tools"
+    if tools_dir.exists():
+        shutil.copytree(tools_dir, DIST / "tools",
+                        ignore=shutil.ignore_patterns("test"))
 
     # CNAME (only when a custom domain is configured)
     if (cfg.get("cname") or "").strip():

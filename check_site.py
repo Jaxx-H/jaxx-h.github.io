@@ -136,7 +136,8 @@ def stale_findings(dist_dir, base, threshold):
         locs = set()
     feed_path = dist_dir / "feed.xml"
     feed = feed_path.read_text() if feed_path.exists() else ""
-    for d in sorted(p for p in dist_dir.iterdir() if p.is_dir() and p.name != "static"):
+    for d in sorted(p for p in dist_dir.iterdir()
+                    if p.is_dir() and p.name not in ("static", "tools")):
         idx = d / "index.html"
         if not idx.exists():
             continue  # check_local reports the missing index.html itself
@@ -186,7 +187,8 @@ def check_local():
         if not (DIST / r).exists():
             err(f"missing required output: {r}")
 
-    page_dirs = sorted(d for d in DIST.iterdir() if d.is_dir() and d.name != "static")
+    page_dirs = sorted(d for d in DIST.iterdir()
+                       if d.is_dir() and d.name not in ("static", "tools"))
 
     # --- stale policy: stale pages must be noindexed + out of sitemap/feed,
     # fresh pages must be indexable + in the sitemap
@@ -295,8 +297,57 @@ def check_local():
         if m:
             err(f"{html_file.relative_to(DIST)} contains email-like string {m.group(0)!r}")
 
+    n_tools = check_tools(base)
+
     print(f"local: deep-checked {len(page_dirs)} page(s) "
-          f"({len(stale_slugs)} stale) + sitemap/feed/robots/titles + stale policy")
+          f"({len(stale_slugs)} stale) + {n_tools} tool page(s) "
+          f"+ sitemap/feed/robots/titles + stale policy")
+
+
+# resource-loading attributes a tool page may not point off-site (anchors/links
+# in prose are fine — these are the tags that make the browser fetch something)
+TOOL_RESOURCE_RE = re.compile(
+    r'<(?:script|img|iframe|video|audio|source|embed)[^>]*\ssrc="([^"]*)"'
+    r'|<link[^>]*\shref="([^"]*)"', re.I)
+
+
+def check_tools(base):
+    """Oracle for hand-authored /tools/<slug>/ pages (client-side tools that
+    bypass the content contract). Each must have a non-empty <title>, an exact
+    canonical URL, and — the tools' core promise — load NO external resource
+    beyond the site's own configured analytics snippet. Deep-dir dirs without
+    an index.html fail. Returns the number of tool pages checked."""
+    tools_dir = DIST / "tools"
+    if not tools_dir.exists():
+        return 0
+    cfg = json.loads((ROOT / "config.json").read_text())
+    allowed = set(re.findall(r'src="([^"]+)"', cfg.get("analytics_snippet", "")))
+    n = 0
+    for d in sorted(p for p in tools_dir.iterdir() if p.is_dir()):
+        idx = d / "index.html"
+        if not idx.exists():
+            err(f"tool {d.name} has no index.html")
+            continue
+        n += 1
+        h = idx.read_text()
+        t = TITLE_RE.search(h)
+        if not t or not t.group(1).strip():
+            err(f"tool {d.name} missing <title>")
+        m = CANONICAL_RE.search(h)
+        want = f"{base}/tools/{d.name}/"
+        if not m:
+            err(f"tool {d.name} missing canonical link")
+        elif m.group(1) != want:
+            err(f"tool {d.name} canonical is {m.group(1)!r}, expected {want!r}")
+        for rm in TOOL_RESOURCE_RE.finditer(h):
+            u = rm.group(1) or rm.group(2)
+            if not u:
+                continue
+            external = u.startswith(("http://", "https://", "//"))
+            if external and u not in allowed and not u.startswith(base):
+                err(f"tool {d.name} loads external resource {u!r} "
+                    f"(tools must be self-contained; only the site analytics snippet is allowed)")
+    return n
 
 
 def fetch_code(u):
