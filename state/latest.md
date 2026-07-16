@@ -1,9 +1,10 @@
 # STATE — HQ Income Engine (machine-written bridge)
 
-_Generated 2026-07-16 12:12 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
+_Generated 2026-07-16 14:36 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
 
 ## Last 15 commits (hq-income-engine main)
 ```
+b06dd21 index: rebuild from cec8fd3 [skip ci]
 cec8fd3 metrics: 2026-07-16 — daily snapshot (3 reward row(s))
 de4b79f index: rebuild from 4f5f19c [skip ci]
 4f5f19c OPERATOR LITERACY RULE: repo CLAUDE.md + brain/glosses.jsonl (strategy-chat ruling 2026-07-16) (#43)
@@ -18,11 +19,12 @@ d24eed8 BET-R6: personal-AI category discovery program (operator directive 2026-
 f323d53 index: rebuild from 0ddf382 [skip ci]
 0ddf382 Merge pull request #39 from Jaxx-H/claude/ws0-workflow-hygiene
 671af22 index: rebuild from 174d836 [skip ci]
-174d836 WS-1: index-on-merge kernel (DIRECTIVE v3) — operator-ratify (#38)
 ```
 
 ## Open PRs
 ```
+#46 [claude/beliefs-layer] BELIEFS LAYER phase 1: economic world model — beliefs, forecasts, calibration loop (operator-ratify)
+#45 [claude/wizardly-cray-k6wduk] apify-listing-seo: fresh pricing-competitiveness recheck across all 3 actors
 #44 [claude/frontier-fopw6v] R&D: BET-R6 — sweep-2 tests H3/H4, demotes W1 rank-1, names a funded W2 competitor
 #4 [claude/wizardly-cray-69npyj] distribution: complete the dev.to job-scraper tutorial (devto-syndication arm)
 ```
