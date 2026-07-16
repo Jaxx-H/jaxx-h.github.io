@@ -1,5 +1,58 @@
 # DESIGN DOCTRINE — every page/tool the factory ships reads this first
 
+## HOUSE SKIN — pixel-farm (DEFAULT for every tool/page; operator-locked 2026-07-16)
+
+The operator set a standing house style: a **Stardew-Valley-like pixel-art farm**.
+Every new tool/page ships in this skin unless the operator directs a deliberate
+break for that page. It is the concrete default expression of the 8 rules below
+(where an old rule conflicts — e.g. rule 2's near-black ground — the skin wins
+as the default; the rules still govern intent). Reference implementation:
+`tools/yield-map-viewer/index.html` — new builds copy its `#farm` renderer and
+panel/token CSS rather than reinventing them.
+
+**The scene (ambient, procedural, canvas):** a low-res `<canvas>` buffer scaled
+up with `image-rendering: pixelated`, fixed behind the UI
+(`position: fixed; inset: 0; z-index: 0; pointer-events: none`) with a
+readability scrim above it (z-index 1; content at z-index 2). Dawn/dusk North
+Dakota sky as a banded gradient with a low pixel sun, drifting pixel clouds, a
+distant pixel tree line, and a receding one-point-perspective tilled field —
+converging furrows plus alternating crop stripes. A slow **green X9-class
+combine** drives one way; a **red row-crop tractor** drives the other. The scene
+is deterministic (no RNG) so every load composes the same.
+
+**Panel chrome (Stardew wood/parchment HUD):** opaque parchment panels with
+chunky pixel-bevel borders — a `--frame-dark` border plus layered inset
+box-shadows (`--frame-mid` / `--frame-light` / `--frame-shadow`) and a hard
+drop shadow. **Sharp corners only — `border-radius` is banned in this skin.**
+Uppercase mono labels (`.plabel`: small tracked monospace, gold, with a
+gold/green/red pixel-square prefix), pixel checkboxes, and beveled buttons that
+press down 2px on `:active`.
+
+**Palette:** harvest gold + Deere-green + tractor-red signature over parchment
+browns; light mode = bright dawn field, dark mode = dusk. Token set:
+`--sky`, `--panel/-2/-hud`, `--ink/--muted/--faint`, `--frame-dark/mid/light/shadow`,
+`--gold/--green/--red`, `--line/--line-strong`, `--hud-coin`. Theme-aware in
+BOTH directions: `@media (prefers-color-scheme: dark)` **and** explicit
+`:root[data-theme="light"]` / `:root[data-theme="dark"]` override blocks; JS
+renderers resolve theme via `effectiveTheme()` (data-theme attribute wins, OS
+scheme is the fallback) and observe both. Per-tool DATA palettes stay
+subject-native and validator-passed (e.g. the yield tool's 5-class
+harvest-gold ramp) — the skin themes the chrome, never the data encoding.
+
+**TRADEMARK-SAFE (non-negotiable):** evocative pixel art ONLY — a GENERIC green
+combine and a GENERIC red tractor. No John Deere or Case logos, wordmarks,
+model numbers as branding, or trade dress. Naming real products in factual
+prose (file formats, export menu paths) is fine; drawing their marks is not.
+
+**Behavior contract:** self-contained (procedural canvas or data-URIs; zero
+external requests beyond the site's analytics snippet — the tool oracle in
+`check_site.py` enforces this). `prefers-reduced-motion: reduce` renders ONE
+static frame and never starts a rAF loop; the loop pauses on tab-hidden and
+resumes on visible; resize relayouts (debounced). The farm is a pure background:
+it must never intercept pointer events or affect the tool's interactive layers.
+
+---
+
 **Operator art direction (2026-07-16, binding taste input):** "sites all look same and lame —
 they should be themed like they are, and gamified and simplified to be unique and cool."
 Reference aesthetic to borrow from (operator's sister's 3D art site, tylarframe.com — borrow

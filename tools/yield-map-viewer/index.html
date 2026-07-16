@@ -13,106 +13,238 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Yield Map Viewer","url":"https://jaxx-h.github.io/tools/yield-map-viewer/","description":"In-browser ESRI shapefile viewer for yield-monitor exports: yield map with legend, summary statistics, histogram, CSV export. All processing happens client-side; files are never uploaded.","applicationCategory":"Agriculture","operatingSystem":"Any (modern web browser)","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <script data-goatcounter="https://jaxx.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <style>
-/* Harvest theme — soil browns, crop golds, a sparing John-Deere-adjacent green.
-   The 5-class yield ramp is a single-hue harvest-gold ordinal ramp, validated
-   (monotone L, adjacent dL >= 0.06, light-end >= 2:1 vs surface, one hue)
-   against these exact surfaces in BOTH modes. Keep --c1..--c5 in sync with
-   PALETTES in the UI script below. */
+/* ============ HOUSE STYLE: pixel-farm HUD (see /DESIGN.md) ============
+   Ambient procedural pixel farm behind Stardew-style wood/parchment panels.
+   Sharp corners only — border-radius is banned in this skin.
+   The 5-class yield ramp (--c1..--c5) is UNCHANGED from the harvest theme:
+   a single-hue harvest-gold ordinal ramp, validated (monotone L, adjacent
+   dL >= 0.06, light-end >= 2:1 vs canvas surface, one hue) against the
+   canvas surfaces the JS PALETTES paint in BOTH modes. Keep --c1..--c5 in
+   sync with PALETTES in the UI script below. */
 :root {
-  --bg: #faf6ec; --fg: #2b2119; --muted: #6b5f52; --line: #e6dcc4;
-  --accent: #2f6d24; --accent-fg: #ffffff; --card: #f3ecd9;
-  --gold: #825700; --gold-soft: #d7a955; --err: #a83224;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* light theme = bright dawn field */
+  --sky: #bcd7e6;
+  --panel: #f6ecd2; --panel-2: #efe1bf; --panel-hud: #f9f1dc;
+  --ink: #322619; --muted: #6f5c40; --faint: #907a58;
+  --frame-dark: #5b3a1a; --frame-mid: #7c5227; --frame-light: #b78a4a; --frame-shadow: #452c12;
+  --gold: #a9761a; --green: #3c7a2e; --red: #ab3f28; --green-fg: #ffffff;
+  --line: #dcc9a0; --line-strong: #c9b184; --hud-coin: #d99f2b;
+  --gold-soft: #d7a955;
   --c1: #d7a955; --c2: #ba8d37; --c3: #9e7112; --c4: #825700; --c5: #673e00;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #201a14; --fg: #ede4d4; --muted: #a89a86; --line: #3d332a;
-    --accent: #7cc25f; --accent-fg: #14200f; --card: #2a221a;
-    --gold: #dcb05b; --gold-soft: #a2781b; --err: #e07862;
+    --sky: #1c2740;
+    --panel: #2c2015; --panel-2: #221910; --panel-hud: #322515;
+    --ink: #efe0c2; --muted: #b8a37c; --faint: #8f7c58;
+    --frame-dark: #150e07; --frame-mid: #3a2716; --frame-light: #6b4a22; --frame-shadow: #0c0803;
+    --gold: #e2b654; --green: #6cc04a; --red: #e07a5f; --green-fg: #14200f;
+    --line: #46341f; --line-strong: #5c4526; --hud-coin: #e8bd52;
+    --gold-soft: #a2781b;
     --c1: #6c4400; --c2: #865e00; --c3: #a2781b; --c4: #bf943d; --c5: #dcb05b;
   }
 }
+:root[data-theme="light"] {
+  --sky: #bcd7e6;
+  --panel: #f6ecd2; --panel-2: #efe1bf; --panel-hud: #f9f1dc;
+  --ink: #322619; --muted: #6f5c40; --faint: #907a58;
+  --frame-dark: #5b3a1a; --frame-mid: #7c5227; --frame-light: #b78a4a; --frame-shadow: #452c12;
+  --gold: #a9761a; --green: #3c7a2e; --red: #ab3f28; --green-fg: #ffffff;
+  --line: #dcc9a0; --line-strong: #c9b184; --hud-coin: #d99f2b;
+  --gold-soft: #d7a955;
+  --c1: #d7a955; --c2: #ba8d37; --c3: #9e7112; --c4: #825700; --c5: #673e00;
+}
+:root[data-theme="dark"] {
+  --sky: #1c2740;
+  --panel: #2c2015; --panel-2: #221910; --panel-hud: #322515;
+  --ink: #efe0c2; --muted: #b8a37c; --faint: #8f7c58;
+  --frame-dark: #150e07; --frame-mid: #3a2716; --frame-light: #6b4a22; --frame-shadow: #0c0803;
+  --gold: #e2b654; --green: #6cc04a; --red: #e07a5f; --green-fg: #14200f;
+  --line: #46341f; --line-strong: #5c4526; --hud-coin: #e8bd52;
+  --gold-soft: #a2781b;
+  --c1: #6c4400; --c2: #865e00; --c3: #a2781b; --c4: #bf943d; --c5: #dcb05b;
+}
+
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
-body { margin: 0; font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--fg); background: var(--bg); }
-main { max-width: 60rem; margin: 0 auto; padding: 1rem 1.1rem 3rem; }
-header.site, footer.site { max-width: 60rem; margin: 0 auto; padding: 1rem 1.1rem; }
-header.site { display: flex; flex-wrap: wrap; align-items: baseline; gap: .6rem; border-bottom: 1px solid var(--line); }
-.brand { font-weight: 700; text-decoration: none; color: var(--fg); font-size: 1.15rem; }
-.tag { color: var(--muted); font-size: .85rem; }
-footer.site { border-top: 1px solid var(--line); color: var(--muted); font-size: .82rem; margin-top: 2rem; }
-a { color: var(--accent); }
-h1 { font-size: 1.7rem; line-height: 1.25; margin: .5rem 0 .6rem; }
-h2 { font-size: 1.25rem; margin: 2rem 0 .6rem; }
-.lede { font-size: 1.12rem; }
+body { margin: 0; font: 17px/1.6 var(--sans); color: var(--ink); background: var(--sky); }
+
+/* the pixel field lives behind everything and never intercepts input */
+#farm {
+  position: fixed; inset: 0; width: 100vw; height: 100vh;
+  z-index: 0; display: block; pointer-events: none;
+  image-rendering: pixelated; image-rendering: crisp-edges;
+}
+/* readability scrim so panels always sit on calm ground */
+#scrim {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(0,0,0,.10) 0%, rgba(0,0,0,0) 22%, rgba(0,0,0,0) 70%, rgba(0,0,0,.22) 100%);
+}
+main, header.site, footer.site { position: relative; z-index: 2; max-width: 60rem; margin: 0 auto; }
+main { padding: 0 12px 3rem; }
+
+/* ---- HUD strips (masthead / colophon) ---- */
+header.site, footer.site {
+  padding: .55rem 1rem;
+  background: var(--panel-hud);
+  border: 3px solid var(--frame-dark);
+  box-shadow:
+    inset 0 0 0 2px var(--frame-mid),
+    inset 3px 3px 0 2px var(--frame-light),
+    inset -3px -3px 0 2px var(--frame-shadow),
+    0 4px 0 0 var(--frame-dark);
+}
+header.site { display: flex; flex-wrap: wrap; align-items: baseline; gap: .6rem; margin-top: 16px; }
+footer.site { color: var(--muted); font-family: var(--mono); font-size: .74rem; line-height: 1.7; margin-bottom: 26px; }
+@media (max-width: 63rem) { header.site, footer.site { margin-left: 12px; margin-right: 12px; } }
+.brand { font-family: var(--mono); font-weight: 800; text-decoration: none; color: var(--ink); font-size: 1rem; text-transform: uppercase; letter-spacing: .04em; }
+.tag { color: var(--muted); font-family: var(--mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; }
+a { color: var(--gold); font-weight: 600; text-underline-offset: 3px; }
+
+/* ---- Stardew-style wood/parchment panels ---- */
+.panel, .callout, .picker, details.diag, .results {
+  position: relative;
+  background: var(--panel);
+  margin: 20px 0;
+  padding: 18px 20px;
+  border: 3px solid var(--frame-dark);
+  box-shadow:
+    inset 0 0 0 3px var(--frame-mid),
+    inset 4px 4px 0 3px var(--frame-light),
+    inset -4px -4px 0 3px var(--frame-shadow),
+    0 6px 0 0 var(--frame-dark),
+    0 12px 26px rgba(0,0,0,.28);
+}
+.panel > :first-child, .callout > :first-child, .picker > :first-child { margin-top: 0; }
+.panel > :last-child, .callout > :last-child, .picker > :last-child { margin-bottom: 0; }
+.panel.hero { background: var(--panel-hud); }
+
+.plabel {
+  font-family: var(--mono); font-size: 11px; font-weight: 700;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--gold);
+  display: flex; align-items: center; gap: 9px; margin: 0 0 6px;
+}
+.plabel::before { content: ""; width: 10px; height: 10px; background: var(--gold); box-shadow: 3px 0 0 var(--green), 6px 0 0 var(--red); flex: none; }
+
+h1 {
+  font-size: clamp(1.6rem, 5vw, 2.3rem); line-height: 1.08; margin: .4rem 0 .6rem;
+  font-weight: 800; letter-spacing: -0.01em; text-transform: uppercase;
+  text-shadow: 2px 2px 0 var(--frame-light);
+}
+h2 {
+  font-size: 1.08rem; margin: 1.7rem 0 .6rem; font-weight: 800;
+  letter-spacing: .06em; text-transform: uppercase; line-height: 1.3;
+  display: flex; align-items: center; gap: 10px;
+}
+h2::before { content: ""; width: 10px; height: 10px; flex: none; background: var(--gold); box-shadow: 3px 0 0 var(--green), 6px 0 0 var(--red); }
+.lede { font-size: 1.06rem; }
+
 /* harvest-pass banner: the 5-class ramp laid down like strip-till passes */
-.field-band { height: 12px; border-radius: 3px; margin: .6rem 0 1rem;
+.field-band { height: 12px; border: 2px solid var(--frame-dark); margin: .6rem 0 1rem;
   background: repeating-linear-gradient(100deg,
     var(--c1) 0 34px, var(--c3) 34px 52px, var(--c2) 52px 88px,
     var(--c5) 88px 106px, var(--c4) 106px 142px); }
-.privacy { background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 8px; padding: .8rem 1rem; margin: 1rem 0; }
-.privacy strong { color: var(--accent); }
-.drop { border: 2px dashed var(--gold-soft); border-radius: 14px; padding: 1.8rem 1rem; text-align: center; margin: 1.2rem 0; cursor: pointer; transition: border-color .15s, background .15s; }
-.drop.hover, .drop:hover { border-color: var(--accent); background: var(--card); }
-.drop:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.privacy { background: var(--panel); border: 2px dashed var(--green); padding: .8rem 1rem; margin: 1rem 0 0; }
+.privacy strong { color: var(--green); }
+.drop {
+  background: var(--panel-hud); border: 3px dashed var(--gold-soft);
+  padding: 1.7rem 1rem; text-align: center; margin: 0 0 1rem; cursor: pointer;
+  transition: border-color .15s, background .15s;
+}
+.drop.hover, .drop:hover { border-color: var(--green); background: var(--panel-2); }
+.drop:focus-visible { outline: 3px solid var(--green); outline-offset: 2px; }
 .drop p { margin: .3rem 0; }
 .drop .wheat { font-size: 1.7rem; line-height: 1; margin: 0 0 .3rem; }
 .drop .hint { color: var(--muted); font-size: .85rem; }
-.btn { display: inline-block; background: var(--accent); color: var(--accent-fg); padding: .6rem 1rem; border-radius: 8px; text-decoration: none; font-weight: 600; border: 0; font-size: 1rem; cursor: pointer; }
-.btn.secondary { background: var(--card); color: var(--fg); border: 1px solid var(--line); }
+.btn {
+  display: inline-block; background: var(--green); color: var(--green-fg);
+  padding: .55rem 1rem; text-decoration: none; font-weight: 700;
+  border: 2px solid var(--frame-dark); font-size: .82rem; cursor: pointer;
+  font-family: var(--mono); text-transform: uppercase; letter-spacing: .06em;
+  box-shadow: inset 2px 2px 0 rgba(255,255,255,.28), inset -2px -2px 0 rgba(0,0,0,.28), 0 3px 0 0 var(--frame-dark);
+}
+.btn:active { transform: translateY(2px); box-shadow: inset 2px 2px 0 rgba(255,255,255,.28), inset -2px -2px 0 rgba(0,0,0,.28), 0 1px 0 0 var(--frame-dark); }
+.btn.secondary { background: var(--panel-2); color: var(--ink); }
 .demo-row { text-align: center; margin: .8rem 0 0; color: var(--muted); font-size: .85rem; }
-#status { min-height: 1.4em; margin: .8rem 0; font-size: .95rem; }
-#status.err { color: var(--err); }
-.callout { border: 1px solid var(--gold-soft); border-left: 5px solid var(--gold); background: var(--card); border-radius: 8px; padding: .8rem 1rem; margin: 1rem 0; }
-.callout h3 { margin: .1rem 0 .4rem; font-size: 1.05rem; }
+#status { min-height: 1.4em; margin: .8rem 0 0; font-family: var(--mono); font-size: .82rem; }
+#status.err { color: var(--red); font-weight: 700; }
+.callout h3, .picker h3 { margin: .1rem 0 .5rem; font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; }
 .callout p { margin: .4rem 0; }
-.picker { border: 1px solid var(--line); background: var(--card); border-radius: 12px; padding: 1rem; margin: 1rem 0; }
-.picker h3 { margin: .1rem 0 .4rem; font-size: 1.05rem; }
 .picker .picknote { color: var(--muted); font-size: .85rem; margin: .2rem 0 .6rem; }
-.picker button.pick { display: block; width: 100%; text-align: left; margin: .4rem 0; padding: .6rem .8rem; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); cursor: pointer; font: inherit; }
-.picker button.pick:hover:not(:disabled) { border-color: var(--accent); }
+.picker button.pick {
+  display: block; width: 100%; text-align: left; margin: .5rem 0; padding: .6rem .8rem;
+  border: 2px solid var(--frame-mid); background: var(--panel-hud); color: var(--ink);
+  cursor: pointer; font: inherit;
+  box-shadow: inset 2px 2px 0 var(--frame-light), inset -2px -2px 0 var(--frame-shadow);
+}
+.picker button.pick:hover:not(:disabled) { border-color: var(--green); }
 .picker button.pick:disabled { opacity: .6; cursor: not-allowed; }
-.picker .meta { color: var(--muted); font-size: .85rem; display: block; }
-details.diag { margin: .8rem 0; font-size: .88rem; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: .5rem .8rem; }
-details.diag summary { cursor: pointer; color: var(--muted); font-weight: 600; }
-.diag-row { display: flex; gap: .8rem; padding: .3rem 0; border-bottom: 1px dashed var(--line); }
+.picker .meta { color: var(--muted); font-family: var(--mono); font-size: .78rem; display: block; }
+details.diag { font-size: .88rem; }
+details.diag summary { cursor: pointer; color: var(--gold); font-family: var(--mono); font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
+.diag-row { display: flex; gap: .8rem; padding: .3rem 0; border-bottom: 1px dashed var(--line-strong); }
 .diag-row:last-child { border-bottom: 0; }
-.diag-row .p { flex: 1; word-break: break-all; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .82rem; }
+.diag-row .p { flex: 1; word-break: break-all; font-family: var(--mono); font-size: .82rem; }
 .diag-row .s { white-space: nowrap; color: var(--muted); }
 .diag-row .k { color: var(--muted); max-width: 45%; }
-.controls { display: flex; flex-wrap: wrap; gap: 1rem 1.6rem; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: .7rem 1rem; margin: 1rem 0; }
-.controls label { font-size: .9rem; color: var(--muted); display: flex; align-items: center; gap: .45rem; }
-.controls select { font: inherit; font-size: .92rem; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: .25rem .4rem; max-width: 14rem; }
+.controls {
+  display: flex; flex-wrap: wrap; gap: 1rem 1.6rem; align-items: center;
+  background: var(--panel-hud); border: 2px solid var(--frame-mid);
+  box-shadow: inset 2px 2px 0 var(--frame-light), inset -2px -2px 0 var(--frame-shadow);
+  padding: .7rem 1rem; margin: 1rem 0;
+}
+.controls label { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: .45rem; }
+.controls select { font-family: var(--sans); font-size: .9rem; text-transform: none; letter-spacing: normal; color: var(--ink); background: var(--panel); border: 2px solid var(--frame-mid); padding: .25rem .4rem; max-width: 14rem; }
+/* pixel checkbox */
+.controls input[type="checkbox"] {
+  appearance: none; -webkit-appearance: none; margin: 0; flex: none;
+  width: 19px; height: 19px; cursor: pointer;
+  background: var(--panel-2); border: 2px solid var(--frame-mid);
+  box-shadow: inset 2px 2px 0 var(--frame-light), inset -2px -2px 0 var(--frame-shadow);
+  position: relative;
+}
+.controls input[type="checkbox"]:checked { background: var(--green); }
+.controls input[type="checkbox"]:checked::after { content: ""; position: absolute; left: 5px; top: 1px; width: 4px; height: 9px; border: solid var(--green-fg); border-width: 0 3px 3px 0; transform: rotate(42deg); }
 .viz-wrap { position: relative; }
-canvas { display: block; max-width: 100%; border: 1px solid var(--line); border-radius: 8px; }
+.viz-wrap canvas { display: block; max-width: 100%; border: 2px solid var(--frame-mid); }
 #mapOverlay { position: absolute; left: 0; top: 0; pointer-events: none; border: 0; }
-.tooltip { position: absolute; pointer-events: none; background: var(--bg); color: var(--fg); border: 1px solid var(--line); border-radius: 6px; padding: .35rem .55rem; font-size: .82rem; box-shadow: 0 2px 8px rgba(0,0,0,.15); display: none; z-index: 5; white-space: nowrap; }
+.tooltip { position: absolute; pointer-events: none; background: var(--panel-hud); color: var(--ink); border: 2px solid var(--frame-mid); padding: .35rem .55rem; font-size: .82rem; box-shadow: 3px 3px 0 rgba(0,0,0,.3); display: none; z-index: 5; white-space: nowrap; }
 .tooltip .v { font-weight: 700; font-variant-numeric: tabular-nums; }
 .tooltip .k { color: var(--muted); }
 .legend { display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; margin: .6rem 0 0; font-size: .85rem; }
 .legend .item { display: flex; align-items: center; gap: .4rem; }
-.legend .sw { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
-.legend .n { color: var(--muted); font-variant-numeric: tabular-nums; }
+.legend .sw { width: 14px; height: 14px; display: inline-block; border: 1px solid var(--frame-shadow); }
+.legend .n { color: var(--muted); font-variant-numeric: tabular-nums; font-family: var(--mono); font-size: .78rem; }
 /* harvest card — the per-field collectible summary */
-.hcard { border: 2px solid var(--gold); background: var(--card); border-radius: 14px; padding: .9rem 1.1rem 1rem; margin: 1.4rem 0; box-shadow: 0 2px 0 var(--gold-soft); }
+.hcard {
+  border: 3px solid var(--frame-dark); background: var(--panel-hud);
+  padding: .9rem 1.1rem 1rem; margin: 1.4rem 0;
+  box-shadow: inset 0 0 0 2px var(--gold-soft), 0 5px 0 0 var(--frame-dark);
+}
 .hcard-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .6rem; margin-bottom: .3rem; }
-.hcard-tag { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold-soft); border-radius: 999px; padding: .15rem .6rem; }
+.hcard-tag { font-family: var(--mono); font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); border: 2px solid var(--gold-soft); padding: .15rem .6rem; }
 .hcard-name { font-weight: 700; word-break: break-all; }
 .hstats { display: grid; grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); gap: .6rem; margin: .6rem 0; }
-.hstat { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: .5rem .7rem; }
-.hstat .v { font-size: 1.25rem; font-weight: 700; font-variant-numeric: tabular-nums; }
-.hstat .l { font-size: .78rem; color: var(--muted); }
-.hstrip { display: flex; gap: 2px; height: 12px; border-radius: 6px; overflow: hidden; margin: .6rem 0 .2rem; }
+.hstat {
+  background: var(--panel); border: 2px solid var(--frame-mid); padding: .5rem .7rem;
+  box-shadow: inset 2px 2px 0 var(--frame-light), inset -2px -2px 0 var(--frame-shadow);
+}
+.hstat .v { font-family: var(--mono); font-size: 1.2rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+.hstat .l { font-family: var(--mono); font-size: .66rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.hstrip { display: flex; gap: 2px; height: 12px; overflow: hidden; margin: .6rem 0 .2rem; border: 1px solid var(--frame-shadow); }
 .hstrip span { display: block; height: 100%; }
 .hstrip-note { font-size: .78rem; color: var(--muted); margin: 0 0 .5rem; }
-.badge { display: inline-block; border: 1.5px solid var(--gold); color: var(--gold); border-radius: 999px; padding: .2rem .7rem; font-weight: 700; font-size: .9rem; white-space: nowrap; }
+.badge { display: inline-block; border: 2px solid var(--gold); color: var(--gold); padding: .2rem .7rem; font-weight: 700; font-family: var(--mono); font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
 .hcard-foot { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
 .hcard-foot .small { margin: 0; }
 table.stats { border-collapse: collapse; width: 100%; max-width: 34rem; font-size: .92rem; margin: .6rem 0 1rem; }
 table.stats th, table.stats td { text-align: left; padding: .4rem .6rem; border-bottom: 1px solid var(--line); }
 table.stats td.num { text-align: right; font-variant-numeric: tabular-nums; }
-table.stats th { background: var(--card); font-weight: 600; }
-blockquote { border-left: 3px solid var(--line); margin: .8rem 0; padding: .2rem 0 .2rem 1rem; color: var(--muted); font-size: .95rem; }
+table.stats th { background: var(--panel-2); font-weight: 600; }
+blockquote { border-left: 3px solid var(--gold-soft); margin: .8rem 0; padding: .2rem 0 .2rem 1rem; color: var(--muted); font-size: .95rem; }
 blockquote .who { display: block; font-size: .8rem; margin-top: .3rem; }
 ul.plain li { margin: .3rem 0; }
 .results { display: none; }
@@ -126,11 +258,15 @@ ol.steps li { margin: .35rem 0; }
 </style>
 </head>
 <body>
+<canvas id="farm" aria-hidden="true"></canvas>
+<div id="scrim" aria-hidden="true"></div>
 <header class="site">
   <a class="brand" href="/">SignalCrate</a>
   <span class="tag">tools — run in your browser, your data stays on your device</span>
 </header>
 <main>
+<section class="panel hero">
+<p class="plabel">SignalCrate tools · client-side · nothing uploads</p>
 <div class="field-band" aria-hidden="true"></div>
 <h1>Yield Map Viewer</h1>
 <p class="lede">Drop the yield shapefile you exported from John Deere Operations Center, Climate FieldView, SMS, Ag Leader, Case AFS — or the one your agronomist sent you — and watch your field paint in: a colored yield map <strong>with a real legend</strong>, summary stats, a histogram, a harvest card, and a clean CSV. Free, no account, no trial clock.</p>
@@ -138,7 +274,9 @@ ol.steps li { margin: .35rem 0; }
 <div class="privacy">
   <p style="margin:.2rem 0"><strong>Your file never leaves this device.</strong> There is no upload here — no server receives your data. The shapefile is parsed by JavaScript running in your own browser. You can load this page, go offline, and it still works. The only network traffic is this site&rsquo;s standard visit counter (GoatCounter): a page-view ping plus one anonymous &ldquo;a file parsed OK&rdquo; counter event — neither contains anything from your file, not even its name.</p>
 </div>
+</section>
 
+<section class="panel">
 <div class="drop" id="drop" role="button" tabindex="0" aria-label="Choose or drop shapefile">
   <p class="wheat" aria-hidden="true">🌾</p>
   <p><strong>Drop your harvest here</strong> — the .zip straight from your export, or the .shp + .dbf files together</p>
@@ -150,6 +288,7 @@ ol.steps li { margin: .35rem 0; }
   <span> — a computer-generated sample field, not a real farm.</span>
 </div>
 <p id="status" aria-live="polite"></p>
+</section>
 
 <div class="callout" id="guideBox" hidden></div>
 
@@ -199,9 +338,12 @@ ol.steps li { margin: .35rem 0; }
   </div>
 </div>
 
+<section class="panel">
 <h2>What this reads</h2>
 <p>ESRI shapefiles — the near-universal export format for yield-monitor data. Point layers (the usual yield export) and polygon layers (swath/boundary exports) both work. Drop a <code>.zip</code> straight from your export, or the loose <code>.shp</code> + <code>.dbf</code> (+ optional <code>.prj</code>) files. Shapefiles buried in nested folders, zips inside zips, and <code>__MACOSX</code> clutter are handled; if one zip holds several shapefiles you get a picker. Yield and moisture columns like <code>DRY_YIELD</code>, <code>Yld_Vol_Dr</code>, <code>Yld_Mass_D</code>, <code>VRYIELDVOL</code>, <code>Moisture</code> are auto-detected, and you can always override the pick in the dropdown above the map.</p>
+</section>
 
+<section class="panel">
 <h2 id="jdl-help">Got a .jdl file (or a zip full of them)? Here&rsquo;s the fix</h2>
 <p>A <code>.jdl</code> is the raw work-data log that a John Deere Gen&nbsp;4 / G5 CommandCenter&trade; display writes — Ops Center&rsquo;s Files page hands these back inside a <code>JD-Data</code> folder when you download raw files (<a href="https://support.koenigequipment.com/how-to-download-raw-or-old-files-in-john-deere-operations-center" rel="nofollow">Koenig Equipment&rsquo;s guide</a> shows that path). There is no public spec for it; only Ops Center itself, the displays, and desktop farm software with Deere&rsquo;s licensed plugin (SMS, Gatekeeper, GeoPard) can read it. No in-browser tool can honestly open a .jdl — this one included, and a site that claims otherwise is uploading your data to a server to convert it.</p>
 <p>The good news: your data is already in Operations Center, and Ops Center exports shapefiles this page <em>does</em> read. In the <strong>web app</strong> (operationscenter.deere.com — the mobile app has no shapefile export):</p>
@@ -212,7 +354,9 @@ ol.steps li { margin: .35rem 0; }
 </ol>
 <p class="small">Menu wording follows <a href="https://processes.premiercrop.com/knowledge/exporting-shapefiles-from-myjohndeere-operations-center" rel="nofollow">Premier Crop&rsquo;s step-by-step with screenshots</a>. Field <em>boundaries</em> have their own path — Setup &rarr; Land &rarr; Export, file type Shapefile (<a href="https://help.fieldalytics.com/article/836-exporting-boundaries-from-operations-center" rel="nofollow">FieldAlytics guide</a>). Background on the JD-Data/.jdl folder layout: <a href="https://farmplan.co.uk/wp-content/uploads/sites/1/2021/09/John-Deere-Gen-4-devices-and-Gatekeeper.pdf" rel="nofollow">Farmplan&rsquo;s Gatekeeper PDF</a>.</p>
 <p>The download from step 3 is a .zip of shapefiles — drop it here and you&rsquo;re done.</p>
+</section>
 
+<section class="panel">
 <h2>What v1 does not do (honestly)</h2>
 <ul class="plain">
   <li><strong>No monitor-native files.</strong> It can&rsquo;t read <code>.jdl</code>, <code>.dat</code>, <code>.yld</code>, or other proprietary monitor/display formats — no browser tool honestly can. If Ops Center gave you .jdl files, the <a href="#jdl-help">export fix above</a> takes about two minutes.</li>
@@ -223,13 +367,16 @@ ol.steps li { margin: .35rem 0; }
   <li><strong>One shapefile at a time.</strong> If an export holds several, you get a picker and view them one by one — no merged multi-field view yet.</li>
   <li><strong>No comparisons to anyone else&rsquo;s farm.</strong> The harvest card and percentiles are computed from your file alone, on your device.</li>
 </ul>
+</section>
 
+<section class="panel">
 <h2>Why this exists</h2>
 <p>Farm-data platforms keep making it painful to simply <em>look at</em> data you generated on your own farm. From public app-store reviews of Climate FieldView (collected July 2026 in a scan of 1,448 reviews across 10 farm and job apps; quoted verbatim):</p>
 <blockquote>&ldquo;If you cancel your fieldview plus subscription. Make sure you download your data first. They won&rsquo;t give it to you without it.&rdquo;<span class="who">— 1-star App Store review, Climate FieldView</span></blockquote>
 <blockquote>&ldquo;Been using FieldView cab since 2013 and have been extremely happy with it until you guys forced your way in and rendered my yield information USELESS until I pay $750 for your service. I find no value in Climate for our operation. In the past I was given the option of rejecting a&rdquo; <span class="who">— 1-star App Store review, Climate FieldView (excerpt)</span></blockquote>
 <p>Farmers have asked for years for a free way to just view an exported yield map — see NewAgTalk&rsquo;s Precision Talk threads on <a href="https://talk.newagtalk.com/forums/thread-view.asp?tid=811791" rel="nofollow">getting data out of FieldView</a> and <a href="https://talk.newagtalk.com/forums/thread-view.asp?tid=430085" rel="nofollow">free software to view yield maps</a>. The usual answers are crippled desktop trials. This page is the answer we wanted to find: open it, drop the file, see your map. If it saves you a subscription you didn&rsquo;t want, good.</p>
 <p class="small">Found a shapefile it chokes on? That&rsquo;s a bug we want. Open an issue on <a href="https://github.com/Jaxx-H/jaxx-h.github.io/issues" rel="nofollow">the site&rsquo;s GitHub repo</a> — the &ldquo;what was inside&rdquo; panel above gives you the exact paths and sizes to paste; please don&rsquo;t attach data you consider private.</p>
+</section>
 </main>
 <footer class="site">
   <p>&copy; <span id="yr">2026</span> SignalCrate. This tool runs entirely in your browser; your files are never uploaded. No warranty — verify anything important against your monitor software.</p>
@@ -679,7 +826,13 @@ if (typeof window !== "undefined") window.YMV = YMV;
   };
   const mq = window.matchMedia("(prefers-color-scheme: dark)");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const pal = () => (mq.matches ? PALETTES.dark : PALETTES.light);
+  // a data-theme attribute (site/theme toggle) wins; otherwise the OS scheme
+  // decides — both directions, matching the pixel-farm background renderer.
+  const isDark = () => {
+    const t = document.documentElement.getAttribute("data-theme");
+    return t === "dark" || (t !== "light" && mq.matches);
+  };
+  const pal = () => (isDark() ? PALETTES.dark : PALETTES.light);
 
   const state = {
     name: null, geoms: null, records: null, fields: null, prj: null,
@@ -1437,13 +1590,264 @@ if (typeof window !== "undefined") window.YMV = YMV;
     setTimeout(() => URL.revokeObjectURL(a.href), 5000);
   });
 
-  // re-render on theme change / resize
+  // re-render on theme change (OS scheme or data-theme attribute) / resize
   mq.addEventListener("change", () => { if (state.geoms) renderAll(); });
+  new MutationObserver(() => { if (state.geoms) renderAll(); })
+    .observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
   let rzTimer = null;
   window.addEventListener("resize", () => {
     clearTimeout(rzTimer);
     rzTimer = setTimeout(() => { if (state.geoms) renderAll(); }, 150);
   });
+})();
+</script>
+
+<script>
+/* ================= PIXEL FARM (house style, see /DESIGN.md) =================
+   Ambient procedural pixel-art farm — self-contained, deterministic (no RNG),
+   trademark-safe (a GENERIC green combine and a GENERIC red tractor; no logos,
+   wordmarks, or trade dress). Pure background: the canvas is position:fixed,
+   z-index:0, pointer-events:none — the tool above never touches it.
+   prefers-reduced-motion => ONE static frame, no rAF; hidden tab => paused. */
+"use strict";
+(function () {
+  var canvas = document.getElementById("farm");
+  if (!canvas || !canvas.getContext) return;
+  var ctx = canvas.getContext("2d", { alpha: false });
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var PAL = {
+    day: {
+      skyTop:"#a9cfe4", skyMid:"#cfe4ec", skyLow:"#f3dcac", sun:"#fff0c0", sunCore:"#fff8dc",
+      cloud:"#fbf6ea", cloud2:"#e9e6d8",
+      treeA:"#2f5d2a", treeB:"#3f7a33", trunk:"#6b4a24",
+      soil:"#7c5330", soilDk:"#5e3f22", soilLt:"#946842", furrow:"#4d3319",
+      crop:"#4f8a3a", cropLt:"#6faa4a",
+      cbBody:"#4f9a34", cbDk:"#356f24", cbTrim:"#f0c53a", cab:"#31424e", glass:"#bfe0ea",
+      trBody:"#c0432c", trDk:"#8f2e1e", stack:"#3a3a3a",
+      wheel:"#211d17", hub:"#d9d2c0", dust:"#dcc79c"
+    },
+    dusk: {
+      skyTop:"#1b2740", skyMid:"#3a3550", skyLow:"#b06a42", sun:"#ffcf8a", sunCore:"#ffe6b4",
+      cloud:"#4c4358", cloud2:"#3a3346",
+      treeA:"#1c3a1e", treeB:"#2a5326", trunk:"#43301a",
+      soil:"#3c2b1c", soilDk:"#281c12", soilLt:"#4d3624", furrow:"#1c120a",
+      crop:"#356b2a", cropLt:"#4a8a3a",
+      cbBody:"#3f8a2c", cbDk:"#2a5c1e", cbTrim:"#e0b34a", cab:"#232f38", glass:"#5c7a86",
+      trBody:"#a83a26", trDk:"#722418", stack:"#2a2a2a",
+      wheel:"#100d09", hub:"#7a6f58", dust:"#5a4832"
+    }
+  };
+
+  function effectiveTheme() {
+    var t = document.documentElement.getAttribute("data-theme");
+    if (t === "dark") return "dusk";
+    if (t === "light") return "day";
+    return (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dusk" : "day";
+  }
+
+  var W = 0, H = 0, PX = 4, horizon = 0, p = PAL.day;
+  var clouds = [], trees = [];
+
+  function fill(x, y, w, h, c) { ctx.fillStyle = c; ctx.fillRect(x | 0, y | 0, Math.max(1, w | 0), Math.max(1, h | 0)); }
+  function disc(cx, cy, r, c) {
+    ctx.fillStyle = c;
+    for (var y = -r; y <= r; y++) {
+      var dx = Math.floor(Math.sqrt(r * r - y * y));
+      ctx.fillRect((cx - dx) | 0, (cy + y) | 0, (dx * 2 + 1) | 0, 1);
+    }
+  }
+
+  function layout() {
+    var cssW = Math.max(320, window.innerWidth || 360);
+    var cssH = Math.max(360, window.innerHeight || 640);
+    PX = Math.max(3, Math.round(cssW / 380));
+    W = Math.ceil(cssW / PX); H = Math.ceil(cssH / PX);
+    canvas.width = W; canvas.height = H;
+    canvas.style.width = cssW + "px"; canvas.style.height = cssH + "px";
+    ctx.imageSmoothingEnabled = false;
+    horizon = Math.round(H * 0.50);
+    // stable procedural props (deterministic, no RNG)
+    clouds = [];
+    for (var i = 0; i < 4; i++) clouds.push({ x: (i * 97 + 20) % W, y: Math.round(H * (0.10 + 0.055 * i)), s: 3 + (i % 3), spd: 2.2 + i * 0.5 });
+    trees = [];
+    var tn = Math.max(8, Math.floor(W / 26));
+    for (var j = 0; j < tn; j++) {
+      var tx = Math.round((j + 0.5) * (W / tn) + (j % 3) * 4);
+      trees.push({ x: tx, h: 7 + (j * 5 % 6), kind: j % 4 });
+    }
+  }
+
+  function drawSky() {
+    // banded gradient (pixel-friendly)
+    var bands = [[0, p.skyTop], [0.34, p.skyMid], [0.80, p.skyLow]];
+    for (var b = 0; b < bands.length; b++) {
+      var y0 = Math.round(bands[b][0] * horizon);
+      var y1 = (b + 1 < bands.length) ? Math.round(bands[b + 1][0] * horizon) : horizon;
+      fill(0, y0, W, y1 - y0 + 1, bands[b][1]);
+    }
+    // sun low over the horizon
+    var sx = Math.round(W * 0.74), sy = Math.round(horizon * 0.72), sr = Math.max(6, Math.round(W * 0.028));
+    disc(sx, sy, sr + 2, p.sun);
+    disc(sx, sy, sr - 1, p.sunCore);
+  }
+
+  function drawCloud(c) {
+    var s = c.s;
+    fill(c.x, c.y, 10 * s, 3 * s, p.cloud);
+    fill(c.x + 2 * s, c.y - 2 * s, 6 * s, 3 * s, p.cloud);
+    fill(c.x + 5 * s, c.y - 3 * s, 4 * s, 2 * s, p.cloud);
+    fill(c.x + 1 * s, c.y + 2 * s, 9 * s, 1 * s, p.cloud2);
+  }
+
+  function drawTree(t) {
+    var bx = t.x, by = horizon, h = t.h;
+    fill(bx - 1, by - 2, 3, 3, p.trunk);
+    if (t.kind === 3) { // deciduous blob
+      disc(bx, by - h - 1, Math.round(h * 0.7), p.treeA);
+      disc(bx - 1, by - h, Math.round(h * 0.55), p.treeB);
+    } else { // pine: stacked triangles
+      for (var k = 0; k < 3; k++) {
+        var w = h - k * Math.round(h / 3);
+        var yy = by - 2 - k * Math.round(h / 3) - Math.round(h / 3);
+        fill(bx - Math.round(w / 2), yy, w, Math.round(h / 3) + 1, (k % 2) ? p.treeB : p.treeA);
+      }
+      fill(bx - 1, by - h - 2, 2, 3, p.treeA);
+    }
+  }
+
+  function drawField() {
+    // base soil
+    fill(0, horizon, W, H - horizon, p.soil);
+    var vpx = W * 0.5;
+    // converging furrows (one-point perspective)
+    var rows = 22;
+    for (var i = 0; i <= rows; i++) {
+      var fx = (i / rows) * 2 - 1;            // -1..1
+      var topX = vpx + fx * (W * 0.06);       // narrow near horizon
+      var botX = vpx + fx * (W * 0.95);       // wide at foreground
+      ctx.strokeStyle = p.furrow; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(topX, horizon + 1); ctx.lineTo(botX, H); ctx.stroke();
+    }
+    // horizontal depth bands: alternate soil tone + crop stripe, taller toward viewer
+    var y = horizon, band = 2, toggle = 0, guard = 0;
+    while (y < H && guard++ < 200) {
+      var c = (toggle % 3 === 0) ? p.cropLt : (toggle % 3 === 1) ? p.crop : p.soilLt;
+      if (toggle % 2 === 0) fill(0, y, W, Math.max(1, band), c);
+      y += band; band += 1; toggle++;
+    }
+    // near foreground darker soil lip
+    fill(0, H - Math.round(H * 0.05), W, Math.round(H * 0.05), p.soilDk);
+  }
+
+  // generic combine facing right, (x,y)=front-cab top-left, scale s
+  function drawCombine(x, y, s, blink) {
+    var b = p;
+    // dust behind (to the left)
+    fill(x - 8 * s, y + 11 * s, 3 * s, 2 * s, b.dust);
+    fill(x - 12 * s, y + 12 * s, 2 * s, 2 * s, b.dust);
+    // grain body
+    fill(x, y + 3 * s, 22 * s, 8 * s, b.cbBody);
+    fill(x, y + 9 * s, 22 * s, 2 * s, b.cbDk);
+    // cab (rear/left top)
+    fill(x + 1 * s, y - 2 * s, 6 * s, 5 * s, b.cbBody);
+    fill(x + 2 * s, y - 1 * s, 4 * s, 3 * s, b.glass);
+    // unloading auger up-left
+    fill(x - 6 * s, y - 1 * s, 8 * s, 2 * s, b.cbDk);
+    // header + reel (front/right)
+    fill(x + 20 * s, y + 5 * s, 6 * s, 6 * s, b.cbTrim);
+    var reelC = blink ? b.cbDk : b.cab;
+    fill(x + 22 * s, y + 4 * s, 3 * s, 3 * s, reelC);
+    fill(x + 23 * s, y + 3 * s, 1 * s, 5 * s, b.cbDk);
+    // wheels
+    disc(x + 6 * s, y + 12 * s, 3 * s, b.wheel); fill(x + 5 * s, y + 11 * s, 2 * s, 2 * s, b.hub);
+    disc(x + 18 * s, y + 12 * s, 2 * s, b.wheel);
+  }
+
+  // generic tractor facing left, (x,y)=top-left of body, scale s
+  function drawTractor(x, y, s, blink) {
+    var b = p;
+    // dust behind (to the right, since moving left)
+    fill(x + 16 * s, y + 9 * s, 3 * s, 2 * s, b.dust);
+    fill(x + 20 * s, y + 10 * s, 2 * s, 2 * s, b.dust);
+    // body
+    fill(x + 2 * s, y + 3 * s, 13 * s, 6 * s, b.trBody);
+    fill(x + 2 * s, y + 7 * s, 13 * s, 2 * s, b.trDk);
+    // hood + front weight (left)
+    fill(x, y + 5 * s, 3 * s, 3 * s, b.trDk);
+    // cab (right)
+    fill(x + 9 * s, y - 1 * s, 6 * s, 5 * s, b.trBody);
+    fill(x + 10 * s, y, 4 * s, 3 * s, b.glass);
+    // exhaust stack
+    fill(x + 4 * s, y - 2 * s, 1 * s, 5 * s, b.stack);
+    if (blink) fill(x + 4 * s, y - 3 * s, 1 * s, 1 * s, b.cloud2);
+    // wheels: big rear (right), small front (left)
+    disc(x + 12 * s, y + 10 * s, 4 * s, b.wheel); fill(x + 11 * s, y + 9 * s, 2 * s, 2 * s, b.hub);
+    disc(x + 3 * s, y + 10 * s, 2 * s, b.wheel);
+  }
+
+  // moving actors
+  var cb = { x: 0 }, tr = { x: 0 };
+  var last = 0, t = 0;
+
+  function frame(now) {
+    var dt = last ? Math.min(0.05, (now - last) / 1000) : 0.016;
+    last = now; t += dt;
+
+    // advance vehicles
+    cb.x += dt * (W * 0.020);
+    if (cb.x > W + 40) cb.x = -60;
+    tr.x -= dt * (W * 0.016);
+    if (tr.x < -60) tr.x = W + 40;
+    // drift clouds
+    for (var i = 0; i < clouds.length; i++) {
+      clouds[i].x += dt * clouds[i].spd;
+      if (clouds[i].x > W + 60) clouds[i].x = -60;
+    }
+
+    render();
+    if (!reduce) raf = window.requestAnimationFrame(frame);
+  }
+
+  function render() {
+    drawSky();
+    for (var i = 0; i < clouds.length; i++) drawCloud(clouds[i]);
+    for (var j = 0; j < trees.length; j++) drawTree(trees[j]);
+    drawField();
+    var blink = (Math.floor(t * 6) % 2) === 0;
+    // combine in the far-mid band
+    var cbY = horizon + Math.round((H - horizon) * 0.20);
+    drawCombine(cb.x, cbY, 1, blink);
+    // tractor nearer + larger
+    var trY = horizon + Math.round((H - horizon) * 0.52);
+    drawTractor(tr.x, trY, 1.4, blink);
+  }
+
+  var raf = 0;
+  function start() {
+    p = PAL[effectiveTheme()];
+    layout();
+    cb.x = W * 0.15; tr.x = W * 0.70;
+    if (raf) window.cancelAnimationFrame(raf);
+    last = 0;
+    if (reduce) { render(); }
+    else raf = window.requestAnimationFrame(frame);
+  }
+
+  // theme + resize + visibility
+  var rt;
+  window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(start, 160); });
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) { if (raf) window.cancelAnimationFrame(raf); raf = 0; }
+    else if (!reduce && !raf) { last = 0; raf = window.requestAnimationFrame(frame); }
+  });
+  var mo = new MutationObserver(function () { p = PAL[effectiveTheme()]; if (reduce) render(); });
+  mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  if (window.matchMedia) {
+    try { window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () { p = PAL[effectiveTheme()]; if (reduce) render(); }); } catch (e) {}
+  }
+
+  start();
 })();
 </script>
 </body>
