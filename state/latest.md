@@ -1,9 +1,13 @@
 # STATE — HQ Income Engine (machine-written bridge)
 
-_Generated 2026-07-16 05:59 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
+_Generated 2026-07-16 06:25 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
 
 ## Last 15 commits (hq-income-engine main)
 ```
+f8ebf45 Merge pull request #40 from Jaxx-H/claude/r6-personal-ai-discovery
+9825d43 BET-R6 sweep 1: tracks 1/2/6/7 verbatim + knowledge base + hypotheses + wedges + decision log
+d24eed8 BET-R6: personal-AI category discovery program (operator directive 2026-07-16)
+f323d53 index: rebuild from 0ddf382 [skip ci]
 0ddf382 Merge pull request #39 from Jaxx-H/claude/ws0-workflow-hygiene
 671af22 index: rebuild from 174d836 [skip ci]
 174d836 WS-1: index-on-merge kernel (DIRECTIVE v3) — operator-ratify (#38)
@@ -15,10 +19,6 @@ d3d046d DEMAND RESEARCH: multilingual language-gap recheck for hiring-signals + 
 e392e1a Merge pull request #35 from Jaxx-H/claude/frontier-qwtds8
 e1cd9e0 Merge pull request #37 from Jaxx-H/claude/wire-ci-push-token
 eecde85 merge main: keep operator gate amendment + branch's evidence-based rescore (64->60)
-32281bd wire CI_PUSH_TOKEN: self-committing workflows push to protected main again
-b8c44fa X build-in-public: consolidate + validate 4 drafts from #23/#6 (de-collisioned, staged) (#31)
-1898ab0 strategy-chat intake: GitHub-canon state bridge + R1 distribution gate + weekly Notion digest + verified facts (#36)
-a333e2d R&D: BET-R1 — pain-mining experiment 1, ranked gap list from real review data
 ```
 
 ## Open PRs
