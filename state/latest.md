@@ -4,6 +4,7 @@ _Generated 2026-07-16 03:30 UTC by tools/state_snapshot.py (state-snapshot.yml).
 
 ## Last 15 commits (hq-income-engine main)
 ```
+d3d046d DEMAND RESEARCH: multilingual language-gap recheck for hiring-signals + app-review scraping (#32)
 e392e1a Merge pull request #35 from Jaxx-H/claude/frontier-qwtds8
 e1cd9e0 Merge pull request #37 from Jaxx-H/claude/wire-ci-push-token
 eecde85 merge main: keep operator gate amendment + branch's evidence-based rescore (64->60)
@@ -18,22 +19,20 @@ a333e2d R&D: BET-R1 — pain-mining experiment 1, ranked gap list from real revi
 2dec1f1 add deploy-actors.yml — fail-closed Apify deploy pipeline (disarmed by default) (#28)
 32516a7 production arm: give the loop an 'actor-build-ship' arm + validated actor #4 spec (#26)
 dbdac6a Harden dev.to syndication idempotency (fail-closed platform-truth check) (#27)
-fa1d960 MOAT/PRODUCT: first artifact — Chegg-test screen kills 2 candidate actor-to-moat moves (#30)
 ```
 
 ## Open PRs
 ```
-#32 [claude/wizardly-cray-ebuvhi] DEMAND RESEARCH: multilingual language-gap recheck for hiring-signals + app-review scraping
 #4 [claude/wizardly-cray-69npyj] distribution: complete the dev.to job-scraper tutorial (devto-syndication arm)
 ```
 
 ## Reward ledger — newest 8 rows (brain/experiments.jsonl)
 ```json
-{"ts": "2026-07-11", "arm": "owned-geo-site", "reward": 0, "cost": 2, "note": "P1 BUILT + LIVE: jaxx-h.github.io deployed via Actions; first real page top-homesteading-youtube-channels (11 real channels, actor run anKxNtzln5QM8exEY). Dataset+FAQPage JSON-LD, sitemap/robots/llms.txt, IndexNow submitted (HTTP 202 to Bing/Yandex/DDG). Reward=0 because measurement not wired yet (GoatCounter=P4, operator-gated). RE-MEASURE after P4 analytics live + ~2-4wk indexing: track organic_visits + apify referral runs."}
 {"ts": "2026-07-12", "arm": "devto-syndication", "reward": 0, "cost": 0, "source": "ci/measure-cron", "evidence": "distribution/metrics-snapshots/2026-07-12.json", "note": "measured: snapshot metrics-snapshots/2026-07-12.json; snapshot-only per reward-spec (on-platform views never rewarded); devto+hashnode delta 0 (0 - 0); rewarded referral_pageviews come from GoatCounter side; NONE FOUND — DEVTO_API_KEY not set; NONE FOUND — HASHNODE_PAT not set"}
 {"ts": "2026-07-12", "arm": "x-build-in-public", "reward": 0, "cost": 0, "source": "ci/measure-cron", "evidence": "distribution/metrics-snapshots/2026-07-12.json", "note": "measured: snapshot metrics-snapshots/2026-07-12.json; snapshot-only per reward-spec; x engagement delta 0 (0 - 0); NONE FOUND — X credentials not set; NONE FOUND — GoatCounter not provisioned yet (P4)"}
 {"ts": "2026-07-12", "arm": "apify-listing-seo", "reward": 0.25, "cost": 0, "source": "local/collect_metrics", "evidence": "metrics/daily/2026-07-12.json#apify.actors", "note": "1 external_actor_run x 0.25 = 0.25 (totalRuns delta {'youtube-lead': 0, 'review-scraper': 0, 'job-scraper': 1}; may include own runs); window 2026-07-12T01:00:00Z..2026-07-12T16:00:00Z (backfill self-heals closed-laptop gaps)"}
 {"ts": "2026-07-13", "arm": "apify-listing-seo", "reward": 0, "cost": 1, "source": "cloud/websearch-spotcheck", "evidence": "brain/research/2026-07-13-apify-listing-seo-competitive-scan.md", "note": "WebSearched core buyer-intent queries for all 3 actors (job scraper/hiring-signals, youtube channel email finder, app store+google play review scraper). NONE of our 3 listings appeared in any result set across 4 queries (job-scraper: 10 named competitors visible, none ours; youtube-lead: 6+ named competitors, none ours; review-scraper: 8+ named competitors, none ours) -- organic-visibility gap confirmed as still open, not resolved by the 2026-07-10 seoTitle/seoDescription change. Not exhaustive (WebSearch snippets, not full SERPs) so treat as directional signal, not proof of zero ranking."}
+{"ts": "2026-07-15", "arm": "multilingual-demand", "reward": 0, "cost": 1, "source": "cloud/websearch-spotcheck", "evidence": "brain/research/2026-07-15-multilingual-language-gap-recheck-hiring-review.md", "note": "First-ever observation for this arm (was n=0). WebSearched native-term queries in German, Japanese, Korean for whether job-scraper (hiring-signals) or review-scraper (app-review scraping) categories have an underserved non-English market. All 3 found established, sometimes more-sophisticated native incumbents (index Salesdriver 15-country EU coverage; SalesNow AI-agent-native MCP integration; HashScraper+AppTweak Korean app-review tooling) -- NO GAP found in any of the 3 markets checked for this specific hypothesis (translate-existing-actor-category-to-new-language). validated_gaps has no traffic-weighted event in reward_map.json so reward=0 is the honest, expected value for a qualitative research arm; this is not a traffic/revenue measurement."}
 {"ts": "2026-07-15", "arm": "owned-geo-site", "reward": 0.01, "cost": 0, "source": "local/collect_metrics", "evidence": "metrics/daily/2026-07-15.json#goatcounter.total", "note": "1 organic_pageview x 0.01 = 0.01; window 2026-07-12T16:00:00Z..2026-07-15T23:00:00Z (backfill self-heals closed-laptop gaps)"}
 {"ts": "2026-07-15", "arm": "apify-listing-seo", "reward": 21.75, "cost": 0, "source": "local/collect_metrics", "evidence": "metrics/daily/2026-07-15.json#apify.actors", "note": "87 external_actor_run x 0.25 = 21.75 (totalRuns delta {'youtube-lead': 35, 'review-scraper': 25, 'job-scraper': 27}; may include own runs); window 2026-07-12T16:00:00Z..2026-07-15T23:00:00Z (backfill self-heals closed-laptop gaps)"}
 {"ts": "2026-07-15", "arm": "apify-listing-seo", "reward": 0.12, "cost": 0, "source": "local/collect_metrics#revenue", "evidence": "metrics/revenue/2026-07.json#entries", "note": "revenue_id=2026-07-apify-job-scraper-1 0.12 revenue_usd x 1.0 = 0.12 (first paid usage ever — Apify Insights July 2026, paying-user revenue on company-careers-job-scraper (being listed produ)"}
