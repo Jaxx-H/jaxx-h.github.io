@@ -4,7 +4,12 @@ _Generated 2026-07-16 05:59 UTC by tools/state_snapshot.py (state-snapshot.yml).
 
 ## Last 15 commits (hq-income-engine main)
 ```
+0ddf382 Merge pull request #39 from Jaxx-H/claude/ws0-workflow-hygiene
+671af22 index: rebuild from 174d836 [skip ci]
 174d836 WS-1: index-on-merge kernel (DIRECTIVE v3) — operator-ratify (#38)
+8217a91 check6: human_push_exempt category (WS-2 human-push design law) + register index.yml
+900df6e allowlist index.yml (WS-1 commit job) — MERGE ORDER: #38 (WS-1) must merge before #39 (WS-0)
+85aad64 WS-0: workflow hygiene lints (DIRECTIVE v3) — 7 checks, fixtures, CI leg
 615c311 nightly auto-snapshot 2026-07-15
 d3d046d DEMAND RESEARCH: multilingual language-gap recheck for hiring-signals + app-review scraping (#32)
 e392e1a Merge pull request #35 from Jaxx-H/claude/frontier-qwtds8
@@ -14,16 +19,10 @@ eecde85 merge main: keep operator gate amendment + branch's evidence-based resco
 b8c44fa X build-in-public: consolidate + validate 4 drafts from #23/#6 (de-collisioned, staged) (#31)
 1898ab0 strategy-chat intake: GitHub-canon state bridge + R1 distribution gate + weekly Notion digest + verified facts (#36)
 a333e2d R&D: BET-R1 — pain-mining experiment 1, ranked gap list from real review data
-4aa7d26 dev.to: send an identifying User-Agent — default urllib UA is bot-blocked (403 Forbidden Bots) (#33)
-2a6ba61 R&D BOOK: charter + seeded portfolio + frontier loop — two books, one harness (#34)
-7988cf8 metrics: 2026-07-15 — repair-append 3 withheld reward row(s)
-4217e96 metrics: 2026-07-15 — daily snapshot (0 reward row(s))
-2dec1f1 add deploy-actors.yml — fail-closed Apify deploy pipeline (disarmed by default) (#28)
 ```
 
 ## Open PRs
 ```
-#39 [claude/ws0-workflow-hygiene] WS-0: workflow hygiene lints (DIRECTIVE v3) — operator-ratify
 #4 [claude/wizardly-cray-69npyj] distribution: complete the dev.to job-scraper tutorial (devto-syndication arm)
 ```
 
