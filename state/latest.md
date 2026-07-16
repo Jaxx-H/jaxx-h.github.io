@@ -1,9 +1,10 @@
 # STATE — HQ Income Engine (machine-written bridge)
 
-_Generated 2026-07-16 03:30 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
+_Generated 2026-07-16 04:30 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
 
 ## Last 15 commits (hq-income-engine main)
 ```
+615c311 nightly auto-snapshot 2026-07-15
 d3d046d DEMAND RESEARCH: multilingual language-gap recheck for hiring-signals + app-review scraping (#32)
 e392e1a Merge pull request #35 from Jaxx-H/claude/frontier-qwtds8
 e1cd9e0 Merge pull request #37 from Jaxx-H/claude/wire-ci-push-token
@@ -18,7 +19,6 @@ a333e2d R&D: BET-R1 — pain-mining experiment 1, ranked gap list from real revi
 4217e96 metrics: 2026-07-15 — daily snapshot (0 reward row(s))
 2dec1f1 add deploy-actors.yml — fail-closed Apify deploy pipeline (disarmed by default) (#28)
 32516a7 production arm: give the loop an 'actor-build-ship' arm + validated actor #4 spec (#26)
-dbdac6a Harden dev.to syndication idempotency (fail-closed platform-truth check) (#27)
 ```
 
 ## Open PRs
