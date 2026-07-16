@@ -161,6 +161,60 @@ poly_fields = [("DRY_YIELD", "N", 12, 2), ("PASS_NUM", "N", 6, 0)]
 poly_bbox = write_polygon_shp(FIX / "synthetic-yield-swaths.shp", polys)
 write_dbf(FIX / "synthetic-yield-swaths.dbf", poly_fields, poly_attrs)
 
+# ---------------- robustness fixtures (v1.1) ---------------------------------
+# Real-world John Deere Operations Center exports arrive as zips with nested
+# per-field folders, several shapefiles per archive, macOS __MACOSX clutter,
+# or — when the farmer takes the raw Files-page download — .jdl display logs
+# and no shapefile at all. These fixtures reproduce each case deterministically.
+def zwrite(z, arcname, data):
+    zi = zipfile.ZipInfo(arcname, date_time=(2026, 1, 1, 0, 0, 0))
+    zi.compress_type = zipfile.ZIP_DEFLATED
+    z.writestr(zi, data)
+
+
+pt_bytes = {ext: (FIX / f"synthetic-yield-points.{ext}").read_bytes()
+            for ext in ("shp", "dbf", "prj")}
+sw_bytes = {ext: (FIX / f"synthetic-yield-swaths.{ext}").read_bytes()
+            for ext in ("shp", "dbf")}
+
+# 1) shapefile buried in nested folders, like an Ops Center work-data export
+with zipfile.ZipFile(FIX / "synthetic-nested.zip", "w") as z:
+    for ext in ("shp", "dbf", "prj"):
+        zwrite(z, f"JD-Data/North 40 demo/Harvest-2026/synthetic-yield-points.{ext}",
+               pt_bytes[ext])
+
+# 2) multiple shapefile sets in one zip (batch export: one per operation)
+with zipfile.ZipFile(FIX / "synthetic-multi.zip", "w") as z:
+    for ext in ("shp", "dbf", "prj"):
+        zwrite(z, f"fields/north-40/synthetic-yield-points.{ext}", pt_bytes[ext])
+    for ext in ("shp", "dbf"):
+        zwrite(z, f"fields/south-80/synthetic-yield-swaths.{ext}", sw_bytes[ext])
+
+# 3) macOS zip noise: __MACOSX mirror, AppleDouble ._ files, .DS_Store
+with zipfile.ZipFile(FIX / "synthetic-macosx.zip", "w") as z:
+    for ext in ("shp", "dbf", "prj"):
+        zwrite(z, f"synthetic-yield-points.{ext}", pt_bytes[ext])
+        zwrite(z, f"__MACOSX/._synthetic-yield-points.{ext}",
+               b"\x00\x05\x16\x07SYNTHETIC AppleDouble junk")
+    zwrite(z, ".DS_Store", b"SYNTHETIC DS_Store junk")
+
+# 4) fake .jdl — a stand-in for a John Deere Gen 4/G5 display work-data log.
+#    NOT a real log (the format has no public spec); just deterministic bytes
+#    with a .jdl name so the "display data, here's the export fix" path is
+#    testable without any real farm data.
+fake_jdl = b"SYNTHETIC-JDL-FIXTURE: not a real John Deere file.\x00\x01\x02\x03" * 6
+(FIX / "synthetic-fake.jdl").write_bytes(fake_jdl)
+
+# 5) what a raw Files-page download looks like: JD-Data/.jdl logs, no shapefile
+with zipfile.ZipFile(FIX / "synthetic-jd-data.zip", "w") as z:
+    zwrite(z, "JD-Data/log/Field demo/session-1/synthetic-fake.jdl", fake_jdl)
+    zwrite(z, "JD-Data/log/Field demo/session-2/synthetic-fake-2.jdl", fake_jdl)
+
+# 6) zip inside a zip (re-wrapped downloads)
+with zipfile.ZipFile(FIX / "synthetic-zip-in-zip.zip", "w") as z:
+    zwrite(z, "inner/synthetic-yield-points.zip",
+           (FIX / "synthetic-yield-points.zip").read_bytes())
+
 # ---------------- expected.json: the independent oracle ----------------------
 def stats(vals):
     vals = sorted(vals)

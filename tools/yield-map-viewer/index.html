@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Yield Map Viewer — free, in your browser, your file never uploads</title>
-<meta name="description" content="Free in-browser yield shapefile viewer: drop the .zip or .shp+.dbf you exported from your yield monitor and get a yield map with a real legend, stats, histogram, and CSV. Nothing uploads.">
+<meta name="description" content="Free in-browser yield shapefile viewer: drop the .zip or .shp+.dbf you exported from your yield monitor and get a yield map with a real legend, stats, histogram, and CSV. Handles Ops Center zips with nested folders, and explains the .jdl fix. Nothing uploads.">
 <link rel="canonical" href="https://jaxx-h.github.io/tools/yield-map-viewer/">
 <meta property="og:title" content="Yield Map Viewer — free, in your browser, your file never uploads">
 <meta property="og:description" content="Drop a yield shapefile, get a yield map with a real legend, summary stats, a histogram, and a CSV. 100% client-side — the file never leaves your device.">
@@ -13,42 +13,73 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Yield Map Viewer","url":"https://jaxx-h.github.io/tools/yield-map-viewer/","description":"In-browser ESRI shapefile viewer for yield-monitor exports: yield map with legend, summary statistics, histogram, CSV export. All processing happens client-side; files are never uploaded.","applicationCategory":"Agriculture","operatingSystem":"Any (modern web browser)","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <script data-goatcounter="https://jaxx.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <style>
+/* Harvest theme — soil browns, crop golds, a sparing John-Deere-adjacent green.
+   The 5-class yield ramp is a single-hue harvest-gold ordinal ramp, validated
+   (monotone L, adjacent dL >= 0.06, light-end >= 2:1 vs surface, one hue)
+   against these exact surfaces in BOTH modes. Keep --c1..--c5 in sync with
+   PALETTES in the UI script below. */
 :root {
-  --bg: #ffffff; --fg: #1a1a1a; --muted: #5c6670; --line: #e3e6ea;
-  --accent: #0b6b53; --accent-fg: #ffffff; --card: #f7f9fa;
-  --c1: #86b6ef; --c2: #5598e7; --c3: #2a78d6; --c4: #1c5cab; --c5: #104281;
+  --bg: #faf6ec; --fg: #2b2119; --muted: #6b5f52; --line: #e6dcc4;
+  --accent: #2f6d24; --accent-fg: #ffffff; --card: #f3ecd9;
+  --gold: #825700; --gold-soft: #d7a955; --err: #a83224;
+  --c1: #d7a955; --c2: #ba8d37; --c3: #9e7112; --c4: #825700; --c5: #673e00;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #14171a; --fg: #e8eaed; --muted: #9aa4ad; --line: #2a2f35;
-    --accent: #2ea27f; --accent-fg: #0b0e10; --card: #1b1f23;
-    --c1: #184f95; --c2: #256abf; --c3: #3987e5; --c4: #6da7ec; --c5: #b7d3f6;
+    --bg: #201a14; --fg: #ede4d4; --muted: #a89a86; --line: #3d332a;
+    --accent: #7cc25f; --accent-fg: #14200f; --card: #2a221a;
+    --gold: #dcb05b; --gold-soft: #a2781b; --err: #e07862;
+    --c1: #6c4400; --c2: #865e00; --c3: #a2781b; --c4: #bf943d; --c5: #dcb05b;
   }
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
 body { margin: 0; font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--fg); background: var(--bg); }
-main { max-width: 60rem; margin: 0 auto; padding: 1.5rem 1.1rem 3rem; }
+main { max-width: 60rem; margin: 0 auto; padding: 1rem 1.1rem 3rem; }
 header.site, footer.site { max-width: 60rem; margin: 0 auto; padding: 1rem 1.1rem; }
 header.site { display: flex; flex-wrap: wrap; align-items: baseline; gap: .6rem; border-bottom: 1px solid var(--line); }
 .brand { font-weight: 700; text-decoration: none; color: var(--fg); font-size: 1.15rem; }
 .tag { color: var(--muted); font-size: .85rem; }
 footer.site { border-top: 1px solid var(--line); color: var(--muted); font-size: .82rem; margin-top: 2rem; }
 a { color: var(--accent); }
-h1 { font-size: 1.7rem; line-height: 1.25; margin: .3rem 0 .6rem; }
+h1 { font-size: 1.7rem; line-height: 1.25; margin: .5rem 0 .6rem; }
 h2 { font-size: 1.25rem; margin: 2rem 0 .6rem; }
 .lede { font-size: 1.12rem; }
+/* harvest-pass banner: the 5-class ramp laid down like strip-till passes */
+.field-band { height: 12px; border-radius: 3px; margin: .6rem 0 1rem;
+  background: repeating-linear-gradient(100deg,
+    var(--c1) 0 34px, var(--c3) 34px 52px, var(--c2) 52px 88px,
+    var(--c5) 88px 106px, var(--c4) 106px 142px); }
 .privacy { background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 8px; padding: .8rem 1rem; margin: 1rem 0; }
 .privacy strong { color: var(--accent); }
-.drop { border: 2px dashed var(--line); border-radius: 12px; padding: 2.2rem 1rem; text-align: center; margin: 1.2rem 0; cursor: pointer; transition: border-color .15s, background .15s; }
-.drop.hover { border-color: var(--accent); background: var(--card); }
+.drop { border: 2px dashed var(--gold-soft); border-radius: 14px; padding: 1.8rem 1rem; text-align: center; margin: 1.2rem 0; cursor: pointer; transition: border-color .15s, background .15s; }
+.drop.hover, .drop:hover { border-color: var(--accent); background: var(--card); }
+.drop:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 .drop p { margin: .3rem 0; }
+.drop .wheat { font-size: 1.7rem; line-height: 1; margin: 0 0 .3rem; }
 .drop .hint { color: var(--muted); font-size: .85rem; }
 .btn { display: inline-block; background: var(--accent); color: var(--accent-fg); padding: .6rem 1rem; border-radius: 8px; text-decoration: none; font-weight: 600; border: 0; font-size: 1rem; cursor: pointer; }
 .btn.secondary { background: var(--card); color: var(--fg); border: 1px solid var(--line); }
 .demo-row { text-align: center; margin: .8rem 0 0; color: var(--muted); font-size: .85rem; }
 #status { min-height: 1.4em; margin: .8rem 0; font-size: .95rem; }
-#status.err { color: #c0392b; }
+#status.err { color: var(--err); }
+.callout { border: 1px solid var(--gold-soft); border-left: 5px solid var(--gold); background: var(--card); border-radius: 8px; padding: .8rem 1rem; margin: 1rem 0; }
+.callout h3 { margin: .1rem 0 .4rem; font-size: 1.05rem; }
+.callout p { margin: .4rem 0; }
+.picker { border: 1px solid var(--line); background: var(--card); border-radius: 12px; padding: 1rem; margin: 1rem 0; }
+.picker h3 { margin: .1rem 0 .4rem; font-size: 1.05rem; }
+.picker .picknote { color: var(--muted); font-size: .85rem; margin: .2rem 0 .6rem; }
+.picker button.pick { display: block; width: 100%; text-align: left; margin: .4rem 0; padding: .6rem .8rem; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); cursor: pointer; font: inherit; }
+.picker button.pick:hover:not(:disabled) { border-color: var(--accent); }
+.picker button.pick:disabled { opacity: .6; cursor: not-allowed; }
+.picker .meta { color: var(--muted); font-size: .85rem; display: block; }
+details.diag { margin: .8rem 0; font-size: .88rem; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: .5rem .8rem; }
+details.diag summary { cursor: pointer; color: var(--muted); font-weight: 600; }
+.diag-row { display: flex; gap: .8rem; padding: .3rem 0; border-bottom: 1px dashed var(--line); }
+.diag-row:last-child { border-bottom: 0; }
+.diag-row .p { flex: 1; word-break: break-all; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .82rem; }
+.diag-row .s { white-space: nowrap; color: var(--muted); }
+.diag-row .k { color: var(--muted); max-width: 45%; }
 .controls { display: flex; flex-wrap: wrap; gap: 1rem 1.6rem; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: .7rem 1rem; margin: 1rem 0; }
 .controls label { font-size: .9rem; color: var(--muted); display: flex; align-items: center; gap: .45rem; }
 .controls select { font: inherit; font-size: .92rem; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: .25rem .4rem; max-width: 14rem; }
@@ -62,6 +93,21 @@ canvas { display: block; max-width: 100%; border: 1px solid var(--line); border-
 .legend .item { display: flex; align-items: center; gap: .4rem; }
 .legend .sw { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
 .legend .n { color: var(--muted); font-variant-numeric: tabular-nums; }
+/* harvest card — the per-field collectible summary */
+.hcard { border: 2px solid var(--gold); background: var(--card); border-radius: 14px; padding: .9rem 1.1rem 1rem; margin: 1.4rem 0; box-shadow: 0 2px 0 var(--gold-soft); }
+.hcard-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .6rem; margin-bottom: .3rem; }
+.hcard-tag { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold-soft); border-radius: 999px; padding: .15rem .6rem; }
+.hcard-name { font-weight: 700; word-break: break-all; }
+.hstats { display: grid; grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); gap: .6rem; margin: .6rem 0; }
+.hstat { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: .5rem .7rem; }
+.hstat .v { font-size: 1.25rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.hstat .l { font-size: .78rem; color: var(--muted); }
+.hstrip { display: flex; gap: 2px; height: 12px; border-radius: 6px; overflow: hidden; margin: .6rem 0 .2rem; }
+.hstrip span { display: block; height: 100%; }
+.hstrip-note { font-size: .78rem; color: var(--muted); margin: 0 0 .5rem; }
+.badge { display: inline-block; border: 1.5px solid var(--gold); color: var(--gold); border-radius: 999px; padding: .2rem .7rem; font-weight: 700; font-size: .9rem; white-space: nowrap; }
+.hcard-foot { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+.hcard-foot .small { margin: 0; }
 table.stats { border-collapse: collapse; width: 100%; max-width: 34rem; font-size: .92rem; margin: .6rem 0 1rem; }
 table.stats th, table.stats td { text-align: left; padding: .4rem .6rem; border-bottom: 1px solid var(--line); }
 table.stats td.num { text-align: right; font-variant-numeric: tabular-nums; }
@@ -70,8 +116,13 @@ blockquote { border-left: 3px solid var(--line); margin: .8rem 0; padding: .2rem
 blockquote .who { display: block; font-size: .8rem; margin-top: .3rem; }
 ul.plain li { margin: .3rem 0; }
 .results { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .results.on { animation: rise .35s ease; }
+  @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+}
 .small { color: var(--muted); font-size: .85rem; }
 .fieldnote { color: var(--muted); font-size: .82rem; margin: .3rem 0 0; }
+ol.steps li { margin: .35rem 0; }
 </style>
 </head>
 <body>
@@ -80,23 +131,38 @@ ul.plain li { margin: .3rem 0; }
   <span class="tag">tools — run in your browser, your data stays on your device</span>
 </header>
 <main>
+<div class="field-band" aria-hidden="true"></div>
 <h1>Yield Map Viewer</h1>
-<p class="lede">Drop the yield shapefile you exported from John Deere Operations Center, Climate FieldView, SMS, Ag Leader, Case AFS — or the one your agronomist sent you — and see it: a colored yield map <strong>with a real legend</strong>, summary stats, a histogram, and a clean CSV. Free, no account, no trial clock.</p>
+<p class="lede">Drop the yield shapefile you exported from John Deere Operations Center, Climate FieldView, SMS, Ag Leader, Case AFS — or the one your agronomist sent you — and watch your field paint in: a colored yield map <strong>with a real legend</strong>, summary stats, a histogram, a harvest card, and a clean CSV. Free, no account, no trial clock.</p>
 
 <div class="privacy">
   <p style="margin:.2rem 0"><strong>Your file never leaves this device.</strong> There is no upload here — no server receives your data. The shapefile is parsed by JavaScript running in your own browser. You can load this page, go offline, and it still works. The only network traffic is this site&rsquo;s standard visit counter (GoatCounter): a page-view ping plus one anonymous &ldquo;a file parsed OK&rdquo; counter event — neither contains anything from your file, not even its name.</p>
 </div>
 
 <div class="drop" id="drop" role="button" tabindex="0" aria-label="Choose or drop shapefile">
-  <p><strong>Drop your yield shapefile here</strong> — a .zip, or the .shp + .dbf files together</p>
-  <p class="hint">or click to choose files. Everything stays on this device.</p>
-  <input type="file" id="fileInput" multiple accept=".zip,.shp,.dbf,.prj" style="display:none">
+  <p class="wheat" aria-hidden="true">🌾</p>
+  <p><strong>Drop your harvest here</strong> — the .zip straight from your export, or the .shp + .dbf files together</p>
+  <p class="hint">or click to choose files. Nested folders, batch exports, and macOS zip clutter are all fine. Everything stays on this device.</p>
+  <input type="file" id="fileInput" multiple accept=".zip,.shp,.dbf,.prj,.shx,.cpg,.jdl" style="display:none">
 </div>
 <div class="demo-row">
   <button class="btn secondary" id="demoBtn" type="button">Try it with synthetic demo data</button>
   <span> — a computer-generated sample field, not a real farm.</span>
 </div>
 <p id="status" aria-live="polite"></p>
+
+<div class="callout" id="guideBox" hidden></div>
+
+<div class="picker" id="picker" hidden>
+  <h3>That export holds more than one shapefile</h3>
+  <p class="picknote">Ops Center batch exports pack one shapefile per operation, often in per-field folders. Pick the one to view — a merged all-fields view isn&rsquo;t built yet (it&rsquo;s on the list).</p>
+  <div id="pickerList"></div>
+</div>
+
+<details class="diag" id="diagBox" hidden>
+  <summary>What was inside what you dropped (exact paths, sizes, types)</summary>
+  <div id="diagList"></div>
+</details>
 
 <div class="results" id="results">
   <div class="controls">
@@ -119,6 +185,8 @@ ul.plain li { margin: .3rem 0; }
   <div class="legend" id="legend"></div>
   <p class="small" id="mapNote"></p>
 
+  <section class="hcard" id="hcard" hidden></section>
+
   <h2>Summary stats</h2>
   <table class="stats"><tbody id="statsBody"></tbody></table>
   <p><button class="btn" id="csvBtn" type="button">Download CSV of all points</button></p>
@@ -132,16 +200,28 @@ ul.plain li { margin: .3rem 0; }
 </div>
 
 <h2>What this reads</h2>
-<p>ESRI shapefiles — the near-universal export format for yield-monitor data. Point layers (the usual yield export) and polygon layers (swath/boundary exports) both work. Drop a <code>.zip</code> straight from your export, or the loose <code>.shp</code> + <code>.dbf</code> (+ optional <code>.prj</code>) files. Yield and moisture columns like <code>DRY_YIELD</code>, <code>Yld_Vol_Dr</code>, <code>VRYIELDVOL</code>, <code>Moisture</code> are auto-detected, and you can override the pick.</p>
+<p>ESRI shapefiles — the near-universal export format for yield-monitor data. Point layers (the usual yield export) and polygon layers (swath/boundary exports) both work. Drop a <code>.zip</code> straight from your export, or the loose <code>.shp</code> + <code>.dbf</code> (+ optional <code>.prj</code>) files. Shapefiles buried in nested folders, zips inside zips, and <code>__MACOSX</code> clutter are handled; if one zip holds several shapefiles you get a picker. Yield and moisture columns like <code>DRY_YIELD</code>, <code>Yld_Vol_Dr</code>, <code>Yld_Mass_D</code>, <code>VRYIELDVOL</code>, <code>Moisture</code> are auto-detected, and you can always override the pick in the dropdown above the map.</p>
+
+<h2 id="jdl-help">Got a .jdl file (or a zip full of them)? Here&rsquo;s the fix</h2>
+<p>A <code>.jdl</code> is the raw work-data log that a John Deere Gen&nbsp;4 / G5 CommandCenter&trade; display writes — Ops Center&rsquo;s Files page hands these back inside a <code>JD-Data</code> folder when you download raw files (<a href="https://support.koenigequipment.com/how-to-download-raw-or-old-files-in-john-deere-operations-center" rel="nofollow">Koenig Equipment&rsquo;s guide</a> shows that path). There is no public spec for it; only Ops Center itself, the displays, and desktop farm software with Deere&rsquo;s licensed plugin (SMS, Gatekeeper, GeoPard) can read it. No in-browser tool can honestly open a .jdl — this one included, and a site that claims otherwise is uploading your data to a server to convert it.</p>
+<p>The good news: your data is already in Operations Center, and Ops Center exports shapefiles this page <em>does</em> read. In the <strong>web app</strong> (operationscenter.deere.com — the mobile app has no shapefile export):</p>
+<ol class="steps">
+  <li><strong>Analyze &rarr; Work Analyzer</strong>, filter to your harvest operations / year.</li>
+  <li>Open the <strong>Share/Export</strong> dropdown &rarr; choose <strong>&ldquo;Work Data&rdquo;</strong> &rarr; pick a location and file name &rarr; <strong>Export Work Data</strong>.</li>
+  <li>Go to <strong>More &rarr; Files</strong>, select the new export, <strong>Download &rarr; Desktop or device</strong>.</li>
+</ol>
+<p class="small">Menu wording follows <a href="https://processes.premiercrop.com/knowledge/exporting-shapefiles-from-myjohndeere-operations-center" rel="nofollow">Premier Crop&rsquo;s step-by-step with screenshots</a>. Field <em>boundaries</em> have their own path — Setup &rarr; Land &rarr; Export, file type Shapefile (<a href="https://help.fieldalytics.com/article/836-exporting-boundaries-from-operations-center" rel="nofollow">FieldAlytics guide</a>). Background on the JD-Data/.jdl folder layout: <a href="https://farmplan.co.uk/wp-content/uploads/sites/1/2021/09/John-Deere-Gen-4-devices-and-Gatekeeper.pdf" rel="nofollow">Farmplan&rsquo;s Gatekeeper PDF</a>.</p>
+<p>The download from step 3 is a .zip of shapefiles — drop it here and you&rsquo;re done.</p>
 
 <h2>What v1 does not do (honestly)</h2>
 <ul class="plain">
-  <li><strong>No monitor-native files.</strong> It can&rsquo;t read <code>.dat</code>, <code>.yld</code>, or other proprietary monitor formats — export a shapefile from your software first.</li>
+  <li><strong>No monitor-native files.</strong> It can&rsquo;t read <code>.jdl</code>, <code>.dat</code>, <code>.yld</code>, or other proprietary monitor/display formats — no browser tool honestly can. If Ops Center gave you .jdl files, the <a href="#jdl-help">export fix above</a> takes about two minutes.</li>
   <li><strong>No basemap.</strong> The map is drawn in your field&rsquo;s own coordinates, offline. No satellite imagery underneath.</li>
   <li><strong>No reprojection.</strong> Projected files draw in their native units; lat/lon files use a flat-earth approximation that is fine at field scale but not for surveying.</li>
   <li><strong>No harvested-acres number.</strong> Swath-width and distance units vary between exporters, so v1 refuses to guess. It shows the bounding-box extent instead, clearly labeled as such.</li>
   <li><strong>No data cleaning</strong> beyond an optional exclude-zeros toggle — no calibration or flow-delay correction. Stats are computed from the values in your file, as exported.</li>
-  <li><strong>One shapefile at a time.</strong> If a zip holds several, the first is used and the rest are listed.</li>
+  <li><strong>One shapefile at a time.</strong> If an export holds several, you get a picker and view them one by one — no merged multi-field view yet.</li>
+  <li><strong>No comparisons to anyone else&rsquo;s farm.</strong> The harvest card and percentiles are computed from your file alone, on your device.</li>
 </ul>
 
 <h2>Why this exists</h2>
@@ -149,7 +229,7 @@ ul.plain li { margin: .3rem 0; }
 <blockquote>&ldquo;If you cancel your fieldview plus subscription. Make sure you download your data first. They won&rsquo;t give it to you without it.&rdquo;<span class="who">— 1-star App Store review, Climate FieldView</span></blockquote>
 <blockquote>&ldquo;Been using FieldView cab since 2013 and have been extremely happy with it until you guys forced your way in and rendered my yield information USELESS until I pay $750 for your service. I find no value in Climate for our operation. In the past I was given the option of rejecting a&rdquo; <span class="who">— 1-star App Store review, Climate FieldView (excerpt)</span></blockquote>
 <p>Farmers have asked for years for a free way to just view an exported yield map — see NewAgTalk&rsquo;s Precision Talk threads on <a href="https://talk.newagtalk.com/forums/thread-view.asp?tid=811791" rel="nofollow">getting data out of FieldView</a> and <a href="https://talk.newagtalk.com/forums/thread-view.asp?tid=430085" rel="nofollow">free software to view yield maps</a>. The usual answers are crippled desktop trials. This page is the answer we wanted to find: open it, drop the file, see your map. If it saves you a subscription you didn&rsquo;t want, good.</p>
-<p class="small">Found a shapefile it chokes on? That&rsquo;s a bug we want. Open an issue on <a href="https://github.com/Jaxx-H/jaxx-h.github.io/issues" rel="nofollow">the site&rsquo;s GitHub repo</a> — describe the export source; please don&rsquo;t attach data you consider private.</p>
+<p class="small">Found a shapefile it chokes on? That&rsquo;s a bug we want. Open an issue on <a href="https://github.com/Jaxx-H/jaxx-h.github.io/issues" rel="nofollow">the site&rsquo;s GitHub repo</a> — the &ldquo;what was inside&rdquo; panel above gives you the exact paths and sizes to paste; please don&rsquo;t attach data you consider private.</p>
 </main>
 <footer class="site">
   <p>&copy; <span id="yr">2026</span> SignalCrate. This tool runs entirely in your browser; your files are never uploaded. No warranty — verify anything important against your monitor software.</p>
@@ -220,6 +300,120 @@ const YMV = (() => {
     }
     if (!entries.length) throw new Error("The zip appears to be empty.");
     return entries;
+  }
+
+  // ---------- archive flattening & shapefile discovery ----------
+  // macOS zip clutter: __MACOSX resource-fork mirrors, AppleDouble ._ files,
+  // .DS_Store. They must never be mistaken for real shapefile members.
+  const JUNK_PATH_RE = /(^|\/)__MACOSX(\/|$)|(^|\/)\.DS_Store$|(^|\/)\._[^/]*$/;
+  function isJunkPath(name) { return JUNK_PATH_RE.test(name); }
+
+  function looksLikeZip(data) {
+    const u = u8of(data);
+    return u.byteLength >= 4 && u[0] === 0x50 && u[1] === 0x4b &&
+           (u[2] === 0x03 || u[2] === 0x05 || u[2] === 0x07);
+  }
+
+  // Flatten dropped files into one pool: unwrap zips (nested zips too, up to
+  // 3 levels), keep every entry — junk included — so diagnostics can report
+  // exactly what was found. An unreadable zip stays in the pool with a note.
+  async function gatherFiles(named, depth) {
+    depth = depth || 0;
+    let out = [];
+    for (const f of named) {
+      const knownNonZip = /\.(shp|dbf|prj|shx|cpg|jdl)$/i.test(f.name);
+      const isZip = !isJunkPath(f.name) &&
+                    (/\.zip$/i.test(f.name) || (!knownNonZip && looksLikeZip(f.data)));
+      if (isZip && depth < 3) {
+        let entries;
+        try { entries = await readZipEntries(f.data); }
+        catch (e) { out.push({ name: f.name, data: f.data, note: "unreadable zip: " + e.message }); continue; }
+        const prefix = depth === 0 ? "" : f.name.replace(/\.zip$/i, "") + "/";
+        const inner = await gatherFiles(
+          entries.map((e) => ({ name: prefix + e.name, data: e.data })), depth + 1);
+        out = out.concat(inner);
+      } else {
+        out.push(f);
+      }
+    }
+    return out;
+  }
+
+  // Find every .shp anywhere in the pool and pair it with its .dbf/.prj mates:
+  // same full path base first (case-insensitive), falling back to a unique
+  // basename match across folders. Junk paths never form or join a set.
+  function findShapefileSets(files) {
+    const stripExt = (n) => n.replace(/\.[^/.]+$/, "");
+    const baseOf = (k) => k.split("/").pop();
+    const sets = [];
+    const byKey = new Map();
+    for (const f of files) {
+      if (isJunkPath(f.name) || !/\.shp$/i.test(f.name)) continue;
+      const s = { path: f.name, shp: f, dbf: null, prj: null };
+      byKey.set(stripExt(f.name).toLowerCase(), s);
+      sets.push(s);
+    }
+    for (const f of files) {
+      if (isJunkPath(f.name)) continue;
+      const m = f.name.match(/\.(dbf|prj)$/i);
+      if (!m) continue;
+      const ext = m[1].toLowerCase();
+      const key = stripExt(f.name).toLowerCase();
+      let s = byKey.get(key);
+      if (!s) {
+        const cands = sets.filter((x) => baseOf(stripExt(x.path).toLowerCase()) === baseOf(key));
+        if (cands.length === 1) s = cands[0];
+      }
+      if (s && !s[ext]) s[ext] = f;
+    }
+    return sets;
+  }
+
+  // ---------- file-kind sniffing (extension + magic bytes) ----------
+  // Monitor/display-native formats this tool can NOT read (no public spec).
+  // .jdl identification is triangulated from Deere's JD-Data docs and the
+  // Gatekeeper/SMS/GeoPard import guides — not a published Deere statement.
+  const MONITOR_FORMATS = {
+    jdl: "John Deere Gen 4/G5 display work-data log — proprietary, no public spec",
+    dat: "monitor-native data file (proprietary)",
+    yld: "monitor-native yield log (proprietary)",
+    ilf: "Ag Leader monitor log (proprietary)",
+    gsd: "monitor-native data file (proprietary)",
+  };
+  function sniffKind(name, data) {
+    const u = data ? u8of(data) : new Uint8Array(0);
+    const ext = (name.match(/\.([^/.]+)$/) || [, ""])[1].toLowerCase();
+    if (u.byteLength >= 4 && u[0] === 0x50 && u[1] === 0x4b &&
+        (u[2] === 0x03 || u[2] === 0x05 || u[2] === 0x07)) {
+      return { ext, kind: "zip", label: "zip archive" };
+    }
+    if (u.byteLength >= 100 && dvOf(u).getInt32(0, false) === 9994) {
+      return { ext, kind: "shp", label: "ESRI shapefile geometry (.shp)" };
+    }
+    if (ext === "dbf" && u.byteLength >= 32 &&
+        [0x02, 0x03, 0x04, 0x05, 0x30, 0x31, 0x43, 0x63, 0x83, 0x8b, 0xcb, 0xf5, 0xfb].indexOf(u[0]) >= 0) {
+      return { ext, kind: "dbf", label: "shapefile attribute table (.dbf)" };
+    }
+    if (ext === "prj") return { ext, kind: "prj", label: "projection info (.prj)" };
+    if (ext === "shx") return { ext, kind: "shx", label: "shapefile index (.shx)" };
+    if (ext === "cpg") return { ext, kind: "cpg", label: "codepage info (.cpg)" };
+    if (MONITOR_FORMATS[ext]) return { ext, kind: "monitor", label: MONITOR_FORMATS[ext] };
+    if (u.byteLength >= 5 &&
+        String.fromCharCode(u[0], u[1], u[2], u[3], u[4]) === "<?xml") {
+      return { ext, kind: "xml", label: "XML document" };
+    }
+    return { ext, kind: "other", label: ext ? "." + ext + " file" : "file (no extension)" };
+  }
+
+  // Diagnostic inventory of a pool: exact paths, sizes, sniffed kinds. This is
+  // what the "what was inside" panel and precise bug reports are built from.
+  function inventory(files) {
+    return files.map((f) => {
+      const k = sniffKind(f.name, f.data);
+      return { path: f.name, bytes: f.data ? u8of(f.data).byteLength : 0,
+               ext: k.ext, kind: k.kind, label: k.label,
+               junk: isJunkPath(f.name), note: f.note || null };
+    });
   }
 
   // ---------- SHP ----------
@@ -343,15 +537,24 @@ const YMV = (() => {
     return out;
   }
 
+  // Ordered most-specific first. JD Ops Center / SMS exports truncate at the
+  // dBase 10-char cap: Yld_Vol_Dr, Yld_Mass_D (dry) / Yld_Vol_We, Yld_Mass_W
+  // (wet); Gen 4 ADAPT-style exports use VRYIELDVOL. Dry columns win; a wet
+  // column is only picked when no dry candidate exists (second pass).
   const YIELD_PATTERNS = [
-    /^dry_?yield/i, /^yld_?vol_?dr/i, /^yld_?mass_?dr/i, /^vryield/i,
-    /^yield/i, /yld/i, /yield/i,
+    /^dry_?yield/i, /^yld_?vol_?d/i, /^yld_?mass_?d/i, /^vryield/i,
+    /^yield/i, /^yld_?vol/i, /^yld_?mass/i, /yld/i, /yield/i,
   ];
   function detectYieldColumn(fields, records) {
     const nums = numericFieldNames(fields, records);
-    for (const re of YIELD_PATTERNS) {
-      for (const n of nums) {
-        if (re.test(n) && !/moist|wet/i.test(n)) return n;
+    for (const allowWet of [false, true]) {
+      for (const re of YIELD_PATTERNS) {
+        for (const n of nums) {
+          if (!re.test(n)) continue;
+          if (/moist/i.test(n)) continue;
+          if (!allowWet && /wet|_we$|_w$/i.test(n)) continue;
+          return n;
+        }
       }
     }
     return null;
@@ -450,7 +653,8 @@ const YMV = (() => {
 
   return { readZipEntries, inflateRaw, parseShp, parseDbf, numericFieldNames,
            detectYieldColumn, detectMoistureColumn, computeStats, quantileBreaks,
-           classify, buildCsv, geomXY, looksLikeLonLat, prjUnits, extentAcres };
+           classify, buildCsv, geomXY, looksLikeLonLat, prjUnits, extentAcres,
+           gatherFiles, findShapefileSets, sniffKind, inventory, isJunkPath };
 })();
 if (typeof window !== "undefined") window.YMV = YMV;
 </script>
@@ -463,28 +667,41 @@ if (typeof window !== "undefined") window.YMV = YMV;
   document.getElementById("yr").textContent = String(new Date().getFullYear());
 
   const PALETTES = {
-    /* Ordinal 5-class blue ramps + chrome, validated (monotone L, adjacent
-       dL >= 0.06, light-end >= 2:1) against these exact surfaces. */
-    light: { classes: ["#86b6ef", "#5598e7", "#2a78d6", "#1c5cab", "#104281"],
-             bar: "#2a78d6", surface: "#ffffff", grid: "#e3e6ea",
-             ink: "#1a1a1a", muted: "#5c6670", nodata: "#c9ced4" },
-    dark:  { classes: ["#184f95", "#256abf", "#3987e5", "#6da7ec", "#b7d3f6"],
-             bar: "#3987e5", surface: "#14171a", grid: "#2a2f35",
-             ink: "#e8eaed", muted: "#9aa4ad", nodata: "#3a4046" },
+    /* Harvest-gold ordinal 5-class ramps + chrome, validated (single hue,
+       monotone L, adjacent dL >= 0.06, light-end >= 2:1) against these exact
+       surfaces. Keep in sync with the CSS --c1..--c5 custom properties. */
+    light: { classes: ["#d7a955", "#ba8d37", "#9e7112", "#825700", "#673e00"],
+             bar: "#9e7112", surface: "#faf6ec", grid: "#e6dcc4",
+             ink: "#2b2119", muted: "#6b5f52", nodata: "#c9c1b2" },
+    dark:  { classes: ["#6c4400", "#865e00", "#a2781b", "#bf943d", "#dcb05b"],
+             bar: "#bf943d", surface: "#201a14", grid: "#3d332a",
+             ink: "#ede4d4", muted: "#a89a86", nodata: "#4a4136" },
   };
   const mq = window.matchMedia("(prefers-color-scheme: dark)");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const pal = () => (mq.matches ? PALETTES.dark : PALETTES.light);
 
   const state = {
     name: null, geoms: null, records: null, fields: null, prj: null,
     bbox: null, yieldCol: null, moistCol: null, exclZero: false,
     proj: null, breaks: null, classCounts: null, histBins: null,
+    pool: null, sortedVals: null,
   };
 
   function setStatus(msg, isErr) {
     const el = $("status");
     el.textContent = msg;
     el.className = isErr ? "err" : "";
+  }
+  function fmtBytes(n) {
+    if (n < 1024) return n + " B";
+    if (n < 1048576) return (n / 1024).toFixed(1) + " KB";
+    return (n / 1048576).toFixed(1) + " MB";
+  }
+  function hideAux() {
+    $("guideBox").hidden = true;
+    $("picker").hidden = true;
+    $("diagBox").hidden = true;
   }
 
   // ---------- file intake ----------
@@ -502,8 +719,8 @@ if (typeof window !== "undefined") window.YMV = YMV;
       const r = await fetch("fixtures/synthetic-yield-points.zip");
       if (!r.ok) throw new Error("demo fetch failed: " + r.status);
       const buf = await r.arrayBuffer();
-      await loadFromNamedBuffers([{ name: "synthetic-yield-points.zip", data: new Uint8Array(buf) }]);
-      setStatus("Loaded SYNTHETIC demo data (computer-generated sample field — not a real farm). " + summaryLine());
+      const ok = await handleNamed([{ name: "synthetic-yield-points.zip", data: new Uint8Array(buf) }]);
+      if (ok) setStatus("Loaded SYNTHETIC demo data (computer-generated sample field — not a real farm). " + summaryLine());
     } catch (err) {
       setStatus("Could not load the demo: " + err.message, true);
     }
@@ -513,17 +730,30 @@ if (typeof window !== "undefined") window.YMV = YMV;
     try {
       const files = Array.from(fileList || []);
       if (!files.length) return;
-      setStatus("Reading…");
+      setStatus("Reading your field…");
       const named = [];
       for (const f of files) {
         named.push({ name: f.name, data: new Uint8Array(await f.arrayBuffer()) });
       }
-      await loadFromNamedBuffers(named);
-      setStatus("Parsed " + state.name + " — nothing was uploaded; this all happened in your browser. " + summaryLine());
+      await handleNamed(named);
     } catch (err) {
       setStatus(err.message || String(err), true);
       $("results").style.display = "none";
+      showDiag(); // whatever we managed to inventory before the failure
     }
+  }
+
+  // Returns true when a shapefile was loaded straight away (single set).
+  async function handleNamed(named) {
+    hideAux();
+    $("results").style.display = "none";
+    const pool = await YMV.gatherFiles(named);
+    state.pool = pool;
+    const sets = YMV.findShapefileSets(pool);
+    if (!sets.length) { showNoShapefile(pool); return false; }
+    if (sets.length === 1) { loadSet(sets[0]); return true; }
+    showPicker(sets);
+    return false;
   }
 
   function summaryLine() {
@@ -536,43 +766,19 @@ if (typeof window !== "undefined") window.YMV = YMV;
     return bits.join(", ") + ".";
   }
 
-  async function loadFromNamedBuffers(named) {
-    // unwrap zips
-    let pool = [];
-    for (const f of named) {
-      if (/\.zip$/i.test(f.name)) {
-        const entries = await YMV.readZipEntries(f.data);
-        pool = pool.concat(entries);
-      } else {
-        pool.push(f);
-      }
-    }
-    const shps = pool.filter((f) => /\.shp$/i.test(f.name));
-    if (!shps.length) {
-      throw new Error("No .shp found. Drop the exported .zip, or the .shp and .dbf files together. (A .dbf or .csv alone isn't enough — the .shp holds the geometry.)");
-    }
-    const shp = shps[0];
-    const base = shp.name.replace(/\.shp$/i, "");
-    const findMate = (ext) => pool.find((f) => f.name.toLowerCase() === (base + ext).toLowerCase());
-    const dbf = findMate(".dbf");
-    const prj = findMate(".prj");
-
-    const parsed = YMV.parseShp(shp.data);
+  function loadSet(set) {
+    const parsed = YMV.parseShp(set.shp.data);
     let table = { fields: [], records: [] };
-    if (dbf) table = YMV.parseDbf(dbf.data);
+    if (set.dbf) table = YMV.parseDbf(set.dbf.data);
 
-    state.name = shp.name;
+    state.name = set.path;
     state.geoms = parsed.geoms;
     state.counts = parsed.counts;
     state.bbox = parsed.bbox;
     state.fields = table.fields;
     state.records = table.records;
-    state.prj = prj ? new TextDecoder().decode(prj.data) : null;
+    state.prj = set.prj ? new TextDecoder().decode(set.prj.data) : null;
 
-    const extra = shps.length > 1 ? " (also in the file, not shown: " + shps.slice(1).map((s) => s.name).join(", ") + ")" : "";
-    if (!dbf) {
-      setStatus("No .dbf attribute file found for " + shp.name + " — showing geometry only, no yield values." + extra);
-    }
     if (state.records.length && state.geoms.length !== state.records.length) {
       console.warn("shape count " + state.geoms.length + " != record count " + state.records.length + "; joining by index up to the shorter.");
     }
@@ -584,13 +790,119 @@ if (typeof window !== "undefined") window.YMV = YMV;
     fillSelect($("yieldCol"), nums, state.yieldCol, "— pick a column —");
     fillSelect($("moistCol"), nums, state.moistCol, "— none —");
 
-    $("results").style.display = "block";
-    renderAll();
+    const res = $("results");
+    res.style.display = "block";
+    res.classList.remove("on");
+    void res.offsetWidth; // restart the reveal animation
+    res.classList.add("on");
+    renderAll(true);
+    const dbfNote = set.dbf ? "" : " No .dbf attribute file came with it — geometry only, no yield values.";
+    setStatus("Field's in the bin — parsed " + set.path + " right here in your browser; nothing was uploaded." + dbfNote + " " + summaryLine());
     try {
       if (window.goatcounter && window.goatcounter.count) {
         window.goatcounter.count({ path: "tools-yield-map-viewer-parse-ok", title: "yield-map-viewer parse ok", event: true });
       }
     } catch (e) { /* analytics must never break the tool */ }
+  }
+
+  // ---------- multiple shapefiles: the picker ----------
+  function showPicker(sets) {
+    const list = $("pickerList");
+    list.textContent = "";
+    for (const s of sets) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "pick";
+      const name = document.createElement("span");
+      name.textContent = s.path;
+      const meta = document.createElement("span");
+      meta.className = "meta";
+      try {
+        const p = YMV.parseShp(s.shp.data);
+        const bits = [];
+        if (p.counts.points) bits.push(p.counts.points.toLocaleString("en-US") + " points");
+        if (p.counts.polys) bits.push(p.counts.polys.toLocaleString("en-US") + " polygons");
+        if (p.counts.lines) bits.push(p.counts.lines.toLocaleString("en-US") + " lines");
+        bits.push(fmtBytes(s.shp.data.byteLength));
+        bits.push(s.dbf ? "attributes: yes" : "no .dbf — geometry only");
+        meta.textContent = bits.join(" · ");
+      } catch (e) {
+        meta.textContent = "couldn't parse this one: " + e.message;
+        b.disabled = true;
+      }
+      b.append(name, meta);
+      b.addEventListener("click", () => { $("picker").hidden = true; loadSet(s); });
+      list.appendChild(b);
+    }
+    $("picker").hidden = false;
+    showDiag();
+    setStatus(sets.length + " shapefiles in that export — pick the field or operation to view.");
+  }
+
+  // ---------- no shapefile: honest guidance, never a dead end ----------
+  function showNoShapefile(pool) {
+    const inv = YMV.inventory(pool);
+    const monitors = inv.filter((i) => i.kind === "monitor" && !i.junk);
+    const dbfs = inv.filter((i) => i.kind === "dbf" && !i.junk);
+    const box = $("guideBox");
+    box.textContent = "";
+    const h = document.createElement("h3");
+    const p = document.createElement("p");
+    box.append(h, p);
+    if (monitors.length) {
+      h.textContent = "That's John Deere display data, not a shapefile — fixable in about two minutes";
+      const names = monitors.slice(0, 3).map((i) => i.path.split("/").pop()).join(", ") +
+                    (monitors.length > 3 ? ", …" : "");
+      p.textContent = "What you dropped contains " + monitors.length +
+        " monitor-native file" + (monitors.length > 1 ? "s" : "") + " (" + names + "). " +
+        "A .jdl is the raw work-data log a Gen 4/G5 display writes — there's no public spec, and no in-browser tool can honestly read one. " +
+        "Nothing is wrong with your data: it's already in Operations Center, and Ops Center exports shapefiles this page does read.";
+      const p2 = document.createElement("p");
+      const a = document.createElement("a");
+      a.href = "#jdl-help";
+      a.textContent = "Step-by-step: get the shapefile export out of Ops Center";
+      p2.append(a, document.createTextNode(" — Analyze → Work Analyzer → Share/Export → Work Data, then More → Files → Download."));
+      box.append(p2);
+      setStatus("No shapefile in that file — but there's a clear fix below.", true);
+    } else if (dbfs.length) {
+      h.textContent = "Found the attribute table (.dbf) but not the map (.shp)";
+      p.textContent = "A shapefile is a set: the .dbf holds the numbers, the .shp holds the geometry. " +
+        "Drop the .shp from the same export together with it (the .prj helps too), or re-download the full zip.";
+      setStatus("Missing the .shp — details below.", true);
+    } else {
+      h.textContent = "No shapefile in what you dropped";
+      p.textContent = "This tool reads ESRI shapefiles (.shp + .dbf, usually zipped). " +
+        "Everything it did find is listed below — exact paths, sizes, and types. " +
+        "If you think this should have worked, that list is the precise bug report to paste into a GitHub issue.";
+      setStatus("No shapefile found — see what was inside, below.", true);
+    }
+    box.hidden = false;
+    showDiag();
+    $("results").style.display = "none";
+  }
+
+  // ---------- diagnostics: exactly what was found, all client-side ----------
+  function showDiag() {
+    const inv = state.pool ? YMV.inventory(state.pool) : null;
+    if (!inv || !inv.length) return;
+    const list = $("diagList");
+    list.textContent = "";
+    for (const i of inv) {
+      const row = document.createElement("div");
+      row.className = "diag-row";
+      const p = document.createElement("span");
+      p.className = "p";
+      p.textContent = i.path;
+      const s = document.createElement("span");
+      s.className = "s";
+      s.textContent = fmtBytes(i.bytes);
+      const k = document.createElement("span");
+      k.className = "k";
+      k.textContent = i.label + (i.junk ? " — macOS metadata, ignored" : "") + (i.note ? " — " + i.note : "");
+      row.append(p, s, k);
+      list.appendChild(row);
+    }
+    $("diagBox").hidden = false;
   }
 
   function fillSelect(sel, names, chosen, emptyLabel) {
@@ -631,13 +943,15 @@ if (typeof window !== "undefined") window.YMV = YMV;
   }
 
   // ---------- render everything ----------
-  function renderAll() {
+  function renderAll(animate) {
     if (!state.geoms) return;
     const vals = yieldValues();
     const finite = vals.filter((v) => v !== null);
+    state.sortedVals = finite.slice().sort((a, b) => a - b);
     state.breaks = YMV.quantileBreaks(finite, 5);
-    renderMap(vals);
+    renderMap(vals, animate);
     renderLegend(vals);
+    renderCard(finite);
     renderStats(finite, vals);
     renderHist(finite);
     $("mapTitle").textContent = state.yieldCol ? "Yield map — colored by " + state.yieldCol : "Map (no yield column selected — geometry only)";
@@ -670,7 +984,8 @@ if (typeof window !== "undefined") window.YMV = YMV;
   }
 
   let hitPoints = []; // {px, py, idx} for hover
-  function renderMap(vals) {
+  let paintToken = 0; // cancels an in-flight paint-in when a re-render starts
+  function renderMap(vals, animate) {
     const P = pal();
     const wrap = $("mapWrap");
     const canvas = $("mapCanvas"), overlay = $("mapOverlay");
@@ -693,6 +1008,7 @@ if (typeof window !== "undefined") window.YMV = YMV;
     hitPoints = [];
     state.classCounts = new Array((state.breaks.length || 0) + 1).fill(0);
     let nodata = 0;
+    const ops = []; // draw ops in record order — the combine's own path
     for (let i = 0; i < n; i++) {
       const gm = state.geoms[i];
       const v = i < vals.length ? vals[i] : null;
@@ -704,36 +1020,58 @@ if (typeof window !== "undefined") window.YMV = YMV;
       } else if (gm.t !== "null") { nodata++; }
       if (gm.t === "pt") {
         const px = g.X(gm.x), py = g.Y(gm.y);
-        ctx.fillStyle = color;
-        ctx.beginPath();
-        ctx.arc(px, py, r, 0, Math.PI * 2);
-        ctx.fill();
+        ops.push(() => {
+          ctx.fillStyle = color;
+          ctx.beginPath();
+          ctx.arc(px, py, r, 0, Math.PI * 2);
+          ctx.fill();
+        });
         hitPoints.push({ px, py, idx: i });
       } else if (gm.t === "poly" || gm.t === "line") {
-        ctx.beginPath();
-        for (const ring of gm.rings) {
-          for (let k = 0; k < ring.length; k++) {
-            const px = g.X(ring[k][0]), py = g.Y(ring[k][1]);
-            if (k === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+        ops.push(() => {
+          ctx.beginPath();
+          for (const ring of gm.rings) {
+            for (let k = 0; k < ring.length; k++) {
+              const px = g.X(ring[k][0]), py = g.Y(ring[k][1]);
+              if (k === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+            }
           }
-        }
-        if (gm.t === "poly") {
-          ctx.fillStyle = color;
-          ctx.fill();
-          ctx.strokeStyle = P.surface; // 2px surface gap between touching swaths
-          ctx.lineWidth = 2;
-          ctx.stroke();
-        } else {
-          ctx.strokeStyle = color;
-          ctx.lineWidth = 2;
-          ctx.lineJoin = ctx.lineCap = "round";
-          ctx.stroke();
-        }
+          if (gm.t === "poly") {
+            ctx.fillStyle = color;
+            ctx.fill();
+            ctx.strokeStyle = P.surface; // 2px surface gap between touching swaths
+            ctx.lineWidth = 2;
+            ctx.stroke();
+          } else {
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 2;
+            ctx.lineJoin = ctx.lineCap = "round";
+            ctx.stroke();
+          }
+        });
         if (gm.rings.length && gm.rings[0].length) {
           const [cx, cy] = YMV.geomXY(gm);
           hitPoints.push({ px: g.X(cx), py: g.Y(cy), idx: i });
         }
       }
+    }
+    // the parse moment: paint the field in along the harvest path. Re-renders
+    // (column change, resize, theme flip) draw instantly; reduced-motion always.
+    const token = ++paintToken;
+    if (!animate || reduceMotion.matches || ops.length < 40) {
+      for (const op of ops) op();
+    } else {
+      const dur = Math.min(1200, 400 + ops.length / 4);
+      const t0 = performance.now();
+      let done = 0;
+      const step = (now) => {
+        if (token !== paintToken) return;
+        const frac = Math.min(1, (now - t0) / dur);
+        const target = Math.floor(frac * ops.length);
+        while (done < target) ops[done++]();
+        if (done < ops.length) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
     }
     const note = [];
     if (nodata) note.push(nodata + " shapes have no usable value in the selected column (drawn gray).");
@@ -773,6 +1111,90 @@ if (typeof window !== "undefined") window.YMV = YMV;
     unitNote.className = "n";
     unitNote.textContent = "values in the file's own units (grain yield is typically bu/ac)";
     el.appendChild(unitNote);
+  }
+
+  // ---------- harvest card: per-field collectible summary, real data only ----
+  function renderCard(finite) {
+    const el = $("hcard");
+    el.textContent = "";
+    if (!state.yieldCol || finite.length < 5) { el.hidden = true; return; }
+    const s = YMV.computeStats(finite);
+    if (!s) { el.hidden = true; return; }
+    const dec = s.max - s.min < 5 ? 2 : 1;
+
+    const head = document.createElement("div");
+    head.className = "hcard-head";
+    const tag = document.createElement("span");
+    tag.className = "hcard-tag";
+    tag.textContent = "🌾 Harvest card";
+    const nm = document.createElement("span");
+    nm.className = "hcard-name";
+    nm.textContent = (state.name || "").split("/").pop();
+    head.append(tag, nm);
+
+    const grid = document.createElement("div");
+    grid.className = "hstats";
+    const tile = (v, l) => {
+      const d = document.createElement("div");
+      d.className = "hstat";
+      const dv = document.createElement("div"); dv.className = "v"; dv.textContent = v;
+      const dl = document.createElement("div"); dl.className = "l"; dl.textContent = l;
+      d.append(dv, dl);
+      grid.appendChild(d);
+    };
+    tile(fmt(s.mean, dec), "mean " + state.yieldCol);
+    tile(fmt(s.median, dec), "median");
+    tile(fmt(s.p90, dec), "top-10% cut (p90)");
+    tile(s.count.toLocaleString("en-US"), "points harvested");
+    if (state.moistCol) {
+      const mv = [];
+      const nRec = Math.min(state.records.length, state.geoms.length);
+      for (let i = 0; i < nRec; i++) {
+        const v = state.records[i][state.moistCol];
+        if (typeof v === "number" && isFinite(v)) mv.push(v);
+      }
+      const ms = YMV.computeStats(mv);
+      if (ms) tile(fmt(ms.mean, 1), "mean " + state.moistCol);
+    }
+
+    el.append(head, grid);
+
+    // class-distribution strip: same classes and counts as the legend
+    if (state.breaks && state.breaks.length && state.classCounts) {
+      const P = pal();
+      const strip = document.createElement("div");
+      strip.className = "hstrip";
+      const total = state.classCounts.reduce((a, b) => a + b, 0) || 1;
+      for (let c = 0; c < state.classCounts.length; c++) {
+        const seg = document.createElement("span");
+        seg.style.background = P.classes[Math.min(c, P.classes.length - 1)];
+        seg.style.flexGrow = String(Math.max(state.classCounts[c], 0));
+        seg.style.flexBasis = "0";
+        seg.title = state.classCounts[c] + " points (" + Math.round(100 * state.classCounts[c] / total) + "%)";
+        strip.appendChild(seg);
+      }
+      const stripNote = document.createElement("p");
+      stripNote.className = "hstrip-note";
+      stripNote.textContent = "share of points in each yield class, low to high — same classes as the map legend";
+      el.append(strip, stripNote);
+    }
+
+    const foot = document.createElement("div");
+    foot.className = "hcard-foot";
+    if (s.count >= 20 && s.p90 > 0 && s.p10 >= 0) {
+      const evenness = Math.round(100 * s.p10 / s.p90);
+      const badge = document.createElement("span");
+      badge.className = "badge";
+      badge.textContent = "Evenness " + evenness + "%";
+      badge.title = "10th percentile divided by 90th percentile of " + state.yieldCol + " — how close your low spots run to your high spots.";
+      foot.appendChild(badge);
+    }
+    const cap = document.createElement("p");
+    cap.className = "small";
+    cap.textContent = "Every number on this card comes from this file alone, computed on your device — no comparisons to anyone else's farm, no benchmarks, no uploads.";
+    foot.appendChild(cap);
+    el.appendChild(foot);
+    el.hidden = false;
   }
 
   function renderStats(finite, vals) {
@@ -908,6 +1330,21 @@ if (typeof window !== "undefined") window.YMV = YMV;
   }
 
   // ---------- hover layers ----------
+  function ordinalSuffix(n) {
+    const v = n % 100;
+    if (v >= 11 && v <= 13) return n + "th";
+    return n + (["th", "st", "nd", "rd"][Math.min(n % 10, 4)] || "th");
+  }
+  function percentileOf(v) {
+    const sv = state.sortedVals;
+    if (!sv || sv.length < 5) return null;
+    let lo = 0, hi = sv.length;
+    while (lo < hi) { const mid = (lo + hi) >> 1; if (sv[mid] < v) lo = mid + 1; else hi = mid; }
+    let eq = lo;
+    while (eq < sv.length && sv[eq] <= v) eq++;
+    const rank = (lo + eq) / 2;
+    return Math.max(1, Math.min(99, Math.round(100 * rank / sv.length)));
+  }
   const mapTip = $("mapTip"), histTip = $("histTip");
   $("mapCanvas").addEventListener("pointermove", (e) => {
     const rect = e.target.getBoundingClientRect();
@@ -943,6 +1380,8 @@ if (typeof window !== "undefined") window.YMV = YMV;
     };
     if (rec && state.yieldCol && typeof rec[state.yieldCol] === "number") {
       addRow(state.yieldCol + ":", fmt(rec[state.yieldCol], 1), true);
+      const pct = isFinite(rec[state.yieldCol]) ? percentileOf(rec[state.yieldCol]) : null;
+      if (pct !== null) addRow("", ordinalSuffix(pct) + " percentile of this field", false);
     }
     if (rec && state.moistCol && typeof rec[state.moistCol] === "number") {
       addRow(state.moistCol + ":", fmt(rec[state.moistCol], 1), false);
@@ -993,7 +1432,7 @@ if (typeof window !== "undefined") window.YMV = YMV;
     const blob = new Blob([csv], { type: "text/csv" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = (state.name || "yield").replace(/\.shp$/i, "") + "-points.csv";
+    a.download = ((state.name || "yield").split("/").pop()).replace(/\.shp$/i, "") + "-points.csv";
     a.click();
     setTimeout(() => URL.revokeObjectURL(a.href), 5000);
   });
