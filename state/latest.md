@@ -1,0 +1,101 @@
+# STATE — HQ Income Engine (machine-written bridge)
+
+_Generated 2026-07-16 02:17 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
+
+## Last 15 commits (hq-income-engine main)
+```
+1898ab0 strategy-chat intake: GitHub-canon state bridge + R1 distribution gate + weekly Notion digest + verified facts (#36)
+4aa7d26 dev.to: send an identifying User-Agent — default urllib UA is bot-blocked (403 Forbidden Bots) (#33)
+2a6ba61 R&D BOOK: charter + seeded portfolio + frontier loop — two books, one harness (#34)
+7988cf8 metrics: 2026-07-15 — repair-append 3 withheld reward row(s)
+4217e96 metrics: 2026-07-15 — daily snapshot (0 reward row(s))
+2dec1f1 add deploy-actors.yml — fail-closed Apify deploy pipeline (disarmed by default) (#28)
+32516a7 production arm: give the loop an 'actor-build-ship' arm + validated actor #4 spec (#26)
+dbdac6a Harden dev.to syndication idempotency (fail-closed platform-truth check) (#27)
+fa1d960 MOAT/PRODUCT: first artifact — Chegg-test screen kills 2 candidate actor-to-moat moves (#30)
+fc2e670 OPERATOR-MERGE: publish night — 5 CWS packs (oracle-green) + 2 devto queue items + actor cross-links (#15)
+ce9dcfa OPERATOR-MERGE: vault-schema (raw H) — deterministic Registry generator + oracle + frozen-field law (#16)
+5516872 brain-upgrade Phase 1: vault merge gate — record the new rail (vault off iCloud -> local git)
+462fa34 loop grader: grade data/runs/** run outputs + content/site/pages-index.json (AUTO-B, operator-authorized)
+52cb633 publish: RUNBOOK.md — one linear CWS submission runbook (4 extensions, all values inline) (#21)
+13d3672 BRAIN-UPGRADE Phase 4a: OBSERVABILITY — ground-truth run tracer (operator-merge) (#20)
+```
+
+## Open PRs
+```
+#35 [claude/frontier-qwtds8] R&D: BET-R1 — pain-mining experiment 1, ranked gap list from real review data
+#32 [claude/wizardly-cray-ebuvhi] DEMAND RESEARCH: multilingual language-gap recheck for hiring-signals + app-review scraping
+#31 [claude/x-queue-ready] X build-in-public queue — 4 validated drafts (staged, release 1/PR when X armed)
+#4 [claude/wizardly-cray-69npyj] distribution: complete the dev.to job-scraper tutorial (devto-syndication arm)
+```
+
+## Reward ledger — newest 8 rows (brain/experiments.jsonl)
+```json
+{"ts": "2026-07-11", "arm": "owned-geo-site", "reward": 0, "cost": 2, "note": "P1 BUILT + LIVE: jaxx-h.github.io deployed via Actions; first real page top-homesteading-youtube-channels (11 real channels, actor run anKxNtzln5QM8exEY). Dataset+FAQPage JSON-LD, sitemap/robots/llms.txt, IndexNow submitted (HTTP 202 to Bing/Yandex/DDG). Reward=0 because measurement not wired yet (GoatCounter=P4, operator-gated). RE-MEASURE after P4 analytics live + ~2-4wk indexing: track organic_visits + apify referral runs."}
+{"ts": "2026-07-12", "arm": "devto-syndication", "reward": 0, "cost": 0, "source": "ci/measure-cron", "evidence": "distribution/metrics-snapshots/2026-07-12.json", "note": "measured: snapshot metrics-snapshots/2026-07-12.json; snapshot-only per reward-spec (on-platform views never rewarded); devto+hashnode delta 0 (0 - 0); rewarded referral_pageviews come from GoatCounter side; NONE FOUND — DEVTO_API_KEY not set; NONE FOUND — HASHNODE_PAT not set"}
+{"ts": "2026-07-12", "arm": "x-build-in-public", "reward": 0, "cost": 0, "source": "ci/measure-cron", "evidence": "distribution/metrics-snapshots/2026-07-12.json", "note": "measured: snapshot metrics-snapshots/2026-07-12.json; snapshot-only per reward-spec; x engagement delta 0 (0 - 0); NONE FOUND — X credentials not set; NONE FOUND — GoatCounter not provisioned yet (P4)"}
+{"ts": "2026-07-12", "arm": "apify-listing-seo", "reward": 0.25, "cost": 0, "source": "local/collect_metrics", "evidence": "metrics/daily/2026-07-12.json#apify.actors", "note": "1 external_actor_run x 0.25 = 0.25 (totalRuns delta {'youtube-lead': 0, 'review-scraper': 0, 'job-scraper': 1}; may include own runs); window 2026-07-12T01:00:00Z..2026-07-12T16:00:00Z (backfill self-heals closed-laptop gaps)"}
+{"ts": "2026-07-13", "arm": "apify-listing-seo", "reward": 0, "cost": 1, "source": "cloud/websearch-spotcheck", "evidence": "brain/research/2026-07-13-apify-listing-seo-competitive-scan.md", "note": "WebSearched core buyer-intent queries for all 3 actors (job scraper/hiring-signals, youtube channel email finder, app store+google play review scraper). NONE of our 3 listings appeared in any result set across 4 queries (job-scraper: 10 named competitors visible, none ours; youtube-lead: 6+ named competitors, none ours; review-scraper: 8+ named competitors, none ours) -- organic-visibility gap confirmed as still open, not resolved by the 2026-07-10 seoTitle/seoDescription change. Not exhaustive (WebSearch snippets, not full SERPs) so treat as directional signal, not proof of zero ranking."}
+{"ts": "2026-07-15", "arm": "owned-geo-site", "reward": 0.01, "cost": 0, "source": "local/collect_metrics", "evidence": "metrics/daily/2026-07-15.json#goatcounter.total", "note": "1 organic_pageview x 0.01 = 0.01; window 2026-07-12T16:00:00Z..2026-07-15T23:00:00Z (backfill self-heals closed-laptop gaps)"}
+{"ts": "2026-07-15", "arm": "apify-listing-seo", "reward": 21.75, "cost": 0, "source": "local/collect_metrics", "evidence": "metrics/daily/2026-07-15.json#apify.actors", "note": "87 external_actor_run x 0.25 = 21.75 (totalRuns delta {'youtube-lead': 35, 'review-scraper': 25, 'job-scraper': 27}; may include own runs); window 2026-07-12T16:00:00Z..2026-07-15T23:00:00Z (backfill self-heals closed-laptop gaps)"}
+{"ts": "2026-07-15", "arm": "apify-listing-seo", "reward": 0.12, "cost": 0, "source": "local/collect_metrics#revenue", "evidence": "metrics/revenue/2026-07.json#entries", "note": "revenue_id=2026-07-apify-job-scraper-1 0.12 revenue_usd x 1.0 = 0.12 (first paid usage ever — Apify Insights July 2026, paying-user revenue on company-careers-job-scraper (being listed produ)"}
+```
+
+## R&D book — newest 5 bet rows (brain/rnd/bets.jsonl)
+```json
+(no rows yet)
+```
+
+## ROADMAP head
+```
+# ROADMAP — current priorities (rewrite as evidence lands)
+
+**North star:** [[STRATEGY.md]] — marketing-first, own-the-customer, Chegg-test every build. Supply (actors) is nearly free; leverage is on attention + a moat the model can't reproduce.
+
+## State (2026-07-11, after the full system audit — `brain/research/2026-07-11-full-system-audit.md`)
+- 3 actors LIVE + priced + public on Apify. Revenue $0 — **structural, not a bug**: a marketplace listing is a conversion endpoint, not a demand engine. More actors will NOT move it; one owned channel will.
+- **Audit verdict:** strategy right, loop right, but (a) our actors are easy/low-defense targets = the commoditized 0–5-user end of Apify's power law (top earners are all hard anti-bot targets we don't maintain); (b) our hiring-signals wedge is saturated (13+ competitors); (c) we own no distribution channel. All three are fixed below.
+- Everything backed up + reset-proof (13 private repos, memory mirror, `restore.sh`); cloud loop LIVE 3×/day.
+
+## P0 — VALIDATE THE NEW WEDGE (regulatory forced-adoption), then commit
+The audit found a far better vein than hiring-signals: **legally-forced 2026–2028 compliance mandates** on small businesses/farmers (demand mandated, dated, fined, underserved long tail; language-gap arbitrage country-by-country). Lead candidate fits THIS operator uniquely:
+1. **EU electronic pesticide / plant-protection record-keeping** (Reg EU 2023/564, electronic + machine-readable, effective 2026). Operator is a farmer → domain trust + IS the customer; passes the Chegg test; buildable in weeks; no KYC/network blockers.
+2. **Loop's next demand-research runs VALIDATE before we build:** confirm the reg + per-country electronic deadline (primary sources only), find which language markets have NO localized incumbent, size the underserved smallholder tail, and spec a mobile-form → validated JSON/XML/CSV MVP. Kill/keep on evidence; do NOT fabricate certainty.
+3. Fallbacks if farm-compliance doesn't validate: single-country e-invoicing micro-SaaS on **rented Peppol** (own the customer via white-label) · localized-clone of a proven English micro-SaaS.
+
+## P1 — BUILD ONE OWNED CHANNEL (this is the whole game)
+We have zero owned distribution. Fix, in order of payback speed:
+1. **An email list we own** — the #1 differentiator between the 44%-at-$0 and the earners. A one-page site + capture around the chosen wedge.
+2. **Manual last-mile the machine drafts, the operator ships:** genuine community participation (Reddit/Discord, 9:1 give-before-ask) + ~10 hyper-personalized cold outreach/day to the EXACT buyer. These pay in 30–90 days; SEO/build-in-public compound over 6–12mo. (Mass-posting = banned; the safe version is slow + manual — HARD LAW 1c.)
+3. **De-emphasize generic SEO** — AI Overviews cut position-1 CTR 58%; AI-written slop is penalized. Only comparison/"X-alternative" content aimed at buyers already shopping earns.
+
+## P2 — Actors become funnel, not product
+Keep the 3 live as free lead-gen that routes buyers to the owned product. Optional: move ONE actor toward a genuinely contested target we commit to maintaining weekly (maintenance IS the moat) — only if it feeds the wedge.
+
+## ALWAYS-ON ENGINE (build sequence — `brain/ARCHITECTURE.md`)
+```
+
+## R&D portfolio head
+```
+# R&D portfolio — the frontier bets (seeded 2026-07-15)
+
+Scored per CHARTER.md rubric (Ceiling × Defensibility × Feasibility ≥ 27 to stay live).
+Initial scores are the seeding session's honest estimates — the frontier loop re-scores as
+evidence lands. Ledger: `bets.jsonl` (append-only outcomes per run).
+
+> **GATE AMENDMENT (operator ruling 2026-07-15, via strategy chat):** every opportunity the
+> demand-mining factory surfaces MUST name (a) where its buyers already congregate and (b) how
+> they would find this specific product — a concrete distribution answer. Without one the
+> verdict is half a verdict and the opportunity does not rank. Attention is a required field —
+> a mined app with no distribution path inherits Cal AI's playbook minus their paid-attention
+> budget and dies at the attention node.
+
+## BET-R1 — The demand-mining app factory  ·  C4 × D4 × F4 = 64  ·  LIVE
+Turn our scrapers from products into SENSORS: mine app-store reviews + job posts + community
+complaints at scale for high-volume, high-severity, FIXABLE pain (the Cal-AI opportunity shape,
+found programmatically instead of by luck). Rank gaps → machine ships candidate web apps
+(no review latency, Stripe capture, instant A/B) → closed outcome loop kills or scales → winners
+get ported to the App Store. Durable asset: the opportunity-detection pipeline itself + the
+portfolio of surviving products. Defensibility: nobody else runs THIS loop end-to-end with our
+```
+
