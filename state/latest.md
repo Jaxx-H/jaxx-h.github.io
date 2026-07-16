@@ -1,9 +1,11 @@
 # STATE — HQ Income Engine (machine-written bridge)
 
-_Generated 2026-07-16 12:06 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
+_Generated 2026-07-16 12:12 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
 
 ## Last 15 commits (hq-income-engine main)
 ```
+cec8fd3 metrics: 2026-07-16 — daily snapshot (3 reward row(s))
+de4b79f index: rebuild from 4f5f19c [skip ci]
 4f5f19c OPERATOR LITERACY RULE: repo CLAUDE.md + brain/glosses.jsonl (strategy-chat ruling 2026-07-16) (#43)
 f2a8394 index: rebuild from 21eb432 [skip ci]
 21eb432 R6: W1 Calibration gate verdict — NO-GO encoded (H4 near-dead, registry gated, D-003); W2 Exit-Rights Memory is next (#42)
@@ -17,8 +19,6 @@ f323d53 index: rebuild from 0ddf382 [skip ci]
 0ddf382 Merge pull request #39 from Jaxx-H/claude/ws0-workflow-hygiene
 671af22 index: rebuild from 174d836 [skip ci]
 174d836 WS-1: index-on-merge kernel (DIRECTIVE v3) — operator-ratify (#38)
-8217a91 check6: human_push_exempt category (WS-2 human-push design law) + register index.yml
-900df6e allowlist index.yml (WS-1 commit job) — MERGE ORDER: #38 (WS-1) must merge before #39 (WS-0)
 ```
 
 ## Open PRs
@@ -29,14 +29,14 @@ f323d53 index: rebuild from 0ddf382 [skip ci]
 
 ## Reward ledger — newest 8 rows (brain/experiments.jsonl)
 ```json
-{"ts": "2026-07-12", "arm": "devto-syndication", "reward": 0, "cost": 0, "source": "ci/measure-cron", "evidence": "distribution/metrics-snapshots/2026-07-12.json", "note": "measured: snapshot metrics-snapshots/2026-07-12.json; snapshot-only per reward-spec (on-platform views never rewarded); devto+hashnode delta 0 (0 - 0); rewarded referral_pageviews come from GoatCounter side; NONE FOUND — DEVTO_API_KEY not set; NONE FOUND — HASHNODE_PAT not set"}
-{"ts": "2026-07-12", "arm": "x-build-in-public", "reward": 0, "cost": 0, "source": "ci/measure-cron", "evidence": "distribution/metrics-snapshots/2026-07-12.json", "note": "measured: snapshot metrics-snapshots/2026-07-12.json; snapshot-only per reward-spec; x engagement delta 0 (0 - 0); NONE FOUND — X credentials not set; NONE FOUND — GoatCounter not provisioned yet (P4)"}
-{"ts": "2026-07-12", "arm": "apify-listing-seo", "reward": 0.25, "cost": 0, "source": "local/collect_metrics", "evidence": "metrics/daily/2026-07-12.json#apify.actors", "note": "1 external_actor_run x 0.25 = 0.25 (totalRuns delta {'youtube-lead': 0, 'review-scraper': 0, 'job-scraper': 1}; may include own runs); window 2026-07-12T01:00:00Z..2026-07-12T16:00:00Z (backfill self-heals closed-laptop gaps)"}
 {"ts": "2026-07-13", "arm": "apify-listing-seo", "reward": 0, "cost": 1, "source": "cloud/websearch-spotcheck", "evidence": "brain/research/2026-07-13-apify-listing-seo-competitive-scan.md", "note": "WebSearched core buyer-intent queries for all 3 actors (job scraper/hiring-signals, youtube channel email finder, app store+google play review scraper). NONE of our 3 listings appeared in any result set across 4 queries (job-scraper: 10 named competitors visible, none ours; youtube-lead: 6+ named competitors, none ours; review-scraper: 8+ named competitors, none ours) -- organic-visibility gap confirmed as still open, not resolved by the 2026-07-10 seoTitle/seoDescription change. Not exhaustive (WebSearch snippets, not full SERPs) so treat as directional signal, not proof of zero ranking."}
 {"ts": "2026-07-15", "arm": "multilingual-demand", "reward": 0, "cost": 1, "source": "cloud/websearch-spotcheck", "evidence": "brain/research/2026-07-15-multilingual-language-gap-recheck-hiring-review.md", "note": "First-ever observation for this arm (was n=0). WebSearched native-term queries in German, Japanese, Korean for whether job-scraper (hiring-signals) or review-scraper (app-review scraping) categories have an underserved non-English market. All 3 found established, sometimes more-sophisticated native incumbents (index Salesdriver 15-country EU coverage; SalesNow AI-agent-native MCP integration; HashScraper+AppTweak Korean app-review tooling) -- NO GAP found in any of the 3 markets checked for this specific hypothesis (translate-existing-actor-category-to-new-language). validated_gaps has no traffic-weighted event in reward_map.json so reward=0 is the honest, expected value for a qualitative research arm; this is not a traffic/revenue measurement."}
 {"ts": "2026-07-15", "arm": "owned-geo-site", "reward": 0.01, "cost": 0, "source": "local/collect_metrics", "evidence": "metrics/daily/2026-07-15.json#goatcounter.total", "note": "1 organic_pageview x 0.01 = 0.01; window 2026-07-12T16:00:00Z..2026-07-15T23:00:00Z (backfill self-heals closed-laptop gaps)"}
 {"ts": "2026-07-15", "arm": "apify-listing-seo", "reward": 21.75, "cost": 0, "source": "local/collect_metrics", "evidence": "metrics/daily/2026-07-15.json#apify.actors", "note": "87 external_actor_run x 0.25 = 21.75 (totalRuns delta {'youtube-lead': 35, 'review-scraper': 25, 'job-scraper': 27}; may include own runs); window 2026-07-12T16:00:00Z..2026-07-15T23:00:00Z (backfill self-heals closed-laptop gaps)"}
 {"ts": "2026-07-15", "arm": "apify-listing-seo", "reward": 0.12, "cost": 0, "source": "local/collect_metrics#revenue", "evidence": "metrics/revenue/2026-07.json#entries", "note": "revenue_id=2026-07-apify-job-scraper-1 0.12 revenue_usd x 1.0 = 0.12 (first paid usage ever — Apify Insights July 2026, paying-user revenue on company-careers-job-scraper (being listed produ)"}
+{"ts": "2026-07-16", "arm": "owned-geo-site", "reward": 0.2, "cost": 0, "source": "local/collect_metrics", "evidence": "metrics/daily/2026-07-16.json#goatcounter.total", "note": "20 organic_pageview x 0.01 = 0.2; window 2026-07-15T23:00:00Z..2026-07-16T12:00:00Z (backfill self-heals closed-laptop gaps)"}
+{"ts": "2026-07-16", "arm": "apify-listing-seo", "reward": 0.5, "cost": 0, "source": "local/collect_metrics", "evidence": "metrics/daily/2026-07-16.json#apify.actors", "note": "2 external_actor_run x 0.25 = 0.5 (totalRuns delta {'youtube-lead': 0, 'review-scraper': 0, 'job-scraper': 1, 'podcast-host': 1}; may include own runs); window 2026-07-15T23:00:00Z..2026-07-16T12:00:00Z (backfill self-heals closed-laptop gaps)"}
+{"ts": "2026-07-16", "arm": "apify-listing-seo", "reward": 1.88, "cost": 0, "source": "local/collect_metrics#revenue", "evidence": "metrics/revenue/2026-07.json#entries", "note": "revenue_id=2026-07-apify-portfolio-2 1.88 revenue_usd x 1.0 = 1.88 (operator-attested in session 2026-07-15: Apify Insights July total now ~$2.00; this entry books the delta over the prior)"}
 ```
 
 ## R&D book — newest 5 bet rows (brain/rnd/bets.jsonl)
