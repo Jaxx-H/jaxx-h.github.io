@@ -1,9 +1,11 @@
 # STATE — HQ Income Engine (machine-written bridge)
 
-_Generated 2026-07-16 11:58 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
+_Generated 2026-07-16 12:06 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
 
 ## Last 15 commits (hq-income-engine main)
 ```
+21eb432 R6: W1 Calibration gate verdict — NO-GO encoded (H4 near-dead, registry gated, D-003); W2 Exit-Rights Memory is next (#42)
+ff16b86 index: rebuild from c2d1451 [skip ci]
 c2d1451 WS-2: fold-in event chains — sole ledger writer, DISARMED (DIRECTIVE v3) — operator-ratify (#41)
 3642534 index: rebuild from f8ebf45 [skip ci]
 f8ebf45 Merge pull request #40 from Jaxx-H/claude/r6-personal-ai-discovery
@@ -17,15 +19,12 @@ f323d53 index: rebuild from 0ddf382 [skip ci]
 900df6e allowlist index.yml (WS-1 commit job) — MERGE ORDER: #38 (WS-1) must merge before #39 (WS-0)
 85aad64 WS-0: workflow hygiene lints (DIRECTIVE v3) — 7 checks, fixtures, CI leg
 615c311 nightly auto-snapshot 2026-07-15
-d3d046d DEMAND RESEARCH: multilingual language-gap recheck for hiring-signals + app-review scraping (#32)
-e392e1a Merge pull request #35 from Jaxx-H/claude/frontier-qwtds8
 ```
 
 ## Open PRs
 ```
 #44 [claude/frontier-fopw6v] R&D: BET-R6 — sweep-2 tests H3/H4, demotes W1 rank-1, names a funded W2 competitor
 #43 [claude/operator-literacy] Operator literacy rule — CLAUDE.md + glosses ledger (operator-directed)
-#42 [claude/r6-w1-verdict] R6: W1 gate verdict (NO-GO, evidence-verified) — corpus update, W2 next
 #4 [claude/wizardly-cray-69npyj] distribution: complete the dev.to job-scraper tutorial (devto-syndication arm)
 ```
 
