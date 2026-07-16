@@ -4,6 +4,8 @@ _Generated 2026-07-16 12:06 UTC by tools/state_snapshot.py (state-snapshot.yml).
 
 ## Last 15 commits (hq-income-engine main)
 ```
+4f5f19c OPERATOR LITERACY RULE: repo CLAUDE.md + brain/glosses.jsonl (strategy-chat ruling 2026-07-16) (#43)
+f2a8394 index: rebuild from 21eb432 [skip ci]
 21eb432 R6: W1 Calibration gate verdict — NO-GO encoded (H4 near-dead, registry gated, D-003); W2 Exit-Rights Memory is next (#42)
 ff16b86 index: rebuild from c2d1451 [skip ci]
 c2d1451 WS-2: fold-in event chains — sole ledger writer, DISARMED (DIRECTIVE v3) — operator-ratify (#41)
@@ -17,14 +19,11 @@ f323d53 index: rebuild from 0ddf382 [skip ci]
 174d836 WS-1: index-on-merge kernel (DIRECTIVE v3) — operator-ratify (#38)
 8217a91 check6: human_push_exempt category (WS-2 human-push design law) + register index.yml
 900df6e allowlist index.yml (WS-1 commit job) — MERGE ORDER: #38 (WS-1) must merge before #39 (WS-0)
-85aad64 WS-0: workflow hygiene lints (DIRECTIVE v3) — 7 checks, fixtures, CI leg
-615c311 nightly auto-snapshot 2026-07-15
 ```
 
 ## Open PRs
 ```
 #44 [claude/frontier-fopw6v] R&D: BET-R6 — sweep-2 tests H3/H4, demotes W1 rank-1, names a funded W2 competitor
-#43 [claude/operator-literacy] Operator literacy rule — CLAUDE.md + glosses ledger (operator-directed)
 #4 [claude/wizardly-cray-69npyj] distribution: complete the dev.to job-scraper tutorial (devto-syndication arm)
 ```
 
