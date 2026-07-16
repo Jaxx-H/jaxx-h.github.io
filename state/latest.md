@@ -1,9 +1,10 @@
 # STATE — HQ Income Engine (machine-written bridge)
 
-_Generated 2026-07-16 02:17 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
+_Generated 2026-07-16 02:19 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
 
 ## Last 15 commits (hq-income-engine main)
 ```
+b8c44fa X build-in-public: consolidate + validate 4 drafts from #23/#6 (de-collisioned, staged) (#31)
 1898ab0 strategy-chat intake: GitHub-canon state bridge + R1 distribution gate + weekly Notion digest + verified facts (#36)
 4aa7d26 dev.to: send an identifying User-Agent — default urllib UA is bot-blocked (403 Forbidden Bots) (#33)
 2a6ba61 R&D BOOK: charter + seeded portfolio + frontier loop — two books, one harness (#34)
@@ -18,14 +19,12 @@ ce9dcfa OPERATOR-MERGE: vault-schema (raw H) — deterministic Registry generato
 5516872 brain-upgrade Phase 1: vault merge gate — record the new rail (vault off iCloud -> local git)
 462fa34 loop grader: grade data/runs/** run outputs + content/site/pages-index.json (AUTO-B, operator-authorized)
 52cb633 publish: RUNBOOK.md — one linear CWS submission runbook (4 extensions, all values inline) (#21)
-13d3672 BRAIN-UPGRADE Phase 4a: OBSERVABILITY — ground-truth run tracer (operator-merge) (#20)
 ```
 
 ## Open PRs
 ```
 #35 [claude/frontier-qwtds8] R&D: BET-R1 — pain-mining experiment 1, ranked gap list from real review data
 #32 [claude/wizardly-cray-ebuvhi] DEMAND RESEARCH: multilingual language-gap recheck for hiring-signals + app-review scraping
-#31 [claude/x-queue-ready] X build-in-public queue — 4 validated drafts (staged, release 1/PR when X armed)
 #4 [claude/wizardly-cray-69npyj] distribution: complete the dev.to job-scraper tutorial (devto-syndication arm)
 ```
 
