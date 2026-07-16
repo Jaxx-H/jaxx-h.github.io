@@ -1,9 +1,10 @@
 # STATE — HQ Income Engine (machine-written bridge)
 
-_Generated 2026-07-16 04:30 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
+_Generated 2026-07-16 05:59 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
 
 ## Last 15 commits (hq-income-engine main)
 ```
+174d836 WS-1: index-on-merge kernel (DIRECTIVE v3) — operator-ratify (#38)
 615c311 nightly auto-snapshot 2026-07-15
 d3d046d DEMAND RESEARCH: multilingual language-gap recheck for hiring-signals + app-review scraping (#32)
 e392e1a Merge pull request #35 from Jaxx-H/claude/frontier-qwtds8
@@ -18,11 +19,11 @@ a333e2d R&D: BET-R1 — pain-mining experiment 1, ranked gap list from real revi
 7988cf8 metrics: 2026-07-15 — repair-append 3 withheld reward row(s)
 4217e96 metrics: 2026-07-15 — daily snapshot (0 reward row(s))
 2dec1f1 add deploy-actors.yml — fail-closed Apify deploy pipeline (disarmed by default) (#28)
-32516a7 production arm: give the loop an 'actor-build-ship' arm + validated actor #4 spec (#26)
 ```
 
 ## Open PRs
 ```
+#39 [claude/ws0-workflow-hygiene] WS-0: workflow hygiene lints (DIRECTIVE v3) — operator-ratify
 #4 [claude/wizardly-cray-69npyj] distribution: complete the dev.to job-scraper tutorial (devto-syndication arm)
 ```
 
