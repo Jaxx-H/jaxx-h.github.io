@@ -4,10 +4,13 @@ _Generated 2026-07-16 03:30 UTC by tools/state_snapshot.py (state-snapshot.yml).
 
 ## Last 15 commits (hq-income-engine main)
 ```
+e392e1a Merge pull request #35 from Jaxx-H/claude/frontier-qwtds8
 e1cd9e0 Merge pull request #37 from Jaxx-H/claude/wire-ci-push-token
+eecde85 merge main: keep operator gate amendment + branch's evidence-based rescore (64->60)
 32281bd wire CI_PUSH_TOKEN: self-committing workflows push to protected main again
 b8c44fa X build-in-public: consolidate + validate 4 drafts from #23/#6 (de-collisioned, staged) (#31)
 1898ab0 strategy-chat intake: GitHub-canon state bridge + R1 distribution gate + weekly Notion digest + verified facts (#36)
+a333e2d R&D: BET-R1 — pain-mining experiment 1, ranked gap list from real review data
 4aa7d26 dev.to: send an identifying User-Agent — default urllib UA is bot-blocked (403 Forbidden Bots) (#33)
 2a6ba61 R&D BOOK: charter + seeded portfolio + frontier loop — two books, one harness (#34)
 7988cf8 metrics: 2026-07-15 — repair-append 3 withheld reward row(s)
@@ -16,14 +19,10 @@ b8c44fa X build-in-public: consolidate + validate 4 drafts from #23/#6 (de-colli
 32516a7 production arm: give the loop an 'actor-build-ship' arm + validated actor #4 spec (#26)
 dbdac6a Harden dev.to syndication idempotency (fail-closed platform-truth check) (#27)
 fa1d960 MOAT/PRODUCT: first artifact — Chegg-test screen kills 2 candidate actor-to-moat moves (#30)
-fc2e670 OPERATOR-MERGE: publish night — 5 CWS packs (oracle-green) + 2 devto queue items + actor cross-links (#15)
-ce9dcfa OPERATOR-MERGE: vault-schema (raw H) — deterministic Registry generator + oracle + frozen-field law (#16)
-5516872 brain-upgrade Phase 1: vault merge gate — record the new rail (vault off iCloud -> local git)
 ```
 
 ## Open PRs
 ```
-#35 [claude/frontier-qwtds8] R&D: BET-R1 — pain-mining experiment 1, ranked gap list from real review data
 #32 [claude/wizardly-cray-ebuvhi] DEMAND RESEARCH: multilingual language-gap recheck for hiring-signals + app-review scraping
 #4 [claude/wizardly-cray-69npyj] distribution: complete the dev.to job-scraper tutorial (devto-syndication arm)
 ```
@@ -42,7 +41,7 @@ ce9dcfa OPERATOR-MERGE: vault-schema (raw H) — deterministic Registry generato
 
 ## R&D book — newest 5 bet rows (brain/rnd/bets.jsonl)
 ```json
-(no rows yet)
+{"ts": "2026-07-16T12:00:00Z", "bet": "BET-R1", "action": "experiment-1: pain-mining pass over committed review-scraper data (data/runs/reviews/*/latest.json)", "evidence": "Built brain/rnd/prototypes/BET-R1/pain_miner.py (stdlib, self-tested, deterministic keyword taxonomy, no ML). Scanned 1448 real reviews across 10 apps already committed to this repo, 827 (57%) rated <=2 stars. Severity-weighted ranked gap list (brain/rnd/prototypes/BET-R1/ranked_gaps.md + gap_list.json): crashes/bugs (severity 176), notifications (158), pricing/subscription (127), customer-support (119), missing-feature (111). Ag-ops apps show disproportionate negative share for their size vs job-search apps: climate-fieldview 66.2% negative (49/74), john-deere-operations-center 50.5% (48/95), fbn 46.4% (13/28) -- with concrete, cited complaints: subscription-gated data export (climate-fieldview 1-star: cancel your plan and \"they won't give it to you without it\"), a broken signup flow (agriwebb 1-star: \"the app doesn't have a sign up page\"), Android/iOS feature-parity gaps. WebSearch confirmed real competitive demand for this exact content angle: G2, Capterra, SaaSHub, Sourceforge, and Datarade all already publish ranking 'Climate FieldView alternatives' pages, while Climate's own ToS/FAQ claims data export is fully supported -- a policy-vs-lived-experience gap a review-cited comparison page could credibly cover with real citations, not fabricated ones. Job-search apps (monster 86.2% neg, indeed 62.5%, linkedin 66.7%) have higher raw volume but that lane was already flagged saturated by the 2026-07-11 and 2026-07-13 research runs, so excluded from the top candidate this run.", "score": {"C": 4, "D": 3, "F": 5, "R": 5, "T": 5}, "verdict": "LIVE (C4xD3xF5=60, revised from seed C4xD4xF4=64 to C4xD3xF5=60 after real evidence: F and T revised up from estimated 4/unscored to proven 5/5 since the pipeline ran end-to-end this run; D revised down from seeded 4 to 3 because the CONTENT layer for the top candidate already has ranking competitors (G2/Capterra/SaaSHub) -- the defensible asset is the review-mining sensor + our own weekly-refreshed corpus, not the eventual comparison-page content itself)", "next": "Feed the top-ranked gap (ag-ops subscription/data-export lock-in pain) into the existing P2 page-factory as a new registered slice, quote-cited to real reviews, through the standard PII-scan + quality-gate rail -- next run, not this one (depth over breadth). Re-run pain_miner.py as new review verticals land via the Mon/Wed/Fri refresh crons so the gap list compounds instead of going stale; do not fabricate search-volume or funnel numbers beyond what a cited WebSearch or registered slice run finds."}
 ```
 
 ## ROADMAP head
@@ -89,12 +88,12 @@ evidence lands. Ledger: `bets.jsonl` (append-only outcomes per run).
 > a mined app with no distribution path inherits Cal AI's playbook minus their paid-attention
 > budget and dies at the attention node.
 
-## BET-R1 — The demand-mining app factory  ·  C4 × D4 × F4 = 64  ·  LIVE
+## BET-R1 — The demand-mining app factory  ·  C4 × D3 × F5 = 60  ·  LIVE
 Turn our scrapers from products into SENSORS: mine app-store reviews + job posts + community
 complaints at scale for high-volume, high-severity, FIXABLE pain (the Cal-AI opportunity shape,
 found programmatically instead of by luck). Rank gaps → machine ships candidate web apps
 (no review latency, Stripe capture, instant A/B) → closed outcome loop kills or scales → winners
 get ported to the App Store. Durable asset: the opportunity-detection pipeline itself + the
-portfolio of surviving products. Defensibility: nobody else runs THIS loop end-to-end with our
+portfolio of surviving products. Defensibility: the review-mining sensor + our own weekly-
 ```
 
