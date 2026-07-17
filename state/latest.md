@@ -1,6 +1,6 @@
 # STATE — HQ Income Engine (machine-written bridge)
 
-_Generated 2026-07-17 03:51 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
+_Generated 2026-07-17 08:56 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
 
 ## Last 15 commits (hq-income-engine main)
 ```
@@ -23,7 +23,7 @@ f2a8394 index: rebuild from 21eb432 [skip ci]
 
 ## Open PRs
 ```
-#50 [claude/wizardly-cray-14vixs] Distribution: actor-4 podcast-host README (new) + actor-1 stale-price fix + price-watch alert triage
+#51 [claude/frontier-omozpj] R&D: BET-R6 — W3 Memory Watchdog diff/alert engine
 #49 [claude/wizardly-cray-fnjb4g] MOAT/PRODUCT: BET-ATT-001 brand-positioning brief (decision-ready A/B)
 #48 [claude/eu-2023-564-adjudication-pge5mc] Final adjudication: permanently retire EU pesticide record-keeping wedge
 #4 [claude/wizardly-cray-69npyj] distribution: complete the dev.to job-scraper tutorial (devto-syndication arm)
