@@ -1,6 +1,6 @@
 # STATE — HQ Income Engine (machine-written bridge)
 
-_Generated 2026-07-17 14:15 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
+_Generated 2026-07-17 19:46 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
 
 ## Last 15 commits (hq-income-engine main)
 ```
@@ -23,7 +23,11 @@ ee623a3 Radar governance + Day-1 reprocess (DIRECTIVE 2026-07-17, Tracks 0-2)
 
 ## Open PRs — DECIDE (age; >7d ⚠STALE → forced verdict per D-row)
 ```
-(none)
+#62 [BLOCKED] 0d — state: operator queue in TAP/PASTE/WORLD buckets (bottleneck at a glance)
+#61 [BLOCKED] 0d — C1.2 spike: ISOXML TLG binary parsing proven (KEEP isoxml; acceptance fixture = your Gen4/G5 export)
+#60 [BLOCKED] 0d — research: Japanese-community content-slice sourcing for P2 factory (creators)
+#59 [BLOCKED] 0d — C1.1: three grounded yield-data-export pages (harvest window, due Aug 1)
+#58 [BLOCKED] 0d — loop I/O contract: LOOP_WRITER gate + run-unique fold-in events (ends #44–#57 conflict cluster)
 ```
 
 ## Reward ledger — newest 8 rows (brain/experiments.jsonl)
