@@ -1,9 +1,14 @@
 # STATE — HQ Income Engine (machine-written bridge)
 
-_Generated 2026-07-17 13:27 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
+_Generated 2026-07-17 13:43 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
 
 ## Last 15 commits (hq-income-engine main)
 ```
+2f2b29d Update observability run log
+5d6fa25 Update observability run log
+6761934 Update observability run log
+0148897 verify: daily pass — back-check EU 2023/564 country map + listing-seo pricing recheck against primary sources
+2c2dc6d index: rebuild from 39688a0 [skip ci]
 39688a0 reward_map v2 PROPOSAL: external_actor_run 0.25 -> 0.05 (operator sign-off)
 2e1645d index: rebuild from ee623a3 [skip ci]
 ee623a3 Radar governance + Day-1 reprocess (DIRECTIVE 2026-07-17, Tracks 0-2)
@@ -14,17 +19,12 @@ ee623a3 Radar governance + Day-1 reprocess (DIRECTIVE 2026-07-17, Tracks 0-2)
 7d827b4 BET-ATT-001 brand brief: rebuilt on current main (brief file only; outcomes row dropped to avoid the shared-log collision)
 1841667 index: rebuild from ee02908 [skip ci]
 ee02908 Update observability run log
-1c92922 Update observability run log
-feea459 Update observability run log
-4ebfef7 Update observability run log
-9347e91 Update observability run log
-9919f05 EU 2023/564 retirement: rebuilt on current main (money-tree + country-map + outcomes row; no shared-file drift)
 ```
 
 ## Open PRs
 ```
+#56 [claude/pr-triage-state] state: PR-triage (age + STALE flag) so PRs don't get forgotten
 #55 [claude/wizardly-cray-gb4qbb] DEMAND RESEARCH: Japan-market check for a foreign-AI-company hiring content gap
-#54 [claude/verify-pass-uqpzty] verify: daily pass — back-check EU 2023/564 and listing-seo pricing memos against primary sources
 #4 [claude/wizardly-cray-69npyj] distribution: complete the dev.to job-scraper tutorial (devto-syndication arm)
 ```
 
