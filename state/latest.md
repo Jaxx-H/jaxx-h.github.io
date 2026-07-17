@@ -4,6 +4,10 @@ _Generated 2026-07-17 00:55 UTC by tools/state_snapshot.py (state-snapshot.yml).
 
 ## Last 15 commits (hq-income-engine main)
 ```
+ed6b758 index: rebuild from 0218363 [skip ci]
+0218363 outcomes: rename measurement -> metric (OUTCOMES_SCHEMA requires 'metric')
+8ac45c7 pricing recheck: rebuilt on current main (research memo + README + next-actions; drop the ledger write)
+3782a00 index: rebuild from 1a0d47e [skip ci]
 1a0d47e R6 sweep-2: rebuilt on current main (frontier's files only; no ledger touch)
 b6d9efd Dual-Track Loop: fast headless track + gated digest/resume + adapter (DIRECTIVE)
 faca2ed index: rebuild from dbe7967 [skip ci]
@@ -15,10 +19,6 @@ de4b79f index: rebuild from 4f5f19c [skip ci]
 4f5f19c OPERATOR LITERACY RULE: repo CLAUDE.md + brain/glosses.jsonl (strategy-chat ruling 2026-07-16) (#43)
 f2a8394 index: rebuild from 21eb432 [skip ci]
 21eb432 R6: W1 Calibration gate verdict — NO-GO encoded (H4 near-dead, registry gated, D-003); W2 Exit-Rights Memory is next (#42)
-ff16b86 index: rebuild from c2d1451 [skip ci]
-c2d1451 WS-2: fold-in event chains — sole ledger writer, DISARMED (DIRECTIVE v3) — operator-ratify (#41)
-3642534 index: rebuild from f8ebf45 [skip ci]
-f8ebf45 Merge pull request #40 from Jaxx-H/claude/r6-personal-ai-discovery
 ```
 
 ## Open PRs
@@ -26,7 +26,6 @@ f8ebf45 Merge pull request #40 from Jaxx-H/claude/r6-personal-ai-discovery
 #50 [claude/wizardly-cray-14vixs] Distribution: actor-4 podcast-host README (new) + actor-1 stale-price fix + price-watch alert triage
 #49 [claude/wizardly-cray-fnjb4g] MOAT/PRODUCT: BET-ATT-001 brand-positioning brief (decision-ready A/B)
 #48 [claude/eu-2023-564-adjudication-pge5mc] Final adjudication: permanently retire EU pesticide record-keeping wedge
-#45 [claude/wizardly-cray-k6wduk] apify-listing-seo: fresh pricing-competitiveness recheck across all 3 actors
 #4 [claude/wizardly-cray-69npyj] distribution: complete the dev.to job-scraper tutorial (devto-syndication arm)
 ```
 
