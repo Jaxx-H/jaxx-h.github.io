@@ -1,9 +1,15 @@
 # STATE — HQ Income Engine (machine-written bridge)
 
-_Generated 2026-07-17 08:56 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
+_Generated 2026-07-17 08:58 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
 
 ## Last 15 commits (hq-income-engine main)
 ```
+ee02908 Update observability run log
+1c92922 Update observability run log
+feea459 Update observability run log
+4ebfef7 Update observability run log
+9347e91 Update observability run log
+9919f05 EU 2023/564 retirement: rebuilt on current main (money-tree + country-map + outcomes row; no shared-file drift)
 ed6b758 index: rebuild from 0218363 [skip ci]
 0218363 outcomes: rename measurement -> metric (OUTCOMES_SCHEMA requires 'metric')
 8ac45c7 pricing recheck: rebuilt on current main (research memo + README + next-actions; drop the ledger write)
@@ -13,19 +19,12 @@ b6d9efd Dual-Track Loop: fast headless track + gated digest/resume + adapter (DI
 faca2ed index: rebuild from dbe7967 [skip ci]
 dbe7967 BELIEFS LAYER phase 1: brain/beliefs/ (14 seed beliefs, 8 forecasts, update log) + tools/beliefs.py + CHARTER/frontier Bayesian-verdict amendments (#46)
 8201373 distribute: ledger + sent receipts [skip ci]
-b06dd21 index: rebuild from cec8fd3 [skip ci]
-cec8fd3 metrics: 2026-07-16 — daily snapshot (3 reward row(s))
-de4b79f index: rebuild from 4f5f19c [skip ci]
-4f5f19c OPERATOR LITERACY RULE: repo CLAUDE.md + brain/glosses.jsonl (strategy-chat ruling 2026-07-16) (#43)
-f2a8394 index: rebuild from 21eb432 [skip ci]
-21eb432 R6: W1 Calibration gate verdict — NO-GO encoded (H4 near-dead, registry gated, D-003); W2 Exit-Rights Memory is next (#42)
 ```
 
 ## Open PRs
 ```
 #51 [claude/frontier-omozpj] R&D: BET-R6 — W3 Memory Watchdog diff/alert engine
 #49 [claude/wizardly-cray-fnjb4g] MOAT/PRODUCT: BET-ATT-001 brand-positioning brief (decision-ready A/B)
-#48 [claude/eu-2023-564-adjudication-pge5mc] Final adjudication: permanently retire EU pesticide record-keeping wedge
 #4 [claude/wizardly-cray-69npyj] distribution: complete the dev.to job-scraper tutorial (devto-syndication arm)
 ```
 
