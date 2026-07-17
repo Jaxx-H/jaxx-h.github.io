@@ -1,9 +1,11 @@
 # STATE — HQ Income Engine (machine-written bridge)
 
-_Generated 2026-07-17 08:58 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
+_Generated 2026-07-17 09:01 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
 
 ## Last 15 commits (hq-income-engine main)
 ```
+7d827b4 BET-ATT-001 brand brief: rebuilt on current main (brief file only; outcomes row dropped to avoid the shared-log collision)
+1841667 index: rebuild from ee02908 [skip ci]
 ee02908 Update observability run log
 1c92922 Update observability run log
 feea459 Update observability run log
@@ -17,14 +19,11 @@ ed6b758 index: rebuild from 0218363 [skip ci]
 1a0d47e R6 sweep-2: rebuilt on current main (frontier's files only; no ledger touch)
 b6d9efd Dual-Track Loop: fast headless track + gated digest/resume + adapter (DIRECTIVE)
 faca2ed index: rebuild from dbe7967 [skip ci]
-dbe7967 BELIEFS LAYER phase 1: brain/beliefs/ (14 seed beliefs, 8 forecasts, update log) + tools/beliefs.py + CHARTER/frontier Bayesian-verdict amendments (#46)
-8201373 distribute: ledger + sent receipts [skip ci]
 ```
 
 ## Open PRs
 ```
 #51 [claude/frontier-omozpj] R&D: BET-R6 — W3 Memory Watchdog diff/alert engine
-#49 [claude/wizardly-cray-fnjb4g] MOAT/PRODUCT: BET-ATT-001 brand-positioning brief (decision-ready A/B)
 #4 [claude/wizardly-cray-69npyj] distribution: complete the dev.to job-scraper tutorial (devto-syndication arm)
 ```
 
