@@ -1,0 +1,8 @@
+This product vendors the TimeLog-parsing path of isoxml (ISOXML.js).
+
+  isoxml — https://github.com/dev4Agriculture/isoxml-js
+  Copyright dev4Agriculture, licensed under the Apache License 2.0 (see ./LICENSE).
+  Pinned: npm isoxml@1.11.2  (git 2c0994d594f035bc93cd20bfeae2273b559465e5)
+
+Vendored as a bundled build (isoxml-timelog.bundle.mjs) via ./regen.mjs — not hand-pruned.
+Only ISOXMLManager + the TimeLog binary parse path are used. No source was modified.

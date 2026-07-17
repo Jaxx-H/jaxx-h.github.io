@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ISOXML yield import — yield-map-viewer</title>
+<style>
+  :root{ --bg:#12160e; --panel:#1b2114; --ink:#eaf3dc; --muted:#9db07e; --line:#33402440; --green:#6fbf3c; --gold:#e3c34a; --red:#d9694a; }
+  *{box-sizing:border-box}
+  body{margin:0;font:15px/1.5 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+  header{padding:18px 20px;border-bottom:1px solid var(--line)}
+  h1{margin:0;font-size:19px;letter-spacing:.01em} .sub{color:var(--muted);font-size:13px;margin-top:3px}
+  main{display:grid;grid-template-columns:1fr 340px;gap:16px;padding:16px 20px;max-width:1100px}
+  @media(max-width:820px){main{grid-template-columns:1fr}}
+  #drop{border:2px dashed #47592e;border-radius:12px;padding:14px;text-align:center;color:var(--muted);cursor:pointer;background:#161c10;transition:.15s}
+  #drop.hot{border-color:var(--green);color:var(--ink);background:#1c2412}
+  #map{width:100%;height:420px;background:#0e1209;border:1px solid var(--line);border-radius:12px;image-rendering:auto}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px}
+  .panel h2{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  #diag{font-size:14px;min-height:22px} #diag.ok{color:var(--green)} #diag.warn{color:var(--gold)} #diag.err{color:var(--red)}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+  th,td{text-align:left;padding:4px 6px;border-bottom:1px solid var(--line)} th{color:var(--muted);font-weight:600}
+  td.n{text-align:right;font-variant-numeric:tabular-nums}
+  .legend{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:12px;color:var(--muted)}
+  .ramp{height:10px;flex:1;border-radius:5px;background:linear-gradient(90deg,rgb(150,90,40),rgb(240,220,40),rgb(60,180,70))}
+  .muted{color:var(--muted)} .warn-list{font-size:12px;color:var(--gold);margin-top:8px} .err-list{font-size:12px;color:var(--red);margin-top:8px}
+  button{font:inherit;background:#243016;color:var(--ink);border:1px solid #3c5222;border-radius:8px;padding:6px 10px;cursor:pointer}
+</style>
+</head>
+<body>
+<header>
+  <h1>🌾 ISOXML yield import <span class="muted" style="font-size:12px">· spike UI</span></h1>
+  <div class="sub">Drop a TASKDATA export (a zipped folder with <code>TLG*.BIN</code> files) — client-side only, nothing uploads. Reads the binary timelogs and maps your yield points.</div>
+</header>
+<main>
+  <div>
+    <div id="drop">Drop a <b>TASKDATA.zip</b> here, or click to choose &nbsp;·&nbsp; <button id="ex1" type="button">try sample</button>
+      <input id="file" type="file" accept=".zip" hidden></div>
+    <canvas id="map" width="720" height="420"></canvas>
+    <div class="legend"><span id="lmin">low</span><div class="ramp"></div><span id="lmax">high</span><span id="lunit" class="muted"></span></div>
+  </div>
+  <div>
+    <div class="panel"><h2>Result</h2><div id="diag" class="muted">Waiting for a file…</div>
+      <div id="warns" class="warn-list"></div><div id="errs" class="err-list"></div></div>
+    <div class="panel" style="margin-top:14px"><h2>Channels found</h2>
+      <table id="chtab"><thead><tr><th>DDI</th><th>Channel</th><th class="n">min</th><th class="n">max</th></tr></thead><tbody></tbody></table>
+      <div id="nochan" class="muted" style="font-size:13px">—</div></div>
+  </div>
+</main>
+<script type="module">
+import { parseTaskData, renderYieldCanvas } from './isoxml-import.mjs'
+const $ = s => document.querySelector(s)
+const drop = $('#drop'), file = $('#file'), diag = $('#diag')
+
+async function handle(buf, name){
+  diag.className='muted'; diag.textContent='Parsing '+name+'…'
+  $('#warns').textContent=''; $('#errs').textContent=''
+  const rep = await parseTaskData(buf, name)
+  // diagnostics (never blank map: if !ok we still say exactly what happened)
+  diag.className = rep.ok ? (rep.timelogs.some(t=>!t.fellBack)?'ok':'warn') : 'err'
+  diag.textContent = rep.diagnostic
+  if(rep.warnings.length) $('#warns').textContent = '⚠ '+rep.warnings.slice(0,3).join(' · ')
+  if(rep.errors.length)   $('#errs').textContent   = '✗ '+rep.errors.slice(0,3).join(' · ')
+  // channel table
+  const tb = $('#chtab tbody'); tb.innerHTML=''
+  const chans = rep.timelogs.map(t=>t.channel)
+  if(chans.length){ $('#nochan').style.display='none'
+    chans.forEach(c=>{ const tr=document.createElement('tr')
+      tr.innerHTML=`<td>${c.ddi||''}</td><td>${c.name}${c.isYield?' 🌾':''}</td><td class="n">${c.min}</td><td class="n">${c.max}</td>`; tb.appendChild(tr) })
+  } else { $('#nochan').style.display='block'; $('#nochan').textContent='No data channels.' }
+  // map
+  const info = renderYieldCanvas($('#map'), rep.timelogs)
+  if(info.rendered){ const ch=rep.timelogs.find(t=>t.points.length).channel
+    $('#lmin').textContent=Math.round(info.minV); $('#lmax').textContent=Math.round(info.maxV); $('#lunit').textContent=ch.unit||'' }
+  window.__isoxmlResult = { ok:rep.ok, records:info.rendered||0, channels:chans.map(c=>c.name), diagnostic:rep.diagnostic } // for headless verification
+}
+function readFile(f){ const r=new FileReader(); r.onload=()=>handle(r.result,f.name); r.readAsArrayBuffer(f) }
+drop.onclick=()=>file.click(); file.onchange=e=>e.target.files[0]&&readFile(e.target.files[0])
+;['dragover','dragenter'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('hot')}))
+;['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('hot')}))
+drop.addEventListener('drop',e=>{const f=e.dataTransfer.files[0]; if(f)readFile(f)})
+async function loadFixture(which){ const url='./fixtures/isoxml/'+(which==='real'?'real-tractor-export.zip':'synthetic-yield.zip')
+  const buf=await (await fetch(url)).arrayBuffer(); handle(buf, url.split('/').pop()) }
+$('#ex1').onclick=()=>loadFixture('synthetic')
+// headless / deep-link auto-load: ?demo=synthetic|real
+const demo=new URLSearchParams(location.search).get('demo'); if(demo) loadFixture(demo)
+</script>
+</body>
+</html>
