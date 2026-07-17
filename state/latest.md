@@ -4,6 +4,8 @@ _Generated 2026-07-17 13:43 UTC by tools/state_snapshot.py (state-snapshot.yml).
 
 ## Last 15 commits (hq-income-engine main)
 ```
+b85c590 state: PR-triage in STATE — open PRs show age + >7d STALE flag (so none get forgotten)
+b7b79f0 index: rebuild from 2f2b29d [skip ci]
 2f2b29d Update observability run log
 5d6fa25 Update observability run log
 6761934 Update observability run log
@@ -17,15 +19,12 @@ ee623a3 Radar governance + Day-1 reprocess (DIRECTIVE 2026-07-17, Tracks 0-2)
 0551643 refresh(creators): data snapshot [skip ci]
 7ca5f4c index: rebuild from 7d827b4 [skip ci]
 7d827b4 BET-ATT-001 brand brief: rebuilt on current main (brief file only; outcomes row dropped to avoid the shared-log collision)
-1841667 index: rebuild from ee02908 [skip ci]
-ee02908 Update observability run log
 ```
 
-## Open PRs
+## Open PRs — DECIDE (age; >7d ⚠STALE → forced verdict per D-row)
 ```
-#56 [claude/pr-triage-state] state: PR-triage (age + STALE flag) so PRs don't get forgotten
-#55 [claude/wizardly-cray-gb4qbb] DEMAND RESEARCH: Japan-market check for a foreign-AI-company hiring content gap
-#4 [claude/wizardly-cray-69npyj] distribution: complete the dev.to job-scraper tutorial (devto-syndication arm)
+#55 [UNKNOWN] 0d — DEMAND RESEARCH: Japan-market check for a foreign-AI-company hiring content gap
+#4 [UNKNOWN] 5d — distribution: complete the dev.to job-scraper tutorial (devto-syndication arm)
 ```
 
 ## Reward ledger — newest 8 rows (brain/experiments.jsonl)
