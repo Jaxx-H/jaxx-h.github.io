@@ -1,9 +1,11 @@
 # STATE — HQ Income Engine (machine-written bridge)
 
-_Generated 2026-07-17 13:24 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
+_Generated 2026-07-17 13:26 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
 
 ## Last 15 commits (hq-income-engine main)
 ```
+ee623a3 Radar governance + Day-1 reprocess (DIRECTIVE 2026-07-17, Tracks 0-2)
+5826d14 index: rebuild from 5c04644 [skip ci]
 5c04644 R&D: BET-R6 — W3 Memory Watchdog diff/alert engine (build increment)
 0551643 refresh(creators): data snapshot [skip ci]
 7ca5f4c index: rebuild from 7d827b4 [skip ci]
@@ -17,8 +19,6 @@ feea459 Update observability run log
 9919f05 EU 2023/564 retirement: rebuilt on current main (money-tree + country-map + outcomes row; no shared-file drift)
 ed6b758 index: rebuild from 0218363 [skip ci]
 0218363 outcomes: rename measurement -> metric (OUTCOMES_SCHEMA requires 'metric')
-8ac45c7 pricing recheck: rebuilt on current main (research memo + README + next-actions; drop the ledger write)
-3782a00 index: rebuild from 1a0d47e [skip ci]
 ```
 
 ## Open PRs
@@ -26,7 +26,6 @@ ed6b758 index: rebuild from 0218363 [skip ci]
 #55 [claude/wizardly-cray-gb4qbb] DEMAND RESEARCH: Japan-market check for a foreign-AI-company hiring content gap
 #54 [claude/verify-pass-uqpzty] verify: daily pass — back-check EU 2023/564 and listing-seo pricing memos against primary sources
 #53 [claude/reward-map-v2] reward_map v2 PROPOSAL: external_actor_run 0.25 -> 0.05 (sign-off)
-#52 [claude/radar-governance] Radar governance + Day-1 reprocess (DIRECTIVE Tracks 0-2)
 #4 [claude/wizardly-cray-69npyj] distribution: complete the dev.to job-scraper tutorial (devto-syndication arm)
 ```
 
@@ -100,5 +99,18 @@ found programmatically instead of by luck). Rank gaps → machine ships candidat
 (no review latency, Stripe capture, instant A/B) → closed outcome loop kills or scales → winners
 get ported to the App Store. Durable asset: the opportunity-detection pipeline itself + the
 portfolio of surviving products. Defensibility: the review-mining sensor + our own weekly-
+```
+
+## WORLD_CHANGES — frontier radar (generated, DIRECTIVE 2026-07-17)
+```
+latest funnel (2026-07-17): Funnel: observed 7 · verified 2 · candidates 7 · roadmap-implications 0 · priority-changes 0
+open belief candidates + threats:
+- [CAND-2026-07-17-zeroclick] belief-shift (UNVERIFIED): ~68% of Google searches are zero-click in early 2026 (+7.5pp); click-based site monetization is on a
+- [CAND-2026-07-17-ai-referral-conv] door (UNVERIFIED): AI-referred sessions convert 6-9x better than Google organic
+- [CAND-2026-07-17-mcp-monetization] door (UNVERIFIED): <5% of ~11,000 MCP servers are monetized (pre-monetization App Store moment)
+- [CAND-2026-07-17-gate-gaming] threat (UNVERIFIED): ~20% of 'solved' SWE-bench is invalid / reward-hacking generalizes to sabotage
+- [CAND-2026-07-17-geo-first-rec] belief-shift (UNVERIFIED): the highest-leverage move this quarter is the GEO/citation pivot on the owned site
+- [CAND-2026-07-17-apify-sunset] door (VERIFIED): Apify rental pricing retiring: new rentals blocked 2026-04-01, full sunset 2026-10-01, migration DEF
+- [CAND-2026-07-17-youtube-ip] threat (VERIFIED): YouTube: datacenter/VPN IP ranges reputation-flagged Google-wide; PO tokens gating endpoints; reside
 ```
 
