@@ -1,9 +1,11 @@
 # STATE — HQ Income Engine (machine-written bridge)
 
-_Generated 2026-07-17 13:26 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
+_Generated 2026-07-17 13:27 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
 
 ## Last 15 commits (hq-income-engine main)
 ```
+39688a0 reward_map v2 PROPOSAL: external_actor_run 0.25 -> 0.05 (operator sign-off)
+2e1645d index: rebuild from ee623a3 [skip ci]
 ee623a3 Radar governance + Day-1 reprocess (DIRECTIVE 2026-07-17, Tracks 0-2)
 5826d14 index: rebuild from 5c04644 [skip ci]
 5c04644 R&D: BET-R6 — W3 Memory Watchdog diff/alert engine (build increment)
@@ -17,15 +19,12 @@ feea459 Update observability run log
 4ebfef7 Update observability run log
 9347e91 Update observability run log
 9919f05 EU 2023/564 retirement: rebuilt on current main (money-tree + country-map + outcomes row; no shared-file drift)
-ed6b758 index: rebuild from 0218363 [skip ci]
-0218363 outcomes: rename measurement -> metric (OUTCOMES_SCHEMA requires 'metric')
 ```
 
 ## Open PRs
 ```
 #55 [claude/wizardly-cray-gb4qbb] DEMAND RESEARCH: Japan-market check for a foreign-AI-company hiring content gap
 #54 [claude/verify-pass-uqpzty] verify: daily pass — back-check EU 2023/564 and listing-seo pricing memos against primary sources
-#53 [claude/reward-map-v2] reward_map v2 PROPOSAL: external_actor_run 0.25 -> 0.05 (sign-off)
 #4 [claude/wizardly-cray-69npyj] distribution: complete the dev.to job-scraper tutorial (devto-syndication arm)
 ```
 
