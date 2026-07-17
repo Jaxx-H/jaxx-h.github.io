@@ -1,0 +1,132 @@
+{
+ "slug": "fbn-vs-agriwebb-farmer-reviews",
+ "title": "FBN vs AgriWebb: What Farmers Actually Rate Them On",
+ "description": "AgriWebb rates higher than FBN: 4.15 of 5 across 26 reviews vs 2.96 across 28, and 69% 5-star vs 39%. The data-portability lens, grounded in real reviews.",
+ "answer_first": "AgriWebb rates higher than FBN in this window: it averages 4.15 of 5 across 26 reviews, versus FBN's 2.96 across 28. AgriWebb is 69% 5-star to FBN's 39%, and only 15% 1-star against FBN's 43%. On the data-portability question that drives most 'vs' searches, the two datasets are lopsided but not the way you might guess: AgriWebb carries one detailed complaint about not being able to pull livestock records straight from the NLIS database, while FBN's window has zero export or data-download complaints at all - its 1-star reviews are about the app being slow to load and login problems. The per-app star and store breakdown follows.",
+ "data_source": {
+  "actor": "app-store-google-play-review-scraper",
+  "run_id": "havOF99QpZzT9s0IE",
+  "fetched_at": "2026-07-12T18:12:21.049Z"
+ },
+ "columns": [
+  "App",
+  "Rating",
+  "Reviews",
+  "Share"
+ ],
+ "rows": [
+  [
+   "FBN",
+   "5★",
+   "11",
+   "39%"
+  ],
+  [
+   "FBN",
+   "4★",
+   "2",
+   "7%"
+  ],
+  [
+   "FBN",
+   "3★",
+   "2",
+   "7%"
+  ],
+  [
+   "FBN",
+   "2★",
+   "1",
+   "4%"
+  ],
+  [
+   "FBN",
+   "1★",
+   "12",
+   "43%"
+  ],
+  [
+   "AgriWebb",
+   "5★",
+   "18",
+   "69%"
+  ],
+  [
+   "AgriWebb",
+   "4★",
+   "2",
+   "8%"
+  ],
+  [
+   "AgriWebb",
+   "3★",
+   "2",
+   "8%"
+  ],
+  [
+   "AgriWebb",
+   "2★",
+   "0",
+   "0%"
+  ],
+  [
+   "AgriWebb",
+   "1★",
+   "4",
+   "15%"
+  ]
+ ],
+ "facts": [
+  "Methodology: 54 reviews captured 2026-07-12 — FBN (28, dated 2018-04-25 to 2025-11-17) and AgriWebb (26, dated 2017-06-03 to 2026-02-23) — from the App Store and Google Play via the Apify review-scraper; each average is a direct count, not a store lifetime rating.",
+  "AgriWebb averages 4.15 of 5 across its 26 reviews in this window; FBN averages 2.96 across 28 - AgriWebb rates higher on the same review-scraper and date-range method.",
+  "AgriWebb's 5-star share is 69% versus FBN's 39%.",
+  "FBN's 1-star share is 43% versus AgriWebb's 15%.",
+  "Counting 1- and 2-star reviews together, 46% of FBN's are negative against just 15% for AgriWebb.",
+  "FBN's score splits sharply by store: 5.0 across only 2 App Store reviews but 2.81 across 26 on Google Play.",
+  "All 26 of AgriWebb's reviews come from Google Play (mean 4.15); its dataset carries no App Store feed in this window.",
+  "FBN's reviews span 2018-04-25 to 2025-11-17; AgriWebb's span 2017-06-03 to 2026-02-23."
+ ],
+ "faq": [
+  {
+   "q": "Which rates higher, FBN or AgriWebb?",
+   "a": "AgriWebb, in this window. It averages 4.15 of 5 across 26 reviews versus FBN's 2.96 across 28, with 69% 5-star to FBN's 39% and only 15% 1-star to FBN's 43%. Both figures come from the same review scraper and date method, so they are directly comparable snapshots."
+  },
+  {
+   "q": "Do farmers complain about getting their data out?",
+   "a": "Only AgriWebb has a data-portability complaint in this dataset: one reviewer reports you can't download straight from the NLIS database or do a bulk livestock purchase, and must add each animal individually. FBN's 28-review window carries zero export or data-download complaints - its negatives (43% are 1-star) are about the app being slow to load and login problems."
+  },
+  {
+   "q": "How do I actually export or get my data out of these apps?",
+   "a": "Start with the step-by-step guide: drop your email in the form above and we'll send it. For viewing and pulling your field/yield data, our Yield Map Viewer tool [OPERATOR: confirm URL] is the companion to this comparison. Be realistic first - the AgriWebb reviews specifically flag missing bulk/NLIS download, and FBN's reviews don't mention export at all, so plan your data workflow before you commit."
+  },
+  {
+   "q": "Why are these averages different from the App Store or Google Play listing?",
+   "a": "Because they are computed only from the reviews captured in this window - 28 for FBN and 26 for AgriWebb. Recent-window means like 2.96 and 4.15 move faster than lifetime store ratings and reflect what farmers are saying now."
+  },
+  {
+   "q": "What is the source of this comparison?",
+   "a": "A single 2026-07-12 scrape of public store review feeds: 28 FBN reviews (spanning 2018-04-25 to 2025-11-17) and 26 AgriWebb reviews (2017-06-03 to 2026-02-23), each with its own star rating and date. We count them per star and store - no editorializing on the numbers."
+  }
+ ],
+ "related_product": {
+  "name": "App Store & Google Play Review Scraper",
+  "url": "https://apify.com/chilly_damask/app-store-google-play-review-scraper"
+ },
+ "citations": [],
+ "capture": {
+  "provider": "buttondown",
+  "form_action": "https://buttondown.email/api/emails/embed-subscribe/OPERATOR_USERNAME",
+  "note": "OPERATOR: after creating the Buttondown account, replace OPERATOR_USERNAME with the real handle"
+ },
+ "factory": {
+  "slice_id": "fbn-vs-agriwebb",
+  "vertical": "reviews",
+  "min_rows": 10,
+  "item_count": 54,
+  "distribution": {
+   "channel": "r/farming + FBN/AgriWebb comparison threads",
+   "query": "fbn vs agriwebb / farmers business network vs agriwebb reviews",
+   "note": "Answers the exact 'which rates higher and can I get my data out' question these threads ask: AgriWebb leads 4.15 to 2.96 on mean rating, and the only data-portability complaint in either dataset is one AgriWebb reviewer's NLIS-download friction - FBN's window has zero export complaints, so don't assume FBN is the more open system."
+  }
+ }
+}

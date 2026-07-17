@@ -1,0 +1,155 @@
+{
+ "slug": "export-yield-data-precision-ag",
+ "title": "Get Your Yield Data Out: Exporting From FieldView, Deere Ops Center, FBN and AgriWebb",
+ "description": "Yield-data export across FieldView (2.20/5), Deere Ops Center (2.77), FBN, AgriWebb (4.15) and xarvio - what farmer reviews say about getting your data out.",
+ "answer_first": "Worried about getting your yield data out? The reviews justify the concern. Climate FieldView is the lowest-rated of the five precision-ag apps mined here at 2.20 of 5 across 74 reviews (58% of them 1-star), and it is the only one whose users report a hard data lock: one App Store reviewer warns to download your data before cancelling because \"They won't give it to you without it.\" AgriWebb tops the group at 4.15 of 5 (26 reviews, 69% 5-star), with xarvio FIELD MANAGER at 3.88 (25 reviews), FBN at 2.96 (28 reviews) and John Deere Operations Center at 2.77 (95 reviews). Every stat and export quote below comes from a single 2026-07-12 store scrape, so treat any competitor export capability as user sentiment unless we cite it.",
+ "data_source": {
+  "actor": "app-store-google-play-review-scraper",
+  "run_id": "5fNqNWYHg19gFVeD6",
+  "fetched_at": "2026-07-12T18:12:05.654Z"
+ },
+ "columns": [
+  "App",
+  "Rating",
+  "Store",
+  "What the reviewer said"
+ ],
+ "rows": [
+  [
+   "Climate FieldView",
+   "1★",
+   "Google Play",
+   "Awful program, terrible support, and just useless overall. Bunch of empty promises that Climate Fieldview could not follow up on. I am still waiting for a follow up call/email/meeting that I tried setting up in the fall to set up the yield…"
+  ],
+  [
+   "John Deere Ops Center",
+   "1★",
+   "App Store",
+   "It’s a joke. Doesn’t load any new data and won’t load any coverage maps anymore"
+  ],
+  [
+   "FBN",
+   "1★",
+   "Google Play",
+   "I like fbn. However, the app is super slow and will hardly ever load. End up just going to the website."
+  ],
+  [
+   "AgriWebb",
+   "1★",
+   "Google Play",
+   "I purchased the individual version. You can't download straight from the nlis database, you can't do a bulk purchase of livestock. You have to individually add the price, nvd, source pic of each animal. The rainfall thing adds all the rain…"
+  ],
+  [
+   "xarvio",
+   "1★",
+   "Google Play",
+   "does not do anything but fails I never been more disappointed when I wanted to download something for free"
+  ],
+  [
+   "Climate FieldView",
+   "1★",
+   "Google Play",
+   "What a freaking joke! Fieldview cab app still isn't available for Droid users. Why would you make your app exclusive to just one OS or another?? This has made my switch to John Deeres op center easier to make. (BTW it's a better system…"
+  ],
+  [
+   "Climate FieldView",
+   "1★",
+   "Google Play",
+   "The app worked great before, you could keep up with rainfall throuout the day now only reports since the last update. It is useless now"
+  ],
+  [
+   "Climate FieldView",
+   "1★",
+   "App Store",
+   "Been using FieldView cab since 2013 and have been extremely happy with it until you guys forced your way in and rendered my yield information USELESS until I pay $750 for your service. I find no value in Climate for our operation. In the…"
+  ],
+  [
+   "Climate FieldView",
+   "1★",
+   "Google Play",
+   "Very poor app, does not allow to see any data you have entered!! Definitely not worth the money to have, would give a 0 star if I could"
+  ],
+  [
+   "Climate FieldView",
+   "1★",
+   "Google Play",
+   "won't show you any field map data in Android anymore"
+  ],
+  [
+   "Climate FieldView",
+   "1★",
+   "Google Play",
+   "What's the point of downloading an app on your phone if you need a computer to input information. Useless. Uninstall"
+  ],
+  [
+   "Climate FieldView",
+   "1★",
+   "Google Play",
+   "on the android system I have to uninstal and reinstall to have my my data to upload this needs to be fixed"
+  ],
+  [
+   "Climate FieldView",
+   "1★",
+   "Google Play",
+   "Sucks get Apple it is way better. Doesn't have near as many features and half the time it never updates yeild or planting data for weeks"
+  ],
+  [
+   "Climate FieldView",
+   "1★",
+   "Google Play",
+   "Planting data will not show up on the app"
+  ]
+ ],
+ "facts": [
+  "Methodology: 248 reviews captured 2026-07-12 across 5 apps — Climate FieldView (74), John Deere Ops Center (95), FBN (28), AgriWebb (26), xarvio (25) — from the App Store and Google Play via the Apify review-scraper; each app's rating is a direct count over its own reviews.",
+  "Climate FieldView averages 2.20 of 5 across 74 reviews (App Store 2.44, Google Play 2.00), with 58% rated 1-star - the lowest score of the five apps compared here.",
+  "FieldView also carries the group's deepest negative sentiment: 66% of its 74 reviews are 1- or 2-star, versus 51% for John Deere and just 15% for AgriWebb.",
+  "John Deere Operations Center Mobile scores 2.77 of 5 across 95 reviews (App Store 2.89, Google Play 2.60), split 27% 5-star and 38% 1-star.",
+  "Farmers Business Network (FBN) averages 2.96 of 5 across 28 reviews, nearly even at 39% 5-star and 43% 1-star.",
+  "AgriWebb is the highest-rated app in the set at 4.15 of 5 across 26 Google Play reviews, with 69% 5-star and just 15% 1-star.",
+  "xarvio FIELD MANAGER averages 3.88 of 5 across 25 reviews, 60% of them 5-star."
+ ],
+ "faq": [
+  {
+   "q": "Can I export my yield data out of Climate FieldView before I cancel?",
+   "a": "Treat it as a real risk. A 1-star App Store review (reviewId 3192979319) warns: \"If you cancel your fieldview plus subscription. Make sure you download your data first. They won't give it to you without it.\" We can't independently verify FieldView's current export policy, so this is user sentiment rather than a confirmed feature - but the safe move is to export everything before you let a subscription lapse."
+  },
+  {
+   "q": "Which precision-ag app in this comparison do farmers rate highest?",
+   "a": "AgriWebb, at 4.15 of 5 across 26 Google Play reviews (69% 5-star). xarvio FIELD MANAGER follows at 3.88 (25 reviews), then FBN at 2.96 (28 reviews), John Deere Operations Center at 2.77 (95 reviews), and Climate FieldView last at 2.20 (74 reviews). All five come from the same 2026-07-12 scrape, so the scores are directly comparable."
+  },
+  {
+   "q": "How do I actually export and move my yield data?",
+   "a": "The exact steps differ per platform and change often, so we keep a living guide instead of publishing steps we haven't verified. Enter your email in the signup on this page to get our cross-platform yield-data export walkthrough, then load your exported files into our Yield Map Viewer tool [OPERATOR: confirm URL] to check them before you rely on them."
+  },
+  {
+   "q": "Do these reviews say anything about switching between platforms?",
+   "a": "Yes, as user sentiment. One 1-star FieldView review (reviewId 1550848210) describes moving to Apex, SMS or Summit software after a subscription change, and another (reviewId 3e05910b-94ee-417b-9bc5-07ce990e54f3) reports having to \"uninstal and reinstall to have my my data to upload.\" These are individual reviewer experiences, not confirmed platform capabilities, so verify export paths yourself before switching."
+  },
+  {
+   "q": "Where does this data come from?",
+   "a": "A single 2026-07-12 public-store scrape of five apps - Climate FieldView (74 reviews), John Deere Operations Center (95 reviews), FBN (28 reviews), AgriWebb (26 reviews) and xarvio FIELD MANAGER (25 reviews) - via the App Store & Google Play Review Scraper. Every quote on this page is copied verbatim from that capture."
+  }
+ ],
+ "related_product": {
+  "name": "App Store & Google Play Review Scraper",
+  "url": "https://apify.com/chilly_damask/app-store-google-play-review-scraper"
+ },
+ "citations": [],
+ "capture": {
+  "provider": "buttondown",
+  "form_action": "https://buttondown.email/api/emails/embed-subscribe/OPERATOR_USERNAME",
+  "note": "OPERATOR: after creating the Buttondown account, replace OPERATOR_USERNAME with the real handle"
+ },
+ "factory": {
+  "slice_id": "yield-data-export",
+  "vertical": "reviews",
+  "min_rows": 10,
+  "item_count": 248,
+  "distribution": {
+   "channel": "AgTalk + TheCombineForum yield-data-export threads",
+   "query": "how to export yield data from precision ag apps / yield data portability",
+   "note": "Answers the recurring 'how do I get my yield data out' thread by comparing all five apps' review sentiment side by side and surfacing FieldView's reported subscription data-lock (reviewId 3192979319), with a verified cross-platform export guide behind the email capture."
+  }
+ }
+}

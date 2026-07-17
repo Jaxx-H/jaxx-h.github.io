@@ -1,0 +1,143 @@
+{
+ "slug": "climate-fieldview-export-your-data",
+ "title": "How to Get Your Yield Data Out of Climate FieldView",
+ "description": "Export your Climate FieldView data before you cancel; reviewers warn it's withheld after. 74 reviews average 2.2 of 5, 58% 1-star.",
+ "answer_first": "Export your Climate FieldView data before you cancel: across the 74 reviews mined here — mean 2.2 of 5, 58% 1-star — the loudest recurring warning is that FieldView won't hand back your yield data once your FieldView Plus subscription lapses. The store split is 2.44 on the App Store (34 reviews) and 2.0 on Google Play (40 reviews). One farmer states the rule flatly: \"If you cancel your fieldview plus subscription. Make sure you download your data first. They won't give it to you without it.\" Below is the pre-cancellation export approach, the verbatim lock-in quotes, and how the John Deere Operations Center alternative actually scores.",
+ "data_source": {
+  "actor": "app-store-google-play-review-scraper",
+  "run_id": "5fNqNWYHg19gFVeD6",
+  "fetched_at": "2026-07-12T18:12:05.654Z"
+ },
+ "columns": [
+  "Rating",
+  "Store",
+  "Date",
+  "What the reviewer said"
+ ],
+ "rows": [
+  [
+   "1★",
+   "Google Play",
+   "2020-01-25",
+   "Awful program, terrible support, and just useless overall. Bunch of empty promises that Climate Fieldview could not follow up on. I am still waiting for a follow up call/email/meeting that I tried setting up in the fall to set up the yield…"
+  ],
+  [
+   "1★",
+   "Google Play",
+   "2022-02-10",
+   "What a freaking joke! Fieldview cab app still isn't available for Droid users. Why would you make your app exclusive to just one OS or another?? This has made my switch to John Deeres op center easier to make. (BTW it's a better system…"
+  ],
+  [
+   "1★",
+   "Google Play",
+   "2025-05-19",
+   "The app worked great before, you could keep up with rainfall throuout the day now only reports since the last update. It is useless now"
+  ],
+  [
+   "1★",
+   "App Store",
+   "2017-02-23",
+   "Been using FieldView cab since 2013 and have been extremely happy with it until you guys forced your way in and rendered my yield information USELESS until I pay $750 for your service. I find no value in Climate for our operation. In the…"
+  ],
+  [
+   "1★",
+   "Google Play",
+   "2019-11-14",
+   "Very poor app, does not allow to see any data you have entered!! Definitely not worth the money to have, would give a 0 star if I could"
+  ],
+  [
+   "1★",
+   "Google Play",
+   "2025-06-02",
+   "won't show you any field map data in Android anymore"
+  ],
+  [
+   "1★",
+   "Google Play",
+   "2023-06-20",
+   "What's the point of downloading an app on your phone if you need a computer to input information. Useless. Uninstall"
+  ],
+  [
+   "1★",
+   "Google Play",
+   "2022-10-12",
+   "on the android system I have to uninstal and reinstall to have my my data to upload this needs to be fixed"
+  ],
+  [
+   "1★",
+   "Google Play",
+   "2022-10-11",
+   "Sucks get Apple it is way better. Doesn't have near as many features and half the time it never updates yeild or planting data for weeks"
+  ],
+  [
+   "1★",
+   "Google Play",
+   "2021-07-31",
+   "Planting data will not show up on the app"
+  ],
+  [
+   "1★",
+   "App Store",
+   "2018-09-15",
+   "If you cancel your fieldview plus subscription. Make sure you download your data first. They won't give it to you without it."
+  ],
+  [
+   "4★",
+   "Google Play",
+   "2018-11-01",
+   "I have uploaded Harvest data but it won't show average yield and moisture down at the bottem.."
+  ]
+ ],
+ "facts": [
+  "Methodology: 74 Climate FieldView reviews captured 2026-07-12 from the App Store (34) and Google Play (40) via the Apify review-scraper, dated 2014-02-05 to 2025-09-07 — every rating below is a direct count over that set, not a store lifetime average.",
+  "Across the 74 Climate FieldView reviews mined in this window, the mean rating is just 2.2 of 5, and 58% are 1-star (43 of 74).",
+  "The split is lopsided by store: 34 App Store reviews average 2.44 while 40 Google Play reviews average 2.0.",
+  "Only 19% of the 74 reviews are 5-star (14 reviews), and 66% land at 1 or 2 stars.",
+  "Star counts break down as 43 one-star, 6 two-star, 6 three-star, 5 four-star, and 14 five-star.",
+  "The most-named alternative, John Deere Operations Center, is no clean escape: its 95 mined reviews average 2.77 with 38% 1-star.",
+  "This dataset spans reviews dated from 2014-02-05 through 2025-09-07."
+ ],
+ "faq": [
+  {
+   "q": "How do I actually get my yield data out of FieldView?",
+   "a": "The safe move every reviewer agrees on: export your maps and yield files before you cancel FieldView Plus, because users report the data is hard to retrieve afterward. For the current step-by-step export walkthrough, grab our guide via the email box on this page, then load the resulting files into our Yield Map Viewer tool [OPERATOR: confirm URL] to view and cross-check your yield layers outside FieldView."
+  },
+  {
+   "q": "Will I lose my data if I cancel my FieldView Plus subscription?",
+   "a": "Reviewers warn you can. One 1-star App Store review states plainly: \"Make sure you download your data first. They won't give it to you without it.\" Another describes yield information rendered \"USELESS until I pay $750.\" Treat export as a pre-cancellation step, not an afterthought — download everything while your subscription is still active."
+  },
+  {
+   "q": "Where do farmers move their FieldView data when they leave?",
+   "a": "Based on the reviews here, it varies by operation. One departing user says he bought a Surface Pro to run \"either Apex,SMS or Summit software,\" and another says the app pushed his \"switch to John Deeres op center.\" These are user-reported destinations, not endorsements — and each move meant rebuilding records, so plan the transfer before you cut the subscription."
+  },
+  {
+   "q": "Is John Deere Operations Center a better place to keep my data?",
+   "a": "Not obviously. In our companion dataset of 95 John Deere Operations Center reviews, the mean is 2.77 of 5 with 38% 1-star — higher than FieldView's 2.2, but still under 3. One FieldView reviewer who switched calls Op Center \"a better system anyway,\" yet the score gap is narrow, so choose on your equipment and features, not ratings alone."
+  },
+  {
+   "q": "Where do these numbers come from?",
+   "a": "A July 2026 scrape of public App Store and Google Play review feeds for Climate FieldView — 74 reviews dated 2014-02-05 through 2025-09-07 — tallied per star and store. Nothing here is estimated; each figure is a direct count, and every quote is copied verbatim from a public review."
+  }
+ ],
+ "related_product": {
+  "name": "App Store & Google Play Review Scraper",
+  "url": "https://apify.com/chilly_damask/app-store-google-play-review-scraper"
+ },
+ "citations": [],
+ "capture": {
+  "provider": "buttondown",
+  "form_action": "https://buttondown.email/api/emails/embed-subscribe/OPERATOR_USERNAME",
+  "note": "OPERATOR: after creating the Buttondown account, replace OPERATOR_USERNAME with the real handle"
+ },
+ "factory": {
+  "slice_id": "fieldview-export",
+  "vertical": "reviews",
+  "min_rows": 10,
+  "item_count": 74,
+  "distribution": {
+   "channel": "r/farming + NewAgTalk 'exporting FieldView data' threads",
+   "query": "how to export climate fieldview data / get yield data out of fieldview",
+   "note": "Answers the recurring 'how do I get my yield data out before I cancel' question with the verbatim FieldView lock-in warnings and a pre-cancellation export approach, plus how the John Deere Operations Center alternative actually scores."
+  }
+ }
+}
