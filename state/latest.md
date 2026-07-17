@@ -1,32 +1,30 @@
 # STATE — HQ Income Engine (machine-written bridge)
 
-_Generated 2026-07-17 20:58 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
+_Generated 2026-07-17 20:59 UTC by tools/state_snapshot.py (state-snapshot.yml). GitHub is canon; this file replaces the Notion Bridge (operator ruling 2026-07-15)._
 
 ## Last 15 commits (hq-income-engine main)
 ```
+e62f466 Merge pull request #61 from Jaxx-H/claude/c1-2-isoxml-spike
+ef2bd02 site-sync: refresh pages-index [skip ci]
+0ad54f9 index: rebuild from d48067b [skip ci]
+d48067b Merge pull request #59 from Jaxx-H/claude/c1-yield-export-pages
+f8562ab index: rebuild from 503bdda [skip ci]
 503bdda decisions: POLICY layer — D-002/D-004/D-005 gain POLICY fields + D-008 (blocked-on-external)
 1c6a21a decisions: D-006 (KEEP isoxml, vendor TimeLog path) + D-007 (app-store corpus under-samples export pain)
 929a1c4 decisions: D-004 (hard dates outrank tooling order) + D-005 (repo stays private) + ratify D-003 residual-risk
 756fd13 loop I/O contract: LOOP_WRITER gate + run-unique fold-in events; engine decision log
+b0e4a42 C1.1: methodology-first facts (n + source + date range beside every rating)
+5c1533e C1.2 spike: prove client-side ISOXML TLG binary parsing (KEEP isoxml, vendor TimeLog path)
+e856113 C1.1: three grounded yield-data-export pages (harvest-window ship list, D-002/D-004)
 37f4696 index: rebuild from b85c590 [skip ci]
 b85c590 state: PR-triage in STATE — open PRs show age + >7d STALE flag (so none get forgotten)
 b7b79f0 index: rebuild from 2f2b29d [skip ci]
-2f2b29d Update observability run log
-5d6fa25 Update observability run log
-6761934 Update observability run log
-0148897 verify: daily pass — back-check EU 2023/564 country map + listing-seo pricing recheck against primary sources
-2c2dc6d index: rebuild from 39688a0 [skip ci]
-39688a0 reward_map v2 PROPOSAL: external_actor_run 0.25 -> 0.05 (operator sign-off)
-2e1645d index: rebuild from ee623a3 [skip ci]
-ee623a3 Radar governance + Day-1 reprocess (DIRECTIVE 2026-07-17, Tracks 0-2)
 ```
 
 ## Open PRs — DECIDE (age; >7d ⚠STALE → forced verdict per D-row)
 ```
 #62 [UNKNOWN] 0d — state: operator queue in TAP/PASTE/WORLD buckets (bottleneck at a glance)
-#61 [UNKNOWN] 0d — C1.2 spike: ISOXML TLG binary parsing proven (KEEP isoxml; acceptance fixture = your Gen4/G5 export)
 #60 [UNKNOWN] 0d — research: Japanese-community content-slice sourcing for P2 factory (creators)
-#59 [BLOCKED] 0d — C1.1: three grounded yield-data-export pages (harvest window, due Aug 1)
 ```
 
 ## Reward ledger — newest 8 rows (brain/experiments.jsonl)
