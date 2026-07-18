@@ -1,0 +1,88 @@
+{
+ "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
+ "generated": "2026-07-18 00:13 UTC",
+ "queue": {
+  "tap": [
+   {
+    "pr": 60,
+    "age_days": 0,
+    "stale": false,
+    "title": "research: Japanese-community content-slice sourcing for P2 factory (creators)"
+   }
+  ],
+  "paste_pending": 3,
+  "world": [
+   "- Drop last year's (or Gen4/G5) harvest TASKDATA export at /tools/yield-map-viewer/isoxml-import-demo.html [C1.2 acceptance] — THE bottlenec",
+   "- Re-run the collector: python3 ~/.hq-scheduler/collect_metrics.py [B precond] — git().strip() crash is fixed; one run clears the collector-",
+   "- Re-push actor-2: cd ~/dev/apify-actor-2 && apify push [actor-2] — output-schema fix landed on actor-2 main",
+   "- Submit the 3 new page URLs to Google Search Console + Bing Webmaster [C1.1 / Aug 1] — the hard Aug-1 indexing deliverable; URLs in PR #59",
+   "- Submit the developer.deere.com application (Field Operations read, Files, Fields) [C1.3] — sanctioned-path spike; no product build until a",
+   "- Decide: scrub state/latest.md from public repo git HISTORY (file itself removed 2026-07-17) [D0.1] — history still serves old revisions; s"
+  ]
+ },
+ "clocks": [
+  {
+   "date": "2026-08-01",
+   "what": "C1.1 yield-data pages LIVE + Google/Bing indexing submitted (ships regardless of budget)"
+  },
+  {
+   "date": "2026-08-15",
+   "what": "ISOXML import LIVE in yield-map-viewer (client-side)"
+  },
+  {
+   "date": "2026-08-26",
+   "what": "Review data behind the 3 yield pages hits the 45-day stale threshold — re-scrape before this"
+  },
+  {
+   "date": "2026-09-30",
+   "what": "Directive-C objective window ends: maximize VERIFIED external events/week (n, not reward $)"
+  }
+ ],
+ "counts": {
+  "open_prs": 1,
+  "revenue_events_n": 2,
+  "external_reward_rows_n": 3,
+  "ledger_rows_n": 13,
+  "radar_funnel": {
+   "observed": 7,
+   "verified": 2,
+   "candidates": 7
+  }
+ },
+ "health": {
+  "collector_last_landed": "2026-07-16",
+  "automerge": "unknown",
+  "fasttrack": "unknown",
+  "secrets_configured": "0/7"
+ },
+ "surfaces": [
+  {
+   "label": "Owned site (SignalCrate)",
+   "url": "https://jaxx-h.github.io/"
+  },
+  {
+   "label": "Yield Map Viewer tool",
+   "url": "https://jaxx-h.github.io/tools/yield-map-viewer/"
+  },
+  {
+   "label": "ISOXML import demo (C1.2 acceptance surface)",
+   "url": "https://jaxx-h.github.io/tools/yield-map-viewer/isoxml-import-demo.html"
+  },
+  {
+   "label": "Page: FieldView — export your data (pending #59 merge)",
+   "url": "https://jaxx-h.github.io/climate-fieldview-export-your-data/"
+  },
+  {
+   "label": "Page: export yield data — 5 platforms (pending #59 merge)",
+   "url": "https://jaxx-h.github.io/export-yield-data-precision-ag/"
+  },
+  {
+   "label": "Page: FBN vs AgriWebb (pending #59 merge)",
+   "url": "https://jaxx-h.github.io/fbn-vs-agriwebb-farmer-reviews/"
+  },
+  {
+   "label": "Apify actor portfolio (5 actors)",
+   "url": "https://apify.com/chilly_damask"
+  }
+ ]
+}
