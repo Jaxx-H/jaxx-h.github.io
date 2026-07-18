@@ -1,8 +1,21 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-18 05:20 UTC",
+ "generated": "2026-07-18 08:27 UTC",
  "queue": {
-  "tap": [],
+  "tap": [
+   {
+    "pr": 65,
+    "age_days": 0,
+    "stale": false,
+    "title": "R&D: BET-R6 W3 — Memory Watchdog demand/build gate: GO as free lead-magnet"
+   },
+   {
+    "pr": 64,
+    "age_days": 0,
+    "stale": false,
+    "title": "frontier-radar 2026-07-18: primary-source hardening of the Apify/MCP door"
+   }
+  ],
   "paste_pending": 3,
   "world": [
    "- Drop last year's (or Gen4/G5) harvest TASKDATA export at /tools/yield-map-viewer/isoxml-import-demo.html [C1.2 acceptance] — THE bottlenec",
@@ -32,7 +45,7 @@
   }
  ],
  "counts": {
-  "open_prs": 0,
+  "open_prs": 2,
   "revenue_events_n": 2,
   "external_reward_rows_n": 3,
   "ledger_rows_n": 14,
