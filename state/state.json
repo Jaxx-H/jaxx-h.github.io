@@ -1,6 +1,6 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-18 17:20 UTC",
+ "generated": "2026-07-18 17:47 UTC",
  "queue": {
   "tap": [
    {
@@ -144,6 +144,9 @@
   "EXP-002: OPERATOR_BLOCKED — attestation 'submitted the extension' checked against the CWS developer dashboar",
   "EXP-001: NOT_STARTED — surface /sheets-tab-folders/ read 404 (staged on open site PR #8; not deployed).",
   "PROBE-001: OPEN_PR — intake surface staged on open site PR #6 (rebased clean this pass); public read ",
-  "EXP-002: OPERATOR_BLOCKED — base R3 confirms the delta encoding: registration staged on open PR #68; authori"
+  "EXP-002: OPERATOR_BLOCKED — base R3 confirms the delta encoding: registration staged on open PR #68; authori",
+  "EXP-001: PUBLICLY_REACHABLE — surface https://jaxx-h.github.io/sheets-tab-folders/ HTTP 200 (3x, cache-busted)",
+  "EXP-001: MEASURING — telemetry verified end-to-end: controlled test/ event ingested via API read; rea",
+  "PROBE-001: DEPLOYED_LIVE — intake deployed: demo HTTP 200 with GitHub-issue intake link + probe_intake_clic"
  ]
 }
