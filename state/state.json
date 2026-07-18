@@ -1,8 +1,14 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-18 14:08 UTC",
+ "generated": "2026-07-18 17:14 UTC",
  "queue": {
   "tap": [
+   {
+    "pr": 69,
+    "age_days": 0,
+    "stale": false,
+    "title": "research: expand competitor-watch registry (Climate FieldView, FBN, AgriWebb, JD Ops Cente"
+   },
    {
     "pr": 67,
     "age_days": 0,
@@ -35,13 +41,18 @@
    "- Re-push actor-2: cd ~/dev/apify-actor-2 && apify push [actor-2] — output-schema fix landed on actor-2 main",
    "- Submit the 3 new page URLs to Google Search Console + Bing Webmaster [C1.1 / Aug 1] — the hard Aug-1 indexing deliverable; URLs in PR #59",
    "- Submit the developer.deere.com application (Field Operations read, Files, Fields) [C1.3] — sanctioned-path spike; no product build until a",
-   "- Decide: scrub state/latest.md from public repo git HISTORY (file itself removed 2026-07-17) [D0.1] — history still serves old revisions; s"
+   "- Decide: scrub state/latest.md from public repo git HISTORY (file itself removed 2026-07-17) [D0.1] — history still serves old revisions; s",
+   "- Submit ext #1 (yt-comment-exporter) to the Chrome Web Store — ~40 min, checklist in distribution/extensions-submit-pack.md [E1.3 T2 / D-01"
   ]
  },
  "clocks": [
   {
    "date": "2026-08-01",
    "what": "C1.1 yield-data pages LIVE + Google/Bing indexing submitted (ships regardless of budget)"
+  },
+  {
+   "date": "2026-08-08",
+   "what": "Domain 002 review: >=3 validation experiments launched (D-014)"
   },
   {
    "date": "2026-08-15",
@@ -52,12 +63,20 @@
    "what": "Review data behind the 3 yield pages hits the 45-day stale threshold — re-scrape before this"
   },
   {
+   "date": "2026-09-15",
+   "what": "Probe storefront threshold: >=1 stranger submission = Domain 001 promotion signal (T6)"
+  },
+  {
    "date": "2026-09-30",
    "what": "Directive-C objective window ends: maximize VERIFIED external events/week (n, not reward $)"
+  },
+  {
+   "date": "2026-09-30",
+   "what": "Domain 001 DEMOTE->PARKED if no stranger signal; Domain 002 status review; constitutional freeze ends (D-014/D"
   }
  ],
  "counts": {
-  "open_prs": 4,
+  "open_prs": 5,
   "revenue_events_n": 2,
   "external_reward_rows_n": 3,
   "ledger_rows_n": 14,
@@ -102,5 +121,44 @@
    "label": "Apify actor portfolio (5 actors)",
    "url": "https://apify.com/chilly_damask"
   }
+ ],
+ "brief": {
+  "headline": "Overnight E1.3 (all STAGED on open PRs, checks green): constitution, 8-entry queue, 5 extensions staged; INC-001 recorded; EXP-001 NOT_STARTED, EXP-002 operator-blocked",
+  "shipped": [
+   "Constitution + evidence/TIME laws encoded (STAGED, engine #68, checks green) with deterministic grader + linter",
+   "Opportunity Queue v1 — 8 ranked entries from a 19-candidate market scan",
+   "5 Chrome extensions staged: zips, screenshots, payment-ID checks all green (submit checklist ready, ~40 min)",
+   "/extensions/ page + sheets-tab-folders fake door (STAGED, site #8)",
+   "FTC–Deere settlement page (settled Jul 8 — repair tools, not data) + yield-data-portability matrix v0 (STAGED, site #9)",
+   "Sensors: parse success/fail, tool opens, intake + card clicks; probe intake on the ISOXML demo (STAGED, site #6, rebased)"
+  ],
+  "evidence": [
+   "EXP-001 fake door: NOT_STARTED — surface staged on site #8 (404 live); starts only on public reach + observed test=true event",
+   "EXP-002 CWS smoke (yt-comment): OPERATOR_BLOCKED — submission UNCONFIRMED (dashboard shows no items; INC-001); clock frozen, starts only at PUBLICLY_REACHABLE",
+   "PROBE-001 (yield concierge): ≥1 stranger file by Sep 15 — live with PR #6",
+   "Market signal: category leader 5,000 users @ 2.9 stars; MCP window open until Oct 1"
+  ],
+  "decisions": [
+   "1 · TAP the stack: engine #68 #63 #60 · site #6 #7 #8 #9 (order: #62-style state feed first = #7 last after #68)",
+   "2 · CWS: re-check All-items view + publisher account; if truly unsubmitted, run the 40-min checklist — a real receipt needs listing ID, version, timestamp, console status",
+   "3 · Ratify reward_map v3 sensor proposal + the staged per-experiment paid-traffic line (amount in the private brief; A1 morning decision)",
+   "4 · EXP-001 window: keep 7-day or extend to the suggested 21-day (extension is operator-only under TIME LAW)",
+   "5 · Still THE bottleneck: drop last year's harvest TASKDATA export on the ISOXML demo"
+  ],
+  "meter": "Deliberation: 0 experiments resolved : 0 laws amended : 1 graded incident (INC-001) · WIP 3/3 · EXP-002 operator-blocked (clock frozen)"
+ },
+ "landing": [
+  "site#9 [OPEN_PR (red checks)] E1.3 T5: FTC-Deere settlement page + yield-data-portability ",
+  "site#8 [OPEN_PR (red checks)] E1.3 T2: /extensions/ page (5 staged extensions, ASO copy, t",
+  "site#6 [OPEN_PR (red checks)] C1.2 UI: client-side ISOXML yield import (working, verified)",
+  "hq console: DEPLOYED_LIVE https://jaxx-h.github.io/hq/",
+  "public state feed: DEPLOYED_LIVE https://jaxx-h.github.io/state/state.json",
+  "extensions page: NOT LIVE (404) https://jaxx-h.github.io/extensions/",
+  "EXP-001 fake door: NOT LIVE (404) https://jaxx-h.github.io/sheets-tab-folders/",
+  "PROBE-001 intake: NOT LIVE (404) https://jaxx-h.github.io/tools/yield-map-viewer/isoxml-import-demo.html",
+  "EXP-002: OPERATOR_BLOCKED — attestation 'submitted the extension' checked against the CWS developer dashboar",
+  "EXP-001: NOT_STARTED — surface /sheets-tab-folders/ read 404 (staged on open site PR #8; not deployed).",
+  "PROBE-001: OPEN_PR — intake surface staged on open site PR #6 (rebased clean this pass); public read ",
+  "EXP-002: OPERATOR_BLOCKED — base R3 confirms the delta encoding: registration staged on open PR #68; authori"
  ]
 }
