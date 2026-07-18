@@ -1,21 +1,9 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-18 13:15 CT",
- "generated_utc": "2026-07-18T18:15:58Z",
+ "generated": "2026-07-18 13:24 CT",
+ "generated_utc": "2026-07-18T18:24:48Z",
  "queue": {
   "tap": [
-   {
-    "pr": 72,
-    "age_days": 0,
-    "stale": false,
-    "title": "INC-002: verifier allowlist gains exactly the frontier-mandated paths (+drift test)"
-   },
-   {
-    "pr": 71,
-    "age_days": 0,
-    "stale": false,
-    "title": "Coherence + write-boundary pass: INC-003 + write-classes + current-view landing + EXP-001 "
-   },
    {
     "pr": 69,
     "age_days": 0,
@@ -77,7 +65,7 @@
   }
  ],
  "counts": {
-  "open_prs": 5,
+  "open_prs": 3,
   "revenue_events_n": 2,
   "external_reward_rows_n": 3,
   "ledger_rows_n": 14,
@@ -124,29 +112,25 @@
   }
  ],
  "brief": {
-  "headline": "Overnight E1.3 (all STAGED on open PRs, checks green): constitution, 8-entry queue, 5 extensions staged; INC-001 recorded; EXP-001 NOT_STARTED, EXP-002 operator-blocked",
+  "headline": "E1.3 canon MERGED + all six surfaces LIVE; EXP-001 MEASURING (window to 07-25 12:46 CT); EXP-002 awaits a complete 4-field receipt; INC-003 write-boundary opened",
   "shipped": [
-   "Constitution + evidence/TIME laws encoded (STAGED, engine #68, checks green) with deterministic grader + linter",
-   "Opportunity Queue v1 — 8 ranked entries from a 19-candidate market scan",
-   "5 Chrome extensions staged: zips, screenshots, payment-ID checks all green (submit checklist ready, ~40 min)",
-   "/extensions/ page + sheets-tab-folders fake door (STAGED, site #8)",
-   "FTC–Deere settlement page (settled Jul 8 — repair tools, not data) + yield-data-portability matrix v0 (STAGED, site #9)",
-   "Sensors: parse success/fail, tool opens, intake + card clicks; probe intake on the ISOXML demo (STAGED, site #6, rebased)"
+   "E1.3 constitution + queue + briefs: MERGED to main (#68) — canonical",
+   "Six surfaces DEPLOYED_LIVE: ISOXML demo+intake, /extensions/, fake door, FTC-Deere, yield-portability (HTTP 200 verified)",
+   "Chicago timestamps merged (#70 + site#11); graders stay on UTC machine fields",
+   "Coherence: INC-001 checks resolved, INC-003 direct-main boundary + write-classes.json, one-current-row landing view (this PR)"
   ],
   "evidence": [
-   "EXP-001 fake door: NOT_STARTED — surface staged on site #8 (404 live); starts only on public reach + observed test=true event",
-   "EXP-002 CWS smoke (yt-comment): OPERATOR_BLOCKED — submission UNCONFIRMED (dashboard shows no items; INC-001); clock frozen, starts only at PUBLICLY_REACHABLE",
-   "PROBE-001 (yield concierge): ≥1 stranger file by Sep 15 — live with PR #6",
-   "Market signal: category leader 5,000 users @ 2.9 stars; MCP window open until Oct 1"
+   "EXP-001: MEASURING — controlled test event verified + excluded; real counter 0; window to 07-25 12:46 CT",
+   "PROBE-001: DEPLOYED_LIVE — pipe proven (real tool_open ingested); 0 submissions",
+   "EXP-002: OPERATOR_BLOCKED — receipt INCOMPLETE ([FILL] x4); supply listing ID, version, timestamp, console status"
   ],
   "decisions": [
-   "1 · TAP the stack: engine #68 #63 #60 · site #6 #7 #8 #9 (order: #62-style state feed first = #7 last after #68)",
-   "2 · CWS: re-check All-items view + publisher account; if truly unsubmitted, run the 40-min checklist — a real receipt needs listing ID, version, timestamp, console status",
-   "3 · Ratify reward_map v3 sensor proposal + the staged per-experiment paid-traffic line (amount in the private brief; A1 morning decision)",
-   "4 · EXP-001 window: keep 7-day or extend to the suggested 21-day (extension is operator-only under TIME LAW)",
-   "5 · Still THE bottleneck: drop last year's harvest TASKDATA export on the ISOXML demo"
+   "1 · TAP: coherence PR + INC-002 verifier PR + #69 (repaired) — then loop PRs #65/#67 verdicts",
+   "2 · Supply the four real CWS receipt fields (dashboard All-items row) to advance EXP-002",
+   "3 · GSC + Bing submission — fully unblocked, rank-2 WORLD",
+   "4 · Harvest TASKDATA export — rank-3, still the Domain-001 gate"
   ],
-  "meter": "Deliberation: 0 experiments resolved : 0 laws amended : 1 graded incident (INC-001) · WIP 3/3 · EXP-002 operator-blocked (clock frozen)"
+  "meter": "Deliberation: 0 experiments resolved : 0 laws amended : 3 graded incidents (INC-001 attestation, INC-002 verifier conflict, INC-003 write boundary) · WIP 3/3"
  },
  "landing": [
   "hq console: DEPLOYED_LIVE https://jaxx-h.github.io/hq/",
@@ -154,12 +138,8 @@
   "extensions page: DEPLOYED_LIVE https://jaxx-h.github.io/extensions/",
   "EXP-001 fake door: DEPLOYED_LIVE https://jaxx-h.github.io/sheets-tab-folders/",
   "PROBE-001 intake: DEPLOYED_LIVE https://jaxx-h.github.io/tools/yield-map-viewer/isoxml-import-demo.html",
-  "EXP-002: OPERATOR_BLOCKED — attestation 'submitted the extension' checked against the CWS developer dashboar",
-  "EXP-001: NOT_STARTED — surface /sheets-tab-folders/ read 404 (staged on open site PR #8; not deployed).",
-  "PROBE-001: OPEN_PR — intake surface staged on open site PR #6 (rebased clean this pass); public read ",
+  "EXP-001: MEASURING",
   "EXP-002: OPERATOR_BLOCKED — base R3 confirms the delta encoding: registration staged on open PR #68; authori",
-  "EXP-001: PUBLICLY_REACHABLE — surface https://jaxx-h.github.io/sheets-tab-folders/ HTTP 200 (3x, cache-busted)",
-  "EXP-001: MEASURING — telemetry verified end-to-end: controlled test/ event ingested via API read; rea",
   "PROBE-001: DEPLOYED_LIVE — intake deployed: demo HTTP 200 with GitHub-issue intake link + probe_intake_clic"
  ]
 }
