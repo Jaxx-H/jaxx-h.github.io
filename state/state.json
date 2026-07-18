@@ -1,9 +1,21 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-18 14:50 CT",
- "generated_utc": "2026-07-18T19:50:57Z",
+ "generated": "2026-07-18 15:10 CT",
+ "generated_utc": "2026-07-18T20:10:39Z",
  "queue": {
   "tap": [
+   {
+    "pr": 77,
+    "age_days": 0,
+    "stale": false,
+    "title": "INC-004: classify() exempts fold-in event envelopes (+ scope test) — unblocks #69"
+   },
+   {
+    "pr": 76,
+    "age_days": 0,
+    "stale": false,
+    "title": "Current-state reconciliation: EXP-002 EXTERNAL_PENDING (3-dim) + stale views superseded + "
+   },
    {
     "pr": 69,
     "age_days": 0,
@@ -53,7 +65,7 @@
   }
  ],
  "counts": {
-  "open_prs": 1,
+  "open_prs": 3,
   "revenue_events_n": 2,
   "external_reward_rows_n": 3,
   "ledger_rows_n": 15,
@@ -118,7 +130,7 @@
    "3 · GSC + Bing submission — fully unblocked, rank-2 WORLD",
    "4 · Harvest TASKDATA export — rank-3, still the Domain-001 gate"
   ],
-  "meter": "Deliberation: 0 experiments resolved : 0 laws amended : 3 graded incidents (INC-001 attestation, INC-002 verifier conflict, INC-003 write boundary) · WIP 3/3"
+  "meter": "Deliberation: 0 experiments resolved : 0 laws amended : 4 graded incidents (INC-001 attestation, INC-002 verifier conflict, INC-003 write boundary, INC-005 bypass merge — forward-fixed, gates green) · WIP 3/3"
  },
  "landing": [
   "hq console: DEPLOYED_LIVE https://jaxx-h.github.io/hq/",
