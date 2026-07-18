@@ -1,6 +1,6 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-18 17:14 UTC",
+ "generated": "2026-07-18 17:19 UTC",
  "queue": {
   "tap": [
    {
@@ -26,12 +26,6 @@
     "age_days": 0,
     "stale": false,
     "title": "R&D: BET-R6 W3 — Memory Watchdog demand/build gate: GO as free lead-magnet"
-   },
-   {
-    "pr": 64,
-    "age_days": 0,
-    "stale": false,
-    "title": "frontier-radar 2026-07-18: primary-source hardening of the Apify/MCP door"
    }
   ],
   "paste_pending": 3,
@@ -76,14 +70,14 @@
   }
  ],
  "counts": {
-  "open_prs": 5,
+  "open_prs": 4,
   "revenue_events_n": 2,
   "external_reward_rows_n": 3,
   "ledger_rows_n": 14,
   "radar_funnel": {
-   "observed": 7,
-   "verified": 2,
-   "candidates": 7
+   "observed": 10,
+   "verified": 3,
+   "candidates": 1
   }
  },
  "health": {
@@ -148,14 +142,11 @@
   "meter": "Deliberation: 0 experiments resolved : 0 laws amended : 1 graded incident (INC-001) · WIP 3/3 · EXP-002 operator-blocked (clock frozen)"
  },
  "landing": [
-  "site#9 [OPEN_PR (red checks)] E1.3 T5: FTC-Deere settlement page + yield-data-portability ",
-  "site#8 [OPEN_PR (red checks)] E1.3 T2: /extensions/ page (5 staged extensions, ASO copy, t",
-  "site#6 [OPEN_PR (red checks)] C1.2 UI: client-side ISOXML yield import (working, verified)",
   "hq console: DEPLOYED_LIVE https://jaxx-h.github.io/hq/",
   "public state feed: DEPLOYED_LIVE https://jaxx-h.github.io/state/state.json",
-  "extensions page: NOT LIVE (404) https://jaxx-h.github.io/extensions/",
-  "EXP-001 fake door: NOT LIVE (404) https://jaxx-h.github.io/sheets-tab-folders/",
-  "PROBE-001 intake: NOT LIVE (404) https://jaxx-h.github.io/tools/yield-map-viewer/isoxml-import-demo.html",
+  "extensions page: DEPLOYED_LIVE https://jaxx-h.github.io/extensions/",
+  "EXP-001 fake door: DEPLOYED_LIVE https://jaxx-h.github.io/sheets-tab-folders/",
+  "PROBE-001 intake: DEPLOYED_LIVE https://jaxx-h.github.io/tools/yield-map-viewer/isoxml-import-demo.html",
   "EXP-002: OPERATOR_BLOCKED — attestation 'submitted the extension' checked against the CWS developer dashboar",
   "EXP-001: NOT_STARTED — surface /sheets-tab-folders/ read 404 (staged on open site PR #8; not deployed).",
   "PROBE-001: OPEN_PR — intake surface staged on open site PR #6 (rebased clean this pass); public read ",
