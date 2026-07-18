@@ -174,7 +174,7 @@
   function seasonPalette(sa){
     var s=((sa%4)+4)%4, i=Math.floor(s), f=s-i, A=SEASONS[i], B=SEASONS[(i+1)%4];
     return { t:lerpC(A.t,B.t,f), m:lerpC(A.m,B.m,f), l:lerpC(A.l,B.l,f), tree:lerpC(A.tree,B.tree,f),
-             treeDk:lerpC(A.treeDk,B.treeDk,f), ground:lerpC(A.ground,B.ground,f), snow:lerp(A.snow,B.snow,f) };
+             treeDk:lerpC(A.treeDk,B.treeDk,f), ground:lerpC(A.ground,B.ground,f*f), snow:lerp(A.snow,B.snow,f*f*f) };
   }
   var PAL = SEASONS[0];
 
@@ -182,11 +182,11 @@
   var W=0,H=0,PX=4,hz=0,baseY=0,roadY=0,COLW=3,NCOLS=0;
   var last=0,raf=0,tsec=0;
   var rows=[], moist=[], clouds=[], poles=[], parts=[], fence=[];
-  var STAGE_SEASON={TILL:0.08,FERT:0.22,SEED:0.35,BURN:0.5,GROW:0.95,INCROP:1.35,RIPEN:2.0,HARVEST:2.55,WINTER:3.5};
+  var STAGE_SEASON={TILL:0.08,FERT:0.22,SEED:0.35,BURN:0.5,GROW:0.95,INCROP:1.35,RIPEN:2.0,HARVEST:2.3,WINTER:3.5};
   var seasonAbs=0.08, seasonTarget=0.08, yearBase=0;
   var wx={rain:0,target:0,mode:"clear",timer:0,next:5,cloudX:0};
   var hold={on:false,x:0};
-  var sim={crop:2, stage:"TILL", units:[], semis:[], cart:null, waitMsg:""};
+  var sim={crop:2, stage:"TILL", units:[], semis:[], cart:null, waitMsg:""};   // cart.face: +1 right / -1 left
   var SPEED={combine:4.5, seeder:5, till:12, sprayer:13, planter:5, spreader:9, cartField:6.5, cartRoad:11, semi:38};
 
   function fill(x,y,w,h,c){ ctx.fillStyle=c; ctx.fillRect(x|0,y|0,Math.max(1,w|0),Math.max(1,h|0)); }
@@ -233,7 +233,7 @@
     else if(st==="HARVEST"){
       if(cr.head==="corn"){ var q6=chunksFor([3,3]); u=[mkUnit("combineA","combine 12-row",30,SPEED.combine,q6[0],0), mkUnit("combineB","combine 12-row",30,SPEED.combine,q6[1],1)]; }
       else { var q7=chunksFor([5,4,4]); u=[mkUnit("combineA","50ft head",50,SPEED.combine,q7[0],0), mkUnit("combineB","40ft head",40,SPEED.combine,q7[1],1), mkUnit("combineC","40ft head",40,SPEED.combine,q7[2],2)]; }
-      sim.cart={x:-70, v:0, state:"CHASE", fill:0, target:null, sub:SUBROWS-1};
+      sim.cart={x:-70, v:0, state:"CHASE", fill:0, target:null, sub:SUBROWS-1, face:1};
       sim.semis=[{c:C.semiMaroon,day:0},{c:C.semiBlue1,day:0},{c:C.semiBlue2,day:0},{c:C.semiWhite,day:1}]
         .map(function(s,i){ return {color:s.c,dayCab:s.day,x:W-26-i*30,load:0,state:i===0?"ACTIVE":"QUEUE",v:0}; });
     }
@@ -525,8 +525,11 @@
     if(sim.cart&&sim.stage==="HARVEST"){
       var cSub=(sim.cart.state==="TO_SEMI"||sim.cart.state==="DUMP")?SUBROWS-1:sim.cart.sub;
       if(cSub===sub){ var y2=yOf(sub), sc2=scOf(sub);
-        ctx.save(); ctx.translate(sim.cart.x,y2); ctx.scale(sc2,sc2);
-        tractorTriple(-22,-9,C.rimY); grainCartB(0,-10,sim.cart.fill);
+        if(Math.abs(sim.cart.v)>2) sim.cart.face=(sim.cart.v>0)?1:-1;      // face travel direction
+        else if(sim.cart.state==="ALONGSIDE"&&sim.cart.target) sim.cart.face=sim.cart.target.dir;
+        ctx.save(); ctx.translate(sim.cart.x,y2); ctx.scale(sc2*(sim.cart.face||1),sc2);
+        // drawn facing RIGHT: 4WD triple tractor LEADS, cart TRAILS on the hitch — never leads
+        tractorTriple(2,-9,C.rimY); grainCartB(-24,-10,sim.cart.fill);
         ctx.restore(); }
     }
   }
