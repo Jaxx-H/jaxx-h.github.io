@@ -1,0 +1,8 @@
+{
+ "page_type": "simple",
+ "slug": "sheets-tab-folders",
+ "title": "Tab Folders for Google Sheets — organize sheet tabs into collapsible groups",
+ "description": "A free Chrome extension that groups your Google Sheets tabs into collapsible, color-coded folders. Tell us you want it — one click gauges demand.",
+ "published": "2026-07-18",
+ "body_html": "<p>Workbooks with 30, 50, 80 tabs turn the tab bar into soup. <b>Tab Folders for Google Sheets</b> groups your sheet tabs into collapsible, color-coded folders — monthly sheets in one group, raw data in another, dashboards pinned — without touching the spreadsheet itself. Free, runs entirely in your browser, no account.</p>\n<h2>What it will do</h2>\n<ul>\n<li>Drag tabs into named, color-coded folders; collapse a folder to one chip.</li>\n<li>Keyboard-jump to any tab in any folder (works with our <a href=\"/extensions/\">Tab Search</a> extension).</li>\n<li>Per-workbook layouts, remembered locally. Nothing leaves your browser.</li>\n</ul>\n<p><a href=\"#thanks\" data-goatcounter-click=\"exp001-install-click\" style=\"display:inline-block;font-weight:700;padding:10px 18px;border:2px solid currentColor;border-radius:10px\">→ Install the free extension</a></p>\n<h2 id=\"thanks\">Honest note</h2>\n<p>This one is <b>in development</b> — the install button above records your interest (a single anonymous counter, nothing else). If enough people click, we ship it; the working build follows the same free-core model as <a href=\"/extensions/\">our other extensions</a>. No email asked, no tracking beyond the click count.</p>"
+}
