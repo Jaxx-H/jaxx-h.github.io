@@ -1,7 +1,7 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-18 15:10 CT",
- "generated_utc": "2026-07-18T20:10:39Z",
+ "generated": "2026-07-18 15:14 CT",
+ "generated_utc": "2026-07-18T20:14:11Z",
  "queue": {
   "tap": [
    {
@@ -11,21 +11,14 @@
     "title": "INC-004: classify() exempts fold-in event envelopes (+ scope test) — unblocks #69"
    },
    {
-    "pr": 76,
-    "age_days": 0,
-    "stale": false,
-    "title": "Current-state reconciliation: EXP-002 EXTERNAL_PENDING (3-dim) + stale views superseded + "
-   },
-   {
     "pr": 69,
     "age_days": 0,
     "stale": false,
     "title": "research: expand competitor-watch registry (Climate FieldView, FBN, AgriWebb, JD Ops Cente"
    }
   ],
-  "paste_pending": 3,
+  "paste_pending": 4,
   "world": [
-   "- Submit ext #1 (yt-comment-exporter) to the Chrome Web Store — ~40 min, checklist in distribution/extensions-submit-pack.md [E1.3 T2 / D-01",
    "- Submit the 3 new page URLs to Google Search Console + Bing Webmaster [C1.1 / Aug 1] — the hard Aug-1 indexing deliverable; URLs in PR #59",
    "- Drop last year's (or Gen4/G5) harvest TASKDATA export at /tools/yield-map-viewer/isoxml-import-demo.html [C1.2 acceptance] — THE bottlenec",
    "- Re-run the collector: python3 ~/.hq-scheduler/collect_metrics.py [B precond] — git().strip() crash is fixed; one run clears the collector-",
@@ -65,7 +58,7 @@
   }
  ],
  "counts": {
-  "open_prs": 3,
+  "open_prs": 2,
   "revenue_events_n": 2,
   "external_reward_rows_n": 3,
   "ledger_rows_n": 15,
@@ -95,24 +88,48 @@
    "url": "https://jaxx-h.github.io/tools/yield-map-viewer/isoxml-import-demo.html"
   },
   {
-   "label": "Page: FieldView — export your data (pending #59 merge)",
+   "label": "Page: FieldView — export your data",
    "url": "https://jaxx-h.github.io/climate-fieldview-export-your-data/"
   },
   {
-   "label": "Page: export yield data — 5 platforms (pending #59 merge)",
+   "label": "Page: export yield data — 5 platforms",
    "url": "https://jaxx-h.github.io/export-yield-data-precision-ag/"
   },
   {
-   "label": "Page: FBN vs AgriWebb (pending #59 merge)",
+   "label": "Page: FBN vs AgriWebb",
    "url": "https://jaxx-h.github.io/fbn-vs-agriwebb-farmer-reviews/"
   },
   {
    "label": "Apify actor portfolio (5 actors)",
    "url": "https://apify.com/chilly_damask"
+  },
+  {
+   "label": "Page: FTC-Deere settlement 2026",
+   "url": "https://jaxx-h.github.io/ftc-deere-settlement-2026/"
+  },
+  {
+   "label": "Page: yield data portability (matrix v0)",
+   "url": "https://jaxx-h.github.io/yield-data-portability/"
+  },
+  {
+   "label": "/extensions/ page",
+   "url": "https://jaxx-h.github.io/extensions/"
+  },
+  {
+   "label": "EXP-001 fake door",
+   "url": "https://jaxx-h.github.io/sheets-tab-folders/"
+  },
+  {
+   "label": "yt-comment-exporter privacy policy",
+   "url": "https://jaxx-h.github.io/extensions/yt-comment-exporter/privacy/"
+  },
+  {
+   "label": "HQ console (/hq/)",
+   "url": "https://jaxx-h.github.io/hq/"
   }
  ],
  "brief": {
-  "headline": "E1.3 canon MERGED + all six surfaces LIVE; EXP-001 MEASURING (window to 07-25 12:46 CT); EXP-002 awaits a complete 4-field receipt; INC-003 write-boundary opened",
+  "headline": "Stack merged thru #74; EXP-002 EXTERNAL_PENDING (receipt 3/4, awaiting listing publication); EXP-001 MEASURING; fleet registry landed",
   "shipped": [
    "E1.3 constitution + queue + briefs: MERGED to main (#68) — canonical",
    "Six surfaces DEPLOYED_LIVE: ISOXML demo+intake, /extensions/, fake door, FTC-Deere, yield-portability (HTTP 200 verified)",
@@ -122,15 +139,16 @@
   "evidence": [
    "EXP-001: MEASURING — controlled test event verified + excluded; real counter 0; window to 07-25 12:46 CT",
    "PROBE-001: DEPLOYED_LIVE — pipe proven (real tool_open ingested); 0 submissions",
-   "EXP-002: OPERATOR_BLOCKED — partial receipt (ID + 'Pending review', 2/4); needs submitted VERSION + submission TIMESTAMP; listing not yet public (content-verified soft-404 poll armed on the 6h cron)"
+   "EXP-002: lifecycle EXTERNAL_PENDING (console: Pending review) · receipt 3/4 (missing: submission timestamp) · not MEASURING until the listing is publicly reachable (content-verified poll on the cron)"
   ],
   "decisions": [
-   "1 · TAP: coherence PR + INC-002 verifier PR + #69 (repaired) — then loop PRs #65/#67 verdicts",
-   "2 · Supply the 2 remaining receipt fields: submitted version + submission timestamp (dashboard All-items row) — then EXP-002 advances ATTESTED_SUBMITTED→EXTERNAL_PENDING; clock still only starts when the listing goes public",
-   "3 · GSC + Bing submission — fully unblocked, rank-2 WORLD",
-   "4 · Harvest TASKDATA export — rank-3, still the Domain-001 gate"
+   "1 · TAP: #76 (reconciliation + fleet registry) + #77 (INC-004 classifier fix, expected red) — then rerun #69; #65/#67/#74/#75 already merged",
+   "2 · Supply EXP-002's submission timestamp (last open receipt field)",
+   "3 · GSC + Bing submission — live pages verified, still the Aug-1 deliverable",
+   "4 · Harvest TASKDATA export — Domain-001 gate",
+   "5 · Classify the 2 unregistered repos in brain/repos.json (nefarious, hq-content)"
   ],
-  "meter": "Deliberation: 0 experiments resolved : 0 laws amended : 4 graded incidents (INC-001 attestation, INC-002 verifier conflict, INC-003 write boundary, INC-005 bypass merge — forward-fixed, gates green) · WIP 3/3"
+  "meter": "Deliberation: 0 experiments resolved : 0 laws amended : 5 graded incidents (INC-001..005 all canonical once #76 lands; 005 batch covers #65+#67) · WIP 3/3 · F-009 OPEN per R5 (no green-checks merge, no canonical grade — verdicts: 0)"
  },
  "landing": [
   "hq console: DEPLOYED_LIVE https://jaxx-h.github.io/hq/",
@@ -140,7 +158,7 @@
   "PROBE-001 intake: DEPLOYED_LIVE https://jaxx-h.github.io/tools/yield-map-viewer/isoxml-import-demo.html",
   "EXP-002 CWS listing abhdpkojeagnoiamlhohooegpbobdpdk: not public (soft-404; console: pending review)",
   "EXP-001: MEASURING",
-  "EXP-002: OPERATOR_BLOCKED — ATTESTED partial receipt from the operator (2 of 4 fields). Internally coherent ",
+  "EXP-002: EXTERNAL_PENDING — Operator ruling 2026-07-18: the three dimensions are not collapsed. Lifecycle ad",
   "PROBE-001: DEPLOYED_LIVE — intake deployed: demo HTTP 200 with GitHub-issue intake link + probe_intake_clic"
  ]
 }
