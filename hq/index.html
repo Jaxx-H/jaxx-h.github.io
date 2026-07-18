@@ -39,6 +39,7 @@
     <span id="fresh" class="badge">loading…</span>
     <button id="copy" type="button" title="Copy the public dashboard JSON">copy JSON</button>
   </div>
+  <div class="panel" id="briefpanel" style="display:none"><h2>☀️ Morning brief</h2><div id="brief"></div></div>
   <div class="panel"><h2>👆 Tap — merge</h2><ul id="tap"></ul></div>
   <div class="panel"><h2>⌨️ Paste · 🌍 World</h2><ul id="pw"></ul></div>
   <div class="panel"><h2>⏰ Clocks</h2><ul id="clocks"></ul></div>
@@ -83,6 +84,13 @@
       li("revenue events (n): <b>"+esc(c2.revenue_events_n==null?"?":c2.revenue_events_n)+"</b> · external reward rows: <b>"+esc(c2.external_reward_rows_n==null?"?":c2.external_reward_rows_n)+"</b>"),
       li("radar funnel: observed "+esc(rf.observed==null?"?":rf.observed)+" · verified "+esc(rf.verified==null?"?":rf.verified)+" · candidates "+esc(rf.candidates==null?"?":rf.candidates))
     ].join("");
+    var bp=el("briefpanel"), b=d.brief;
+    if(b&&bp){ bp.style.display="";
+      function sec(t,items){ return items&&items.length? "<h2 style=\'margin-top:8px\'>"+esc(t)+"</h2><ul>"+items.map(function(x){return li(esc(x));}).join("")+"</ul>" : ""; }
+      el("brief").innerHTML=(b.headline?"<p style=\'font-size:13.5px;margin:0 0 6px\'><b>"+esc(b.headline)+"</b></p>":"")+
+        sec("Shipped tonight",b.shipped)+sec("Evidence & experiments",b.evidence)+sec("Morning decisions",b.decisions)+
+        (b.meter?"<p class=n style=\'font-size:12px;margin-top:8px\'>"+esc(b.meter)+"</p>":"");
+    }
     el("surf").innerHTML=(d.surfaces||[]).map(function(s){
       return li("<a href='"+esc(s.url)+"'>"+esc(s.label)+"</a>");
     }).join("")||li("(none)");
