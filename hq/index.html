@@ -56,8 +56,9 @@
   function li(html){ return "<li>"+html+"</li>"; }
   function renderState(d){
     lastJSON=d;
-    var gen=d.generated||"?";
-    var t=Date.parse(gen.replace(" UTC","Z").replace(" ","T"));
+    var gen=d.generated||"?";                      // display string (Chicago, labeled CT)
+    var iso=d.generated_utc||gen.replace(" UTC","Z").replace(" ","T");  // machine field for staleness
+    var t=Date.parse(iso);
     var ageH=isNaN(t)?null:(Date.now()-t)/36e5;
     var f=el("fresh");
     if(ageH!==null&&ageH>8){ f.className="badge stale"; f.textContent="STALE · generated "+gen; }
