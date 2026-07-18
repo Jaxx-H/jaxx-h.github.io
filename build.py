@@ -487,6 +487,13 @@ def main():
     if state_dir.exists():
         shutil.copytree(state_dir, DIST / "state")
 
+    # extensions/ — hand-authored NESTED pages under the /extensions/ simple page (e.g.
+    # per-extension privacy policies at stable CWS-referenced URLs). Merged AFTER page
+    # rendering so /extensions/index.html (the simple page) and nested dirs coexist.
+    ext_dir = ROOT / "extensions"
+    if ext_dir.exists():
+        shutil.copytree(ext_dir, DIST / "extensions", dirs_exist_ok=True)
+
     # CNAME (only when a custom domain is configured)
     if (cfg.get("cname") or "").strip():
         (DIST / "CNAME").write_text(cfg["cname"].strip() + "\n")
