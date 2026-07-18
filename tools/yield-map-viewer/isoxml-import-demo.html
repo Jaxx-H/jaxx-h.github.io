@@ -26,6 +26,7 @@
   .muted{color:var(--muted)} .warn-list{font-size:12px;color:var(--gold);margin-top:8px} .err-list{font-size:12px;color:var(--red);margin-top:8px}
   button{font:inherit;background:#243016;color:var(--ink);border:1px solid #3c5222;border-radius:8px;padding:6px 10px;cursor:pointer}
 </style>
+<script data-goatcounter="https://jaxx.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
 <header>
@@ -42,6 +43,9 @@
   <div>
     <div class="panel"><h2>Result</h2><div id="diag" class="muted">Waiting for a file…</div>
       <div id="warns" class="warn-list"></div><div id="errs" class="err-list"></div></div>
+    <div class="panel" style="margin-top:14px"><h2>🌾 Free for the first 3 farms</h2>
+      <p style="font-size:13px;margin:0 0 8px">We'll turn your raw monitor export into a clean yield map + CSV by hand and send it back — free for the first three farms, in exchange for permission to keep an anonymized copy of the file to improve this tool and write up an anonymous case study. No account, no payment. By emailing your export you consent to exactly that use (we never publish farm names, locations, or contact details; ask us to delete it any time).</p>
+      <p style="margin:0"><a id="probeIntake" href="mailto:signalcrate@proton.me?subject=Free%20yield%20map%20(first%203%20farms)&body=Attach%20your%20TASKDATA%20zip%20or%20monitor%20export.%20By%20sending%20it%20I%20consent%20to%20anonymized%20use%20per%20the%20tool%20page." style="color:var(--green);font-weight:700">→ Email your export, get your map back free</a></p></div>
     <div class="panel" style="margin-top:14px"><h2>Channels found</h2>
       <table id="chtab"><thead><tr><th>DDI</th><th>Channel</th><th class="n">min</th><th class="n">max</th></tr></thead><tbody></tbody></table>
       <div id="nochan" class="muted" style="font-size:13px">—</div></div>
@@ -52,10 +56,13 @@ import { parseTaskData, renderYieldCanvas } from './isoxml-import.mjs'
 const $ = s => document.querySelector(s)
 const drop = $('#drop'), file = $('#file'), diag = $('#diag')
 
+function gcEvent(name){ try{ if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:name,event:true}); }catch(e){} }
+gcEvent('tool_open_isoxml_demo');
 async function handle(buf, name){
   diag.className='muted'; diag.textContent='Parsing '+name+'…'
   $('#warns').textContent=''; $('#errs').textContent=''
   const rep = await parseTaskData(buf, name)
+  gcEvent(rep.ok ? 'isoxml_parse_success' : 'isoxml_parse_fail')
   // diagnostics (never blank map: if !ok we still say exactly what happened)
   diag.className = rep.ok ? (rep.timelogs.some(t=>!t.fellBack)?'ok':'warn') : 'err'
   diag.textContent = rep.diagnostic
@@ -79,6 +86,7 @@ drop.onclick=()=>file.click(); file.onchange=e=>e.target.files[0]&&readFile(e.ta
 ;['dragover','dragenter'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('hot')}))
 ;['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('hot')}))
 drop.addEventListener('drop',e=>{const f=e.dataTransfer.files[0]; if(f)readFile(f)})
+const pi=document.getElementById('probeIntake'); if(pi) pi.addEventListener('click',()=>gcEvent('probe_intake_click'))
 async function loadFixture(which){ const url='./fixtures/isoxml/'+(which==='real'?'real-tractor-export.zip':'synthetic-yield.zip')
   const buf=await (await fetch(url)).arrayBuffer(); handle(buf, url.split('/').pop()) }
 $('#ex1').onclick=()=>loadFixture('synthetic')
