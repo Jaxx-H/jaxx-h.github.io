@@ -137,7 +137,7 @@ def stale_findings(dist_dir, base, threshold):
     feed_path = dist_dir / "feed.xml"
     feed = feed_path.read_text() if feed_path.exists() else ""
     for d in sorted(p for p in dist_dir.iterdir()
-                    if p.is_dir() and p.name not in ("static", "tools")):
+                    if p.is_dir() and p.name not in ("static", "tools", "hq", "state")):
         idx = d / "index.html"
         if not idx.exists():
             continue  # check_local reports the missing index.html itself
@@ -188,7 +188,7 @@ def check_local():
             err(f"missing required output: {r}")
 
     page_dirs = sorted(d for d in DIST.iterdir()
-                       if d.is_dir() and d.name not in ("static", "tools"))
+                       if d.is_dir() and d.name not in ("static", "tools", "hq", "state"))
 
     # --- stale policy: stale pages must be noindexed + out of sitemap/feed,
     # fresh pages must be indexable + in the sitemap
