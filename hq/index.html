@@ -109,6 +109,12 @@
 </script>
 <script>
 (function(){ "use strict";
+// v5: 2x Kwik-Tills · finer world resolution + shaded/outlined sprites · Westeel-style commercial
+// stiffened bin site (galvanized, vertical stiffeners — up to ~722k bu class per AGI/Westeel specs)
+// · ND dirt road w/ dust · two road lanes + spacing (no vehicle overlap) · finished combines drive
+// off on their OWN pass (no more ghost-combining by the road) · random start crop + background
+// variant · slight global speed-up · random crew: operator out when a combine waits on the cart,
+// and a plugged air drill gets fixed by hand — not every time.
   /* ================= ND FARM v4 — real fleet · own-swath physics · weeds ================= */
   // WORLD SCALE (law): FT_PER_PX governs every sprite length and x-distance; working widths map to
   // depth SUBROWS of SUBROW_FT each (a side view foreshortens depth, so depth is ft->subrows with
@@ -130,7 +136,7 @@
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // ---------- scale ----------
-  var FT_PER_PX = 1.5, SUBROWS = 24, SUBROW_FT = 10, TIMESCALE = 7;
+  var FT_PER_PX = 1.05, SUBROWS = 24, SUBROW_FT = 10, TIMESCALE = 8;
   function ftw(ft){ return Math.max(1, Math.round(ft / FT_PER_PX)); }          // feet -> px length
   function mph(m){ return (m * 1.4667 / FT_PER_PX) * TIMESCALE; }              // mph -> px/s
   function subsFor(ftWide){ return Math.max(1, Math.round(ftWide / SUBROW_FT)); }
@@ -157,7 +163,10 @@
     elev:"#d8d3c4", elevDk:"#a49f90", bin:"#dee2e6", binDk:"#aeb4ba",
     fence:"#8a6a3e", fenceDk:"#5f4626", pole:"#6a5438", wire:"#3a382f",
     cloud:"#ffffff", cloudGray:"#9fb0bf", cloudDk:"#6f8090", grain:"#ffdc36", chaff:"#f4e6c0",
-    rain:"#8fd0f0", snow:"#f6fcff", flake:"#ffffff", sun:"#ffe27a", road:"#8b8378", roadDk:"#6e675d"
+    rain:"#8fd0f0", snow:"#f6fcff", flake:"#ffffff", sun:"#ffe27a",
+    road:"#9a8468", roadDk:"#7c6950", roadLt:"#b09a7c", dust:"#c9b592",
+    steel:"#c9ced4", steelDk:"#a9b0b8", steelSh:"#8e959e", steelLt:"#e2e6ea",
+    skin:"#e8c49a", shirt1:"#d94f30", shirt2:"#2a5aa8", jeans:"#2a3040", outl:"#1c2416"
   };
   var CROPS = [
     { name:"CORN",         base:"#2f7d1e", tip:"#57ad30", ripe:"#c8a23a", head:"corn",   hMul:1.18 },
@@ -186,7 +195,8 @@
   var seasonAbs=0.08, seasonTarget=0.08, yearBase=0;
   var wx={rain:0,target:0,mode:"clear",timer:0,next:5,cloudX:0};
   var hold={on:false,x:0};
-  var sim={crop:2, stage:"TILL", units:[], semis:[], cart:null, waitMsg:""};   // cart.face: +1 right / -1 left
+  var sim={crop:(Math.random()*4)|0, stage:"TILL", units:[], semis:[], cart:null, waitMsg:""}; // random start crop; cart.face: +1/-1
+  var BG={v:(Math.random()*3)|0, elevX:0.05+Math.random()*0.05, binX:0.56+Math.random()*0.14, treeD:0.8+Math.random()*0.5};
   var SPEED={combine:4.5, seeder:5, till:12, sprayer:13, planter:5, spreader:9, cartField:6.5, cartRoad:11, semi:38};
 
   function fill(x,y,w,h,c){ ctx.fillStyle=c; ctx.fillRect(x|0,y|0,Math.max(1,w|0),Math.max(1,h|0)); }
@@ -194,7 +204,7 @@
 
   function layout(){
     var cssW=Math.max(320,window.innerWidth||360), cssH=Math.max(360,window.innerHeight||640);
-    PX=Math.max(3,Math.round(cssW/300)); W=Math.ceil(cssW/PX); H=Math.ceil(cssH/PX);
+    PX=Math.max(2,Math.round(cssW/430)); W=Math.ceil(cssW/PX); H=Math.ceil(cssH/PX);
     canvas.width=W; canvas.height=H; canvas.style.width=cssW+"px"; canvas.style.height=cssH+"px";
     ctx.imageSmoothingEnabled=false;
     hz=Math.round(H*0.46); baseY=Math.round(H*0.84); roadY=Math.round(H*0.90);
@@ -225,7 +235,8 @@
   }
   function buildStage(st, keep){
     var cr=CROPS[sim.crop], u=[];
-    if(st==="TILL"){ var q=chunksFor([subsFor(45)]); u=[mkUnit("till","45ft high-speed disc",45,SPEED.till,q[0],0)]; }
+    if(st==="TILL"){ var q=chunksFor([subsFor(45),subsFor(45)]);   // we run TWO Kwik-Tills
+      u=[mkUnit("till","45ft high-speed disc",45,SPEED.till,q[0],0), mkUnit("till","45ft high-speed disc",45,SPEED.till,q[1],1)]; }
     else if(st==="FERT"){ var q2=chunksFor([7,7]); u=[mkUnit("spread","spreader",70,SPEED.spreader,q2[0],0), mkUnit("spread","spreader",70,SPEED.spreader,q2[1],1)]; }
     else if(st==="SEED"){ if(cr.head==="corn"){ var q3=chunksFor([subsFor(60)]); u=[mkUnit("plant","24-row planter",60,SPEED.planter,q3[0],0)]; }
       else { var q4=chunksFor([subsFor(66),subsFor(66)]); u=[mkUnit("seed","66ft air drill",66,SPEED.seeder,q4[0],0), mkUnit("seed","66ft air drill",66,SPEED.seeder,q4[1],1)]; } }
@@ -266,7 +277,7 @@
   function stepUnit(u, dt){
     var accel=(u.kind.indexOf("combine")===0?10:16);
     var wantV=u.vMax*(1+0.10*Math.sin(tsec*1.1+u.ph));            // slight organic speed variation
-    if(u.state==="WAIT_CART"){ wantV=0; }
+    if(u.state==="WAIT_CART"||u.state==="PLUGGED"){ wantV=0; }
     if(u.state==="TURN"){ u.tTurn-=dt; if(u.tTurn<=0){ u.state="WORK"; u.dir*=-1; } u.v=0; return; }
     if(u.state==="DONE"){ wantV=u.vMax; }                          // drive off
     u.v += Math.max(-accel*dt, Math.min(accel*dt, wantV-u.v));
@@ -286,14 +297,22 @@
       }
     }
     // combine full -> stop and wait for the cart (physics: it decelerates, never teleports)
-    if(u.kind.indexOf("combine")===0){ if(u.tank>=0.98) u.state="WAIT_CART"; else if(u.state==="WAIT_CART"&&u.tank<0.7) u.state="WORK"; }
+    if(u.kind.indexOf("combine")===0){
+      if(u.tank>=0.98 && u.state!=="WAIT_CART"){ u.state="WAIT_CART"; u.crewOut=(Math.random()<0.55); } // sometimes the operator hops out
+      else if(u.state==="WAIT_CART"&&u.tank<0.7){ u.state="WORK"; u.crewOut=false; } }
+    // air drills / planter occasionally PLUG; the operator gets out and clears it (random, not every pass)
+    if((u.kind==="seed"||u.kind==="plant")){
+      if(u.state==="WORK" && Math.random()<0.0009){ u.state="PLUGGED"; u.tFix=3.5+Math.random()*3; u.crewOut=true; }
+      else if(u.state==="PLUGGED"){ u.v=0; u.tFix-=dt; if(u.tFix<=0){ u.state="WORK"; u.crewOut=false; } } }
     // ends of the field: turn onto the next pass, or leave when done
     var m=ftw(30);
     if(u.dir>0 && u.x>W+m || u.dir<0 && u.x<-m){
+      var ch2=u.chunks[u.ci]; u.lastSub=ch2?ch2.b-1:(u.lastSub!=null?u.lastSub:SUBROWS-1);
       u.ci++;
-      if(u.ci>=u.chunks.length){ u.state="DONE"; u.dir=1; u.x=-m; }
+      if(u.ci>=u.chunks.length){ u.state="DONE"; }   // keep position + dir: drive OFF on the pass just finished
       else { u.state="TURN"; u.tTurn=0.7; }
     }
+    if(u.state==="DONE" && (u.x>W+m+20 || u.x<-m-20)) u.gone=true;
   }
 
   function stepHarvestLogistics(dt){
@@ -303,12 +322,24 @@
     // semis queue on the ROAD strip only — combines never enter it, semis never enter the field:
     // the no-collision guarantee is structural, not incidental.
     sim.semis.forEach(function(s,i){
-      if(s.state==="QUEUE"){ var slot=W-26-(i)*ftw(45); s.v=mph(8); if(s.x>slot) s.x-=s.v*dt; }
-      else if(s.state==="LEAVE"){ s.v=mph(SPEED.semi); s.x+=s.v*dt; if(s.x>W+60){ s.state="GONE"; s.t=8; } }
-      else if(s.state==="GONE"){ s.t-=dt; if(s.t<=0){ s.state="QUEUE"; s.x=-40; s.load=0; } } // elevator round trip
+      // lane 0 = queue (near), lane 1 = travel (far). Leavers pull to the travel lane so they
+      // never drive THROUGH the queue; queued trucks keep a truck-length gap (no overlap, ever).
+      var gap=ftw(58);
+      function blocked(dx){ return sim.semis.some(function(o){ return o!==s && o.state!=="GONE" && (o.lane||0)===(s.lane||0) && (dx>0 ? (o.x>s.x && o.x-s.x<gap) : (o.x<s.x && s.x-o.x<gap)); }); }
+      if(s.state==="QUEUE"){ var slot=W-30-(i)*gap; s.lane=0; s.v=mph(8);
+        if(s.x>slot && !blocked(-1)) s.x-=s.v*dt;
+        if(Math.abs(s.v)>1 && Math.random()<0.25) spawn(s.x+18,roadY-2,-3,-6,"dust",C.dust,0.8); }
+      else if(s.state==="LEAVE"){ s.lane=1; s.v=mph(SPEED.semi); if(!blocked(1)) s.x+=s.v*dt;
+        if(Math.random()<0.5) spawn(s.x-6,roadY-7,-8,-5,"dust",C.dust,1.0);
+        if(s.x>W+70){ s.state="GONE"; s.t=8; } }
+      else if(s.state==="GONE"){ s.t-=dt; if(s.t<=0){ s.state="QUEUE"; s.lane=1; s.x=-46; s.load=0; s.merging=true; } }
+      if(s.merging && s.state==="QUEUE"){ // come in on the travel lane, merge when beside a free slot
+        s.lane=1; var slot2=W-30-(i)*gap; s.v=mph(SPEED.semi*0.6); if(!blocked(1)) s.x+=s.v*dt;
+        if(Math.random()<0.4) spawn(s.x-6,roadY-7,-8,-5,"dust",C.dust,0.9);
+        if(s.x>=slot2-4){ s.merging=false; s.lane=0; s.x=Math.min(s.x,slot2); } }
     });
     if(!active){ var q=sim.semis.filter(function(s){return s.state==="QUEUE";}); if(q.length) q[0].state="ACTIVE"; active=q[0]; }
-    if(active && active.state==="ACTIVE" && active.x>W-30){ active.x-=mph(8)*dt; }
+    if(active && active.state==="ACTIVE" && active.x>W-30 && !active.merging){ active.x-=mph(8)*dt; }
     // the cart chases the fullest combine, matches speed alongside, unloads on the go, then runs
     // to the semi at the headland — one Bourgault cart behind one triple-wheel 4WD tractor.
     if(cart.state==="CHASE"){
@@ -328,6 +359,7 @@
         if(Math.random()<0.4) spawn(cart.x, yOf(cart.sub)-10, 0, -4, "grain", C.grain, 0.8);
         if(cart.fill>=1||t2.tank<=0.08) cart.state="TO_SEMI"; }
     } else if(cart.state==="TO_SEMI"){
+      if(Math.abs(cart.v)>4 && Math.random()<0.4) spawn(cart.x-6,roadY-4,-6,-5,"dust",C.dust,0.8);
       var dest=(active?active.x:W-30)-ftw(14);
       cart.v += ((dest>cart.x?1:-1)*mph(SPEED.cartRoad)-cart.v)*Math.min(1,dt*2);
       cart.x += cart.v*dt; cart.sub=SUBROWS-1;
@@ -386,67 +418,112 @@
   }
   function spawn(x,y,vx,vy,k,c,l){ if(parts.length<520) parts.push({x:x,y:y,vx:vx,vy:vy,k:k,c:c,l:l}); }
   function stepParts(dt){
-    for(var i=parts.length-1;i>=0;i--){ var p=parts[i]; p.vy+=(p.k==="grain")?60*dt:(p.k==="snow"?3*dt:40*dt); p.x+=p.vx*dt; p.y+=p.vy*dt; p.l-=dt;
+    for(var i=parts.length-1;i>=0;i--){ var p=parts[i]; p.vy+=(p.k==="grain")?60*dt:(p.k==="snow"?3*dt:(p.k==="dust"?-14*dt:40*dt)); p.x+=p.vx*dt; p.y+=p.vy*dt; p.l-=dt;
       if(p.k==="rain"&&p.y>hz){ moist[colOf(p.x)]=Math.min(1,moist[colOf(p.x)]+0.02); if(p.y>baseY-2)p.l=0; }
       if(p.l<=0||p.y>H+2) parts.splice(i,1); }
   }
 
-  // ---------- sprites (facing dir; mirrored via scale) ----------
-  function wheelY(x,y,r){ disc(x,y,r,col(C.tire)); disc(x,y,Math.max(1,r-1),col(C.wheel)); disc(x,y,Math.max(1,r-2),col(C.rimY)); fill(x,y,1,1,col(C.hub)); }
-  function tripleWheel(x,y,r){ wheelY(x-2,y,r); wheelY(x,y,r); wheelY(x+2,y,r); }   // 3 per corner = 12 total on the 4WD
-  function tractor2wd(x,y){ fill(x,y+2,15,6,col(C.grn)); fill(x,y+6,15,2,col(C.grnDk)); fill(x+3,y-3,7,6,col(C.grn)); fill(x+4,y-2,5,4,col(C.glass)); fill(x+3,y-3,7,1,col(C.grnLt)); wheelY(x+2,y+9,2); wheelY(x+11,y+9,3); }
-  function tractorTriple(x,y,beacon){ // articulated 4WD, triples all around (operator: 12 wheels)
-    fill(x,y,20,8,col(C.grn)); fill(x,y+6,20,2,col(C.grnDk)); fill(x+8,y-4,8,5,col(C.grn)); fill(x+9,y-3,6,3,col(C.glass)); fill(x+8,y-4,8,1,col(C.grnLt));
-    fill(x+9,y-5,2,1,col(beacon||C.rimY));
-    tripleWheel(x+3,y+9,3); tripleWheel(x+15,y+9,3);
-  }
+  // ---------- sprites v5 (facing right; mirrored via scale; dark outline + 2-tone shade) ----------
+  function outline(x,y,w,h){ fill(x-1,y-1,w+2,1,col(C.outl)); fill(x-1,y+h,w+2,1,col(C.outl)); fill(x-1,y,1,h,col(C.outl)); fill(x+w,y,1,h,col(C.outl)); }
+  function wheelY(x,y,r){ disc(x,y,r+1,col(C.outl)); disc(x,y,r,col(C.tire)); disc(x,y,Math.max(1,r-1),col(C.wheel)); disc(x,y,Math.max(1,r-2),col(C.rimY)); fill(x-1,y,1,1,col("#b8960f")); fill(x,y,1,1,col(C.hub)); }
+  function tripleWheel(x,y,r){ wheelY(x-3,y,r); wheelY(x,y,r); wheelY(x+3,y,r); }
+  function cab(x,y,w,h){ fill(x,y,w,h,col(C.grnDk)); fill(x+1,y+1,w-2,h-2,col(C.glass)); fill(x+1,y+1,w-2,1,col("#eaf9ff")); fill(x+1,y+1,1,h-2,col("#a8dcf0")); }
+  function person(x,y,shirt){ // ~7px farmer: cap, face, shirt, jeans, boots
+    fill(x,y-8,3,1,col(C.shirt2)); fill(x,y-7,3,2,col(C.skin)); fill(x+1,y-6,1,1,col("#7a5c3e"));
+    fill(x,y-5,3,3,col(shirt||C.shirt1)); fill(x,y-5,1,3,col(C.outl));
+    fill(x,y-2,1,2,col(C.jeans)); fill(x+2,y-2,1,2,col(C.jeans)); fill(x,y,1,1,col(C.outl)); fill(x+2,y,1,1,col(C.outl)); }
+  function tractor2wd(x,y){
+    outline(x,y-1,22,11); fill(x,y+2,22,8,col(C.grn)); fill(x,y+7,22,3,col(C.grnDk)); fill(x,y+2,22,1,col(C.grnLt));
+    fill(x+16,y-1,6,4,col(C.grn)); fill(x+16,y-1,6,1,col(C.grnLt)); fill(x+21,y,2,4,col(C.outl)); // hood + grille
+    cab(x+5,y-4,8,7); fill(x+12,y-5,1,4,col(C.outl));  // exhaust
+    wheelY(x+4,y+11,3); wheelY(x+16,y+11,4); }
+  function tractorTriple(x,y,beacon){ // articulated 4WD — triples on every corner (12 wheels)
+    outline(x,y-1,28,11); fill(x,y,28,9,col(C.grn)); fill(x,y+6,28,3,col(C.grnDk)); fill(x,y,28,1,col(C.grnLt));
+    fill(x+12,y+2,2,6,col(C.grnDk));                                 // articulation joint
+    cab(x+15,y-5,9,7); fill(x+13,y-6,1,5,col(C.outl));               // cab + exhaust
+    fill(x+15+3,y-6,3,1,col(beacon||C.rimY));                        // beacon
+    tripleWheel(x+5,y+11,4); tripleWheel(x+22,y+11,4); }
   function kwikTill(x,y){ // Norwood Kwik-Till trade dress: BLUE frame, RED discs, rear roller
-    fill(x-2,y+4,18,2,col(C.ktBlue)); for(var s=0;s<8;s++) disc(x+s*2,y+8,1,col(C.ktRed));
-    disc(x+17,y+8,2,col(C.bourGreyDk)); fill(x+14,y+5,4,1,col(C.ktBlue));
-  }
-  function spreader(x,y){ fill(x,y+1,12,6,col(C.tank)); fill(x,y+1,12,1,col(C.binDk)); fill(x+3,y+7,6,2,col(C.bar)); wheelY(x+3,y+9,3); wheelY(x+9,y+9,3); }
-  function airDrill(x,y){ // Bourgault trade dress: grey tanks + red accents; tow-behind cart + toolbar
-    fill(x,y+1,7,7,col(C.bourGrey)); fill(x+8,y,8,8,col(C.bourGrey)); fill(x+8,y,8,1,col("#b9bec4"));
-    fill(x,y+4,16,2,col(C.bourRed)); fill(x+3,y+8,2,1,col(C.bourGreyDk));
-    fill(x-8,y+7,9,1,col(C.bourGreyDk)); for(var s=0;s<5;s++) fill(x-7+s*2,y+7,1,3,col(C.bourGreyDk));
-    wheelY(x+3,y+9,2); wheelY(x+12,y+9,3);
-  }
-  function planter24(x,y){ fill(x-10,y+6,26,1,col(C.hdrDk)); for(var s=0;s<12;s++) fill(x-9+s*2,y+6,1,3,col(C.grnDk)); fill(x+4,y+3,7,3,col(C.rimY)); wheelY(x+6,y+9,2); }
-  function sprayer120(x,y){ // slim dark truss boom is the cue (fact pack)
-    fill(x+4,y-3,8,7,col(C.grn)); fill(x+5,y-2,5,3,col(C.glass)); fill(x+2,y+4,12,2,col(C.grnDk));
-    fill(x-ftw(35),y+3,ftw(120)/2+8,1,col(C.boom));
-    wheelY(x+4,y+10,4); wheelY(x+12,y+10,4);
-  }
+    fill(x-3,y+3,26,2,col(C.ktBlue)); fill(x-3,y+3,26,1,col("#4a7ac8")); outline(x-3,y+3,26,2);
+    for(var g=0;g<9;g++){ disc(x-1+g*3,y+8,2,col(C.outl)); disc(x-1+g*3,y+8,1,col(C.ktRed)); }
+    disc(x+24,y+8,3,col(C.outl)); disc(x+24,y+8,2,col(C.steelDk));   // rear roller
+    fill(x+18,y+5,6,1,col(C.ktBlue)); }
+  function spreader(x,y){ outline(x,y,16,8); fill(x,y+1,16,7,col(C.tank)); fill(x,y+1,16,1,col("#ffffff")); fill(x,y+6,16,2,col(C.binDk));
+    fill(x+4,y+8,8,2,col(C.bar)); wheelY(x+4,y+11,3); wheelY(x+12,y+11,3); }
+  function airDrill(x,y){ // Bourgault trade dress: grey twin-tank air cart + toolbar w/ openers
+    outline(x,y-1,10,10); fill(x,y,10,9,col(C.bourGrey)); fill(x,y,10,1,col(C.steelLt));
+    outline(x+11,y-3,11,12); fill(x+11,y-2,11,11,col(C.bourGrey)); fill(x+11,y-2,11,1,col(C.steelLt));
+    fill(x,y+3,22,2,col(C.bourRed));                                  // red band
+    fill(x+3,y+9,2,2,col(C.bourGreyDk)); fill(x+15,y+9,2,2,col(C.bourGreyDk)); // meters
+    fill(x-13,y+8,13,2,col(C.bourGreyDk)); for(var o=0;o<7;o++) fill(x-12+o*2,y+9,1,4,col(C.outl)); // toolbar + openers
+    wheelY(x+4,y+12,3); wheelY(x+17,y+12,4); }
+  function planter24(x,y){ fill(x-14,y+6,36,2,col(C.hdrDk)); outline(x-14,y+6,36,2);
+    for(var r=0;r<12;r++){ fill(x-13+r*3,y+8,1,4,col(C.grnDk)); fill(x-13+r*3,y+11,2,1,col(C.rimY)); }
+    fill(x+5,y+2,10,4,col(C.rimY)); fill(x+5,y+2,10,1,col("#ffe680")); outline(x+5,y+2,10,4); wheelY(x+8,y+12,3); }
+  function sprayer120(x,y){ // slim carbon-fiber truss boom (the 120ft cue), tall crop-clearance wheels
+    outline(x+5,y-4,12,9); fill(x+5,y-3,12,8,col(C.grn)); fill(x+5,y-3,12,1,col(C.grnLt));
+    cab(x+7,y-3,7,5); fill(x+3,y+5,16,3,col(C.grnDk));
+    fill(x-ftw(38),y+4,ftw(120)/2+12,1,col(C.boom)); fill(x-ftw(38),y+5,ftw(120)/2+12,1,col("#3a4048"));
+    for(var n=0;n<8;n++) fill(x-ftw(34)+n*ftw(14),y+6,1,2,col(C.boom));      // nozzle drops
+    wheelY(x+6,y+12,5); wheelY(x+16,y+12,5); }
   function combineSprite(x,y,kind,spin,cornHead,tankF){
     var big=(kind==="combineA"), old=(kind==="combineC");
-    var L=big?24:(old?18:21), h=big?10:(old?8:9);
-    for(var d=0;d<4;d++) fill(x-6-d*3,y+h-1+(d%2),3,2,col(C.chaff));
-    fill(x+2,y+1,L,h,col(C.grn)); fill(x+2,y+h-1,L,3,col(C.grnDk));
-    if(old){ for(var rr=0;rr<3;rr++) fill(x+4+rr,y-rr,L-6-rr*2,1,col(C.grnLt)); }      // rounder 2012 back
-    else fill(x+5,y-3,L-6,4,col(C.grnLt));                                              // boxy modern body
-    if(tankF>0){ var gh=Math.round(tankF*4); fill(x+6,y-1-gh,L-9,gh,col(C.grain)); }
-    fill(x+L-5,y-3,6,5,col(C.grnDk)); fill(x+L-4,y-2,4,3,col(C.glass));
-    var hx0=x+L+1;
-    if(cornHead){ fill(hx0,y+6,3,3,col(C.hdrDk)); fill(hx0+3,y+7,11,4,col(C.hdr)); for(var r2=0;r2<4;r2++){ fill(hx0+4+r2*3,y+6,1,5,col(C.snout)); } }
-    else { fill(hx0,y+6,3,3,col(C.hdrDk)); var hw=ftw(kind==="combineA"?50:40)/2;
-      fill(hx0+3,y+8,hw,3,col(C.hdr)); fill(hx0+3,y+10,hw,1,col(C.hdrDk));
-      if(spin){fill(hx0+4,y+6,hw-2,1,col(C.reel));} else {fill(hx0+4,y+8,hw-2,1,col(C.reel));} }
-    if(old){ fill(x-9,y-2,12,2,col(C.grnDk)); }                                          // straight fixed auger
-    else { fill(x-7,y-4,10,2,col(C.grnDk)); fill(x-9,y-2,4,2,col(C.grnDk)); }            // folding auger joint
-    wheelY(x+L-6,y+h+2,4); wheelY(x+6,y+h+2,2);
-  }
-  function grainCartB(x,y,f){ // Bourgault grey/red dual-tank cart
-    fill(x,y+1,15,8,col(C.bourGrey)); fill(x,y+1,15,1,col("#b9bec4")); fill(x,y+5,15,2,col(C.bourRed));
-    var gh=Math.round(f*5); if(gh>0) fill(x+1,y+6-gh,13,gh,col(C.grain));
-    fill(x+12,y-5,2,7,col(C.bourGreyDk)); wheelY(x+4,y+11,4); wheelY(x+11,y+11,4);
-  }
+    var L=big?34:(old?26:30), h=big?13:(old?11:12);
+    for(var d=0;d<5;d++) fill(x-8-d*4,y+h-2+(d%2),4,2,col(C.chaff));          // straw spread
+    outline(x+2,y,L,h+1);
+    fill(x+2,y+1,L,h,col(C.grn)); fill(x+2,y+h-2,L,3,col(C.grnDk)); fill(x+2,y+1,L,2,col(C.grnLt));
+    if(old){ for(var rr=0;rr<4;rr++) fill(x+5+rr*2,y-1-((rr>1)?1:0),L-10-rr*3,1,col(C.grnLt)); } // rounded 2012 rear
+    else { fill(x+6,y-4,L-8,5,col(C.grnLt)); fill(x+6,y-4,L-8,1,col("#8fd865")); outline(x+6,y-4,L-8,5); } // boxy modern top
+    if(tankF>0){ var gh=Math.round(tankF*5); fill(x+8,y-1-gh,L-13,gh,col(C.grain)); fill(x+8,y-1-gh,L-13,1,col("#fff0a0")); }
+    cab(x+L-6,y-4,8,7);
+    var hx0=x+L+3;
+    fill(x+L+1,y+6,3,4,col(C.grnDk));                                        // feederhouse
+    if(cornHead){ fill(hx0,y+8,3,4,col(C.hdrDk)); fill(hx0+3,y+8,16,5,col(C.hdr)); fill(hx0+3,y+8,16,1,col("#ffe680"));
+      for(var r2=0;r2<6;r2++){ fill(hx0+4+r2*3,y+7,1,7,col(C.snout)); fill(hx0+5+r2*3,y+9,1,5,col(C.snoutDk)); } outline(hx0+3,y+8,16,5); }
+    else { var hw=ftw(kind==="combineA"?50:40)/2;
+      fill(hx0,y+8,3,4,col(C.hdrDk)); fill(hx0+3,y+10,hw,4,col(C.hdr)); fill(hx0+3,y+13,hw,1,col(C.hdrDk)); outline(hx0+3,y+10,hw,4);
+      var ry=y+7; if(spin){ fill(hx0+4,ry,hw-2,1,col(C.reel)); for(var sp=0;sp<hw-4;sp+=4) fill(hx0+5+sp,ry+1,1,3,col(C.reel)); }
+      else { fill(hx0+4,ry+2,hw-2,1,col(C.reel)); for(var sp2=2;sp2<hw-4;sp2+=4) fill(hx0+5+sp2,ry,1,3,col(C.reel)); } }
+    if(old){ fill(x-11,y-1,14,2,col(C.grnDk)); outline(x-11,y-1,14,2); }      // straight fixed auger
+    else { fill(x-8,y-5,12,2,col(C.grnDk)); fill(x-11,y-3,5,2,col(C.grnDk)); fill(x-7,y-4,1,2,col(C.outl)); } // folding auger
+    wheelY(x+L-7,y+h+3,5); wheelY(x+8,y+h+3,3); }
+  function grainCartB(x,y,f){ // Bourgault grey dual-compartment cart, red band, front-folding auger
+    outline(x,y,20,10); fill(x,y+1,20,9,col(C.bourGrey)); fill(x,y+1,20,1,col(C.steelLt));
+    fill(x+9,y+1,1,8,col(C.bourGreyDk));                                     // tank split
+    fill(x,y+6,20,2,col(C.bourRed));
+    var gh=Math.round(f*6); if(gh>0){ fill(x+1,y+7-gh,18,gh,col(C.grain)); fill(x+1,y+7-gh,18,1,col("#fff0a0")); }
+    fill(x+16,y-6,2,8,col(C.bourGreyDk)); fill(x+15,y-7,4,2,col(C.bourGreyDk)); // auger up
+    wheelY(x+5,y+12,4); wheelY(x+14,y+12,4); }
   function semi(x,y,color,dayCab,load){
-    fill(x,y,20,6,col(C.trailer)); fill(x,y,20,1,col(C.trailerDk));
-    var gh=Math.round((load||0)*4); if(gh>0) fill(x+1,y+1-gh+3,18,gh,col(C.grain));
-    var cw=dayCab?5:8; fill(x-cw,y,cw,6,col(color)); fill(x-cw+1,y+1,3,2,col(C.glass));
-    disc(x-2,y+7,2,col(C.wheel)); disc(x+4,y+8,2,col(C.wheel)); disc(x+9,y+8,2,col(C.wheel)); disc(x+16,y+8,2,col(C.wheel));
+    outline(x,y,26,7); fill(x,y+1,26,6,col(C.trailer)); fill(x,y+1,26,1,col("#f0f3f6")); fill(x,y+6,26,1,col(C.trailerDk));
+    for(var rb=0;rb<5;rb++) fill(x+3+rb*5,y+2,1,4,col(C.trailerDk));         // trailer ribs
+    var gh=Math.round((load||0)*4); if(gh>0) fill(x+2,y+1,22,gh>4?4:gh,col(C.grain));
+    var cw=dayCab?6:10;
+    outline(x-cw-1,y-1,cw+1,8); fill(x-cw,y,cw,7,col(color));
+    fill(x-cw,y,cw,1,col("#ffffff")); fill(x-cw+1,y+1,3,3,col(C.glass));      // windshield
+    fill(x-1,y+2,1,4,col(C.outl));                                            // stack
+    disc(x-3,y+8,3,col(C.outl)); disc(x-3,y+8,2,col(C.wheel));
+    disc(x+5,y+9,2,col(C.wheel)); disc(x+10,y+9,2,col(C.wheel)); disc(x+19,y+9,2,col(C.wheel)); disc(x+23,y+9,2,col(C.wheel)); }
+  function westeelBins(x){ // Westeel-class commercial stiffened flat-bottom site (galvanized;
+    // biggest stiffened models run to ~722,200 bu — aggrowth.com/westeel-commercial). Trade dress only.
+    var y=hz;
+    for(var b=0;b<2;b++){ var bx=x+b*34, bw=30, bh=24, by=y-bh;               // two BIG stiffened bins
+      outline(bx,by,bw,bh); fill(bx,by,bw,bh,col(C.steel));
+      for(var ring=1;ring<bh/3;ring++) fill(bx,by+ring*3,bw,1,col(C.steelDk));      // corrugation rings
+      for(var st2=0;st2<5;st2++) fill(bx+2+st2*6,by,1,bh,col(C.steelSh));           // VERTICAL STIFFENERS
+      for(var rr2=0;rr2<7;rr2++){ var rw=Math.max(3,Math.round(bw*(rr2+1)/7));      // cone: narrow top -> wide base
+        fill(bx+((bw-rw)>>1),by-7+rr2,rw,1,col(rr2%2?C.steelLt:C.steel)); }
+      fill(bx+(bw>>1)-1,y-bh-9,3,2,col(C.steelDk));                                  // roof collar
+      fill(bx+bw/2-1,by+bh-5,3,5,col(C.steelSh));                                   // unload door
+    }
+    for(var m2=0;m2<2;m2++){ var mx=x+70+m2*20, mw=15, mh=15, my2=y-mh;       // two farm bins
+      outline(mx,my2,mw,mh); fill(mx,my2,mw,mh,col(C.steel));
+      for(var r3=1;r3<mh/3;r3++) fill(mx,my2+r3*3,mw,1,col(C.steelDk));
+      for(var c4=0;c4<5;c4++){ var cw2=Math.max(2,Math.round(mw*(c4+1)/5));
+        fill(mx+((mw-cw2)>>1),my2-5+c4,cw2,1,col(c4%2?C.steelLt:C.steel)); }
+    }
+    fill(x+64,y-30,2,30,col(C.steelSh)); fill(x+58,y-31,14,2,col(C.steelDk)); // leg + distributor
   }
-
   // ---------- render ----------
   function drawBackdrop(){
     var m=Math.round(hz*0.36), l=Math.round(hz*0.80);
@@ -456,10 +533,10 @@
     for(var i=0;i<clouds.length;i++){ var c2=clouds[i],s=c2.s,base=(wx.rain>0.3)?C.cloudGray:C.cloud;
       fill(c2.x,c2.y,11*s,3*s,col(base)); fill(c2.x+2*s,c2.y-2*s,6*s,2*s,col(base)); }
     var tb=rgb(PAL.tree),tt=rgb(PAL.treeDk); fill(0,hz-3,W,4,tb);
-    for(var x=0;x<W;x+=2){ var h2=2+((x*7)%4)+(x%13===0?3:0); fill(x,hz-3-h2,2,h2,(x%6<3)?tt:tb); }
+    for(var x=0;x<W;x+=2){ var h2=Math.round((2+((x*7)%4)+(x%13===0?3:0))*BG.treeD)+(BG.v===1&&x%17===0?4:0); fill(x,hz-3-h2,2,h2,(x%6<3)?tt:tb); }
     // yard: elevator + bins + parked equipment (seasonal reassignment made visible)
-    var ex=Math.round(W*0.08); for(var e=0;e<4;e++) fill(ex+e*4,hz-24,3,24,col(e%2?C.elevDk:C.elev)); fill(ex-1,hz-28,17,4,col(C.elevDk));
-    var bx=Math.round(W*0.70); for(var b=0;b<3;b++){ var bx2=bx+b*8; fill(bx2,hz-7,7,7,col(b===1?C.bin:C.binDk)); for(var r=0;r<4;r++) fill(bx2+r,hz-7-r,7-r*2,1,col(PAL.snow>0.5?C.snow:"#c8cdd2")); }
+    if(BG.v!==2){ var ex=Math.round(W*BG.elevX); for(var e=0;e<4;e++) fill(ex+e*5,hz-30,4,30,col(e%2?C.elevDk:C.elev)); fill(ex-1,hz-35,22,5,col(C.elevDk)); fill(ex+8,hz-33,2,3,col(C.steelSh)); }
+    westeelBins(Math.round(W*BG.binX));
     drawYard();
     fill(0,hz-1,W,1,col(C.fenceDk)); for(var f=0;f<fence.length;f++) fill(fence[f],hz-4,1,4,col(C.fence));
     for(var p=0;p<poles.length;p++){ fill(poles[p],hz-13,1,13,col(C.pole)); fill(poles[p]-2,hz-12,5,1,col(C.pole)); }
@@ -504,13 +581,18 @@
       }
       drawUnitsAt(s);
     }
-    // road / headland strip (semis + cart-at-semi live here; combines never do)
+    // ND DIRT ROAD (two lanes: far=travel, near=queue) — dust rises when anything drives it
     fill(0,baseY,W,H-baseY,col(C.road)); fill(0,baseY,W,1,col(C.roadDk));
-    for(var g=0;g<W;g+=7) fill(g,roadY,3,1,col(C.roadDk));
+    fill(0,baseY+1,W,1,col(C.roadLt));
+    for(var g=0;g<W;g+=5){ if((g*7)%3===0) fill(g,baseY+2+((g*13)%Math.max(1,H-baseY-3)),1,1,col(C.roadDk)); } // gravel specks
+    var crown=Math.round((baseY+H)/2);
+    for(var g2=0;g2<W;g2+=9) fill(g2,crown,4,1,col(C.roadLt));                 // pale center crown
+    for(var g3=0;g3<W;g3+=3){ fill(g3,crown-4,2,1,col(C.roadDk)); fill(g3,crown+4,2,1,col(C.roadDk)); } // wheel tracks
   }
   function drawUnitsAt(sub){
     sim.units.forEach(function(u){
-      var ch=u.chunks[u.ci]; var front=(u.state==="DONE")?SUBROWS-1:(ch?ch.b-1:SUBROWS-1);
+      if(u.gone) return;
+      var ch=u.chunks[u.ci]; var front=(u.state==="DONE")?(u.lastSub!=null?u.lastSub:SUBROWS-1):(ch?ch.b-1:SUBROWS-1);
       if(front!==sub) return;
       var y=yOf(sub), sc=scOf(sub), spin=(Math.floor(tsec*8)%2)===0;
       ctx.save(); ctx.translate(u.x,y); ctx.scale(sc*u.dir,sc);
@@ -519,7 +601,10 @@
       else if(u.kind==="seed"){ airDrill(-20,-9); tractorTriple(2,-9,u.idx?C.hdr:C.rimY); }
       else if(u.kind==="plant"){ planter24(-18,-8); tractor2wd(4,-8); }
       else if(u.kind==="spray"){ sprayer120(0,-9); if(u.state==="WORK"&&Math.random()<0.5){ for(var d=0;d<3;d++) spawnLocal(u,-ftw(30)+d*ftw(28),4); } }
-      else combineSprite(-10,-10,u.kind,spin,CROPS[sim.crop].head==="corn",u.tank);
+      else { combineSprite(-12,-12,u.kind,spin,CROPS[sim.crop].head==="corn",u.tank);
+        if(u.state==="WAIT_CART"&&u.crewOut) person(-20,14,C.shirt1); }          // operator out, waiting on the cart
+      if((u.kind==="seed"||u.kind==="plant")&&u.state==="PLUGGED"&&u.crewOut){ person(-16,14,C.shirt2); // clearing a plugged run
+        if(Math.random()<0.3) fill(-14,10,1,1,col(C.rimY)); }
       ctx.restore();
     });
     if(sim.cart&&sim.stage==="HARVEST"){
@@ -536,9 +621,13 @@
   function spawnLocal(u,dx,vy){ var ch=u.chunks[u.ci]; if(ch) spawn(u.x+dx*u.dir, yOf(ch.b-1)-4, 0, 18, "rain", C.rain, 0.35); }
   function drawSemis(){
     if(sim.stage!=="HARVEST") return;
-    sim.semis.forEach(function(s){ if(s.state==="GONE")return; semi(s.x,roadY-8,s.color,s.dayCab,s.load); });
+    // travel lane (far) draws first + slightly higher; queue lane (near) draws over it
+    sim.semis.filter(function(s){return s.state!=="GONE"&&(s.lane||0)===1;})
+      .forEach(function(s){ semi(s.x,roadY-13,s.color,s.dayCab,s.load); });
+    sim.semis.filter(function(s){return s.state!=="GONE"&&(s.lane||0)!==1;})
+      .forEach(function(s){ semi(s.x,roadY-9,s.color,s.dayCab,s.load); });
   }
-  function drawParts(){ for(var i=0;i<parts.length;i++){ var p=parts[i]; fill(p.x,p.y,1,p.k==="rain"?2:1,col(p.c)); } }
+  function drawParts(){ for(var i=0;i<parts.length;i++){ var p=parts[i]; fill(p.x,p.y,(p.k==="dust")?2:1,p.k==="rain"?2:1,col(p.c)); } }
 
   function hudLine(){
     var cr=CROPS[sim.crop], st=sim.stage;
