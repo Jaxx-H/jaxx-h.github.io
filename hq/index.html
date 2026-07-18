@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>HQ — operator console</title>
+<style>
+  :root{--ink:#eaf3dc;--muted:#9db07e;--panel:rgba(12,18,8,.78);--line:#33402480;--green:#6fbf3c;--gold:#e3c34a;--red:#d9694a;--blue:#7db2e8}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:#0b1020;font:14px/1.45 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink)}
+  #farm{position:fixed;inset:0;width:100vw;height:100vh;image-rendering:pixelated;z-index:0}
+  #farmhud{position:fixed;left:10px;bottom:8px;z-index:3;font:600 11px ui-monospace,Menlo,monospace;color:#eaf5ff;background:rgba(10,16,32,.55);padding:4px 8px;border-radius:7px;max-width:92vw}
+  main{position:relative;z-index:2;max-width:760px;margin:0 auto;padding:14px 12px 90px}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:12px;backdrop-filter:blur(2px)}
+  h1{margin:0;font-size:17px;letter-spacing:.02em} h2{margin:0 0 7px;font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+  .hdr{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .badge{font:700 10px ui-monospace,monospace;padding:2px 8px;border-radius:999px;border:1px solid var(--line)}
+  .badge.ok{color:var(--green)} .badge.stale{color:#0b1020;background:var(--red);border-color:var(--red)}
+  .badge.err{color:var(--red)}
+  ul{margin:0;padding-left:0;list-style:none} li{margin:3px 0;font-size:13px}
+  .n{color:var(--muted);font-variant-numeric:tabular-nums}
+  .bucket{margin-bottom:8px} .bucket b{font-size:12.5px}
+  .lights{display:flex;gap:14px;flex-wrap:wrap;font:600 12px ui-monospace,monospace}
+  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:1px}
+  .on{background:var(--green)} .off{background:var(--red)} .unk{background:var(--gold)}
+  a{color:var(--blue);text-decoration:none} a:hover{text-decoration:underline}
+  button{font:600 12px inherit;background:#243016;color:var(--ink);border:1px solid #3c5222;border-radius:8px;padding:5px 10px;cursor:pointer}
+  .overdue{color:var(--red);font-weight:700}
+  @media(prefers-reduced-motion:reduce){ #farmhud{display:none} }
+</style>
+</head>
+<body>
+<canvas id="farm" aria-hidden="true"></canvas>
+<div id="farmhud" aria-hidden="true"></div>
+<main>
+  <div class="panel hdr">
+    <h1>🌾 HQ operator console</h1>
+    <span id="fresh" class="badge">loading…</span>
+    <button id="copy" type="button" title="Copy the public dashboard JSON">copy JSON</button>
+  </div>
+  <div class="panel"><h2>👆 Tap — merge</h2><ul id="tap"></ul></div>
+  <div class="panel"><h2>⌨️ Paste · 🌍 World</h2><ul id="pw"></ul></div>
+  <div class="panel"><h2>⏰ Clocks</h2><ul id="clocks"></ul></div>
+  <div class="panel"><h2>Health</h2><div id="lights" class="lights"></div></div>
+  <div class="panel"><h2>Counts</h2><ul id="counts"></ul></div>
+  <div class="panel"><h2>Live surfaces</h2><ul id="surf"></ul></div>
+</main>
+<script>
+(function(){ "use strict";
+  /* ---------- dashboard: same-origin state.json, refreshed on load + 5 min + tab refocus.
+     Self-aware freshness (the v1 failure mode made visible): STALE badge when >8h old. ---------- */
+  var lastJSON=null;
+  function el(id){ return document.getElementById(id); }
+  function esc(s){ var d=document.createElement("span"); d.textContent=String(s); return d.innerHTML; }
+  function li(html){ return "<li>"+html+"</li>"; }
+  function renderState(d){
+    lastJSON=d;
+    var gen=d.generated||"?";
+    var t=Date.parse(gen.replace(" UTC","Z").replace(" ","T"));
+    var ageH=isNaN(t)?null:(Date.now()-t)/36e5;
+    var f=el("fresh");
+    if(ageH!==null&&ageH>8){ f.className="badge stale"; f.textContent="STALE · generated "+gen; }
+    else { f.className="badge ok"; f.textContent="generated "+gen; }
+    var q=d.queue||{};
+    el("tap").innerHTML=(q.tap||[]).map(function(p){
+      return li("#"+esc(p.pr)+" <span class=n>("+esc(p.age_days)+"d"+(p.stale?" ⚠":"")+")</span> — "+esc(p.title));
+    }).join("")||li("(none)");
+    el("pw").innerHTML=li("⌨️ paste actions pending: <b>"+esc(q.paste_pending==null?"?":q.paste_pending)+"</b> (details in the private bridge)")+
+      (q.world||[]).map(function(w){ return li("🌍 "+esc(w.replace(/^- /,""))); }).join("");
+    el("clocks").innerHTML=(d.clocks||[]).map(function(c){
+      var od=c.date&&c.date<new Date().toISOString().slice(0,10);
+      return li("<span class="+(od?"overdue":"n")+">"+esc(c.date)+(od?" ⏰":"")+"</span> — "+esc(c.what));
+    }).join("")||li("(none)");
+    var h=d.health||{};
+    function light(name,val){ var s=String(val); var cls=(val==="on"||s.indexOf("/")>-1||/^\d{4}-\d{2}/.test(s))?"on":(val==="unknown"||val==null)?"unk":"off";
+      return "<span><span class='dot "+cls+"'></span>"+esc(name)+": "+esc(val==null?"?":val)+"</span>"; }
+    el("lights").innerHTML=[light("automerge",h.automerge),light("fasttrack",h.fasttrack),
+      light("secrets",h.secrets_configured),light("collector",h.collector_last_landed)].join("");
+    var c2=d.counts||{}, rf=c2.radar_funnel||{};
+    el("counts").innerHTML=[
+      li("open PRs: <b>"+esc(c2.open_prs==null?"?":c2.open_prs)+"</b>"),
+      li("revenue events (n): <b>"+esc(c2.revenue_events_n==null?"?":c2.revenue_events_n)+"</b> · external reward rows: <b>"+esc(c2.external_reward_rows_n==null?"?":c2.external_reward_rows_n)+"</b>"),
+      li("radar funnel: observed "+esc(rf.observed==null?"?":rf.observed)+" · verified "+esc(rf.verified==null?"?":rf.verified)+" · candidates "+esc(rf.candidates==null?"?":rf.candidates))
+    ].join("");
+    el("surf").innerHTML=(d.surfaces||[]).map(function(s){
+      return li("<a href='"+esc(s.url)+"'>"+esc(s.label)+"</a>");
+    }).join("")||li("(none)");
+  }
+  function fail(msg){ var f=el("fresh"); f.className="badge err"; f.textContent=msg; }
+  function load(){
+    fetch("/state/state.json",{cache:"no-store"}).then(function(r){
+      if(!r.ok) throw new Error("HTTP "+r.status);
+      return r.json();
+    }).then(renderState).catch(function(e){
+      fail(lastJSON? "refresh failed — showing last good" : "state.json not published yet ("+e.message+")");
+    });
+  }
+  el("copy").addEventListener("click",function(){
+    if(!lastJSON) return;
+    var txt=JSON.stringify(lastJSON,null,1);
+    if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(txt);
+    var b=el("copy"), o=b.textContent; b.textContent="copied"; setTimeout(function(){b.textContent=o;},1200);
+  });
+  load();
+  setInterval(load, 300000);                                        // every 5 min
+  document.addEventListener("visibilitychange",function(){ if(!document.hidden) load(); });
+})();
+</script>
+<script>
+(function(){ "use strict";
+  /* ================= ND FARM v4 — real fleet · own-swath physics · weeds ================= */
+  // WORLD SCALE (law): FT_PER_PX governs every sprite length and x-distance; working widths map to
+  // depth SUBROWS of SUBROW_FT each (a side view foreshortens depth, so depth is ft->subrows with
+  // perspective easing — the footprints stay exact in feet). Widths (operator spec + fact pack):
+  //   combine A = 50ft draper · combine B = 40ft · combine C (older, 2012-class) = 40ft
+  //   corn harvest = A+B only, 12-row heads @30in rows = 30ft   (row-spacing assumption: 30 inches)
+  //   2x sprayers = 120ft booms · 2x air drills = 66ft (quantized 70ft, real-world overlap)
+  //   24-row planter @30in = 60ft, on the 2WD tractor · spring tillage = 45ft ND-built high-speed
+  //   disc (Norwood Kwik-Till HSD-class per the fact pack: BLUE frame + RED discs — the "John Deere
+  //   qwiktill" in the spec is corrected here, not silently kept) · 2x spreaders ~70ft spread.
+  // WEEDS (fact pack, NDSU-cited — no invented agronomy): kochia is ND's #1 resistant weed (82% of
+  // surveyed samples glyphosate-resistant); practice = pre-seed burndown, then an in-crop pass on
+  // small weeds with a tank mix of >=2 effective sites of action. Here: burndown clears the spring
+  // flush EXCEPT a resistant patch (weed=2), which only the in-crop tank-mix pass removes.
+  var canvas = document.getElementById("farm");
+  if (!canvas || !canvas.getContext) return;
+  var ctx = canvas.getContext("2d", { alpha: false });
+  var hud = document.getElementById("farmhud");
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // ---------- scale ----------
+  var FT_PER_PX = 1.5, SUBROWS = 24, SUBROW_FT = 10, TIMESCALE = 7;
+  function ftw(ft){ return Math.max(1, Math.round(ft / FT_PER_PX)); }          // feet -> px length
+  function mph(m){ return (m * 1.4667 / FT_PER_PX) * TIMESCALE; }              // mph -> px/s
+  function subsFor(ftWide){ return Math.max(1, Math.round(ftWide / SUBROW_FT)); }
+
+  function hx(c){ return [parseInt(c.substr(1,2),16),parseInt(c.substr(3,2),16),parseInt(c.substr(5,2),16)]; }
+  var NIGHT=[16,22,40], nf=0;
+  function rgb(a){ var r=a[0],g=a[1],b=a[2]; if(nf){r+=(NIGHT[0]-r)*nf;g+=(NIGHT[1]-g)*nf;b+=(NIGHT[2]-b)*nf;} return "rgb("+(r|0)+","+(g|0)+","+(b|0)+")"; }
+  function lerp(a,b,t){ return a+(b-a)*t; }
+  function toRGB(c){ return (typeof c==="string")?hx(c):c; }
+  function lerpC(a,b,t){ var p=toRGB(a),q=toRGB(b); return [lerp(p[0],q[0],t),lerp(p[1],q[1],t),lerp(p[2],q[2],t)]; }
+  function col(a,b,t){ return rgb(b?lerpC(a,b,t):toRGB(a)); }
+  function darken(a,k){ a=toRGB(a); return [a[0]*k,a[1]*k,a[2]*k]; }
+
+  // ---------- palette (trade dress: colors + silhouettes only; zero wordmarks) ----------
+  var C = {
+    grn:"#3f9a2a", grnDk:"#237016", grnLt:"#63bd3c", glass:"#c8ecf7", rimY:"#ffd21f",
+    tire:"#1b1811", wheel:"#2a2620", hub:"#f4eccf", hdr:"#f0cf60", hdrDk:"#c99e34", reel:"#ffcf2a",
+    snout:"#e8c552", snoutDk:"#b58a2a",
+    bourGrey:"#8a9299", bourGreyDk:"#4b4f53", bourRed:"#ce1126",                 // Bourgault trade dress
+    ktBlue:"#2a5aa8", ktRed:"#c22127",                                            // Kwik-Till trade dress
+    semiMaroon:"#6b2231", semiBlue1:"#2456a8", semiBlue2:"#3e6fc4", semiWhite:"#e8e8ea",
+    trailer:"#d6dade", trailerDk:"#9aa0a6", tank:"#f2f4ea", bar:"#5a6064", boom:"#23282e",
+    stub:"#d8b25a", trackC:"#5a3a1e", wetGround:"#4c3016", weed:"#7fbf4a", weedR:"#5aa832",
+    elev:"#d8d3c4", elevDk:"#a49f90", bin:"#dee2e6", binDk:"#aeb4ba",
+    fence:"#8a6a3e", fenceDk:"#5f4626", pole:"#6a5438", wire:"#3a382f",
+    cloud:"#ffffff", cloudGray:"#9fb0bf", cloudDk:"#6f8090", grain:"#ffdc36", chaff:"#f4e6c0",
+    rain:"#8fd0f0", snow:"#f6fcff", flake:"#ffffff", sun:"#ffe27a", road:"#8b8378", roadDk:"#6e675d"
+  };
+  var CROPS = [
+    { name:"CORN",         base:"#2f7d1e", tip:"#57ad30", ripe:"#c8a23a", head:"corn",   hMul:1.18 },
+    { name:"SOYBEANS",     base:"#3f8f24", tip:"#6cae3a", ripe:"#b89b45", head:"soy",    hMul:0.62 },
+    { name:"SPRING WHEAT", base:"#7a9a38", tip:"#c2c94e", ripe:"#e3c34a", head:"wheat",  hMul:0.88 },
+    { name:"CANOLA",       base:"#3f8f2c", tip:"#7cbf3a", ripe:"#c9b048", bloom:"#ffd21f", head:"canola", hMul:0.82 }
+  ];
+  var SEASONS = [
+    { t:"#4aa6e6", m:"#8fd0ef", l:"#e6f2c2", tree:"#3c9a2a", treeDk:"#237016", ground:"#a9793f", snow:0.0 },
+    { t:"#2f93e6", m:"#7cc8f0", l:"#dff0bf", tree:"#2f8f24", treeDk:"#1d6a14", ground:"#b98a52", snow:0.0 },
+    { t:"#3f8fce", m:"#a6cbe0", l:"#f2d888", tree:"#c98a2e", treeDk:"#9a5a1e", ground:"#a5733a", snow:0.0 },
+    { t:"#8fb4d2", m:"#c6dced", l:"#eef7fb", tree:"#8a6a4a", treeDk:"#6a4e34", ground:"#c9d6e2", snow:1.0 }
+  ];
+  function seasonPalette(sa){
+    var s=((sa%4)+4)%4, i=Math.floor(s), f=s-i, A=SEASONS[i], B=SEASONS[(i+1)%4];
+    return { t:lerpC(A.t,B.t,f), m:lerpC(A.m,B.m,f), l:lerpC(A.l,B.l,f), tree:lerpC(A.tree,B.tree,f),
+             treeDk:lerpC(A.treeDk,B.treeDk,f), ground:lerpC(A.ground,B.ground,f), snow:lerp(A.snow,B.snow,f) };
+  }
+  var PAL = SEASONS[0];
+
+  // ---------- state ----------
+  var W=0,H=0,PX=4,hz=0,baseY=0,roadY=0,COLW=3,NCOLS=0;
+  var last=0,raf=0,tsec=0;
+  var rows=[], moist=[], clouds=[], poles=[], parts=[], fence=[];
+  var STAGE_SEASON={TILL:0.08,FERT:0.22,SEED:0.35,BURN:0.5,GROW:0.95,INCROP:1.35,RIPEN:2.0,HARVEST:2.55,WINTER:3.5};
+  var seasonAbs=0.08, seasonTarget=0.08, yearBase=0;
+  var wx={rain:0,target:0,mode:"clear",timer:0,next:5,cloudX:0};
+  var hold={on:false,x:0};
+  var sim={crop:2, stage:"TILL", units:[], semis:[], cart:null, waitMsg:""};
+  var SPEED={combine:4.5, seeder:5, till:12, sprayer:13, planter:5, spreader:9, cartField:6.5, cartRoad:11, semi:38};
+
+  function fill(x,y,w,h,c){ ctx.fillStyle=c; ctx.fillRect(x|0,y|0,Math.max(1,w|0),Math.max(1,h|0)); }
+  function disc(cx,cy,r,c){ ctx.fillStyle=c; for(var y=-r;y<=r;y++){ var dx=Math.floor(Math.sqrt(Math.max(0,r*r-y*y))); ctx.fillRect((cx-dx)|0,(cy+y)|0,(dx*2+1)|0,1);} }
+
+  function layout(){
+    var cssW=Math.max(320,window.innerWidth||360), cssH=Math.max(360,window.innerHeight||640);
+    PX=Math.max(3,Math.round(cssW/300)); W=Math.ceil(cssW/PX); H=Math.ceil(cssH/PX);
+    canvas.width=W; canvas.height=H; canvas.style.width=cssW+"px"; canvas.style.height=cssH+"px";
+    ctx.imageSmoothingEnabled=false;
+    hz=Math.round(H*0.46); baseY=Math.round(H*0.84); roadY=Math.round(H*0.90);
+    NCOLS=Math.ceil(W/COLW)+1;
+    rows=[]; for(var s=0;s<SUBROWS;s++){ var r={till:[],crop:[],ripe:[],stub:[],weed:[],fert:[]};
+      for(var i=0;i<NCOLS;i++){ r.till.push(0);r.crop.push(0);r.ripe.push(0);r.stub.push(0);r.weed.push(0);r.fert.push(0);} rows.push(r); }
+    moist=[]; for(var m=0;m<NCOLS;m++) moist.push(0.3);
+    clouds=[]; for(var c2=0;c2<4;c2++) clouds.push({x:(c2*131+20)%W,y:Math.round(H*(0.06+0.045*c2)),s:2+(c2%3),spd:1.4+c2*0.5});
+    poles=[]; var pn=Math.max(4,Math.floor(W/44)); for(var p=0;p<pn;p++) poles.push(Math.round((p+0.5)*(W/pn)));
+    fence=[]; for(var f=0;f<W;f+=6) fence.push(f);
+    parts=[];
+    buildStage(sim.stage,true);
+  }
+  function colOf(x){ var i=Math.floor(x/COLW); return i<0?0:(i>=NCOLS?NCOLS-1:i); }
+  function yOf(sub){ var t=(sub+1)/SUBROWS; return Math.round(hz+(baseY-hz)*Math.pow(t,1.12)); }
+  function scOf(sub){ return 0.55+0.5*((sub+1)/SUBROWS); }
+
+  // ---------- passes ----------
+  function chunksFor(widthsSub){ // greedy: cycle units' widths down the 24 subrows -> per-unit chunk queues
+    var q=widthsSub.map(function(){return [];}), sub=0, u=0;
+    while(sub<SUBROWS){ var w=Math.min(widthsSub[u%widthsSub.length], SUBROWS-sub);
+      q[u%widthsSub.length].push({a:sub,b:sub+w}); sub+=w; u++; }
+    return q;
+  }
+  function mkUnit(kind,label,wFt,speedMph,chunks,i){
+    return { kind:kind,label:label,wSub:subsFor(wFt),wFt:wFt,chunks:chunks,ci:0,
+      x:-40-i*30, v:0, vMax:mph(speedMph), dir:1, state:"WORK", tank:0.15+((i*7)%3)*0.05, ph:i*1.9, idx:i };
+  }
+  function buildStage(st, keep){
+    var cr=CROPS[sim.crop], u=[];
+    if(st==="TILL"){ var q=chunksFor([subsFor(45)]); u=[mkUnit("till","45ft high-speed disc",45,SPEED.till,q[0],0)]; }
+    else if(st==="FERT"){ var q2=chunksFor([7,7]); u=[mkUnit("spread","spreader",70,SPEED.spreader,q2[0],0), mkUnit("spread","spreader",70,SPEED.spreader,q2[1],1)]; }
+    else if(st==="SEED"){ if(cr.head==="corn"){ var q3=chunksFor([subsFor(60)]); u=[mkUnit("plant","24-row planter",60,SPEED.planter,q3[0],0)]; }
+      else { var q4=chunksFor([subsFor(66),subsFor(66)]); u=[mkUnit("seed","66ft air drill",66,SPEED.seeder,q4[0],0), mkUnit("seed","66ft air drill",66,SPEED.seeder,q4[1],1)]; } }
+    else if(st==="BURN"||st==="INCROP"){ var q5=chunksFor([12,12]); u=[mkUnit("spray","120ft sprayer",120,SPEED.sprayer,q5[0],0), mkUnit("spray","120ft sprayer",120,SPEED.sprayer,q5[1],1)]; }
+    else if(st==="HARVEST"){
+      if(cr.head==="corn"){ var q6=chunksFor([3,3]); u=[mkUnit("combineA","combine 12-row",30,SPEED.combine,q6[0],0), mkUnit("combineB","combine 12-row",30,SPEED.combine,q6[1],1)]; }
+      else { var q7=chunksFor([5,4,4]); u=[mkUnit("combineA","50ft head",50,SPEED.combine,q7[0],0), mkUnit("combineB","40ft head",40,SPEED.combine,q7[1],1), mkUnit("combineC","40ft head",40,SPEED.combine,q7[2],2)]; }
+      sim.cart={x:-70, v:0, state:"CHASE", fill:0, target:null, sub:SUBROWS-1};
+      sim.semis=[{c:C.semiMaroon,day:0},{c:C.semiBlue1,day:0},{c:C.semiBlue2,day:0},{c:C.semiWhite,day:1}]
+        .map(function(s,i){ return {color:s.c,dayCab:s.day,x:W-26-i*30,load:0,state:i===0?"ACTIVE":"QUEUE",v:0}; });
+    }
+    sim.units=u; if(!keep){ seasonTarget=yearBase+STAGE_SEASON[st]; }
+    sim.stage=st;
+  }
+  function setStage(st){ buildStage(st,false); }
+
+  // ---------- field effects (each implement affects ONLY its swath behind its position) ----------
+  function affect(unit, fn){
+    var ch=unit.chunks[unit.ci]; if(!ch) return;
+    var head=colOf(unit.x + (unit.dir>0? -2 : 2));    // effect trails the machine
+    for(var s=ch.a;s<ch.b;s++){ var r=rows[s]; fn(r, head, s); }
+  }
+  function stripDone(unit){ // whole chunk width processed for the col the machine just left
+    affect(unit, function(r, cI){ /* per-op below */ });
+  }
+
+  // ---------- weeds (fact pack: kochia; resistant fraction survives burndown) ----------
+  function spawnWeeds(){
+    for(var p=0;p<6;p++){ // clustered patches; ~1 in 5 resistant (82% of ND kochia samples are
+      // glyphosate-resistant, so the RESISTANT PATCH is the norm to plan for, not the exception)
+      var s=(Math.random()*SUBROWS)|0, c0=(Math.random()*NCOLS)|0, res=(p===0||Math.random()<0.2)?2:1;
+      for(var d=0;d<8;d++){ var c=c0+((Math.random()*8)|0)-4, ss=s+((Math.random()*3)|0)-1;
+        if(c>=0&&c<NCOLS&&ss>=0&&ss<SUBROWS&&rows[ss].crop[c]>0) rows[ss].weed[c]=res; }
+    }
+  }
+
+  // ---------- machine step ----------
+  function stepUnit(u, dt){
+    var accel=(u.kind.indexOf("combine")===0?10:16);
+    var wantV=u.vMax*(1+0.10*Math.sin(tsec*1.1+u.ph));            // slight organic speed variation
+    if(u.state==="WAIT_CART"){ wantV=0; }
+    if(u.state==="TURN"){ u.tTurn-=dt; if(u.tTurn<=0){ u.state="WORK"; u.dir*=-1; } u.v=0; return; }
+    if(u.state==="DONE"){ wantV=u.vMax; }                          // drive off
+    u.v += Math.max(-accel*dt, Math.min(accel*dt, wantV-u.v));
+    u.x += u.v*u.dir*dt;
+    if(u.state==="DONE"){ return; }
+    // work effects on own swath only
+    var cI=colOf(u.x - u.dir*3), ch=u.chunks[u.ci];
+    if(ch && cI>=0 && cI<NCOLS){
+      for(var s=ch.a;s<ch.b;s++){ var r=rows[s];
+        if(u.kind==="till"){ r.till[cI]=1; r.crop[cI]=0; r.stub[cI]=0; r.ripe[cI]=0; r.weed[cI]=0; }
+        else if(u.kind==="spread"){ r.fert[cI]=1; }
+        else if(u.kind==="seed"||u.kind==="plant"){ if(r.crop[cI]===0) r.crop[cI]=0.05; r.till[cI]=1; }
+        else if(u.kind==="spray"){ if(sim.stage==="BURN"){ if(r.weed[cI]===1) r.weed[cI]=0; }  // burndown: resistant (2) SURVIVES
+                                   else { r.weed[cI]=0; } }                                    // in-crop tank mix (>=2 SOA): clears all
+        else if(u.kind.indexOf("combine")===0){ if(r.crop[cI]>0&&r.ripe[cI]>0.5&&!r.stub[cI]){ r.crop[cI]=0; r.stub[cI]=1;
+          u.tank=Math.min(1,u.tank+0.006); if(parts.length<500&&Math.random()<0.3) spawn(u.x-u.dir*ftw(14), yOf(ch.b-1)-9, -u.dir*8, -6, "grain", C.grain, 1.1); } }
+      }
+    }
+    // combine full -> stop and wait for the cart (physics: it decelerates, never teleports)
+    if(u.kind.indexOf("combine")===0){ if(u.tank>=0.98) u.state="WAIT_CART"; else if(u.state==="WAIT_CART"&&u.tank<0.7) u.state="WORK"; }
+    // ends of the field: turn onto the next pass, or leave when done
+    var m=ftw(30);
+    if(u.dir>0 && u.x>W+m || u.dir<0 && u.x<-m){
+      u.ci++;
+      if(u.ci>=u.chunks.length){ u.state="DONE"; u.dir=1; u.x=-m; }
+      else { u.state="TURN"; u.tTurn=0.7; }
+    }
+  }
+
+  function stepHarvestLogistics(dt){
+    var cart=sim.cart; if(!cart) return;
+    var combines=sim.units.filter(function(u){return u.kind.indexOf("combine")===0 && u.state!=="DONE";});
+    var active=sim.semis.filter(function(s){return s.state==="ACTIVE";})[0];
+    // semis queue on the ROAD strip only — combines never enter it, semis never enter the field:
+    // the no-collision guarantee is structural, not incidental.
+    sim.semis.forEach(function(s,i){
+      if(s.state==="QUEUE"){ var slot=W-26-(i)*ftw(45); s.v=mph(8); if(s.x>slot) s.x-=s.v*dt; }
+      else if(s.state==="LEAVE"){ s.v=mph(SPEED.semi); s.x+=s.v*dt; if(s.x>W+60){ s.state="GONE"; s.t=8; } }
+      else if(s.state==="GONE"){ s.t-=dt; if(s.t<=0){ s.state="QUEUE"; s.x=-40; s.load=0; } } // elevator round trip
+    });
+    if(!active){ var q=sim.semis.filter(function(s){return s.state==="QUEUE";}); if(q.length) q[0].state="ACTIVE"; active=q[0]; }
+    if(active && active.state==="ACTIVE" && active.x>W-30){ active.x-=mph(8)*dt; }
+    // the cart chases the fullest combine, matches speed alongside, unloads on the go, then runs
+    // to the semi at the headland — one Bourgault cart behind one triple-wheel 4WD tractor.
+    if(cart.state==="CHASE"){
+      var full=null; combines.forEach(function(u){ if(!full||u.tank>full.tank) full=u; });
+      cart.target=full;
+      if(!full){ if(cart.fill>0.02) cart.state="TO_SEMI"; }
+      if(full){ var tx=full.x - full.dir*ftw(18);
+        cart.v += ((tx>cart.x?1:-1)*mph(SPEED.cartRoad) - cart.v)*Math.min(1,dt*2);
+        cart.x += cart.v*dt; cart.sub=full.chunks[full.ci]?Math.min(SUBROWS-1,full.chunks[full.ci].b):SUBROWS-1;
+        if(Math.abs(cart.x-tx)<6 && full.tank>0.35) cart.state="ALONGSIDE";
+      }
+    } else if(cart.state==="ALONGSIDE"){
+      var t2=cart.target;
+      if(!t2||t2.state==="DONE"){ cart.state="CHASE"; }
+      else { cart.x += t2.v*t2.dir*dt;                                  // speed-matched
+        cart.fill=Math.min(1,cart.fill+dt*0.22); t2.tank=Math.max(0.05,t2.tank-dt*0.30);
+        if(Math.random()<0.4) spawn(cart.x, yOf(cart.sub)-10, 0, -4, "grain", C.grain, 0.8);
+        if(cart.fill>=1||t2.tank<=0.08) cart.state="TO_SEMI"; }
+    } else if(cart.state==="TO_SEMI"){
+      var dest=(active?active.x:W-30)-ftw(14);
+      cart.v += ((dest>cart.x?1:-1)*mph(SPEED.cartRoad)-cart.v)*Math.min(1,dt*2);
+      cart.x += cart.v*dt; cart.sub=SUBROWS-1;
+      if(Math.abs(cart.x-dest)<5) cart.state="DUMP";
+    } else if(cart.state==="DUMP"){
+      cart.fill=Math.max(0,cart.fill-dt*0.4);
+      if(active){ active.load=Math.min(1,active.load+dt*0.25);
+        if(Math.random()<0.4) spawn((cart.x+ (active.x))/2, roadY-8, 2, -3, "grain", C.grain, 0.7);
+        if(active.load>=1){ active.state="LEAVE"; } }
+      if(cart.fill<=0.02) cart.state="CHASE";
+    }
+    if(!combines.length && cart.fill<=0.02 && active && active.state==="ACTIVE" && active.load>0.02) active.state="LEAVE";
+    sim.waitMsg = combines.some(function(u){return u.state==="WAIT_CART";}) ? " · combine waiting on cart" : "";
+  }
+
+  function stageDone(){ return sim.units.every(function(u){return u.state==="DONE";}); }
+
+  function step(dt){
+    var cr=CROPS[sim.crop], st=sim.stage, i;
+    sim.units.forEach(function(u){ stepUnit(u,dt); });
+    if(st==="HARVEST") stepHarvestLogistics(dt);
+    if(st==="TILL"&&stageDone()) setStage("FERT");
+    else if(st==="FERT"&&stageDone()) setStage("SEED");
+    else if(st==="SEED"&&stageDone()) setStage("BURN");
+    else if(st==="BURN"&&stageDone()){ setStage("GROW"); spawnWeeds(); }
+    else if(st==="GROW"){ var avg=0,n=0;
+      for(var s=0;s<SUBROWS;s++){ var r=rows[s]; for(i=0;i<NCOLS;i++){ if(r.crop[i]>0&&r.crop[i]<0.6){ r.crop[i]=Math.min(0.6,r.crop[i]+dt*0.10*(0.5+moist[i])*(r.fert[i]?1.25:1)); } if(r.crop[i]>0){avg+=r.crop[i];n++;} } }
+      if(n&&avg/n>=0.55) setStage("INCROP"); }
+    else if(st==="INCROP"&&stageDone()) setStage("RIPEN");
+    else if(st==="RIPEN"){ var done=true;
+      for(var s2=0;s2<SUBROWS;s2++){ var r2=rows[s2]; for(i=0;i<NCOLS;i++){ if(r2.crop[i]>0){ r2.crop[i]=Math.min(1,r2.crop[i]+dt*0.16); r2.ripe[i]=Math.min(1,r2.ripe[i]+dt*0.16); if(r2.ripe[i]<0.95)done=false; } } }
+      if(done) setStage("HARVEST"); }
+    else if(st==="HARVEST"&&stageDone()&&(!sim.cart||sim.cart.fill<=0.02)&&sim.semis.every(function(s2){return s2.state!=="ACTIVE"||s2.load<=0.02;})) setStage("WINTER");
+    else if(st==="WINTER"){ if(seasonAbs>=seasonTarget-0.06){ sim.crop=(sim.crop+1)%CROPS.length; yearBase+=4;
+      for(var s3=0;s3<SUBROWS;s3++){ var r3=rows[s3]; for(i=0;i<NCOLS;i++){ r3.till[i]=0;r3.crop[i]=0;r3.ripe[i]=0;r3.stub[i]=0;r3.weed[i]=0;r3.fert[i]=0; } }
+      setStage("TILL"); } }
+    seasonAbs += (seasonTarget-seasonAbs)*Math.min(1,dt*0.4);
+    PAL=seasonPalette(seasonAbs);
+  }
+
+  // ---------- weather (stochastic, v3 model) ----------
+  function wetBias(){ var s=((seasonAbs%4)+4)%4; if(s<1)return 0.42+0.12*s; if(s<2)return 0.40-0.10*(s-1); if(s<3)return 0.26+0.02*(s-2); return 0.30; }
+  function stepWeather(dt){
+    wx.timer+=dt; wx.cloudX+=dt;
+    if(wx.timer>wx.next){ wx.timer=0; wx.next=4+Math.random()*9;
+      var wet=wetBias(), r=Math.random(), persist=(wx.mode==="rain")?0.30:(wx.mode==="cloud")?0.20:0.15;
+      if(r<persist){} else if(r<persist+wet*0.55){wx.mode="rain";} else if(r<persist+wet*0.55+0.34){wx.mode="cloud";} else {wx.mode="clear";}
+      wx.target=(wx.mode==="rain")?(0.6+Math.random()*0.4):(wx.mode==="cloud")?(0.22+Math.random()*0.18):0;
+    }
+    wx.rain += (wx.target-wx.rain)*Math.min(1,dt*0.5);
+    if(hold.on) wx.rain=Math.max(wx.rain,0.92);
+    var wint=PAL.snow>0.45;
+    if(wx.rain>0.32){ var n=Math.round(wx.rain*(wint?3:4)); for(var i=0;i<n;i++){ spawn((Math.random()*W)|0, Math.round(hz*0.4), wint?(Math.random()*2-1):2, wint?18:52, wint?"snow":"rain", wint?C.flake:C.rain, wint?5:3); } }
+    if(hold.on){ for(var h2=0;h2<3;h2++) spawn(hold.x-6+((h2*4)|0), Math.round(hz*0.5), (h2-1)*3, 55, "rain", C.rain, 3); }
+    if(wx.rain<0.2){ for(var d=0;d<NCOLS;d++) moist[d]=Math.max(0.12,moist[d]-0.02*dt); }
+  }
+  function spawn(x,y,vx,vy,k,c,l){ if(parts.length<520) parts.push({x:x,y:y,vx:vx,vy:vy,k:k,c:c,l:l}); }
+  function stepParts(dt){
+    for(var i=parts.length-1;i>=0;i--){ var p=parts[i]; p.vy+=(p.k==="grain")?60*dt:(p.k==="snow"?3*dt:40*dt); p.x+=p.vx*dt; p.y+=p.vy*dt; p.l-=dt;
+      if(p.k==="rain"&&p.y>hz){ moist[colOf(p.x)]=Math.min(1,moist[colOf(p.x)]+0.02); if(p.y>baseY-2)p.l=0; }
+      if(p.l<=0||p.y>H+2) parts.splice(i,1); }
+  }
+
+  // ---------- sprites (facing dir; mirrored via scale) ----------
+  function wheelY(x,y,r){ disc(x,y,r,col(C.tire)); disc(x,y,Math.max(1,r-1),col(C.wheel)); disc(x,y,Math.max(1,r-2),col(C.rimY)); fill(x,y,1,1,col(C.hub)); }
+  function tripleWheel(x,y,r){ wheelY(x-2,y,r); wheelY(x,y,r); wheelY(x+2,y,r); }   // 3 per corner = 12 total on the 4WD
+  function tractor2wd(x,y){ fill(x,y+2,15,6,col(C.grn)); fill(x,y+6,15,2,col(C.grnDk)); fill(x+3,y-3,7,6,col(C.grn)); fill(x+4,y-2,5,4,col(C.glass)); fill(x+3,y-3,7,1,col(C.grnLt)); wheelY(x+2,y+9,2); wheelY(x+11,y+9,3); }
+  function tractorTriple(x,y,beacon){ // articulated 4WD, triples all around (operator: 12 wheels)
+    fill(x,y,20,8,col(C.grn)); fill(x,y+6,20,2,col(C.grnDk)); fill(x+8,y-4,8,5,col(C.grn)); fill(x+9,y-3,6,3,col(C.glass)); fill(x+8,y-4,8,1,col(C.grnLt));
+    fill(x+9,y-5,2,1,col(beacon||C.rimY));
+    tripleWheel(x+3,y+9,3); tripleWheel(x+15,y+9,3);
+  }
+  function kwikTill(x,y){ // Norwood Kwik-Till trade dress: BLUE frame, RED discs, rear roller
+    fill(x-2,y+4,18,2,col(C.ktBlue)); for(var s=0;s<8;s++) disc(x+s*2,y+8,1,col(C.ktRed));
+    disc(x+17,y+8,2,col(C.bourGreyDk)); fill(x+14,y+5,4,1,col(C.ktBlue));
+  }
+  function spreader(x,y){ fill(x,y+1,12,6,col(C.tank)); fill(x,y+1,12,1,col(C.binDk)); fill(x+3,y+7,6,2,col(C.bar)); wheelY(x+3,y+9,3); wheelY(x+9,y+9,3); }
+  function airDrill(x,y){ // Bourgault trade dress: grey tanks + red accents; tow-behind cart + toolbar
+    fill(x,y+1,7,7,col(C.bourGrey)); fill(x+8,y,8,8,col(C.bourGrey)); fill(x+8,y,8,1,col("#b9bec4"));
+    fill(x,y+4,16,2,col(C.bourRed)); fill(x+3,y+8,2,1,col(C.bourGreyDk));
+    fill(x-8,y+7,9,1,col(C.bourGreyDk)); for(var s=0;s<5;s++) fill(x-7+s*2,y+7,1,3,col(C.bourGreyDk));
+    wheelY(x+3,y+9,2); wheelY(x+12,y+9,3);
+  }
+  function planter24(x,y){ fill(x-10,y+6,26,1,col(C.hdrDk)); for(var s=0;s<12;s++) fill(x-9+s*2,y+6,1,3,col(C.grnDk)); fill(x+4,y+3,7,3,col(C.rimY)); wheelY(x+6,y+9,2); }
+  function sprayer120(x,y){ // slim dark truss boom is the cue (fact pack)
+    fill(x+4,y-3,8,7,col(C.grn)); fill(x+5,y-2,5,3,col(C.glass)); fill(x+2,y+4,12,2,col(C.grnDk));
+    fill(x-ftw(35),y+3,ftw(120)/2+8,1,col(C.boom));
+    wheelY(x+4,y+10,4); wheelY(x+12,y+10,4);
+  }
+  function combineSprite(x,y,kind,spin,cornHead,tankF){
+    var big=(kind==="combineA"), old=(kind==="combineC");
+    var L=big?24:(old?18:21), h=big?10:(old?8:9);
+    for(var d=0;d<4;d++) fill(x-6-d*3,y+h-1+(d%2),3,2,col(C.chaff));
+    fill(x+2,y+1,L,h,col(C.grn)); fill(x+2,y+h-1,L,3,col(C.grnDk));
+    if(old){ for(var rr=0;rr<3;rr++) fill(x+4+rr,y-rr,L-6-rr*2,1,col(C.grnLt)); }      // rounder 2012 back
+    else fill(x+5,y-3,L-6,4,col(C.grnLt));                                              // boxy modern body
+    if(tankF>0){ var gh=Math.round(tankF*4); fill(x+6,y-1-gh,L-9,gh,col(C.grain)); }
+    fill(x+L-5,y-3,6,5,col(C.grnDk)); fill(x+L-4,y-2,4,3,col(C.glass));
+    var hx0=x+L+1;
+    if(cornHead){ fill(hx0,y+6,3,3,col(C.hdrDk)); fill(hx0+3,y+7,11,4,col(C.hdr)); for(var r2=0;r2<4;r2++){ fill(hx0+4+r2*3,y+6,1,5,col(C.snout)); } }
+    else { fill(hx0,y+6,3,3,col(C.hdrDk)); var hw=ftw(kind==="combineA"?50:40)/2;
+      fill(hx0+3,y+8,hw,3,col(C.hdr)); fill(hx0+3,y+10,hw,1,col(C.hdrDk));
+      if(spin){fill(hx0+4,y+6,hw-2,1,col(C.reel));} else {fill(hx0+4,y+8,hw-2,1,col(C.reel));} }
+    if(old){ fill(x-9,y-2,12,2,col(C.grnDk)); }                                          // straight fixed auger
+    else { fill(x-7,y-4,10,2,col(C.grnDk)); fill(x-9,y-2,4,2,col(C.grnDk)); }            // folding auger joint
+    wheelY(x+L-6,y+h+2,4); wheelY(x+6,y+h+2,2);
+  }
+  function grainCartB(x,y,f){ // Bourgault grey/red dual-tank cart
+    fill(x,y+1,15,8,col(C.bourGrey)); fill(x,y+1,15,1,col("#b9bec4")); fill(x,y+5,15,2,col(C.bourRed));
+    var gh=Math.round(f*5); if(gh>0) fill(x+1,y+6-gh,13,gh,col(C.grain));
+    fill(x+12,y-5,2,7,col(C.bourGreyDk)); wheelY(x+4,y+11,4); wheelY(x+11,y+11,4);
+  }
+  function semi(x,y,color,dayCab,load){
+    fill(x,y,20,6,col(C.trailer)); fill(x,y,20,1,col(C.trailerDk));
+    var gh=Math.round((load||0)*4); if(gh>0) fill(x+1,y+1-gh+3,18,gh,col(C.grain));
+    var cw=dayCab?5:8; fill(x-cw,y,cw,6,col(color)); fill(x-cw+1,y+1,3,2,col(C.glass));
+    disc(x-2,y+7,2,col(C.wheel)); disc(x+4,y+8,2,col(C.wheel)); disc(x+9,y+8,2,col(C.wheel)); disc(x+16,y+8,2,col(C.wheel));
+  }
+
+  // ---------- render ----------
+  function drawBackdrop(){
+    var m=Math.round(hz*0.36), l=Math.round(hz*0.80);
+    fill(0,0,W,m,rgb(PAL.t)); fill(0,m,W,l-m,rgb(PAL.m)); fill(0,l,W,hz-l+1,rgb(PAL.l));
+    var g=Math.min(0.82,wx.rain*0.9); if(g>0.05) fill(0,0,W,hz,"rgba(120,132,143,"+g.toFixed(2)+")");
+    if(wx.rain<0.32){ var sy=Math.round(hz*(0.42+PAL.snow*0.2)); disc(Math.round(W*0.74),sy,Math.max(5,Math.round(W*0.026)),col(C.sun)); }
+    for(var i=0;i<clouds.length;i++){ var c2=clouds[i],s=c2.s,base=(wx.rain>0.3)?C.cloudGray:C.cloud;
+      fill(c2.x,c2.y,11*s,3*s,col(base)); fill(c2.x+2*s,c2.y-2*s,6*s,2*s,col(base)); }
+    var tb=rgb(PAL.tree),tt=rgb(PAL.treeDk); fill(0,hz-3,W,4,tb);
+    for(var x=0;x<W;x+=2){ var h2=2+((x*7)%4)+(x%13===0?3:0); fill(x,hz-3-h2,2,h2,(x%6<3)?tt:tb); }
+    // yard: elevator + bins + parked equipment (seasonal reassignment made visible)
+    var ex=Math.round(W*0.08); for(var e=0;e<4;e++) fill(ex+e*4,hz-24,3,24,col(e%2?C.elevDk:C.elev)); fill(ex-1,hz-28,17,4,col(C.elevDk));
+    var bx=Math.round(W*0.70); for(var b=0;b<3;b++){ var bx2=bx+b*8; fill(bx2,hz-7,7,7,col(b===1?C.bin:C.binDk)); for(var r=0;r<4;r++) fill(bx2+r,hz-7-r,7-r*2,1,col(PAL.snow>0.5?C.snow:"#c8cdd2")); }
+    drawYard();
+    fill(0,hz-1,W,1,col(C.fenceDk)); for(var f=0;f<fence.length;f++) fill(fence[f],hz-4,1,4,col(C.fence));
+    for(var p=0;p<poles.length;p++){ fill(poles[p],hz-13,1,13,col(C.pole)); fill(poles[p]-2,hz-12,5,1,col(C.pole)); }
+    ctx.strokeStyle=col(C.wire); ctx.lineWidth=1;
+    ctx.beginPath(); for(var j=0;j<poles.length;j++){ var px=poles[j]; if(j===0)ctx.moveTo(px,hz-12); else{var pv=poles[j-1];ctx.quadraticCurveTo((pv+px)/2,hz-9,px,hz-12);} } ctx.stroke();
+  }
+  function drawYard(){ // idle equipment parks by the bins — the SAME tractors get re-hitched by season
+    var yx=Math.round(W*0.86), yy=hz-6, st=sim.stage;
+    ctx.save(); ctx.translate(yx,yy); ctx.scale(0.6,0.6);
+    var slots=0;
+    function park(fn){ ctx.save(); ctx.translate(-(slots*26),0); fn(); ctx.restore(); slots++; }
+    if(st!=="HARVEST"){ park(function(){ combineSprite(0,0,"combineA",false,false,0); }); park(function(){ combineSprite(0,0,"combineC",false,false,0); }); }
+    if(st!=="SEED"&&st!=="HARVEST"){ park(function(){ tractorTriple(0,0); airDrill(24,0); }); }
+    if(st!=="TILL"){ park(function(){ kwikTill(0,0); }); }
+    ctx.restore();
+  }
+  function bladeColor(cr,ripeT){ if(cr.bloom&&ripeT>0.15&&ripeT<0.7) return lerpC(cr.base,cr.bloom,Math.min(1,(ripeT-0.15)/0.4)); return lerpC(cr.base,cr.ripe,ripeT); }
+  function drawField(){
+    var cr=CROPS[sim.crop], snow=PAL.snow;
+    for(var s=0;s<SUBROWS;s++){
+      var y0=(s===0?hz+1:yOf(s-1)), y1=yOf(s), r=rows[s], hRow=Math.max(1,y1-y0);
+      for(var i=0;i<NCOLS;i++){
+        var x=i*COLW, mEff=moist[i]*(1-snow*0.7);
+        var soil=lerpC(PAL.ground,C.wetGround,mEff);
+        if(r.till[i]) soil=darken(soil,0.88);
+        if(snow>0.02) soil=lerpC(soil,[230,238,247],snow*0.85);
+        fill(x,y0,COLW,hRow,rgb(soil));
+        if(r.fert[i]&&snow<0.4&&((i+s)%3===0)) fill(x+1,y0+(hRow>>1),1,1,col("#cbb89a"));
+        if(r.stub[i]&&snow<0.6) fill(x+1,y1-2,1,2,col(C.stub));
+        else if(r.crop[i]>0){
+          var h=Math.max(1,Math.round(r.crop[i]*(hRow+1)*(0.8+0.5*cr.hMul))+((i*7+s*5)%2));
+          var bc=bladeColor(cr,r.ripe[i]);
+          fill(x,y1-h,COLW,h,rgb(bc));
+          if(r.crop[i]>0.4) fill(x+(i%2),y1-h,1,Math.max(1,h>>1),rgb(lerpC(bc,cr.tip,0.55)));
+          if(hRow>3&&((i*13+s*7)%9===0)) fill(x+2,y1-(h>>1),1,Math.max(1,h>>1),rgb(darken(bc,0.86)));
+          if(r.crop[i]>0.6&&hRow>3){ var hy=y1-h;
+            if(cr.head==="corn") fill(x+1,hy-1,1,2,rgb(lerpC("#d8c98a",cr.ripe,r.ripe[i])));
+            else if(cr.head==="wheat") fill(x,hy,3,1,rgb(lerpC("#cbb24a",cr.ripe,r.ripe[i])));
+            else if(cr.head==="canola"&&r.ripe[i]<0.6) fill(x,hy,3,1,col(cr.bloom)); }
+        }
+        if(r.weed[i]&&snow<0.4){ fill(x,y1-2,1,2,col(r.weed[i]===2?C.weedR:C.weed)); fill(x+1,y1-3,1,1,col(C.weed)); } // kochia tufts
+      }
+      drawUnitsAt(s);
+    }
+    // road / headland strip (semis + cart-at-semi live here; combines never do)
+    fill(0,baseY,W,H-baseY,col(C.road)); fill(0,baseY,W,1,col(C.roadDk));
+    for(var g=0;g<W;g+=7) fill(g,roadY,3,1,col(C.roadDk));
+  }
+  function drawUnitsAt(sub){
+    sim.units.forEach(function(u){
+      var ch=u.chunks[u.ci]; var front=(u.state==="DONE")?SUBROWS-1:(ch?ch.b-1:SUBROWS-1);
+      if(front!==sub) return;
+      var y=yOf(sub), sc=scOf(sub), spin=(Math.floor(tsec*8)%2)===0;
+      ctx.save(); ctx.translate(u.x,y); ctx.scale(sc*u.dir,sc);
+      if(u.kind==="till"){ kwikTill(-18,-8); tractorTriple(0,-9,C.rimY); }
+      else if(u.kind==="spread"){ spreader(-16,-8); tractor2wd(0,-8); }
+      else if(u.kind==="seed"){ airDrill(-20,-9); tractorTriple(2,-9,u.idx?C.hdr:C.rimY); }
+      else if(u.kind==="plant"){ planter24(-18,-8); tractor2wd(4,-8); }
+      else if(u.kind==="spray"){ sprayer120(0,-9); if(u.state==="WORK"&&Math.random()<0.5){ for(var d=0;d<3;d++) spawnLocal(u,-ftw(30)+d*ftw(28),4); } }
+      else combineSprite(-10,-10,u.kind,spin,CROPS[sim.crop].head==="corn",u.tank);
+      ctx.restore();
+    });
+    if(sim.cart&&sim.stage==="HARVEST"){
+      var cSub=(sim.cart.state==="TO_SEMI"||sim.cart.state==="DUMP")?SUBROWS-1:sim.cart.sub;
+      if(cSub===sub){ var y2=yOf(sub), sc2=scOf(sub);
+        ctx.save(); ctx.translate(sim.cart.x,y2); ctx.scale(sc2,sc2);
+        tractorTriple(-22,-9,C.rimY); grainCartB(0,-10,sim.cart.fill);
+        ctx.restore(); }
+    }
+  }
+  function spawnLocal(u,dx,vy){ var ch=u.chunks[u.ci]; if(ch) spawn(u.x+dx*u.dir, yOf(ch.b-1)-4, 0, 18, "rain", C.rain, 0.35); }
+  function drawSemis(){
+    if(sim.stage!=="HARVEST") return;
+    sim.semis.forEach(function(s){ if(s.state==="GONE")return; semi(s.x,roadY-8,s.color,s.dayCab,s.load); });
+  }
+  function drawParts(){ for(var i=0;i<parts.length;i++){ var p=parts[i]; fill(p.x,p.y,1,p.k==="rain"?2:1,col(p.c)); } }
+
+  function hudLine(){
+    var cr=CROPS[sim.crop], st=sim.stage;
+    var ops={TILL:"spring tillage — 45ft high-speed disc (ND-built) · 12 mph",
+      FERT:"2× spreaders — 70ft pattern",
+      SEED:(cr.head==="corn"?"planting — 24-row planter (30in rows)":"seeding — 2× 66ft air drills · 4WD triples"),
+      BURN:"pre-seed burndown — 2× 120ft booms · spray weeds small",
+      GROW:"growing — kochia flush emerging",
+      INCROP:"in-crop pass — tank mix, 2 sites of action on kochia",
+      RIPEN:"ripening",
+      HARVEST:(cr.head==="corn"?"harvest — 2 combines · 12-row heads":"harvest — 50ft + 40ft + 40ft heads · cart on the go"),
+      WINTER:"winter"}[st];
+    var wxs=(wx.rain>0.6)?(PAL.snow>0.45?"snowing":"raining"):(wx.rain>0.3)?"cloudy":"clear";
+    var seas=["spring","summer","fall","winter"][Math.floor(((seasonAbs%4)+4)%4)];
+    return "🌾 "+cr.name+" · "+ops+(sim.waitMsg||"")+" · "+seas+" · "+wxs+"  ·  hold to make it rain";
+  }
+  function render(){
+    drawBackdrop(); drawField(); drawSemis(); drawParts();
+    if(hud) hud.textContent=hudLine();
+  }
+  function frame(now){ var dt=last?Math.min(0.05,(now-last)/1000):0.016; last=now; tsec+=dt;
+    for(var i=0;i<clouds.length;i++){ clouds[i].x+=dt*clouds[i].spd*(wx.rain>0.3?1.6:1); if(clouds[i].x>W+70) clouds[i].x=-70; }
+    stepWeather(dt); step(dt); stepParts(dt); render();
+    if(!reduce) raf=window.requestAnimationFrame(frame);
+  }
+
+  function isCtl(t){ return t && t.closest && t.closest("a,button,input,.cmd,.chk,.panel"); }
+  function pxOf(cx){ return Math.max(2,Math.min(W-2,Math.round(cx/PX))); }
+  document.addEventListener("pointerdown",function(e){ if(isCtl(e.target))return; hold.on=true; hold.x=pxOf(e.clientX); },{passive:true});
+  document.addEventListener("pointermove",function(e){ if(hold.on) hold.x=pxOf(e.clientX); },{passive:true});
+  document.addEventListener("pointerup",function(){ hold.on=false; },{passive:true});
+  document.addEventListener("pointercancel",function(){ hold.on=false; },{passive:true});
+
+  function effTheme(){ var a=document.documentElement.getAttribute("data-theme"); if(a==="dark")return 1; if(a==="light")return 0; return (window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?1:0; }
+  function start(){ nf=effTheme()?0.26:0; layout(); PAL=seasonPalette(seasonAbs); if(raf)window.cancelAnimationFrame(raf); last=0;
+    if(reduce){ // frozen frame: mid-harvest, ripe field
+      sim.crop=2; for(var s=0;s<SUBROWS;s++) for(var i=0;i<NCOLS;i++){ rows[s].crop[i]=1; rows[s].ripe[i]=1; rows[s].till[i]=1; }
+      seasonAbs=2.55; seasonTarget=2.55; PAL=seasonPalette(seasonAbs); buildStage("HARVEST",true);
+      sim.units.forEach(function(u,i){ u.x=W*(0.3+i*0.18); u.tank=0.4+i*0.2; }); if(sim.cart) sim.cart.x=W*0.26;
+      step(0.001); render();
+    } else raf=window.requestAnimationFrame(frame); }
+  var rt; window.addEventListener("resize",function(){ clearTimeout(rt); rt=setTimeout(start,160); });
+  document.addEventListener("visibilitychange",function(){ if(document.hidden){ if(raf)window.cancelAnimationFrame(raf); raf=0; } else if(!reduce&&!raf){ last=0; raf=window.requestAnimationFrame(frame); } });
+  var mo=new MutationObserver(function(){ nf=effTheme()?0.26:0; if(reduce)render(); }); mo.observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+  start();
+
+})();
+</script>
+</body>
+</html>

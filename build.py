@@ -26,7 +26,7 @@ STATIC_DIR = ROOT / "static"
 
 SLUG_RE = re.compile(r"^[a-z0-9-]{3,80}$")
 # reserved output paths a page slug must never collide with
-RESERVED_SLUGS = {"static", "assets", "404", "feed", "sitemap", "robots", "llms", "tools"}
+RESERVED_SLUGS = {"static", "assets", "404", "feed", "sitemap", "robots", "llms", "tools", "hq"}
 # Privacy guard: no email may ever reach a rendered page. Emails are what the
 # youtube actor SELLS; the site publishes AGGREGATES ONLY.
 EMAIL_RE = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
@@ -472,6 +472,14 @@ def main():
     if tools_dir.exists():
         shutil.copytree(tools_dir, DIST / "tools",
                         ignore=shutil.ignore_patterns("test"))
+
+    # /hq/ — the operator console (D1 runbook v2, 2026-07-17): ships verbatim like a tool
+    # page but is deliberately NOINDEXED (meta robots) and NEVER in sitemap.xml / llms.txt
+    # (both build only from content pages, so exclusion is by construction). It fetches
+    # same-origin /state/state.json (the allowlisted STATE_PUBLIC product) at runtime.
+    hq_dir = ROOT / "hq"
+    if hq_dir.exists():
+        shutil.copytree(hq_dir, DIST / "hq")
 
     # CNAME (only when a custom domain is configured)
     if (cfg.get("cname") or "").strip():
