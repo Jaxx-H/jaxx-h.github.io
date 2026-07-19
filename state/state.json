@@ -1,20 +1,26 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-19 03:57 CT",
- "generated_utc": "2026-07-19T08:57:18Z",
+ "generated": "2026-07-19 08:21 CT",
+ "generated_utc": "2026-07-19T13:21:23Z",
  "queue": {
   "tap": [
+   {
+    "pr": 92,
+    "age_days": 0,
+    "stale": false,
+    "title": "synthesis: 2026-07-19 Sunday checkpoint — weekly outreach pack + Notion digest"
+   },
+   {
+    "pr": 91,
+    "age_days": 0,
+    "stale": false,
+    "title": "verify: daily pass on chat-navigator recheck + consumer-discovery pilot memos"
+   },
    {
     "pr": 90,
     "age_days": 0,
     "stale": false,
     "title": "R&D: BET-R2 — kill proposed (alt-data licensing rescores 60→8)"
-   },
-   {
-    "pr": 89,
-    "age_days": 0,
-    "stale": false,
-    "title": "radar: 2026-07-19 sweep — commoditization is generic-fetch, not niche-extraction"
    }
   ],
   "paste_pending": 3,
@@ -58,13 +64,13 @@
   }
  ],
  "counts": {
-  "open_prs": 2,
+  "open_prs": 3,
   "revenue_events_n": 2,
   "external_reward_rows_n": 3,
-  "ledger_rows_n": 15,
+  "ledger_rows_n": 17,
   "radar_funnel": {
-   "observed": 10,
-   "verified": 3,
+   "observed": 9,
+   "verified": 2,
    "candidates": 1
   }
  },
@@ -158,7 +164,7 @@
   "extensions page: DEPLOYED_LIVE https://jaxx-h.github.io/extensions/",
   "EXP-001 fake door: DEPLOYED_LIVE https://jaxx-h.github.io/sheets-tab-folders/",
   "PROBE-001 intake: DEPLOYED_LIVE https://jaxx-h.github.io/tools/yield-map-viewer/isoxml-import-demo.html",
-  "EXP-002 CWS listing abhdpkojeagnoiamlhohooegpbobdpdk: not public (soft-404; console: pending review)",
+  "EXP-002 CWS listing abhdpkojeagnoiamlhohooegpbobdpdk: PUBLICLY_REACHABLE (item name found — clock-start signal",
   "EXP-001: MEASURING",
   "EXP-002: EXTERNAL_PENDING — Operator ruling 2026-07-18: the three dimensions are not collapsed. Lifecycle ad",
   "PROBE-001: DEPLOYED_LIVE — intake deployed: demo HTTP 200 with GitHub-issue intake link + probe_intake_clic"
