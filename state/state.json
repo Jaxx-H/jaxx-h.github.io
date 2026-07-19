@@ -1,9 +1,22 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-18 23:42 CT",
- "generated_utc": "2026-07-19T04:42:45Z",
+ "generated": "2026-07-19 03:57 CT",
+ "generated_utc": "2026-07-19T08:57:18Z",
  "queue": {
-  "tap": [],
+  "tap": [
+   {
+    "pr": 90,
+    "age_days": 0,
+    "stale": false,
+    "title": "R&D: BET-R2 — kill proposed (alt-data licensing rescores 60→8)"
+   },
+   {
+    "pr": 89,
+    "age_days": 0,
+    "stale": false,
+    "title": "radar: 2026-07-19 sweep — commoditization is generic-fetch, not niche-extraction"
+   }
+  ],
   "paste_pending": 3,
   "world": [
    "- Submit the 3 new page URLs to Google Search Console + Bing Webmaster [C1.1 / Aug 1] — the hard Aug-1 indexing deliverable; URLs in PR #59",
@@ -45,7 +58,7 @@
   }
  ],
  "counts": {
-  "open_prs": 0,
+  "open_prs": 2,
   "revenue_events_n": 2,
   "external_reward_rows_n": 3,
   "ledger_rows_n": 15,
