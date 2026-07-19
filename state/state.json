@@ -1,16 +1,9 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-18 23:06 CT",
- "generated_utc": "2026-07-19T04:06:26Z",
+ "generated": "2026-07-18 23:23 CT",
+ "generated_utc": "2026-07-19T04:23:47Z",
  "queue": {
-  "tap": [
-   {
-    "pr": 87,
-    "age_days": 0,
-    "stale": false,
-    "title": "w001-runner: remove the cron — wakes are 100% event/objective-driven"
-   }
-  ],
+  "tap": [],
   "paste_pending": 3,
   "world": [
    "- Submit the 3 new page URLs to Google Search Console + Bing Webmaster [C1.1 / Aug 1] — the hard Aug-1 indexing deliverable; URLs in PR #59",
@@ -52,7 +45,7 @@
   }
  ],
  "counts": {
-  "open_prs": 1,
+  "open_prs": 0,
   "revenue_events_n": 2,
   "external_reward_rows_n": 3,
   "ledger_rows_n": 15,
