@@ -1,7 +1,7 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-19 08:21 CT",
- "generated_utc": "2026-07-19T13:21:23Z",
+ "generated": "2026-07-19 08:25 CT",
+ "generated_utc": "2026-07-19T13:25:40Z",
  "queue": {
   "tap": [
    {
@@ -15,12 +15,6 @@
     "age_days": 0,
     "stale": false,
     "title": "verify: daily pass on chat-navigator recheck + consumer-discovery pilot memos"
-   },
-   {
-    "pr": 90,
-    "age_days": 0,
-    "stale": false,
-    "title": "R&D: BET-R2 — kill proposed (alt-data licensing rescores 60→8)"
    }
   ],
   "paste_pending": 3,
@@ -64,7 +58,7 @@
   }
  ],
  "counts": {
-  "open_prs": 3,
+  "open_prs": 2,
   "revenue_events_n": 2,
   "external_reward_rows_n": 3,
   "ledger_rows_n": 17,
