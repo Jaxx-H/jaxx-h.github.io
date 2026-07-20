@@ -1,20 +1,20 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-19 19:31 CT",
- "generated_utc": "2026-07-20T00:31:51Z",
+ "generated": "2026-07-19 19:32 CT",
+ "generated_utc": "2026-07-20T00:32:42Z",
  "queue": {
   "tap": [
+   {
+    "pr": 97,
+    "age_days": 0,
+    "stale": false,
+    "title": "observability: append verification-pass run telemetry (post-#93)"
+   },
    {
     "pr": 96,
     "age_days": 0,
     "stale": false,
     "title": "distribution: queue X draft for fbn-vs-agriwebb-farmer-reviews"
-   },
-   {
-    "pr": 95,
-    "age_days": 0,
-    "stale": false,
-    "title": "research: CPG playbook -> HQ transfer (TikTok organic wedge, unratified)"
    },
    {
     "pr": 94,
