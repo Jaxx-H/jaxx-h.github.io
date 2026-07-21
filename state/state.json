@@ -1,9 +1,15 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-21 04:16 CT",
- "generated_utc": "2026-07-21T09:16:05Z",
+ "generated": "2026-07-21 08:50 CT",
+ "generated_utc": "2026-07-21T13:50:20Z",
  "queue": {
   "tap": [
+   {
+    "pr": 109,
+    "age_days": 0,
+    "stale": false,
+    "title": "research: multilingual-demand — Black Sea (Russian-sourced) grain signal vs. extension-lau"
+   },
    {
     "pr": 108,
     "age_days": 0,
@@ -36,13 +42,13 @@
    },
    {
     "pr": 102,
-    "age_days": 0,
+    "age_days": 1,
     "stale": false,
     "title": "research: OPP-005 gmail-attachment-downloader demand/differentiation recheck"
    },
    {
     "pr": 101,
-    "age_days": 0,
+    "age_days": 1,
     "stale": false,
     "title": "verify: daily pass on cpg-playbook-transfer + bet-r2 alt-data recheck"
    },
@@ -120,10 +126,10 @@
   }
  ],
  "counts": {
-  "open_prs": 12,
+  "open_prs": 13,
   "revenue_events_n": 2,
-  "external_reward_rows_n": 4,
-  "ledger_rows_n": 18,
+  "external_reward_rows_n": 5,
+  "ledger_rows_n": 19,
   "radar_funnel": {
    "observed": 9,
    "verified": 2,
@@ -131,7 +137,7 @@
   }
  },
  "health": {
-  "collector_last_landed": "2026-07-20",
+  "collector_last_landed": "2026-07-21",
   "automerge": "unknown",
   "fasttrack": "unknown",
   "secrets_configured": "0/7"
