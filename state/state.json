@@ -1,9 +1,27 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-21 00:27 CT",
- "generated_utc": "2026-07-21T05:27:56Z",
+ "generated": "2026-07-21 04:16 CT",
+ "generated_utc": "2026-07-21T09:16:05Z",
  "queue": {
   "tap": [
+   {
+    "pr": 108,
+    "age_days": 0,
+    "stale": false,
+    "title": "R&D: BET-R6 D-005 — Dreaming V3 reversal risk tested, does not fire"
+   },
+   {
+    "pr": 107,
+    "age_days": 0,
+    "stale": false,
+    "title": "frontier-radar 2026-07-21: no-change day (0 new candidates)"
+   },
+   {
+    "pr": 106,
+    "age_days": 0,
+    "stale": false,
+    "title": "ratify D-020 + D-021 (formalize merged #92/#98 behavior)"
+   },
    {
     "pr": 104,
     "age_days": 0,
@@ -30,13 +48,13 @@
    },
    {
     "pr": 100,
-    "age_days": 0,
+    "age_days": 1,
     "stale": false,
     "title": "R&D: BET-R6 — H5/H6 sweep-2 continuation, both strengthened"
    },
    {
     "pr": 99,
-    "age_days": 0,
+    "age_days": 1,
     "stale": false,
     "title": "frontier-radar 2026-07-20: no-change day; YouTube PO-token threat primary-backfilled"
    },
@@ -102,7 +120,7 @@
   }
  ],
  "counts": {
-  "open_prs": 9,
+  "open_prs": 12,
   "revenue_events_n": 2,
   "external_reward_rows_n": 4,
   "ledger_rows_n": 18,
