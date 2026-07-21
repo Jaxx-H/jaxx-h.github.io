@@ -1,9 +1,15 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-20 17:24 CT",
- "generated_utc": "2026-07-20T22:24:06Z",
+ "generated": "2026-07-20 21:14 CT",
+ "generated_utc": "2026-07-21T02:14:42Z",
  "queue": {
   "tap": [
+   {
+    "pr": 104,
+    "age_days": 0,
+    "stale": false,
+    "title": "content: write 3 owned-site narratives (agtech creators, AI-engineer jobs, FBN reviews)"
+   },
    {
     "pr": 103,
     "age_days": 0,
@@ -35,20 +41,14 @@
     "title": "frontier-radar 2026-07-20: no-change day; YouTube PO-token threat primary-backfilled"
    },
    {
-    "pr": 98,
-    "age_days": 0,
-    "stale": false,
-    "title": "steady spike: reliability-first voice capture (core 24/24 measured; iOS device-run)"
-   },
-   {
     "pr": 97,
-    "age_days": 0,
+    "age_days": 1,
     "stale": false,
     "title": "observability: append verification-pass run telemetry (post-#93)"
    },
    {
     "pr": 96,
-    "age_days": 0,
+    "age_days": 1,
     "stale": false,
     "title": "distribution: queue X draft for fbn-vs-agriwebb-farmer-reviews"
    },
