@@ -1,7 +1,7 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-21 09:48 CT",
- "generated_utc": "2026-07-21T14:48:10Z",
+ "generated": "2026-07-21 10:58 CT",
+ "generated_utc": "2026-07-21T15:58:00Z",
  "queue": {
   "tap": [
    {
@@ -21,12 +21,6 @@
     "age_days": 0,
     "stale": false,
     "title": "frontier-radar 2026-07-21: no-change day (0 new candidates)"
-   },
-   {
-    "pr": 106,
-    "age_days": 0,
-    "stale": false,
-    "title": "ratify D-020 + D-021 (formalize merged #92/#98 behavior)"
    },
    {
     "pr": 104,
@@ -126,7 +120,7 @@
   }
  ],
  "counts": {
-  "open_prs": 13,
+  "open_prs": 12,
   "revenue_events_n": 2,
   "external_reward_rows_n": 5,
   "ledger_rows_n": 19,
