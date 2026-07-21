@@ -1,7 +1,7 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-20 22:59 CT",
- "generated_utc": "2026-07-21T03:59:36Z",
+ "generated": "2026-07-21 00:27 CT",
+ "generated_utc": "2026-07-21T05:27:56Z",
  "queue": {
   "tap": [
    {
@@ -66,7 +66,9 @@
    "- Submit the developer.deere.com application (Field Operations read, Files, Fields) [C1.3] — sanctioned-path spike; no product build until a",
    "- Decide: scrub state/latest.md from public repo git HISTORY (file itself removed 2026-07-17) [D0.1] — history still serves old revisions; s",
    "- Supply EXP-002's submission timestamp (dashboard All-items row) — the one open receipt field [EXP-002 receipt 3/4]",
-   "- Submit extension #2 from the staged set — per the R1 ladder that is chat-navigator (OPP-004, Claude-first listing); same 40-min checklist "
+   "- Submit extension #2 from the staged set — per the R1 ladder that is chat-navigator (OPP-004, Claude-first listing); same 40-min checklist ",
+   "- Ratify staged D-rows D-020 (eligibility gate + calendar/Notion) + D-021 (Steady spike) and merge PR A (claude/operator-control-plane) [PR-",
+   "- Apply the ROADMAP.md correction on main (demote parked EU-2023/564 P0; replace 'move ONE actor' P2 with 'actor lane FROZEN, D-019') [PR-A "
   ]
  },
  "clocks": [
