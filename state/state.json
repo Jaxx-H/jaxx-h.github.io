@@ -1,9 +1,15 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-22 07:00 CT",
- "generated_utc": "2026-07-22T12:00:43Z",
+ "generated": "2026-07-22 09:46 CT",
+ "generated_utc": "2026-07-22T14:46:45Z",
  "queue": {
   "tap": [
+   {
+    "pr": 116,
+    "age_days": 0,
+    "stale": false,
+    "title": "distribution: queue X draft for top-dairy-farming-youtube-channels"
+   },
    {
     "pr": 115,
     "age_days": 0,
@@ -36,7 +42,7 @@
    },
    {
     "pr": 109,
-    "age_days": 0,
+    "age_days": 1,
     "stale": false,
     "title": "research: multilingual-demand — Black Sea (Russian-sourced) grain signal vs. extension-lau"
    },
@@ -66,7 +72,7 @@
    },
    {
     "pr": 102,
-    "age_days": 1,
+    "age_days": 2,
     "stale": false,
     "title": "research: OPP-005 gmail-attachment-downloader demand/differentiation recheck"
    },
@@ -150,7 +156,7 @@
   }
  ],
  "counts": {
-  "open_prs": 17,
+  "open_prs": 18,
   "revenue_events_n": 2,
   "external_reward_rows_n": 6,
   "ledger_rows_n": 21,
