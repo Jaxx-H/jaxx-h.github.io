@@ -1,9 +1,15 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-21 15:06 CT",
- "generated_utc": "2026-07-21T20:06:02Z",
+ "generated": "2026-07-21 23:00 CT",
+ "generated_utc": "2026-07-22T04:00:57Z",
  "queue": {
   "tap": [
+   {
+    "pr": 112,
+    "age_days": 0,
+    "stale": false,
+    "title": "DEMAND RESEARCH: OPP-005 multilingual (DE/JP) recheck + English competitive staleness flag"
+   },
    {
     "pr": 111,
     "age_days": 0,
@@ -30,7 +36,7 @@
    },
    {
     "pr": 104,
-    "age_days": 0,
+    "age_days": 1,
     "stale": false,
     "title": "content: write 3 owned-site narratives (agtech creators, AI-engineer jobs, FBN reviews)"
    },
@@ -66,13 +72,13 @@
    },
    {
     "pr": 97,
-    "age_days": 1,
+    "age_days": 2,
     "stale": false,
     "title": "observability: append verification-pass run telemetry (post-#93)"
    },
    {
     "pr": 96,
-    "age_days": 1,
+    "age_days": 2,
     "stale": false,
     "title": "distribution: queue X draft for fbn-vs-agriwebb-farmer-reviews"
    },
@@ -126,7 +132,7 @@
   }
  ],
  "counts": {
-  "open_prs": 13,
+  "open_prs": 14,
   "revenue_events_n": 2,
   "external_reward_rows_n": 5,
   "ledger_rows_n": 19,
