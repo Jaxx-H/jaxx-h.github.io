@@ -1,7 +1,7 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-23 04:13 CT",
- "generated_utc": "2026-07-23T09:13:52Z",
+ "generated": "2026-07-23 07:00 CT",
+ "generated_utc": "2026-07-23T12:00:49Z",
  "queue": {
   "tap": [
    {
@@ -30,7 +30,7 @@
    },
    {
     "pr": 115,
-    "age_days": 0,
+    "age_days": 1,
     "stale": false,
     "title": "verify: daily pass on 2026-07-19-system-synthesis.md"
    },
@@ -96,7 +96,7 @@
    },
    {
     "pr": 101,
-    "age_days": 2,
+    "age_days": 3,
     "stale": false,
     "title": "verify: daily pass on cpg-playbook-transfer + bet-r2 alt-data recheck"
    },
@@ -176,8 +176,8 @@
  "counts": {
   "open_prs": 21,
   "revenue_events_n": 2,
-  "external_reward_rows_n": 6,
-  "ledger_rows_n": 21,
+  "external_reward_rows_n": 7,
+  "ledger_rows_n": 22,
   "radar_funnel": {
    "observed": 9,
    "verified": 2,
@@ -185,7 +185,7 @@
   }
  },
  "health": {
-  "collector_last_landed": "2026-07-22",
+  "collector_last_landed": "2026-07-23",
   "automerge": "unknown",
   "fasttrack": "unknown",
   "secrets_configured": "0/7"
