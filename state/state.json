@@ -1,7 +1,7 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-23 07:24 CT",
- "generated_utc": "2026-07-23T12:24:32Z",
+ "generated": "2026-07-23 09:54 CT",
+ "generated_utc": "2026-07-23T14:54:00Z",
  "queue": {
   "tap": [
    {
@@ -66,7 +66,7 @@
    },
    {
     "pr": 109,
-    "age_days": 1,
+    "age_days": 2,
     "stale": false,
     "title": "research: multilingual-demand — Black Sea (Russian-sourced) grain signal vs. extension-lau"
    },
