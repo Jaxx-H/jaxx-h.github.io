@@ -1,9 +1,15 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-23 07:00 CT",
- "generated_utc": "2026-07-23T12:00:49Z",
+ "generated": "2026-07-23 07:24 CT",
+ "generated_utc": "2026-07-23T12:24:32Z",
  "queue": {
   "tap": [
+   {
+    "pr": 122,
+    "age_days": 0,
+    "stale": false,
+    "title": "owned-geo-site: narratives for 29 of 32 needs_narrative pages"
+   },
    {
     "pr": 120,
     "age_days": 0,
@@ -24,7 +30,7 @@
    },
    {
     "pr": 116,
-    "age_days": 0,
+    "age_days": 1,
     "stale": false,
     "title": "distribution: queue X draft for top-dairy-farming-youtube-channels"
    },
@@ -90,7 +96,7 @@
    },
    {
     "pr": 102,
-    "age_days": 2,
+    "age_days": 3,
     "stale": false,
     "title": "research: OPP-005 gmail-attachment-downloader demand/differentiation recheck"
    },
@@ -174,7 +180,7 @@
   }
  ],
  "counts": {
-  "open_prs": 21,
+  "open_prs": 22,
   "revenue_events_n": 2,
   "external_reward_rows_n": 7,
   "ledger_rows_n": 22,
