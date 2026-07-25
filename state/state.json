@@ -1,12 +1,12 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-25 09:17 CT",
- "generated_utc": "2026-07-25T14:17:35Z",
+ "generated": "2026-07-25 14:56 CT",
+ "generated_utc": "2026-07-25T19:56:15Z",
  "queue": {
   "tap": [
    {
     "pr": 128,
-    "age_days": 0,
+    "age_days": 1,
     "stale": false,
     "title": "DEMAND RESEARCH: Black Sea grain buyer + scrapability recheck (answers PR #124 DEFER)"
    },
@@ -36,7 +36,7 @@
    },
    {
     "pr": 123,
-    "age_days": 1,
+    "age_days": 2,
     "stale": false,
     "title": "SYSTEM SYNTHESIS: confirm D-019 gap closure + flag #122/#104/#118 merge conflict"
    },
@@ -96,7 +96,7 @@
    },
    {
     "pr": 111,
-    "age_days": 3,
+    "age_days": 4,
     "stale": false,
     "title": "research: devto-syndication pipeline audit — CANONICAL_NOT_LIVE root cause"
    },
@@ -126,7 +126,7 @@
    },
    {
     "pr": 103,
-    "age_days": 4,
+    "age_days": 5,
     "stale": false,
     "title": "Distribution: execute framing A/B test on regenerative-ag creators page"
    },
@@ -168,7 +168,7 @@
    },
    {
     "pr": 94,
-    "age_days": 5,
+    "age_days": 6,
     "stale": false,
     "title": "distribution: queue dev.to syndication draft for export-yield-data-precision-ag"
    }
