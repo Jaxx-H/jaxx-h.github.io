@@ -1,7 +1,7 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-24 22:54 CT",
- "generated_utc": "2026-07-25T03:54:26Z",
+ "generated": "2026-07-25 03:49 CT",
+ "generated_utc": "2026-07-25T08:49:52Z",
  "queue": {
   "tap": [
    {
@@ -18,13 +18,13 @@
    },
    {
     "pr": 126,
-    "age_days": 0,
+    "age_days": 1,
     "stale": false,
     "title": "R&D: BET-R1 — competitor content-parity check"
    },
    {
     "pr": 125,
-    "age_days": 0,
+    "age_days": 1,
     "stale": false,
     "title": "frontier-radar 2026-07-24: NO-CHANGE sweep (0 candidates)"
    },
@@ -48,13 +48,13 @@
    },
    {
     "pr": 120,
-    "age_days": 1,
+    "age_days": 2,
     "stale": false,
     "title": "R&D: BET-R6 W3 — harden memory_watchdog.py against real-world export list formats"
    },
    {
     "pr": 119,
-    "age_days": 1,
+    "age_days": 2,
     "stale": false,
     "title": "frontier-radar 2026-07-23: no roadmap change; backfill YouTube-IP threat sourcing"
    },
@@ -78,13 +78,13 @@
    },
    {
     "pr": 114,
-    "age_days": 2,
+    "age_days": 3,
     "stale": false,
     "title": "R&D: BET-R1 — confirm shipped gap, spec alternatives candidate, defensibility rescore"
    },
    {
     "pr": 113,
-    "age_days": 2,
+    "age_days": 3,
     "stale": false,
     "title": "frontier-radar 2026-07-22: x402 agent-rail door + apify-mcp security-tax (verified 2, cand"
    },
@@ -108,13 +108,13 @@
    },
    {
     "pr": 108,
-    "age_days": 3,
+    "age_days": 4,
     "stale": false,
     "title": "R&D: BET-R6 D-005 — Dreaming V3 reversal risk tested, does not fire"
    },
    {
     "pr": 107,
-    "age_days": 3,
+    "age_days": 4,
     "stale": false,
     "title": "frontier-radar 2026-07-21: no-change day (0 new candidates)"
    },
@@ -144,13 +144,13 @@
    },
    {
     "pr": 100,
-    "age_days": 4,
+    "age_days": 5,
     "stale": false,
     "title": "R&D: BET-R6 — H5/H6 sweep-2 continuation, both strengthened"
    },
    {
     "pr": 99,
-    "age_days": 4,
+    "age_days": 5,
     "stale": false,
     "title": "frontier-radar 2026-07-20: no-change day; YouTube PO-token threat primary-backfilled"
    },
