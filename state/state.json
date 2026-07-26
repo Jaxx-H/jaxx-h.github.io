@@ -1,7 +1,7 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-25 14:56 CT",
- "generated_utc": "2026-07-25T19:56:15Z",
+ "generated": "2026-07-25 23:18 CT",
+ "generated_utc": "2026-07-26T04:18:09Z",
  "queue": {
   "tap": [
    {
@@ -30,7 +30,7 @@
    },
    {
     "pr": 124,
-    "age_days": 1,
+    "age_days": 2,
     "stale": false,
     "title": "MOAT/PRODUCT: Chegg-test Black-Sea grain signal + fix false extension-launch premise"
    },
@@ -60,7 +60,7 @@
    },
    {
     "pr": 118,
-    "age_days": 2,
+    "age_days": 3,
     "stale": false,
     "title": "distribution: write missing narrative for climate-fieldview-app-reviews page"
    },
@@ -90,7 +90,7 @@
    },
    {
     "pr": 112,
-    "age_days": 3,
+    "age_days": 4,
     "stale": false,
     "title": "DEMAND RESEARCH: OPP-005 multilingual (DE/JP) recheck + English competitive staleness flag"
    },
@@ -120,7 +120,7 @@
    },
    {
     "pr": 104,
-    "age_days": 4,
+    "age_days": 5,
     "stale": false,
     "title": "content: write 3 owned-site narratives (agtech creators, AI-engineer jobs, FBN reviews)"
    },
@@ -156,13 +156,13 @@
    },
    {
     "pr": 97,
-    "age_days": 5,
+    "age_days": 6,
     "stale": false,
     "title": "observability: append verification-pass run telemetry (post-#93)"
    },
    {
     "pr": 96,
-    "age_days": 5,
+    "age_days": 6,
     "stale": false,
     "title": "distribution: queue X draft for fbn-vs-agriwebb-farmer-reviews"
    },
