@@ -1,9 +1,15 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-27 07:00 CT",
- "generated_utc": "2026-07-27T12:00:44Z",
+ "generated": "2026-07-27 10:31 CT",
+ "generated_utc": "2026-07-27T15:31:04Z",
  "queue": {
   "tap": [
+   {
+    "pr": 132,
+    "age_days": 0,
+    "stale": false,
+    "title": "SYSTEM SYNTHESIS: x-build-in-public spend-gate audit — bandit still top-ranks a $-gated ar"
+   },
    {
     "pr": 131,
     "age_days": 0,
@@ -30,7 +36,7 @@
    },
    {
     "pr": 127,
-    "age_days": 2,
+    "age_days": 3,
     "stale": false,
     "title": "distribution: draft dev.to article for companies-hiring-ai-engineers"
    },
@@ -60,7 +66,7 @@
    },
    {
     "pr": 122,
-    "age_days": 3,
+    "age_days": 4,
     "stale": false,
     "title": "owned-geo-site: narratives for 29 of 32 needs_narrative pages"
    },
@@ -84,7 +90,7 @@
    },
    {
     "pr": 116,
-    "age_days": 4,
+    "age_days": 5,
     "stale": false,
     "title": "distribution: queue X draft for top-dairy-farming-youtube-channels"
    },
@@ -120,7 +126,7 @@
    },
    {
     "pr": 109,
-    "age_days": 5,
+    "age_days": 6,
     "stale": false,
     "title": "research: multilingual-demand — Black Sea (Russian-sourced) grain signal vs. extension-lau"
    },
@@ -150,7 +156,7 @@
    },
    {
     "pr": 102,
-    "age_days": 6,
+    "age_days": 7,
     "stale": false,
     "title": "research: OPP-005 gmail-attachment-downloader demand/differentiation recheck"
    },
@@ -177,12 +183,6 @@
     "age_days": 7,
     "stale": false,
     "title": "observability: append verification-pass run telemetry (post-#93)"
-   },
-   {
-    "pr": 96,
-    "age_days": 7,
-    "stale": false,
-    "title": "distribution: queue X draft for fbn-vs-agriwebb-farmer-reviews"
    }
   ],
   "paste_pending": 3,
