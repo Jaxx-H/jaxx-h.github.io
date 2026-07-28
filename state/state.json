@@ -1,7 +1,7 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-28 12:21 CT",
- "generated_utc": "2026-07-28T17:21:24Z",
+ "generated": "2026-07-28 12:22 CT",
+ "generated_utc": "2026-07-28T17:22:58Z",
  "queue": {
   "tap": [
    {
@@ -35,18 +35,6 @@
     "title": "SYSTEM SYNTHESIS: queue-triage no-op — 33 open PRs unreviewed, no new content shipped"
    },
    {
-    "pr": 133,
-    "age_days": 1,
-    "stale": false,
-    "title": "DEMAND RESEARCH: W3 Memory Watchdog multilingual (JP/ZH) competitive + demand recheck"
-   },
-   {
-    "pr": 132,
-    "age_days": 1,
-    "stale": false,
-    "title": "SYSTEM SYNTHESIS: x-build-in-public spend-gate audit — bandit still top-ranks a $-gated ar"
-   },
-   {
     "pr": 131,
     "age_days": 1,
     "stale": false,
@@ -77,24 +65,6 @@
     "title": "frontier-radar 2026-07-24: NO-CHANGE sweep (0 candidates)"
    },
    {
-    "pr": 124,
-    "age_days": 4,
-    "stale": false,
-    "title": "MOAT/PRODUCT: Chegg-test Black-Sea grain signal + fix false extension-launch premise"
-   },
-   {
-    "pr": 123,
-    "age_days": 5,
-    "stale": false,
-    "title": "SYSTEM SYNTHESIS: confirm D-019 gap closure + flag #122/#104/#118 merge conflict"
-   },
-   {
-    "pr": 122,
-    "age_days": 5,
-    "stale": false,
-    "title": "owned-geo-site: narratives for 29 of 32 needs_narrative pages"
-   },
-   {
     "pr": 120,
     "age_days": 5,
     "stale": false,
@@ -105,12 +75,6 @@
     "age_days": 6,
     "stale": false,
     "title": "distribution: queue X draft for top-dairy-farming-youtube-channels"
-   },
-   {
-    "pr": 115,
-    "age_days": 6,
-    "stale": false,
-    "title": "verify: daily pass on 2026-07-19-system-synthesis.md"
    },
    {
     "pr": 112,
@@ -129,12 +93,6 @@
     "age_days": 7,
     "stale": false,
     "title": "R&D: BET-R6 D-005 — Dreaming V3 reversal risk tested, does not fire"
-   },
-   {
-    "pr": 104,
-    "age_days": 7,
-    "stale": false,
-    "title": "content: write 3 owned-site narratives (agtech creators, AI-engineer jobs, FBN reviews)"
    },
    {
     "pr": 96,
@@ -186,7 +144,7 @@
   }
  ],
  "counts": {
-  "open_prs": 23,
+  "open_prs": 16,
   "revenue_events_n": 2,
   "external_reward_rows_n": 11,
   "ledger_rows_n": 28,
