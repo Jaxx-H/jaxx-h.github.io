@@ -1,7 +1,7 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-27 22:51 CT",
- "generated_utc": "2026-07-28T03:51:34Z",
+ "generated": "2026-07-27 23:38 CT",
+ "generated_utc": "2026-07-28T04:38:27Z",
  "queue": {
   "tap": [
    {
@@ -149,12 +149,6 @@
     "title": "R&D: BET-R6 D-005 — Dreaming V3 reversal risk tested, does not fire"
    },
    {
-    "pr": 107,
-    "age_days": 6,
-    "stale": false,
-    "title": "frontier-radar 2026-07-21: no-change day (0 new candidates)"
-   },
-   {
     "pr": 104,
     "age_days": 7,
     "stale": false,
@@ -167,22 +161,22 @@
     "title": "Distribution: execute framing A/B test on regenerative-ag creators page"
    },
    {
-    "pr": 102,
-    "age_days": 7,
-    "stale": false,
-    "title": "research: OPP-005 gmail-attachment-downloader demand/differentiation recheck"
+    "pr": 97,
+    "age_days": 8,
+    "stale": true,
+    "title": "observability: append verification-pass run telemetry (post-#93)"
    },
    {
-    "pr": 101,
-    "age_days": 7,
-    "stale": false,
-    "title": "verify: daily pass on cpg-playbook-transfer + bet-r2 alt-data recheck"
+    "pr": 96,
+    "age_days": 8,
+    "stale": true,
+    "title": "distribution: queue X draft for fbn-vs-agriwebb-farmer-reviews"
    },
    {
-    "pr": 100,
-    "age_days": 7,
-    "stale": false,
-    "title": "R&D: BET-R6 — H5/H6 sweep-2 continuation, both strengthened"
+    "pr": 94,
+    "age_days": 8,
+    "stale": true,
+    "title": "distribution: queue dev.to syndication draft for export-yield-data-precision-ag"
    }
   ],
   "paste_pending": 3,
@@ -228,14 +222,14 @@
   }
  ],
  "counts": {
-  "open_prs": 30,
+  "open_prs": 29,
   "revenue_events_n": 2,
   "external_reward_rows_n": 10,
   "ledger_rows_n": 27,
   "radar_funnel": {
-   "observed": 9,
+   "observed": 13,
    "verified": 2,
-   "candidates": 1
+   "candidates": 0
   }
  },
  "health": {
