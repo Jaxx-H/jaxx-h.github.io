@@ -1,7 +1,7 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
  "generated": "2026-07-27 23:44 CT",
- "generated_utc": "2026-07-28T04:44:09Z",
+ "generated_utc": "2026-07-28T04:44:32Z",
  "queue": {
   "tap": [
    {
@@ -87,12 +87,6 @@
     "age_days": 4,
     "stale": false,
     "title": "R&D: BET-R6 W3 — harden memory_watchdog.py against real-world export list formats"
-   },
-   {
-    "pr": 119,
-    "age_days": 4,
-    "stale": false,
-    "title": "frontier-radar 2026-07-23: no roadmap change; backfill YouTube-IP threat sourcing"
    },
    {
     "pr": 116,
@@ -198,14 +192,14 @@
   }
  ],
  "counts": {
-  "open_prs": 25,
+  "open_prs": 24,
   "revenue_events_n": 2,
   "external_reward_rows_n": 10,
   "ledger_rows_n": 27,
   "radar_funnel": {
-   "observed": 10,
+   "observed": 11,
    "verified": 2,
-   "candidates": 2
+   "candidates": 1
   }
  },
  "health": {
