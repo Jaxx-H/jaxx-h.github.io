@@ -1,9 +1,21 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-28 04:23 CT",
- "generated_utc": "2026-07-28T09:23:00Z",
+ "generated": "2026-07-28 07:00 CT",
+ "generated_utc": "2026-07-28T12:00:57Z",
  "queue": {
   "tap": [
+   {
+    "pr": 139,
+    "age_days": 0,
+    "stale": false,
+    "title": "fix: repair observability hash chain corrupted by union merge (INC-006)"
+   },
+   {
+    "pr": 138,
+    "age_days": 0,
+    "stale": false,
+    "title": "verify: daily pass on opp005-gmail-attachment-downloader-recheck + devto-syndication-pipel"
+   },
    {
     "pr": 137,
     "age_days": 0,
@@ -108,7 +120,7 @@
    },
    {
     "pr": 115,
-    "age_days": 5,
+    "age_days": 6,
     "stale": false,
     "title": "verify: daily pass on 2026-07-19-system-synthesis.md"
    },
@@ -198,10 +210,10 @@
   }
  ],
  "counts": {
-  "open_prs": 25,
+  "open_prs": 27,
   "revenue_events_n": 2,
-  "external_reward_rows_n": 10,
-  "ledger_rows_n": 27,
+  "external_reward_rows_n": 11,
+  "ledger_rows_n": 28,
   "radar_funnel": {
    "observed": 11,
    "verified": 2,
@@ -209,7 +221,7 @@
   }
  },
  "health": {
-  "collector_last_landed": "2026-07-27",
+  "collector_last_landed": "2026-07-28",
   "automerge": "unknown",
   "fasttrack": "unknown",
   "secrets_configured": "0/7"
