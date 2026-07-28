@@ -138,6 +138,8 @@
    "channel": "r/farming + NewAgTalk 'exporting FieldView data' threads",
    "query": "how to export climate fieldview data / get yield data out of fieldview",
    "note": "Answers the recurring 'how do I get my yield data out before I cancel' question with the verbatim FieldView lock-in warnings and a pre-cancellation export approach, plus how the John Deere Operations Center alternative actually scores."
-  }
- }
+  },
+  "narrative_merged": true
+ },
+ "analysis": "The 58% one-star share across 74 reviews is not evenly distributed by platform - Google Play users report the rougher experience at 2.0 of 5 against the App Store's 2.44 - and the data-lock complaint quoted here shows up specifically tied to subscription cancellation, not general app dissatisfaction. That distinction matters for the export decision: this is not a case where the app is simply buggy (John Deere Operations Center's 95-review sample shows a similarly low 2.77 average without the same lock-in pattern), it is a case where a specific action - letting FieldView Plus lapse - triggers the reported loss of access. The practical takeaway from this 2026-07-12 baseline capture is to treat data export as a pre-cancellation checklist item rather than something to sort out after downgrading, since the reviews describe the access loss as tied to the subscription lapse itself, not a support delay."
 }

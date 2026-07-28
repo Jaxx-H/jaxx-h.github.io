@@ -127,6 +127,8 @@
    "channel": "r/farming + FBN/AgriWebb comparison threads",
    "query": "fbn vs agriwebb / farmers business network vs agriwebb reviews",
    "note": "Answers the exact 'which rates higher and can I get my data out' question these threads ask: AgriWebb leads 4.15 to 2.96 on mean rating, and the only data-portability complaint in either dataset is one AgriWebb reviewer's NLIS-download friction - FBN's window has zero export complaints, so don't assume FBN is the more open system."
-  }
- }
+  },
+  "narrative_merged": true
+ },
+ "analysis": "The 69% versus 39% five-star gap between AgriWebb and FBN is large enough to matter for a farmer choosing between them, but the more useful signal for anyone worried about switching costs is the complaint pattern underneath it: AgriWebb's dataset carries a specific complaint about pulling livestock records from the NLIS database, while FBN's 1-star reviews cluster around app slowness and login trouble rather than data access. That is the opposite of what the higher-rated app's edge might suggest - a farmer picking AgriWebb for its 4.15-of-5 average should still ask about NLIS export before assuming data portability is solved, and a farmer frustrated with FBN's 2.96 average is dealing with a reliability problem, not necessarily a lock-in one. With just 26 and 28 reviews respectively, both samples are small enough that individual complaints carry real weight in the aggregate percentages (69% and 39%)."
 }

@@ -150,6 +150,8 @@
    "channel": "AgTalk + TheCombineForum yield-data-export threads",
    "query": "how to export yield data from precision ag apps / yield data portability",
    "note": "Answers the recurring 'how do I get my yield data out' thread by comparing all five apps' review sentiment side by side and surfacing FieldView's reported subscription data-lock (reviewId 3192979319), with a verified cross-platform export guide behind the email capture."
-  }
- }
+  },
+  "narrative_merged": true
+ },
+ "analysis": "Ranking these five precision-ag apps by rating puts a clear line between the two ends: AgriWebb (4.15 of 5, 26 reviews) and xarvio FIELD MANAGER (3.88, 25 reviews) sit well above FBN (2.96, 28 reviews), John Deere Operations Center (2.77, 95 reviews) and Climate FieldView (2.20, 74 reviews) - and the lowest-rated app is also the one with a reviewer-documented data-lock complaint, not a coincidence worth ignoring. John Deere Operations Center's 95 reviews make it the largest sample here by a wide margin, so its 2.77 average carries more statistical weight than the smaller 25-28 review samples for AgriWebb, xarvio, and FBN. For a farmer choosing a platform, the practical read is that rating and data-portability risk move together in this dataset: the two highest-rated apps carry no reported export complaints, while the lowest-rated one does. Every number here comes from a single 2026-07-12 store scrape."
 }
