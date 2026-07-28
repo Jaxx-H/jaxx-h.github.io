@@ -1,9 +1,21 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-28 07:07 CT",
- "generated_utc": "2026-07-28T12:07:49Z",
+ "generated": "2026-07-28 10:05 CT",
+ "generated_utc": "2026-07-28T15:05:07Z",
  "queue": {
   "tap": [
+   {
+    "pr": 141,
+    "age_days": 0,
+    "stale": false,
+    "title": "fix(ci): refresh-{jobs,reviews,creators} — autostash the post-gate rebase (0/7 success rat"
+   },
+   {
+    "pr": 140,
+    "age_days": 0,
+    "stale": false,
+    "title": "observability: append verification-pass run telemetry (post-#135)"
+   },
    {
     "pr": 139,
     "age_days": 0,
@@ -36,7 +48,7 @@
    },
    {
     "pr": 132,
-    "age_days": 0,
+    "age_days": 1,
     "stale": false,
     "title": "SYSTEM SYNTHESIS: x-build-in-public spend-gate audit — bandit still top-ranks a $-gated ar"
    },
@@ -90,7 +102,7 @@
    },
    {
     "pr": 122,
-    "age_days": 4,
+    "age_days": 5,
     "stale": false,
     "title": "owned-geo-site: narratives for 29 of 32 needs_narrative pages"
    },
@@ -102,7 +114,7 @@
    },
    {
     "pr": 116,
-    "age_days": 5,
+    "age_days": 6,
     "stale": false,
     "title": "distribution: queue X draft for top-dairy-farming-youtube-channels"
    },
@@ -126,7 +138,7 @@
    },
    {
     "pr": 109,
-    "age_days": 6,
+    "age_days": 7,
     "stale": false,
     "title": "research: multilingual-demand — Black Sea (Russian-sourced) grain signal vs. extension-lau"
    },
@@ -198,7 +210,7 @@
   }
  ],
  "counts": {
-  "open_prs": 25,
+  "open_prs": 27,
   "revenue_events_n": 2,
   "external_reward_rows_n": 11,
   "ledger_rows_n": 28,
