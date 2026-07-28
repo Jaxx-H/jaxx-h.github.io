@@ -1,7 +1,7 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-28 07:00 CT",
- "generated_utc": "2026-07-28T12:00:57Z",
+ "generated": "2026-07-28 07:07 CT",
+ "generated_utc": "2026-07-28T12:07:49Z",
  "queue": {
   "tap": [
    {
@@ -21,18 +21,6 @@
     "age_days": 0,
     "stale": false,
     "title": "R&D: BET-R6 — H7 track-7 failure-case recovery, distribution-embedding isolated"
-   },
-   {
-    "pr": 136,
-    "age_days": 0,
-    "stale": false,
-    "title": "frontier-radar 2026-07-28: MCP stateless spec (VERIFIED execution refinement, no roadmap c"
-   },
-   {
-    "pr": 135,
-    "age_days": 0,
-    "stale": false,
-    "title": "observability: repair broken hash-chain on main + trailing telemetry"
    },
    {
     "pr": 134,
@@ -210,13 +198,13 @@
   }
  ],
  "counts": {
-  "open_prs": 27,
+  "open_prs": 25,
   "revenue_events_n": 2,
   "external_reward_rows_n": 11,
   "ledger_rows_n": 28,
   "radar_funnel": {
-   "observed": 11,
-   "verified": 2,
+   "observed": 12,
+   "verified": 1,
    "candidates": 1
   }
  },
