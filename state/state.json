@@ -1,9 +1,21 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-27 23:47 CT",
- "generated_utc": "2026-07-28T04:47:25Z",
+ "generated": "2026-07-28 04:23 CT",
+ "generated_utc": "2026-07-28T09:23:00Z",
  "queue": {
   "tap": [
+   {
+    "pr": 137,
+    "age_days": 0,
+    "stale": false,
+    "title": "R&D: BET-R6 — H7 track-7 failure-case recovery, distribution-embedding isolated"
+   },
+   {
+    "pr": 136,
+    "age_days": 0,
+    "stale": false,
+    "title": "frontier-radar 2026-07-28: MCP stateless spec (VERIFIED execution refinement, no roadmap c"
+   },
    {
     "pr": 135,
     "age_days": 0,
@@ -30,13 +42,13 @@
    },
    {
     "pr": 131,
-    "age_days": 0,
+    "age_days": 1,
     "stale": false,
     "title": "R&D: BET-R1 — refresh-pipeline reliability check + CI failure diagnosis"
    },
    {
     "pr": 130,
-    "age_days": 0,
+    "age_days": 1,
     "stale": false,
     "title": "frontier-radar 2026-07-27: no-change run (0 new candidates, CHURN LAW held)"
    },
@@ -54,13 +66,13 @@
    },
    {
     "pr": 126,
-    "age_days": 3,
+    "age_days": 4,
     "stale": false,
     "title": "R&D: BET-R1 — competitor content-parity check"
    },
    {
     "pr": 125,
-    "age_days": 3,
+    "age_days": 4,
     "stale": false,
     "title": "frontier-radar 2026-07-24: NO-CHANGE sweep (0 candidates)"
    },
@@ -84,7 +96,7 @@
    },
    {
     "pr": 120,
-    "age_days": 4,
+    "age_days": 5,
     "stale": false,
     "title": "R&D: BET-R6 W3 — harden memory_watchdog.py against real-world export list formats"
    },
@@ -102,7 +114,7 @@
    },
    {
     "pr": 114,
-    "age_days": 5,
+    "age_days": 6,
     "stale": false,
     "title": "R&D: BET-R1 — confirm shipped gap, spec alternatives candidate, defensibility rescore"
    },
@@ -120,7 +132,7 @@
    },
    {
     "pr": 108,
-    "age_days": 6,
+    "age_days": 7,
     "stale": false,
     "title": "R&D: BET-R6 D-005 — Dreaming V3 reversal risk tested, does not fire"
    },
@@ -186,7 +198,7 @@
   }
  ],
  "counts": {
-  "open_prs": 23,
+  "open_prs": 25,
   "revenue_events_n": 2,
   "external_reward_rows_n": 10,
   "ledger_rows_n": 27,
