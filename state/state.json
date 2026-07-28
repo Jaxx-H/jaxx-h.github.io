@@ -1,9 +1,15 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-27 15:09 CT",
- "generated_utc": "2026-07-27T20:09:19Z",
+ "generated": "2026-07-27 22:51 CT",
+ "generated_utc": "2026-07-28T03:51:34Z",
  "queue": {
   "tap": [
+   {
+    "pr": 134,
+    "age_days": 0,
+    "stale": false,
+    "title": "SYSTEM SYNTHESIS: queue-triage no-op — 33 open PRs unreviewed, no new content shipped"
+   },
    {
     "pr": 133,
     "age_days": 0,
@@ -30,7 +36,7 @@
    },
    {
     "pr": 129,
-    "age_days": 0,
+    "age_days": 1,
     "stale": false,
     "title": "SYSTEM SYNTHESIS: PR queue attention-deficit audit (28 open, 4-day merge gap)"
    },
@@ -60,7 +66,7 @@
    },
    {
     "pr": 124,
-    "age_days": 3,
+    "age_days": 4,
     "stale": false,
     "title": "MOAT/PRODUCT: Chegg-test Black-Sea grain signal + fix false extension-launch premise"
    },
@@ -90,7 +96,7 @@
    },
    {
     "pr": 118,
-    "age_days": 4,
+    "age_days": 5,
     "stale": false,
     "title": "distribution: write missing narrative for climate-fieldview-app-reviews page"
    },
@@ -120,7 +126,7 @@
    },
    {
     "pr": 112,
-    "age_days": 5,
+    "age_days": 6,
     "stale": false,
     "title": "DEMAND RESEARCH: OPP-005 multilingual (DE/JP) recheck + English competitive staleness flag"
    },
@@ -150,7 +156,7 @@
    },
    {
     "pr": 104,
-    "age_days": 6,
+    "age_days": 7,
     "stale": false,
     "title": "content: write 3 owned-site narratives (agtech creators, AI-engineer jobs, FBN reviews)"
    },
@@ -177,12 +183,6 @@
     "age_days": 7,
     "stale": false,
     "title": "R&D: BET-R6 — H5/H6 sweep-2 continuation, both strengthened"
-   },
-   {
-    "pr": 99,
-    "age_days": 7,
-    "stale": false,
-    "title": "frontier-radar 2026-07-20: no-change day; YouTube PO-token threat primary-backfilled"
    }
   ],
   "paste_pending": 3,
