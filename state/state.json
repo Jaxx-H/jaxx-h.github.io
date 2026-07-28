@@ -1,7 +1,7 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-27 23:38 CT",
- "generated_utc": "2026-07-28T04:38:27Z",
+ "generated": "2026-07-27 23:39 CT",
+ "generated_utc": "2026-07-28T04:39:19Z",
  "queue": {
   "tap": [
    {
@@ -95,12 +95,6 @@
     "title": "frontier-radar 2026-07-23: no roadmap change; backfill YouTube-IP threat sourcing"
    },
    {
-    "pr": 118,
-    "age_days": 5,
-    "stale": false,
-    "title": "distribution: write missing narrative for climate-fieldview-app-reviews page"
-   },
-   {
     "pr": 116,
     "age_days": 5,
     "stale": false,
@@ -129,12 +123,6 @@
     "age_days": 6,
     "stale": false,
     "title": "DEMAND RESEARCH: OPP-005 multilingual (DE/JP) recheck + English competitive staleness flag"
-   },
-   {
-    "pr": 111,
-    "age_days": 6,
-    "stale": false,
-    "title": "research: devto-syndication pipeline audit — CANONICAL_NOT_LIVE root cause"
    },
    {
     "pr": 109,
@@ -222,7 +210,7 @@
   }
  ],
  "counts": {
-  "open_prs": 29,
+  "open_prs": 27,
   "revenue_events_n": 2,
   "external_reward_rows_n": 10,
   "ledger_rows_n": 27,
