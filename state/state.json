@@ -1,104 +1,188 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-07-28 12:22 CT",
- "generated_utc": "2026-07-28T17:22:58Z",
+ "generated": "2026-07-31 23:04 CT",
+ "generated_utc": "2026-08-01T04:04:41Z",
  "queue": {
   "tap": [
    {
-    "pr": 141,
+    "pr": 158,
     "age_days": 0,
+    "stale": false,
+    "title": "DEMAND RESEARCH: OPP-008 (Sheets tab folders) competitive recheck — free incumbent already"
+   },
+   {
+    "pr": 157,
+    "age_days": 0,
+    "stale": false,
+    "title": "MOAT/PRODUCT: close IKAR English-feed-lag question + SovEcon dual-pricing finding (Black-S"
+   },
+   {
+    "pr": 156,
+    "age_days": 0,
+    "stale": false,
+    "title": "distribution: queue dev.to syndication draft for fbn-vs-agriwebb-farmer-reviews (devto-syn"
+   },
+   {
+    "pr": 154,
+    "age_days": 0,
+    "stale": false,
+    "title": "frontier-radar 2026-07-31: x402 Foundation launch — dampening refinement, no roadmap chang"
+   },
+   {
+    "pr": 153,
+    "age_days": 1,
+    "stale": false,
+    "title": "research: Black-Sea grain-signal digest — scrapability + buyer follow-up (multilingual-dem"
+   },
+   {
+    "pr": 152,
+    "age_days": 1,
+    "stale": false,
+    "title": "SYSTEM SYNTHESIS: PR queue re-accumulation recheck (25 open, 0 merges since 07-28 batch)"
+   },
+   {
+    "pr": 151,
+    "age_days": 1,
+    "stale": false,
+    "title": "R&D: BET-R6 — Track 7 sweep-2 recovery, H7 falsification test, B-007 update"
+   },
+   {
+    "pr": 150,
+    "age_days": 1,
+    "stale": false,
+    "title": "frontier-radar: 2026-07-30 — x402 Foundation (LF) launch strengthens standing x402 door"
+   },
+   {
+    "pr": 149,
+    "age_days": 2,
+    "stale": false,
+    "title": "MOAT/PRODUCT: vendor+prove the isoxml TimeLog decode path (762KB→114KB, correctness-verifi"
+   },
+   {
+    "pr": 148,
+    "age_days": 2,
+    "stale": false,
+    "title": "DEMAND RESEARCH: H2 sweep-2 — willingness-to-pay/churn evidence for W3 Memory Watchdog"
+   },
+   {
+    "pr": 147,
+    "age_days": 2,
+    "stale": false,
+    "title": "SYSTEM SYNTHESIS: PR-queue backlog still above threshold — recheck, no new content this ru"
+   },
+   {
+    "pr": 146,
+    "age_days": 2,
+    "stale": false,
+    "title": "verify: daily pass — X API pricing, Sizov Report price, W3 multilingual competitive claims"
+   },
+   {
+    "pr": 145,
+    "age_days": 2,
+    "stale": false,
+    "title": "frontier-radar 2026-07-29: CHURN LAW held, 0 candidates"
+   },
+   {
+    "pr": 144,
+    "age_days": 3,
+    "stale": false,
+    "title": "DEMAND RESEARCH: does Dreaming V3 fix or worsen W3's silent-loss pain?"
+   },
+   {
+    "pr": 143,
+    "age_days": 3,
+    "stale": false,
+    "title": "observability: append verification-pass run telemetry (post-#140)"
+   },
+   {
+    "pr": 141,
+    "age_days": 3,
     "stale": false,
     "title": "fix(ci): refresh-{jobs,reviews,creators} — autostash the post-gate rebase (0/7 success rat"
    },
    {
     "pr": 139,
-    "age_days": 0,
+    "age_days": 3,
     "stale": false,
     "title": "fix: repair observability hash chain corrupted by union merge (INC-006)"
    },
    {
     "pr": 138,
-    "age_days": 0,
+    "age_days": 3,
     "stale": false,
     "title": "verify: daily pass on opp005-gmail-attachment-downloader-recheck + devto-syndication-pipel"
    },
    {
     "pr": 137,
-    "age_days": 0,
+    "age_days": 3,
     "stale": false,
     "title": "R&D: BET-R6 — H7 track-7 failure-case recovery, distribution-embedding isolated"
    },
    {
     "pr": 134,
-    "age_days": 0,
+    "age_days": 4,
     "stale": false,
     "title": "SYSTEM SYNTHESIS: queue-triage no-op — 33 open PRs unreviewed, no new content shipped"
    },
    {
     "pr": 131,
-    "age_days": 1,
+    "age_days": 4,
     "stale": false,
     "title": "R&D: BET-R1 — refresh-pipeline reliability check + CI failure diagnosis"
    },
    {
     "pr": 129,
-    "age_days": 1,
+    "age_days": 5,
     "stale": false,
     "title": "SYSTEM SYNTHESIS: PR queue attention-deficit audit (28 open, 4-day merge gap)"
    },
    {
     "pr": 128,
-    "age_days": 4,
+    "age_days": 7,
     "stale": false,
     "title": "DEMAND RESEARCH: Black Sea grain buyer + scrapability recheck (answers PR #124 DEFER)"
    },
    {
     "pr": 126,
-    "age_days": 4,
+    "age_days": 7,
     "stale": false,
     "title": "R&D: BET-R1 — competitor content-parity check"
    },
    {
     "pr": 125,
-    "age_days": 4,
+    "age_days": 7,
     "stale": false,
     "title": "frontier-radar 2026-07-24: NO-CHANGE sweep (0 candidates)"
    },
    {
     "pr": 120,
-    "age_days": 5,
-    "stale": false,
+    "age_days": 8,
+    "stale": true,
     "title": "R&D: BET-R6 W3 — harden memory_watchdog.py against real-world export list formats"
    },
    {
     "pr": 116,
-    "age_days": 6,
-    "stale": false,
+    "age_days": 9,
+    "stale": true,
     "title": "distribution: queue X draft for top-dairy-farming-youtube-channels"
    },
    {
     "pr": 112,
-    "age_days": 6,
-    "stale": false,
+    "age_days": 10,
+    "stale": true,
     "title": "DEMAND RESEARCH: OPP-005 multilingual (DE/JP) recheck + English competitive staleness flag"
    },
    {
     "pr": 109,
-    "age_days": 7,
-    "stale": false,
+    "age_days": 10,
+    "stale": true,
     "title": "research: multilingual-demand — Black Sea (Russian-sourced) grain signal vs. extension-lau"
    },
    {
     "pr": 108,
-    "age_days": 7,
-    "stale": false,
-    "title": "R&D: BET-R6 D-005 — Dreaming V3 reversal risk tested, does not fire"
-   },
-   {
-    "pr": 96,
-    "age_days": 8,
+    "age_days": 10,
     "stale": true,
-    "title": "distribution: queue X draft for fbn-vs-agriwebb-farmer-reviews"
+    "title": "R&D: BET-R6 D-005 — Dreaming V3 reversal risk tested, does not fire"
    }
   ],
   "paste_pending": 3,
@@ -144,10 +228,10 @@
   }
  ],
  "counts": {
-  "open_prs": 16,
+  "open_prs": 30,
   "revenue_events_n": 2,
-  "external_reward_rows_n": 11,
-  "ledger_rows_n": 28,
+  "external_reward_rows_n": 14,
+  "ledger_rows_n": 31,
   "radar_funnel": {
    "observed": 12,
    "verified": 1,
@@ -155,7 +239,7 @@
   }
  },
  "health": {
-  "collector_last_landed": "2026-07-28",
+  "collector_last_landed": "2026-07-31",
   "automerge": "unknown",
   "fasttrack": "unknown",
   "secrets_configured": "0/7"
