@@ -1,7 +1,7 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-08-01 14:53 CT",
- "generated_utc": "2026-08-01T19:53:53Z",
+ "generated": "2026-08-01 16:19 CT",
+ "generated_utc": "2026-08-01T21:19:22Z",
  "queue": {
   "tap": [
    {
@@ -230,8 +230,8 @@
  "counts": {
   "open_prs": 30,
   "revenue_events_n": 2,
-  "external_reward_rows_n": 14,
-  "ledger_rows_n": 31,
+  "external_reward_rows_n": 15,
+  "ledger_rows_n": 32,
   "radar_funnel": {
    "observed": 12,
    "verified": 1,
@@ -239,7 +239,7 @@
   }
  },
  "health": {
-  "collector_last_landed": "2026-07-31",
+  "collector_last_landed": "2026-08-01",
   "automerge": "unknown",
   "fasttrack": "unknown",
   "secrets_configured": "0/7"
