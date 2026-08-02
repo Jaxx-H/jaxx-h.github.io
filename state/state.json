@@ -1,7 +1,7 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-08-02 03:58 CT",
- "generated_utc": "2026-08-02T08:58:48Z",
+ "generated": "2026-08-02 07:00 CT",
+ "generated_utc": "2026-08-02T12:00:49Z",
  "queue": {
   "tap": [
    {
@@ -114,7 +114,7 @@
    },
    {
     "pr": 146,
-    "age_days": 3,
+    "age_days": 4,
     "stale": false,
     "title": "verify: daily pass — X API pricing, Sizov Report price, W3 multilingual competitive claims"
    },
@@ -144,13 +144,13 @@
    },
    {
     "pr": 139,
-    "age_days": 4,
+    "age_days": 5,
     "stale": false,
     "title": "fix: repair observability hash chain corrupted by union merge (INC-006)"
    },
    {
     "pr": 138,
-    "age_days": 4,
+    "age_days": 5,
     "stale": false,
     "title": "verify: daily pass on opp005-gmail-attachment-downloader-recheck + devto-syndication-pipel"
    },
@@ -230,8 +230,8 @@
  "counts": {
   "open_prs": 30,
   "revenue_events_n": 2,
-  "external_reward_rows_n": 15,
-  "ledger_rows_n": 32,
+  "external_reward_rows_n": 16,
+  "ledger_rows_n": 39,
   "radar_funnel": {
    "observed": 12,
    "verified": 1,
@@ -239,7 +239,7 @@
   }
  },
  "health": {
-  "collector_last_landed": "2026-08-01",
+  "collector_last_landed": "2026-08-02",
   "automerge": "unknown",
   "fasttrack": "unknown",
   "secrets_configured": "0/7"
