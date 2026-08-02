@@ -1,9 +1,15 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-08-01 16:19 CT",
- "generated_utc": "2026-08-01T21:19:22Z",
+ "generated": "2026-08-01 23:16 CT",
+ "generated_utc": "2026-08-02T04:16:06Z",
  "queue": {
   "tap": [
+   {
+    "pr": 163,
+    "age_days": 0,
+    "stale": false,
+    "title": "distribution: queue dev.to syndication draft for companies-hiring-security-engineers (devt"
+   },
    {
     "pr": 162,
     "age_days": 0,
@@ -30,7 +36,7 @@
    },
    {
     "pr": 158,
-    "age_days": 0,
+    "age_days": 1,
     "stale": false,
     "title": "DEMAND RESEARCH: OPP-008 (Sheets tab folders) competitive recheck — free incumbent already"
    },
@@ -78,7 +84,7 @@
    },
    {
     "pr": 149,
-    "age_days": 2,
+    "age_days": 3,
     "stale": false,
     "title": "MOAT/PRODUCT: vendor+prove the isoxml TimeLog decode path (762KB→114KB, correctness-verifi"
    },
@@ -108,7 +114,7 @@
    },
    {
     "pr": 144,
-    "age_days": 3,
+    "age_days": 4,
     "stale": false,
     "title": "DEMAND RESEARCH: does Dreaming V3 fix or worsen W3's silent-loss pain?"
    },
@@ -144,7 +150,7 @@
    },
    {
     "pr": 134,
-    "age_days": 4,
+    "age_days": 5,
     "stale": false,
     "title": "SYSTEM SYNTHESIS: queue-triage no-op — 33 open PRs unreviewed, no new content shipped"
    },
@@ -156,7 +162,7 @@
    },
    {
     "pr": 129,
-    "age_days": 5,
+    "age_days": 6,
     "stale": false,
     "title": "SYSTEM SYNTHESIS: PR queue attention-deficit audit (28 open, 4-day merge gap)"
    },
@@ -177,12 +183,6 @@
     "age_days": 8,
     "stale": true,
     "title": "frontier-radar 2026-07-24: NO-CHANGE sweep (0 candidates)"
-   },
-   {
-    "pr": 120,
-    "age_days": 9,
-    "stale": true,
-    "title": "R&D: BET-R6 W3 — harden memory_watchdog.py against real-world export list formats"
    }
   ],
   "paste_pending": 3,
