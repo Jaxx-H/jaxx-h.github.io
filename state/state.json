@@ -1,7 +1,7 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-08-02 09:13 CT",
- "generated_utc": "2026-08-02T14:13:58Z",
+ "generated": "2026-08-02 14:52 CT",
+ "generated_utc": "2026-08-02T19:52:56Z",
  "queue": {
   "tap": [
    {
@@ -30,7 +30,7 @@
    },
    {
     "pr": 162,
-    "age_days": 0,
+    "age_days": 1,
     "stale": false,
     "title": "DEMAND RESEARCH: multilingual (JA/KO) competitive recheck on yt-comment-exporter (OPP-001)"
    },
@@ -60,7 +60,7 @@
    },
    {
     "pr": 157,
-    "age_days": 1,
+    "age_days": 2,
     "stale": false,
     "title": "MOAT/PRODUCT: close IKAR English-feed-lag question + SovEcon dual-pricing finding (Black-S"
    },
@@ -78,7 +78,7 @@
    },
    {
     "pr": 153,
-    "age_days": 2,
+    "age_days": 3,
     "stale": false,
     "title": "research: Black-Sea grain-signal digest — scrapability + buyer follow-up (multilingual-dem"
    },
@@ -108,7 +108,7 @@
    },
    {
     "pr": 148,
-    "age_days": 3,
+    "age_days": 4,
     "stale": false,
     "title": "DEMAND RESEARCH: H2 sweep-2 — willingness-to-pay/churn evidence for W3 Memory Watchdog"
    },
@@ -138,7 +138,7 @@
    },
    {
     "pr": 143,
-    "age_days": 4,
+    "age_days": 5,
     "stale": false,
     "title": "observability: append verification-pass run telemetry (post-#140)"
    },
