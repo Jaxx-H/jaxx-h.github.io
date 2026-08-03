@@ -1,9 +1,15 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-08-02 14:52 CT",
- "generated_utc": "2026-08-02T19:52:56Z",
+ "generated": "2026-08-02 23:20 CT",
+ "generated_utc": "2026-08-03T04:20:22Z",
  "queue": {
   "tap": [
+   {
+    "pr": 167,
+    "age_days": 0,
+    "stale": false,
+    "title": "research: W2 Exit-Rights Memory multilingual recheck — platforms shipped portability"
+   },
    {
     "pr": 166,
     "age_days": 0,
@@ -24,7 +30,7 @@
    },
    {
     "pr": 163,
-    "age_days": 0,
+    "age_days": 1,
     "stale": false,
     "title": "distribution: queue dev.to syndication draft for companies-hiring-security-engineers (devt"
    },
@@ -54,7 +60,7 @@
    },
    {
     "pr": 158,
-    "age_days": 1,
+    "age_days": 2,
     "stale": false,
     "title": "DEMAND RESEARCH: OPP-008 (Sheets tab folders) competitive recheck — free incumbent already"
    },
@@ -102,7 +108,7 @@
    },
    {
     "pr": 149,
-    "age_days": 3,
+    "age_days": 4,
     "stale": false,
     "title": "MOAT/PRODUCT: vendor+prove the isoxml TimeLog decode path (762KB→114KB, correctness-verifi"
    },
@@ -132,7 +138,7 @@
    },
    {
     "pr": 144,
-    "age_days": 4,
+    "age_days": 5,
     "stale": false,
     "title": "DEMAND RESEARCH: does Dreaming V3 fix or worsen W3's silent-loss pain?"
    },
@@ -168,7 +174,7 @@
    },
    {
     "pr": 134,
-    "age_days": 5,
+    "age_days": 6,
     "stale": false,
     "title": "SYSTEM SYNTHESIS: queue-triage no-op — 33 open PRs unreviewed, no new content shipped"
    },
@@ -177,12 +183,6 @@
     "age_days": 6,
     "stale": false,
     "title": "R&D: BET-R1 — refresh-pipeline reliability check + CI failure diagnosis"
-   },
-   {
-    "pr": 129,
-    "age_days": 6,
-    "stale": false,
-    "title": "SYSTEM SYNTHESIS: PR queue attention-deficit audit (28 open, 4-day merge gap)"
    }
   ],
   "paste_pending": 3,
