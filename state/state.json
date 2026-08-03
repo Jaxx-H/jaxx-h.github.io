@@ -1,9 +1,15 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-08-03 05:27 CT",
- "generated_utc": "2026-08-03T10:27:04Z",
+ "generated": "2026-08-03 10:31 CT",
+ "generated_utc": "2026-08-03T15:31:29Z",
  "queue": {
   "tap": [
+   {
+    "pr": 170,
+    "age_days": 0,
+    "stale": false,
+    "title": "distribution: hand-compose 2 owned-site narrative pages (owned-geo-site arm)"
+   },
    {
     "pr": 169,
     "age_days": 0,
@@ -24,7 +30,7 @@
    },
    {
     "pr": 166,
-    "age_days": 0,
+    "age_days": 1,
     "stale": false,
     "title": "SYSTEM SYNTHESIS: PR-backlog audit channel is self-defeating — notify directly, propose ci"
    },
@@ -54,7 +60,7 @@
    },
    {
     "pr": 161,
-    "age_days": 1,
+    "age_days": 2,
     "stale": false,
     "title": "SYSTEM SYNTHESIS: PR queue re-accumulation recheck (33 open, 0 merges since 07-28 batch)"
    },
@@ -84,7 +90,7 @@
    },
    {
     "pr": 156,
-    "age_days": 2,
+    "age_days": 3,
     "stale": false,
     "title": "distribution: queue dev.to syndication draft for fbn-vs-agriwebb-farmer-reviews (devto-syn"
    },
@@ -102,7 +108,7 @@
    },
    {
     "pr": 152,
-    "age_days": 3,
+    "age_days": 4,
     "stale": false,
     "title": "SYSTEM SYNTHESIS: PR queue re-accumulation recheck (25 open, 0 merges since 07-28 batch)"
    },
@@ -132,7 +138,7 @@
    },
    {
     "pr": 147,
-    "age_days": 4,
+    "age_days": 5,
     "stale": false,
     "title": "SYSTEM SYNTHESIS: PR-queue backlog still above threshold — recheck, no new content this ru"
    },
@@ -162,13 +168,13 @@
    },
    {
     "pr": 141,
-    "age_days": 5,
+    "age_days": 6,
     "stale": false,
     "title": "fix(ci): refresh-{jobs,reviews,creators} — autostash the post-gate rebase (0/7 success rat"
    },
    {
     "pr": 139,
-    "age_days": 5,
+    "age_days": 6,
     "stale": false,
     "title": "fix: repair observability hash chain corrupted by union merge (INC-006)"
    },
@@ -177,12 +183,6 @@
     "age_days": 6,
     "stale": false,
     "title": "verify: daily pass on opp005-gmail-attachment-downloader-recheck + devto-syndication-pipel"
-   },
-   {
-    "pr": 137,
-    "age_days": 6,
-    "stale": false,
-    "title": "R&D: BET-R6 — H7 track-7 failure-case recovery, distribution-embedding isolated"
    }
   ],
   "paste_pending": 3,
