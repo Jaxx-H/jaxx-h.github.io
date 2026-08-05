@@ -1,7 +1,7 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-08-04 22:49 CT",
- "generated_utc": "2026-08-05T03:49:25Z",
+ "generated": "2026-08-05 04:24 CT",
+ "generated_utc": "2026-08-05T09:24:09Z",
  "queue": {
   "tap": [
    {
@@ -18,13 +18,13 @@
    },
    {
     "pr": 169,
-    "age_days": 1,
+    "age_days": 2,
     "stale": false,
     "title": "R&D: BET-R6 — H7 discriminative retest via Track 7 contrast case recovery"
    },
    {
     "pr": 168,
-    "age_days": 1,
+    "age_days": 2,
     "stale": false,
     "title": "frontier-radar 2026-08-03: no change, 0 verified, 0 candidates"
    },
@@ -42,13 +42,13 @@
    },
    {
     "pr": 165,
-    "age_days": 2,
+    "age_days": 3,
     "stale": false,
     "title": "R&D: BET-R1 — refresh-pipeline recheck 2 (still 0/3, block is queue depth not code)"
    },
    {
     "pr": 164,
-    "age_days": 2,
+    "age_days": 3,
     "stale": false,
     "title": "frontier-radar: 2026-08-02 daily sweep (no change, 0 candidates)"
    },
@@ -72,13 +72,13 @@
    },
    {
     "pr": 160,
-    "age_days": 3,
+    "age_days": 4,
     "stale": false,
     "title": "R&D: BET-R6 — H7 track-7 failure-case recovery (Rewind/Limitless)"
    },
    {
     "pr": 159,
-    "age_days": 3,
+    "age_days": 4,
     "stale": false,
     "title": "frontier-radar 2026-08-01: no change, 0 new candidates"
    },
@@ -102,7 +102,7 @@
    },
    {
     "pr": 154,
-    "age_days": 4,
+    "age_days": 5,
     "stale": false,
     "title": "frontier-radar 2026-07-31: x402 Foundation launch — dampening refinement, no roadmap chang"
    },
@@ -120,13 +120,13 @@
    },
    {
     "pr": 151,
-    "age_days": 5,
+    "age_days": 6,
     "stale": false,
     "title": "R&D: BET-R6 — Track 7 sweep-2 recovery, H7 falsification test, B-007 update"
    },
    {
     "pr": 150,
-    "age_days": 5,
+    "age_days": 6,
     "stale": false,
     "title": "frontier-radar: 2026-07-30 — x402 Foundation (LF) launch strengthens standing x402 door"
    },
@@ -156,7 +156,7 @@
    },
    {
     "pr": 145,
-    "age_days": 6,
+    "age_days": 7,
     "stale": false,
     "title": "frontier-radar 2026-07-29: CHURN LAW held, 0 candidates"
    },
