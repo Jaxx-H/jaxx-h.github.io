@@ -1,7 +1,7 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-08-06 19:30 CT",
- "generated_utc": "2026-08-07T00:30:43Z",
+ "generated": "2026-08-06 22:39 CT",
+ "generated_utc": "2026-08-07T03:39:02Z",
  "queue": {
   "tap": [
    {
@@ -30,7 +30,7 @@
    },
    {
     "pr": 167,
-    "age_days": 3,
+    "age_days": 4,
     "stale": false,
     "title": "research: W2 Exit-Rights Memory multilingual recheck — platforms shipped portability"
    },
