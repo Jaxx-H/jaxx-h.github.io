@@ -1,7 +1,7 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-08-06 18:00 CT",
- "generated_utc": "2026-08-06T23:00:55Z",
+ "generated": "2026-08-06 19:30 CT",
+ "generated_utc": "2026-08-07T00:30:43Z",
  "queue": {
   "tap": [
    {
@@ -54,7 +54,7 @@
    },
    {
     "pr": 163,
-    "age_days": 4,
+    "age_days": 5,
     "stale": false,
     "title": "distribution: queue dev.to syndication draft for companies-hiring-security-engineers (devt"
    },
@@ -84,7 +84,7 @@
    },
    {
     "pr": 158,
-    "age_days": 5,
+    "age_days": 6,
     "stale": false,
     "title": "DEMAND RESEARCH: OPP-008 (Sheets tab folders) competitive recheck — free incumbent already"
    },
@@ -132,8 +132,8 @@
    },
    {
     "pr": 149,
-    "age_days": 7,
-    "stale": false,
+    "age_days": 8,
+    "stale": true,
     "title": "MOAT/PRODUCT: vendor+prove the isoxml TimeLog decode path (762KB→114KB, correctness-verifi"
    },
    {
@@ -162,7 +162,7 @@
    },
    {
     "pr": 144,
-    "age_days": 8,
+    "age_days": 9,
     "stale": true,
     "title": "DEMAND RESEARCH: does Dreaming V3 fix or worsen W3's silent-loss pain?"
    },
