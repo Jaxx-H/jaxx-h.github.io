@@ -1,7 +1,7 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-08-08 14:16 CT",
- "generated_utc": "2026-08-08T19:16:12Z",
+ "generated": "2026-08-08 20:46 CT",
+ "generated_utc": "2026-08-09T01:46:05Z",
  "queue": {
   "tap": [
    {
@@ -54,7 +54,7 @@
    },
    {
     "pr": 163,
-    "age_days": 6,
+    "age_days": 7,
     "stale": false,
     "title": "distribution: queue dev.to syndication draft for companies-hiring-security-engineers (devt"
    },
@@ -84,8 +84,8 @@
    },
    {
     "pr": 158,
-    "age_days": 7,
-    "stale": false,
+    "age_days": 8,
+    "stale": true,
     "title": "DEMAND RESEARCH: OPP-008 (Sheets tab folders) competitive recheck — free incumbent already"
    },
    {
@@ -132,7 +132,7 @@
    },
    {
     "pr": 149,
-    "age_days": 9,
+    "age_days": 10,
     "stale": true,
     "title": "MOAT/PRODUCT: vendor+prove the isoxml TimeLog decode path (762KB→114KB, correctness-verifi"
    },
@@ -162,7 +162,7 @@
    },
    {
     "pr": 144,
-    "age_days": 10,
+    "age_days": 11,
     "stale": true,
     "title": "DEMAND RESEARCH: does Dreaming V3 fix or worsen W3's silent-loss pain?"
    },
@@ -230,8 +230,8 @@
  "counts": {
   "open_prs": 30,
   "revenue_events_n": 2,
-  "external_reward_rows_n": 17,
-  "ledger_rows_n": 40,
+  "external_reward_rows_n": 18,
+  "ledger_rows_n": 41,
   "radar_funnel": {
    "observed": 12,
    "verified": 1,
@@ -239,7 +239,7 @@
   }
  },
  "health": {
-  "collector_last_landed": "2026-08-06",
+  "collector_last_landed": "2026-08-08",
   "automerge": "unknown",
   "fasttrack": "unknown",
   "secrets_configured": "0/7"
