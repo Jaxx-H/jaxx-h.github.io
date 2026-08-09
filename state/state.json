@@ -1,7 +1,7 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-08-09 02:40 CT",
- "generated_utc": "2026-08-09T07:40:07Z",
+ "generated": "2026-08-09 07:00 CT",
+ "generated_utc": "2026-08-09T12:00:47Z",
  "queue": {
   "tap": [
    {
@@ -18,7 +18,7 @@
    },
    {
     "pr": 169,
-    "age_days": 5,
+    "age_days": 6,
     "stale": false,
     "title": "R&D: BET-R6 — H7 discriminative retest via Track 7 contrast case recovery"
    },
@@ -42,7 +42,7 @@
    },
    {
     "pr": 165,
-    "age_days": 6,
+    "age_days": 7,
     "stale": false,
     "title": "R&D: BET-R1 — refresh-pipeline recheck 2 (still 0/3, block is queue depth not code)"
    },
@@ -72,8 +72,8 @@
    },
    {
     "pr": 160,
-    "age_days": 7,
-    "stale": false,
+    "age_days": 8,
+    "stale": true,
     "title": "R&D: BET-R6 — H7 track-7 failure-case recovery (Rewind/Limitless)"
    },
    {
@@ -120,7 +120,7 @@
    },
    {
     "pr": 151,
-    "age_days": 9,
+    "age_days": 10,
     "stale": true,
     "title": "R&D: BET-R6 — Track 7 sweep-2 recovery, H7 falsification test, B-007 update"
    },
@@ -150,7 +150,7 @@
    },
    {
     "pr": 146,
-    "age_days": 10,
+    "age_days": 11,
     "stale": true,
     "title": "verify: daily pass — X API pricing, Sizov Report price, W3 multilingual competitive claims"
    },
@@ -180,7 +180,7 @@
    },
    {
     "pr": 139,
-    "age_days": 11,
+    "age_days": 12,
     "stale": true,
     "title": "fix: repair observability hash chain corrupted by union merge (INC-006)"
    }
@@ -230,8 +230,8 @@
  "counts": {
   "open_prs": 30,
   "revenue_events_n": 2,
-  "external_reward_rows_n": 18,
-  "ledger_rows_n": 41,
+  "external_reward_rows_n": 19,
+  "ledger_rows_n": 46,
   "radar_funnel": {
    "observed": 12,
    "verified": 1,
@@ -239,7 +239,7 @@
   }
  },
  "health": {
-  "collector_last_landed": "2026-08-08",
+  "collector_last_landed": "2026-08-09",
   "automerge": "unknown",
   "fasttrack": "unknown",
   "secrets_configured": "0/7"
