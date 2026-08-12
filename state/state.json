@@ -1,7 +1,7 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-08-11 22:10 CT",
- "generated_utc": "2026-08-12T03:10:36Z",
+ "generated": "2026-08-12 03:03 CT",
+ "generated_utc": "2026-08-12T08:03:23Z",
  "queue": {
   "tap": [
    {
@@ -24,7 +24,7 @@
    },
    {
     "pr": 168,
-    "age_days": 8,
+    "age_days": 9,
     "stale": true,
     "title": "frontier-radar 2026-08-03: no change, 0 verified, 0 candidates"
    },
@@ -48,7 +48,7 @@
    },
    {
     "pr": 164,
-    "age_days": 9,
+    "age_days": 10,
     "stale": true,
     "title": "frontier-radar: 2026-08-02 daily sweep (no change, 0 candidates)"
    },
@@ -78,7 +78,7 @@
    },
    {
     "pr": 159,
-    "age_days": 10,
+    "age_days": 11,
     "stale": true,
     "title": "frontier-radar 2026-08-01: no change, 0 new candidates"
    },
@@ -102,7 +102,7 @@
    },
    {
     "pr": 154,
-    "age_days": 11,
+    "age_days": 12,
     "stale": true,
     "title": "frontier-radar 2026-07-31: x402 Foundation launch — dampening refinement, no roadmap chang"
    },
@@ -126,7 +126,7 @@
    },
    {
     "pr": 150,
-    "age_days": 12,
+    "age_days": 13,
     "stale": true,
     "title": "frontier-radar: 2026-07-30 — x402 Foundation (LF) launch strengthens standing x402 door"
    },
@@ -156,7 +156,7 @@
    },
    {
     "pr": 145,
-    "age_days": 13,
+    "age_days": 14,
     "stale": true,
     "title": "frontier-radar 2026-07-29: CHURN LAW held, 0 candidates"
    },
