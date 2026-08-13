@@ -1,7 +1,7 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-08-13 03:04 CT",
- "generated_utc": "2026-08-13T08:04:44Z",
+ "generated": "2026-08-13 09:07 CT",
+ "generated_utc": "2026-08-13T14:07:33Z",
  "queue": {
   "tap": [
    {
@@ -12,13 +12,13 @@
    },
    {
     "pr": 170,
-    "age_days": 9,
+    "age_days": 10,
     "stale": true,
     "title": "distribution: hand-compose 2 owned-site narrative pages (owned-geo-site arm)"
    },
    {
     "pr": 169,
-    "age_days": 9,
+    "age_days": 10,
     "stale": true,
     "title": "R&D: BET-R6 — H7 discriminative retest via Track 7 contrast case recovery"
    },
@@ -36,13 +36,13 @@
    },
    {
     "pr": 166,
-    "age_days": 10,
+    "age_days": 11,
     "stale": true,
     "title": "SYSTEM SYNTHESIS: PR-backlog audit channel is self-defeating — notify directly, propose ci"
    },
    {
     "pr": 165,
-    "age_days": 10,
+    "age_days": 11,
     "stale": true,
     "title": "R&D: BET-R1 — refresh-pipeline recheck 2 (still 0/3, block is queue depth not code)"
    },
@@ -66,13 +66,13 @@
    },
    {
     "pr": 161,
-    "age_days": 11,
+    "age_days": 12,
     "stale": true,
     "title": "SYSTEM SYNTHESIS: PR queue re-accumulation recheck (33 open, 0 merges since 07-28 batch)"
    },
    {
     "pr": 160,
-    "age_days": 11,
+    "age_days": 12,
     "stale": true,
     "title": "R&D: BET-R6 — H7 track-7 failure-case recovery (Rewind/Limitless)"
    },
@@ -96,7 +96,7 @@
    },
    {
     "pr": 156,
-    "age_days": 12,
+    "age_days": 13,
     "stale": true,
     "title": "distribution: queue dev.to syndication draft for fbn-vs-agriwebb-farmer-reviews (devto-syn"
    },
@@ -114,13 +114,13 @@
    },
    {
     "pr": 152,
-    "age_days": 13,
+    "age_days": 14,
     "stale": true,
     "title": "SYSTEM SYNTHESIS: PR queue re-accumulation recheck (25 open, 0 merges since 07-28 batch)"
    },
    {
     "pr": 151,
-    "age_days": 13,
+    "age_days": 14,
     "stale": true,
     "title": "R&D: BET-R6 — Track 7 sweep-2 recovery, H7 falsification test, B-007 update"
    },
@@ -144,13 +144,13 @@
    },
    {
     "pr": 147,
-    "age_days": 14,
+    "age_days": 15,
     "stale": true,
     "title": "SYSTEM SYNTHESIS: PR-queue backlog still above threshold — recheck, no new content this ru"
    },
    {
     "pr": 146,
-    "age_days": 14,
+    "age_days": 15,
     "stale": true,
     "title": "verify: daily pass — X API pricing, Sizov Report price, W3 multilingual competitive claims"
    },
@@ -174,13 +174,13 @@
    },
    {
     "pr": 141,
-    "age_days": 15,
+    "age_days": 16,
     "stale": true,
     "title": "fix(ci): refresh-{jobs,reviews,creators} — autostash the post-gate rebase (0/7 success rat"
    },
    {
     "pr": 139,
-    "age_days": 15,
+    "age_days": 16,
     "stale": true,
     "title": "fix: repair observability hash chain corrupted by union merge (INC-006)"
    }
