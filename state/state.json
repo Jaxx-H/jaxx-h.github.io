@@ -1,7 +1,7 @@
 {
  "doc": "STATE_PUBLIC — allowlisted dashboard JSON; the full state bridge is private (D0 2026-07-17)",
- "generated": "2026-08-13 14:43 CT",
- "generated_utc": "2026-08-13T19:43:33Z",
+ "generated": "2026-08-13 22:12 CT",
+ "generated_utc": "2026-08-14T03:12:10Z",
  "queue": {
   "tap": [
    {
@@ -30,7 +30,7 @@
    },
    {
     "pr": 167,
-    "age_days": 10,
+    "age_days": 11,
     "stale": true,
     "title": "research: W2 Exit-Rights Memory multilingual recheck — platforms shipped portability"
    },
@@ -54,7 +54,7 @@
    },
    {
     "pr": 163,
-    "age_days": 11,
+    "age_days": 12,
     "stale": true,
     "title": "distribution: queue dev.to syndication draft for companies-hiring-security-engineers (devt"
    },
@@ -84,7 +84,7 @@
    },
    {
     "pr": 158,
-    "age_days": 12,
+    "age_days": 13,
     "stale": true,
     "title": "DEMAND RESEARCH: OPP-008 (Sheets tab folders) competitive recheck — free incumbent already"
    },
@@ -132,7 +132,7 @@
    },
    {
     "pr": 149,
-    "age_days": 14,
+    "age_days": 15,
     "stale": true,
     "title": "MOAT/PRODUCT: vendor+prove the isoxml TimeLog decode path (762KB→114KB, correctness-verifi"
    },
@@ -162,7 +162,7 @@
    },
    {
     "pr": 144,
-    "age_days": 15,
+    "age_days": 16,
     "stale": true,
     "title": "DEMAND RESEARCH: does Dreaming V3 fix or worsen W3's silent-loss pain?"
    },
